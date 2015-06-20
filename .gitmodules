@@ -1,0 +1,9 @@
+[submodule "moduloPlanificacion"]
+	path = moduloPlanificacion
+	url = https://github.com/DeliaAraque/Planificacion.git
+[submodule "moduloCarga"]
+	path = moduloCarga
+	url = https://github.com/masc1293/carga_actualizacion.git
+[submodule "moduloHorarios"]
+	path = moduloHorarios
+	url = https://github.com/Yasmindvr/moduloHorarios

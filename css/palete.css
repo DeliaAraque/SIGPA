@@ -1,0 +1,53 @@
+body,
+.btn-primary,
+.navbar-default,
+.btn-primary:hover,
+.btn-primary:focus
+{
+	background-color: #00005b;
+}
+
+.navbar-default,
+.navbar-default .navbar-brand,
+a,
+.navbar-default .navbar-toggle,
+.btn-primary
+{
+	color: #fff;
+
+	transition: 0.5s;
+}
+
+.navbar-default .navbar-brand
+{
+	font-size: 1.5em;
+
+	transition: 0.3s;
+}
+
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover,
+.btn-primary:hover,
+.btn-primary:focus
+{
+	color: #fff;
+	text-shadow: 0em 0em 0.5em #fff;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus
+{
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-default .navbar-toggle .icon-bar
+{
+	background-color: #fff;
+}
+
+#page-wrapper a,
+a:hover,
+a:focus
+{
+	color: #00005b;
+}
