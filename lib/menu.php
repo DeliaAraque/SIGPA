@@ -148,6 +148,24 @@
 
 				<li><a href="javascript: embem('moduloPlanificacion/Area/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Áreas</a></li>
 
+				<li>
+					<a href="#"><i class="fa fa-check-square-o fa-fw"></i> Cargas Académicas<span class="fa arrow"></span></a>
+
+					<ul class="nav nav-second-level">
+						<li>
+							<a href="javascript: embem('moduloCarga/Carga/registro_carga.php', '#page-wrapper')"><i class="fa fa-pencil-square-o fa-fw"></i> Registrar Cargas</a>
+						</li>
+						<li>
+							<a href="javascript: embem('moduloCarga/Carga/consulta_carga.php', '#page-wrapper')"><i class="fa fa-search fa-fw"></i> Consultar Cargas</a>
+						</li>
+					</ul>
+				</li>
+
+				<li><a href="javascript: embem('moduloCarga/Actualizacion/index.php', '#page-wrapper')"><i class="fa fa-upload fa-fw"></i> Actualización de Datos</a></li>
+				<li><a href="javascript: embem('moduloCarga/Reportes/index.php', '#page-wrapper')"><i class="fa fa-file-text fa-fw"></i> Reportes Multiples</a></li>
+
+
+
 				<!--
 
 				Elemento simple:
