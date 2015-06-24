@@ -47,7 +47,17 @@ a,
 
 #page-wrapper a,
 a:hover,
-a:focus
+a:focus,
+a.active
 {
 	color: #00005b;
+}
+
+.agregar,
+.editar,
+.eliminar
+{
+	font-size: 1.5em;
+	cursor: pointer;
+	color: red;
 }

@@ -1,3 +1,3 @@
 <?php
-	$sigpa = pg_connect("host=<host> dbname=<db> user=<user> password=<pwd>");
+	$sigpa = pg_connect("host=localhost dbname=sigpa user=postgres password=root");
 ?>
