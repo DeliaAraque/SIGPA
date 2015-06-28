@@ -1,0 +1,95 @@
+.agregar,
+.editar,
+.eliminar
+{
+	font-size: 1.5em;
+	cursor: pointer;
+	color: red;
+}
+
+.infoZone
+{
+	position: fixed;
+	bottom: 0.5em;
+	right: 0.5em;
+}
+
+#popUp
+{
+	padding: 1em;
+	padding-right: 5em;
+	border-radius: 2em 0em 0em 2em;
+	box-shadow: 0em 0em 1em rgba(0, 0, 0, 0.5);
+	background: white;
+	right: -100%;
+}
+
+#popUp div:first-child
+{
+	min-height: 5em;
+
+	color: white;
+	border-radius: 2em;
+	padding: 2em;
+}
+
+.cerrar
+{
+	cursor: pointer;
+
+	position: absolute;
+	top: 0.5em;
+	right: 1em;
+}
+
+@keyframes popUp
+{
+	from
+	{
+		right: -100%;
+	}
+
+	to
+	{
+		right: 0.5em;
+	}
+}
+
+@-webkit-keyframes popUp
+{
+	from
+	{
+		right: -100%;
+	}
+
+	to
+	{
+		right: 0.5em;
+	}
+}
+
+@keyframes popUpClose
+{
+	from
+	{
+		right: 0.5em;
+	}
+
+	to
+	{
+		right: -100%;
+	}
+}
+
+@-webkit-keyframes popUpClose
+{
+	from
+	{
+		right: 0.5em;
+	}
+
+	to
+	{
+		right: -100%;
+	}
+}
