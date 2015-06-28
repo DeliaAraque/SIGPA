@@ -109,7 +109,7 @@
 
 				<li class="divider"></li>
 
-				<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a></li>
+				<li><a href="script/cerrar.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a></li>
 			</ul>
 
 		</li>

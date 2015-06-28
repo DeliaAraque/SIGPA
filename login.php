@@ -1,3 +1,10 @@
+<?php
+	session_start();
+
+	if($_SESSION["cedula"])
+		header("location: .");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,6 +22,9 @@
 	<!-- Fin plantilla -->
 
 	<link href="css/palete.css" rel="stylesheet" type="text/css" />
+	<link href="css/sigpa.css" rel="stylesheet" type="text/css" />
+
+	<script src="lib/sigpa.js"></script>
 
 	<style>
 		body
@@ -50,8 +60,8 @@
 			<!-- Pestañas -->
 
 						<ul class="nav nav-tabs">
-							<li class="active" style="width: 50%;"><a href="#iniciar" data-toggle="tab">Entrar</a></li>
-							<li style="width: 50%;"><a href="#reestablecer" data-toggle="tab">Reestablecer</a></li>
+							<li class="active" style="width: 50%;" id="iniciarTab"><a href="#iniciar" data-toggle="tab">Entrar</a></li>
+							<li style="width: 50%;" id="reestablecerTab"><a href="#reestablecer" data-toggle="tab">Reestablecer</a></li>
 						</ul>
 
 			<!-- Fin pestañas -->
@@ -63,23 +73,23 @@
 				<!-- Formulario para iniciar sesión -->
 
 							<div class="tab-pane fade in active" id="iniciar">
-								<form role="form">
+								<form name="login" method="POST" action="script/iniciar.php" data-redirect="." role="form">
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su cédula de indentidad">
-											<input type="text" name="cedula" placeholder="Cédula" class="form-control" autofocus="autofocus" />
+											<input type="text" name="cedula" placeholder="Cédula" class="form-control" onKeyUp="Verif(this, 'usuario', true)" value="<?= $_COOKIE["cedula"]; ?>" autofocus="autofocus" required="required" />
 											<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su contraseña">
-											<input type="password" name="contrasena" placeholder="Contraseña" class="form-control" />
+											<input type="password" name="contrasena" placeholder="Contraseña" class="form-control" required="required" />
 											<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
 										</div>
 									</div>
 
 									<div class="checkbox"><label>
-										<input type="checkbox" name="recordar" value="1" /> Recordar mi cédula
+										<input type="checkbox" name="recordar" value="1" <?php if($_COOKIE["cedula"]) echo "checked=\"checked\""; ?> /> Recordar mi cédula
 									</label></div>
 
 									<input type="submit" value="Entrar" class="btn btn-lg btn-primary btn-block" /><br/>
@@ -91,31 +101,31 @@
 				<!-- Formulario para reestablecer la contraseña -->
 
 							<div class="tab-pane fade" id="reestablecer">
-								<form role="form">
+								<form name="reset" method="POST" action="script/reestablecer.php" onSubmit="return reestablecer(this)">
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su cédula de indentidad">
-											<input type="text" name="cedula" placeholder="Cédula" class="form-control" autofocus="autofocus" />
+											<input type="text" name="cedula" placeholder="Cédula" class="form-control" onKeyUp="Verif(this, 'usuario', true)" required="required" />
 											<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su frase de recuperación">
-											<input type="password" name="frase" placeholder="Frase de recuperación" class="form-control" autofocus="autofocus" />
+											<input type="password" name="frase" placeholder="Frase de recuperación" class="form-control" required="required" />
 											<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="input-group" title="Ingrese una nueva contraseña">
-											<input type="password" name="contrasena" placeholder="Nueva contraseña" class="form-control" />
+											<input type="password" name="contrasena" placeholder="Nueva contraseña" class="form-control" onKeyUp="diff(document.reset.recontrasena, this)" required="required" />
 											<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="input-group" title="Repita la contraseña">
-											<input type="password" name="recontrasena" placeholder="Repita la contraseña" class="form-control" />
+											<input type="password" name="recontrasena" placeholder="Repita la contraseña" class="form-control" onKeyUp="diff(this, document.reset.contrasena)" required="required" />
 											<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
 										</div>
 									</div>
@@ -170,6 +180,27 @@
 		</div>
 
 	</div>
+
+<div id="popUp" class="infoZone" onClick="popUpClose()">
+	<div></div>
+
+	<span class="cerrar" title="Cerrar">X</span>
+
+	<span class="fa-stack fa-2x" style="position: absolute; bottom: 0.2em; right: 0.2em;">
+		<i class="fa fa-circle-o fa-fw fa-stack-2x"></i>
+		<i class="fa fa-check fa-fw fa-stack-1x" title="Bien"></i>	
+	</span>
+
+	<!--
+		<i id="warning" class="fa fa-exclamation fa-fw fa-stack-1x" title="Alerta"></i>
+		<i id="info" class="fa fa-info fa-fw fa-stack-1x" title="Información"></i>
+		<i id="sucess" class="fa fa-check fa-fw fa-stack-1x" title="Bien"></i>	
+		<i id="error" class="fa fa-times fa-fw fa-stack-1x" title="Error"></i>
+	-->
+</div>
+
+<i id="loading" class="fa fa-refresh fa-spin fa-3x fa-fw infoZone" title="Cargando.."></i>
+
 </body>
 
 <!-- Bibliotecas plantilla -->
@@ -180,5 +211,50 @@
 <script src="css/template/dist/js/sb-admin-2.js"></script>
 
 <!-- Fin bibliotecas plantilla -->
+
+<script>
+	formularios();
+	$(document).ready(loading(false));
+
+	function reestablecer(f)
+	{
+		loading(true);
+
+		$.ajax(
+		{
+			processData: false,
+			contentType: false,
+			url: f.action,
+			data: new FormData(f),
+			type: f.method,
+			success: function(rt)
+			{
+				var response = rt.split("&&");
+
+				popUp(response[0], response[1]);
+				loading(false);
+
+				if(response[1] == "success")
+				{
+					$("#reestablecerTab").removeClass("active");
+					$("#iniciarTab").addClass("active");
+
+					$("#reestablecer").removeClass("in active");
+					$("#iniciar").addClass("in active");
+
+					document.login.cedula.value = document.reset.cedula.value;
+					document.login.contrasena.focus();
+				}
+			},
+			error: function ()
+			{
+				popUp("Ocurrio un error durante la conexión al servidor", "error");
+				loading(false);
+			}
+		});
+
+		return false;
+	}
+</script>
 
 </html>

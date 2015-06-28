@@ -1,3 +1,7 @@
+<?php
+	require "script/verifSesion.php";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

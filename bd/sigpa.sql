@@ -70,7 +70,7 @@ create table "unidadCurricular"
 	id text primary key,
 	nombre text not null unique,
 	"horasTeoricas" real not null,
-	"hroasPracticas" real not null,
+	"horasPracticas" real not null,
 	tipo boolean not null,
 	"idEje" int not null
 );
@@ -83,7 +83,16 @@ create table "ucMalla"
 	unique("idUC", "idMalla")
 );
 
+-- Usuarios:
 
+create table "usuario"
+(
+	cedula int primary key,
+	contrasena text not null,
+	frase text not null,
+	ingreso date,
+	nivel int not null
+);
 
 --	Configuración:
 --		Carreras:
