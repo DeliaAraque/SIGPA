@@ -63,15 +63,8 @@
 
 	<span class="fa-stack fa-2x" style="position: absolute; bottom: 0.2em; right: 0.2em;">
 		<i class="fa fa-circle-o fa-fw fa-stack-2x"></i>
-		<i class="fa fa-check fa-fw fa-stack-1x" title="Bien"></i>	
+		<i></i>	
 	</span>
-
-	<!--
-		<i id="warning" class="fa fa-exclamation fa-fw fa-stack-1x" title="Alerta"></i>
-		<i id="info" class="fa fa-info fa-fw fa-stack-1x" title="Información"></i>
-		<i id="sucess" class="fa fa-check fa-fw fa-stack-1x" title="Bien"></i>	
-		<i id="error" class="fa fa-times fa-fw fa-stack-1x" title="Error"></i>
-	-->
 </div>
 
 <i id="loading" class="fa fa-refresh fa-spin fa-3x fa-fw infoZone" title="Cargando.."></i>
