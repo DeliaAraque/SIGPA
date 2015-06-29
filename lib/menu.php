@@ -102,7 +102,7 @@
 			<ul class="dropdown-menu" style="width: 15em;">
 				<li><a>
 					<i class="fa fa-user fa-fw" style="float: left;"></i> 
-					<span style="display: inline-block; margin-left: 0.3em;">Cédula<br>Nombre<br/>Apellido</span>
+					<span style="display: inline-block; margin-left: 0.3em;"><?= $_SESSION["cedula"]; ?><br><?= $_SESSION["nombre"]; ?><br/><?= $_SESSION["apellido"]; ?></span>
 				</a></li>
 
 				<li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuración</a></li>
