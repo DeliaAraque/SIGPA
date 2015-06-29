@@ -1,3 +1,7 @@
+<?php
+	require "script/verifSesion.php";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,6 +22,7 @@
 	<!-- Fin plantilla -->
 
 	<link href="css/palete.css" rel="stylesheet" type="text/css" />
+	<link href="css/sigpa.css" rel="stylesheet" type="text/css" />
 
 	<script src="lib/sigpa.js"></script>
 
@@ -41,11 +46,28 @@
 	<!-- Contenido -->
 
 	<div id="page-wrapper">
+		<input type="button" value="Alerta" onClick="popUp('Mensaje de alerta')" />
+		<input type="button" value="Información" onClick="popUp('Mensaje informativo', 'info')" />
+		<input type="button" value="Finalizado" onClick="popUp('Actividad finalizada satisfactorioamente', 'success')" />
+		<input type="button" value="Error" onClick="popUp('Error durante la ejecución de algún proceso', 'error')" />
 	</div>
 
 	<!-- Fin contenido -->
 
 </div>
+
+<div id="popUp" class="infoZone" onClick="popUpClose()">
+	<div></div>
+
+	<span class="cerrar" title="Cerrar">X</span>
+
+	<span class="fa-stack fa-2x" style="position: absolute; bottom: 0.2em; right: 0.2em;">
+		<i class="fa fa-circle-o fa-fw fa-stack-2x"></i>
+		<i></i>	
+	</span>
+</div>
+
+<i id="loading" class="fa fa-refresh fa-spin fa-3x fa-fw infoZone" title="Cargando.."></i>
 </body>
 
 <!-- Bibliotecas plantilla -->
@@ -56,6 +78,10 @@
 <script src="css/template/dist/js/sb-admin-2.js"></script>
 <script src="css/template/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="css/template/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(loading(false));
+</script>
 
 <!-- Fin bibliotecas plantilla -->
 

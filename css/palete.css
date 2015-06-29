@@ -52,12 +52,3 @@ a.active
 {
 	color: #00005b;
 }
-
-.agregar,
-.editar,
-.eliminar
-{
-	font-size: 1.5em;
-	cursor: pointer;
-	color: red;
-}
