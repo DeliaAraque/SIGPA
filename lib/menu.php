@@ -153,7 +153,7 @@
 
 					<ul class="nav nav-second-level">
 						<li>
-							<a href="javascript: embem('moduloCarga/Carga/registro_carga.php', '#page-wrapper')"><i class="fa fa-pencil-square-o fa-fw"></i> Registrar Cargas</a>
+							<a href="javascript: embem('moduloCarga/Carga/registro_carga.html', '#page-wrapper')"><i class="fa fa-pencil-square-o fa-fw"></i> Registrar Cargas</a>
 						</li>
 						<li>
 							<a href="javascript: embem('moduloCarga/Carga/consulta_carga.php', '#page-wrapper')"><i class="fa fa-search fa-fw"></i> Consultar Cargas</a>
