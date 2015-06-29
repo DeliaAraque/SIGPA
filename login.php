@@ -73,7 +73,7 @@
 				<!-- Formulario para iniciar sesión -->
 
 							<div class="tab-pane fade in active" id="iniciar">
-								<form name="login" method="POST" action="script/iniciar.php" data-redirect="." role="form">
+								<form name="login" method="POST" action="script/iniciar.php" data-exe="$(location).attr('href', '.')" role="form">
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su cédula de indentidad">
 											<input type="text" name="cedula" placeholder="Cédula" class="form-control" onKeyUp="Verif(this, 'usuario', true)" value="<?= $_COOKIE["cedula"]; ?>" autofocus="autofocus" required="required" />
