@@ -45,12 +45,7 @@
 
 	<!-- Contenido -->
 
-	<div id="page-wrapper">
-		<input type="button" value="Alerta" onClick="popUp('Mensaje de alerta')" />
-		<input type="button" value="Información" onClick="popUp('Mensaje informativo', 'info')" />
-		<input type="button" value="Finalizado" onClick="popUp('Actividad finalizada satisfactorioamente', 'success')" />
-		<input type="button" value="Error" onClick="popUp('Error durante la ejecución de algún proceso', 'error')" />
-	</div>
+	<div id="page-wrapper"></div>
 
 	<!-- Fin contenido -->
 
@@ -81,6 +76,7 @@
 
 <script>
 	$(document).ready(loading(false));
+	formularios();
 </script>
 
 <!-- Fin bibliotecas plantilla -->

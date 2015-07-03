@@ -131,15 +131,17 @@
 		<!-- Búsqueda -->
 
 				<li class="sidebar-search">
-					<div class="input-group custom-search-form">
-						<input type="text" class="form-control" placeholder="Buscar...">
+					<form name="buscar" action="script/buscar.php" role="search">
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Buscar...">
 
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
+							<span class="input-group-btn">
+								<button class="btn btn-default" onClick="embem('script/buscar.php', '#page-wrapper', getForm(this))" type="button">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div>
+					</form>
 				</li>
 
 		<!-- Fin búsqueda -->
