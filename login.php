@@ -27,13 +27,11 @@
 	<script src="lib/sigpa.js"></script>
 
 	<style>
-		body
-		{
+		body {
 			background: initial;
 		}
 
-		a
-		{
+		a {
 			color: #00005b;
 		}
 	</style>
@@ -76,7 +74,7 @@
 								<form name="login" method="POST" action="script/iniciar.php" data-exe="$(location).attr('href', '.')" role="form">
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su cédula de indentidad">
-											<input type="text" name="cedula" placeholder="Cédula" class="form-control" onKeyUp="Verif(this, 'usuario', true)" value="<?= $_COOKIE["cedula"]; ?>" autofocus="autofocus" required="required" />
+											<input type="text" name="cedula" placeholder="Cédula" class="form-control" data-type="num" onKeyUp="Verif(this, 'usuario', true)" value="<?= $_COOKIE["cedula"]; ?>" autofocus="autofocus" required="required" />
 											<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										</div>
 									</div>
@@ -104,7 +102,7 @@
 								<form name="reset" method="POST" action="script/reestablecer.php" onSubmit="return reestablecer(this)">
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su cédula de indentidad">
-											<input type="text" name="cedula" placeholder="Cédula" class="form-control" onKeyUp="Verif(this, 'usuario', true)" required="required" />
+											<input type="text" name="cedula" placeholder="Cédula" class="form-control" data-type="num" onKeyUp="Verif(this, 'usuario', true)" required="required" />
 											<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										</div>
 									</div>
@@ -209,26 +207,22 @@
 	formularios();
 	$(document).ready(loading(false));
 
-	function reestablecer(f)
-	{
+	function reestablecer(f) {
 		loading(true);
 
-		$.ajax(
-		{
+		$.ajax( {
 			processData: false,
 			contentType: false,
 			url: f.action,
 			data: new FormData(f),
 			type: f.method,
-			success: function(rt)
-			{
+			success: function(rt) {
 				var response = rt.split("&&");
 
 				popUp(response[0], response[1]);
 				loading(false);
 
-				if(response[1] == "success")
-				{
+				if(response[1] == "success") {
 					$("#reestablecerTab").removeClass("active");
 					$("#iniciarTab").addClass("active");
 
@@ -239,8 +233,7 @@
 					document.login.contrasena.focus();
 				}
 			},
-			error: function ()
-			{
+			error: function () {
 				popUp("Ocurrio un error durante la conexión al servidor", "error");
 				loading(false);
 			}

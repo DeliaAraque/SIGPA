@@ -4,14 +4,12 @@
 
 // Validación
 
-	if(!is_numeric($_POST["cedula"]))
-	{
+	if(!is_numeric($_POST["cedula"])) {
 		echo "Debe indicar una cédula válida&&error";
 		exit;
 	}
 
-	if(!$_POST["contrasena"])
-	{
+	if(!$_POST["contrasena"]) {
 		echo "La contraseña no puede estar vacia&&error";
 		exit;
 	}
@@ -26,8 +24,7 @@
 	$exe = pg_query($sigpa, $sql);
 	$n = pg_fetch_object($exe);
 
-	if(!$n->n)
-	{
+	if(!$n->n) {
 		echo "Usuario incorrecto&&error";
 		exit;
 	}
@@ -45,16 +42,14 @@
 
 	// Si la contraseña esta mal
 
-	if($usuario->contrasena != $contrasena)
-	{
+	if($usuario->contrasena != $contrasena) {
 		echo "Contraseña incorrecta&&error";
 		exit;
 	}
 
 	// Sino
 
-	else
-	{
+	else {
 		$_SESSION["cedula"] = $cedula;
 		$_SESSION["nivel"] = $usuario->nivel;
 

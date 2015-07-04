@@ -3,20 +3,17 @@
 
 // Validación
 
-	if(!is_numeric($_POST["cedula"]))
-	{
+	if(!is_numeric($_POST["cedula"])) {
 		echo "Debe indicar una cédula válida&&error";
 		exit;
 	}
 
-	if((!$_POST["frase"]) || (!$_POST["contrasena"]) || (!$_POST["recontrasena"]))
-	{
+	if((!$_POST["frase"]) || (!$_POST["contrasena"]) || (!$_POST["recontrasena"])) {
 		echo "Ningun campo puede estar vacio&&error";
 		exit;
 	}
 
-	if($_POST["contrasena"] != $_POST["recontrasena"])
-	{
+	if($_POST["contrasena"] != $_POST["recontrasena"]) {
 		echo "Las contraseñas no coinciden&&error";
 		exit;
 	}
@@ -31,8 +28,7 @@
 	$exe = pg_query($sigpa, $sql);
 	$n = pg_fetch_object($exe);
 
-	if(!$n->n)
-	{
+	if(!$n->n) {
 		echo "Usuario incorrecto&&error";
 		exit;
 	}
@@ -49,16 +45,14 @@
 
 	// Si la frase esta mal
 
-	if($usuario->frase != $frase)
-	{
+	if($usuario->frase != $frase) {
 		echo "Frase de recuperación incorrecta&&error";
 		exit;
 	}
 
 	// Sino
 
-	else
-	{
+	else {
 		$contrasena = md5(htmlspecialchars($_POST["contrasena"]));
 
 		$sql = "update usuario set contrasena='$contrasena' where cedula='$cedula'";
