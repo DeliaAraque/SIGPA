@@ -2,5 +2,5 @@
 	session_start();
 
 	if(!$_SESSION["cedula"])
-		header("location: login.php");
+		header("location: /login.php");
 ?>

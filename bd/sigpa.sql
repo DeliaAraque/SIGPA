@@ -6,21 +6,18 @@ create database sigpa with template=template0 encoding='UTF-8';
 -- Estructura de tablas:
 --	Carreras:
 
-create table area
-(
+create table area (
 	id serial primary key,
 	nombre text not null unique
 );
 
-create table carrera
-(
+create table carrera (
 	id text primary key,
 	nombre text not null unique,
 	"idArea" int not null
 );
 
-create table "carreraSede"
-(
+create table "carreraSede" (
 	id serial primary key,
 	"idCarrera" text not null,
 	"idSede" int not null,
@@ -28,36 +25,31 @@ create table "carreraSede"
 	unique("idCarrera", "idSede")
 );
 
-create table eje
-(
+create table eje (
 	id serial primary key,
 	nombre text not null unique
 );
 
-create table estructura
-(
+create table estructura (
 	id serial primary key,
 	nombre text not null unique
 );
 
-create table "estructuraCS"
-(
+create table "estructuraCS" (
 	id serial primary key,
 	"idCS" int not null, -- ID de carreraSede
 	"idEstructura" int not null,
 	unique("idCS", "idEstructura")
 );
 
-create table malla
-(
+create table malla (
 	id text primary key,
 	fecha date not null,
 	estado boolean not null default true,
 	"idECS" int not null  -- ID de estructuraCS
 );
 
-create table sede
-(
+create table sede (
 	id serial primary key,
 	nombre text not null unique,
 	fecha date not null, -- Fecha de inauguración
@@ -65,8 +57,7 @@ create table sede
 	direccion text not null
 );
 
-create table "unidadCurricular"
-(
+create table "unidadCurricular" (
 	id text primary key,
 	nombre text not null unique,
 	"horasTeoricas" real not null,
@@ -75,8 +66,7 @@ create table "unidadCurricular"
 	"idEje" int not null
 );
 
-create table "ucMalla"
-(
+create table "ucMalla" (
 	id serial primary key,
 	"idUC" text not null,
 	"idMalla" text not null,
@@ -85,8 +75,25 @@ create table "ucMalla"
 
 -- Usuarios:
 
-create table "usuario"
-(
+create table historial (
+	id text primary key,
+	usuario text,
+	descripcion text not null,
+	sql text not null
+);
+
+create table persona (
+	cedula int primary key,
+	nombre text not null,
+	"segundoNombre" text,
+	apellido text not null,
+	"segundoApellido" text,
+	correo text,
+	telefono text,
+	"telefonoFijo" text
+);
+
+create table usuario (
 	cedula int primary key,
 	contrasena text not null,
 	frase text not null,
@@ -106,3 +113,6 @@ alter table malla add foreign key("idECS") references "estructuraCS"(id) on upda
 alter table "unidadCurricular" add foreign key("idEje") references eje(id) on update cascade on delete restrict;
 alter table "ucMalla" add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete restrict;
 alter table "ucMalla" add foreign key("idMalla") references malla(id) on update cascade on delete cascade;
+
+--		Usuarios:
+alter table usuario add foreign key(cedula) references persona(cedula) on update cascade on delete cascade;

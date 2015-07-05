@@ -34,7 +34,7 @@
 
 // Verificar la contraseña
 
-	$contrasena = md5(htmlspecialchars($_POST["contrasena"]));
+	$contrasena = md5(htmlspecialchars($_POST["contrasena"], ENT_QUOTES));
 
 	$sql = "select contrasena, nivel from usuario where cedula='$cedula'";
 	$exe = pg_query($sigpa, $sql);
@@ -52,6 +52,13 @@
 	else {
 		$_SESSION["cedula"] = $cedula;
 		$_SESSION["nivel"] = $usuario->nivel;
+
+		$sql = "select nombre, apellido from persona where cedula='$cedula'";
+		$exe = pg_query($sigpa, $sql);
+		$persona = pg_fetch_object($exe);
+
+		$_SESSION["nombre"] = $persona->nombre;
+		$_SESSION["apellido"] = $persona->apellido;
 
 		if($_POST["recordar"] == 1)
 			setcookie("cedula", "$cedula", time()+7*24*60*60, "/");

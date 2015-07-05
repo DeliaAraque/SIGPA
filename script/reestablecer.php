@@ -37,7 +37,7 @@
 
 // Verificar frase de recuperación
 
-	$frase = htmlspecialchars($_POST["frase"]);
+	$frase = htmlspecialchars($_POST["frase"], ENT_QUOTES);
 
 	$sql = "select frase from usuario where cedula='$cedula'";
 	$exe = pg_query($sigpa, $sql);
@@ -53,7 +53,7 @@
 	// Sino
 
 	else {
-		$contrasena = md5(htmlspecialchars($_POST["contrasena"]));
+		$contrasena = md5(htmlspecialchars($_POST["contrasena"], ENT_QUOTES));
 
 		$sql = "update usuario set contrasena='$contrasena' where cedula='$cedula'";
 		$exe = pg_query($sigpa, $sql);

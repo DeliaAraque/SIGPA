@@ -36,23 +36,34 @@
 
 				<!-- Elementos del registro -->
 
-			<ul class="dropdown-menu" style="width: 30em;">
-				<li><a>
-					<div>
-						<strong>Usuario</strong>
-						<span class="pull-right text-muted"><em>Fecha</em></span>
-					</div>
+			<ul id="historial" class="dropdown-menu" style="width: 30em;">
+				<li><a class="text-center" href="#"><strong>Ver el registro completo</strong></a></li>
 
-					<div>
-						Descripción de la actividad
-					</div><br/>
+<?php
+	require "conexion.php";
 
-					<pre>update carrera set nombre='PNF Informática' where id='03'</pre>
-				</a></li>
+	$sql = "select * from historial order by id desc limit 5";
+	$exe = pg_query($sigpa, $sql);
+
+	while($historial = pg_fetch_object($exe)) {
+?>
 
 				<li class="divider"></li>
 
-				<li><a class="text-center" href="#"><strong>Ver el registro completo</strong></a></li>
+				<li><a>
+					<div>
+						<strong><?= "$historial->usuario"; ?></strong>
+						<span class="pull-right text-muted"><em><?= date("H:i d/m/Y", $historial->id); ?></em></span>
+					</div>
+
+					<div>&nbsp;&nbsp;&nbsp;&nbsp;<?= "$historial->descripcion"; ?></div><br/>
+
+					<pre><?= "$historial->sql"; ?></pre>
+				</a></li>
+
+<?php
+	}
+?>
 			</ul>
 
 				<!-- Fin elementos del registro -->
@@ -69,6 +80,10 @@
 			</a>
 
 			<ul class="dropdown-menu" style="width: 25em;">
+				<li><a class="text-center" href="#"><strong>Ver períodos de planificación</strong></a></li>
+
+				<li class="divider"></li>
+
 				<li><a>
 					<div>
 						<p>
@@ -83,10 +98,6 @@
 						</div>
 					</div>
 				</a></li>
-
-				<li class="divider"></li>
-
-				<li><a class="text-center" href="#"><strong>Ver períodos de planificación</strong></a></li>
 			</ul>
 		</li>
 
