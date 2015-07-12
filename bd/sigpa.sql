@@ -73,7 +73,7 @@ create table "ucMalla" (
 	unique("idUC", "idMalla")
 );
 
--- Usuarios:
+-- Personas:
 
 create table historial (
 	id text primary key,
@@ -82,13 +82,17 @@ create table historial (
 	sql text not null
 );
 
+create type sexo as enum('m', 'f');
+
 create table persona (
 	cedula int primary key,
 	nombre text not null,
 	"segundoNombre" text,
 	apellido text not null,
 	"segundoApellido" text,
+	sexo sexo,
 	correo text,
+	direccion text,
 	telefono text,
 	"telefonoFijo" text
 );
@@ -114,5 +118,5 @@ alter table "unidadCurricular" add foreign key("idEje") references eje(id) on up
 alter table "ucMalla" add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete restrict;
 alter table "ucMalla" add foreign key("idMalla") references malla(id) on update cascade on delete cascade;
 
---		Usuarios:
+--		Personas:
 alter table usuario add foreign key(cedula) references persona(cedula) on update cascade on delete cascade;
