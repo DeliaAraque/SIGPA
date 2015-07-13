@@ -160,6 +160,7 @@
 		<!-- Elementos del menú -->
 
 				<li><a href="javascript: embem('moduloPlanificacion/Area/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Áreas</a></li>
+				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Sedes</a></li>
 
 				<li>
 					<a href="#"><i class="fa fa-check-square-o fa-fw"></i> Cargas Académicas<span class="fa arrow"></span></a>
