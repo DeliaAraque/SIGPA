@@ -120,3 +120,7 @@
 	max-height: 25em;
 	overflow-y: auto;
 }
+
+#historial pre {
+	max-height: 10em;
+}

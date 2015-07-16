@@ -32,7 +32,8 @@ create table eje (
 
 create table estructura (
 	id serial primary key,
-	nombre text not null unique
+	nombre text not null unique,
+	estructura text not null
 );
 
 create table "estructuraCS" (

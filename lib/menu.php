@@ -161,6 +161,16 @@
 
 				<li><a href="javascript: embem('moduloPlanificacion/Area/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Áreas</a></li>
 				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Sedes</a></li>
+				<li>
+					<a href="#"><i class="fa fa-gear fa-fw"></i> Carreras<span class="fa arrow"></span></a>
+
+					<ul class="nav nav-second-level">
+						<li><a href="javascript: embem('moduloPlanificacion/Carrera/Estructura/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Estructuras</a></li>
+						<li><a href="#"><i class="fa fa-check-square-o fa-fw"></i> PNF</a></li>
+						<li><a href="#"><i class="fa fa-check-square-o fa-fw"></i> Mallas</a></li>
+					</ul>
+				</li>
+
 
 				<li>
 					<a href="#"><i class="fa fa-check-square-o fa-fw"></i> Cargas Académicas<span class="fa arrow"></span></a>
