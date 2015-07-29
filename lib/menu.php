@@ -161,8 +161,11 @@
 
 				<li><a href="javascript: embem('moduloPlanificacion/Area/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Áreas</a></li>
 				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Sedes</a></li>
+<<<<<<< HEAD
 				<li><a href="javascript: embem('moduloPlanificacion/Categoria/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Categorías</a></li>
 				<li><a href="javascript: embem('moduloPlanificacion/Dedicacion/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Dedicación</a></li>
+=======
+>>>>>>> bd3e384a02620905874468da50b102ac10c38f1c
 				<li>
 					<a href="#"><i class="fa fa-gear fa-fw"></i> Carreras<span class="fa arrow"></span></a>
 
