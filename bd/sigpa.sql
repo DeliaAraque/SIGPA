@@ -25,6 +25,17 @@ create table "carreraSede" (
 	unique("idCarrera", "idSede")
 );
 
+create table categoria (
+	id text primary key,
+	nombre text not null unique
+);
+
+create table dedicacion (
+	id text primary key,
+	nombre text not null unique,
+	horas smallint not null
+);
+
 create table eje (
 	id serial primary key,
 	nombre text not null unique
