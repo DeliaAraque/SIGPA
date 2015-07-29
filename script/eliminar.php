@@ -13,7 +13,7 @@
 		$sql = "insert into historial values('" . time() . "', '$_SESSION[nombre] $_SESSION[apellido] ($_SESSION[cedula])', 'Se eliminó <strong>$value</strong>', '" . htmlspecialchars($sql, ENT_QUOTES) . "')";
 		$exe = pg_query($sigpa, $sql);
 
-		echo "Se elimino satisfactóriamente&&success";
+		echo "Se eliminó satisfactóriamente&&success";
 	}
 
 	else {
