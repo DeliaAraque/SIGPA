@@ -25,17 +25,6 @@ create table "carreraSede" (
 	unique("idCarrera", "idSede")
 );
 
-create table categoria (
-	id text primary key,
-	nombre text not null unique
-);
-
-create table dedicacion (
-	id text primary key,
-	nombre text not null unique,
-	horas smallint not null
-);
-
 create table eje (
 	id serial primary key,
 	nombre text not null unique
@@ -87,6 +76,22 @@ create table "ucMalla" (
 
 -- Personas:
 
+create table categoria (
+	id text primary key,
+	nombre text not null unique
+);
+
+CREATE TABLE condicion (
+    id text NOT NULL,
+    nombre text NOT NULL
+);
+
+create table dedicacion (
+	id text primary key,
+	nombre text not null unique,
+	horas smallint not null
+);
+
 create table historial (
 	id text primary key,
 	usuario text,
@@ -107,6 +112,18 @@ create table persona (
 	direccion text,
 	telefono text,
 	"telefonoFijo" text
+);
+
+create table profesion (
+	id text NOT NULL,
+    nombre text NOT NULL
+);
+
+create table profesor (
+	cedula int primary key,
+	categoria text not null,
+	dedicacion text not null,
+	profesion text not null,
 );
 
 create table usuario (
@@ -132,3 +149,9 @@ alter table "ucMalla" add foreign key("idMalla") references malla(id) on update 
 
 --		Personas:
 alter table usuario add foreign key(cedula) references persona(cedula) on update cascade on delete cascade;
+
+--		Profesor:
+alter table "profesor" add foreign key("categoria") references categoria(id) on update cascade on delete restrict;
+alter table "profesor" add foreign key("dedicacion") references dedicacion(id) on update cascade on delete restrict;
+alter table "profesor" add foreign key("cedula") references persona(cedula) on update cascade on delete restrict;
+alter table "profesor" add foreign key("profesion") references profesion(id) on update cascade on delete restrict;
