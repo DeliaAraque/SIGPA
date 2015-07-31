@@ -82,8 +82,8 @@ create table categoria (
 );
 
 CREATE TABLE condicion (
-    id text NOT NULL,
-    nombre text NOT NULL
+    id serial primary key,
+    nombre text not null unique
 );
 
 create table dedicacion (
@@ -115,15 +115,16 @@ create table persona (
 );
 
 create table profesion (
-	id text NOT NULL,
-    nombre text NOT NULL
+	id serial primary key,
+    nombre text not null unique
 );
 
 create table profesor (
 	cedula int primary key,
 	categoria text not null,
+	condicion serial not null,
 	dedicacion text not null,
-	profesion text not null,
+	profesion serial not null
 );
 
 create table usuario (
@@ -151,7 +152,8 @@ alter table "ucMalla" add foreign key("idMalla") references malla(id) on update 
 alter table usuario add foreign key(cedula) references persona(cedula) on update cascade on delete cascade;
 
 --		Profesor:
-alter table "profesor" add foreign key("categoria") references categoria(id) on update cascade on delete restrict;
-alter table "profesor" add foreign key("dedicacion") references dedicacion(id) on update cascade on delete restrict;
-alter table "profesor" add foreign key("cedula") references persona(cedula) on update cascade on delete restrict;
-alter table "profesor" add foreign key("profesion") references profesion(id) on update cascade on delete restrict;
+alter table profesor add foreign key(categoria) references categoria(id) on update cascade on delete restrict;
+alter table profesor add foreign key(condicion) references condicion(id) on update cascade on delete restrict;
+alter table profesor add foreign key(dedicacion) references dedicacion(id) on update cascade on delete restrict;
+alter table profesor add foreign key(cedula) references persona(cedula) on update cascade on delete cascade;
+alter table profesor add foreign key(profesion) references profesion(id) on update cascade on delete restrict;
