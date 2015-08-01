@@ -161,8 +161,17 @@
 
 				<li><a href="javascript: embem('moduloPlanificacion/Area/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Áreas</a></li>
 				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Sedes</a></li>
-				<li><a href="javascript: embem('moduloPlanificacion/Categoria/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Categorías</a></li>
-				<li><a href="javascript: embem('moduloPlanificacion/Dedicacion/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Dedicación</a></li>
+				<li>
+					<a href="#"><i class="fa fa-gear fa-fw"></i> Profesores<span class="fa arrow"></span></a>
+
+					<ul class="nav nav-second-level">
+						<li><a href="javascript: embem('moduloPlanificacion/Profesor/Categoria/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Categoría</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Profesor/Condicion/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Condición</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Profesor/Dedicacion/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Dedición</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Profesor/Profesion/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Profesión</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Profesor/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Profesor</a></li>
+					</ul>
+				</li>
 				<li>
 					<a href="#"><i class="fa fa-gear fa-fw"></i> Carreras<span class="fa arrow"></span></a>
 
