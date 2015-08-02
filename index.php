@@ -18,6 +18,7 @@
 	<link href="css/template/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="css/template/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 	<link href="css/template/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+	<link href="css/template/bower_components/datepicker/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
 
 	<!-- Fin plantilla -->
 
@@ -73,6 +74,8 @@
 <script src="css/template/dist/js/sb-admin-2.js"></script>
 <script src="css/template/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="css/template/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+<script src="css/template/bower_components/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="css/template/bower_components/datepicker/locales/bootstrap-datepicker.es.min.js"></script>
 
 <script>
 	$(document).ready(loading(false));
