@@ -58,7 +58,7 @@
 
 					<div>&nbsp;&nbsp;&nbsp;&nbsp;<?= "$historial->descripcion"; ?></div><br/>
 
-					<pre><?= "$historial->sql"; ?></pre>
+					<?php if($_SESSION["nivel"] === "1") echo "<pre>$historial->sql</pre>"; ?>
 				</a></li>
 
 <?php
@@ -144,7 +144,7 @@
 				<li class="sidebar-search">
 					<form name="buscar" action="script/buscar.php" role="search">
 						<div class="input-group custom-search-form">
-							<input type="text" class="form-control" placeholder="Buscar...">
+							<input type="search" class="form-control" placeholder="Buscar...">
 
 							<span class="input-group-btn">
 								<button class="btn btn-default" onClick="embem('script/buscar.php', '#page-wrapper', getForm(this))" type="button">
@@ -158,6 +158,11 @@
 		<!-- Fin búsqueda -->
 
 		<!-- Elementos del menú -->
+
+<?php
+	switch($_SESSION["nivel"]) {
+		case "1":
+?>
 
 				<li><a href="javascript: embem('moduloPlanificacion/Area/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Áreas</a></li>
 				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Sedes</a></li>
@@ -199,7 +204,10 @@
 				<li><a href="javascript: embem('moduloCarga/Actualizacion/index.php', '#page-wrapper')"><i class="fa fa-upload fa-fw"></i> Actualización de Datos</a></li>
 				<li><a href="javascript: embem('moduloCarga/Reportes/index.php', '#page-wrapper')"><i class="fa fa-file-text fa-fw"></i> Reportes Multiples</a></li>
 
-
+<?php
+		break;
+	}
+?>
 
 				<!--
 
