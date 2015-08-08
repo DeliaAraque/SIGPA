@@ -74,16 +74,32 @@ create table "ucMalla" (
 	unique("idUC", "idMalla")
 );
 
--- Personas:
+--	Personas:
+
+create type sexo as enum('m', 'f');
+create table persona (
+	cedula int primary key,
+	nombre text not null,
+	"segundoNombre" text,
+	apellido text not null,
+	"segundoApellido" text,
+	sexo sexo not null,
+	correo text not null,
+	direccion text not null,
+	telefono text not null,
+	"telefonoFijo" text
+);
+
+--		Profesores:
 
 create table categoria (
 	id text primary key,
 	nombre text not null unique
 );
 
-CREATE TABLE condicion (
-    id serial primary key,
-    nombre text not null unique
+create table condicion (
+	id serial primary key,
+	nombre text not null unique
 );
 
 create table dedicacion (
@@ -92,31 +108,9 @@ create table dedicacion (
 	horas smallint not null
 );
 
-create table historial (
-	id text primary key,
-	usuario text,
-	descripcion text not null,
-	sql text not null
-);
-
-create type sexo as enum('m', 'f');
-
-create table persona (
-	cedula int primary key,
-	nombre text not null,
-	"segundoNombre" text,
-	apellido text not null,
-	"segundoApellido" text,
-	sexo sexo,
-	correo text,
-	direccion text,
-	telefono text,
-	"telefonoFijo" text
-);
-
 create table profesion (
 	id serial primary key,
-    nombre text not null unique
+	nombre text not null unique
 );
 
 create table profesor (
@@ -127,6 +121,15 @@ create table profesor (
 	profesion serial not null
 );
 
+--		Usuarios:
+
+create table historial (
+	id text primary key,
+	usuario text,
+	descripcion text not null,
+	sql text not null
+);
+
 create table usuario (
 	cedula int primary key,
 	contrasena text not null,
@@ -135,8 +138,10 @@ create table usuario (
 	nivel int not null
 );
 
---	Configuración:
---		Carreras:
+
+
+-- Configuración:
+--	Carreras:
 
 alter table carrera add foreign key("idArea") references area(id) on update cascade on delete restrict;
 alter table "carreraSede" add foreign key("idCarrera") references carrera(id) on update cascade on delete cascade;
@@ -148,10 +153,12 @@ alter table "unidadCurricular" add foreign key("idEje") references eje(id) on up
 alter table "ucMalla" add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete restrict;
 alter table "ucMalla" add foreign key("idMalla") references malla(id) on update cascade on delete cascade;
 
---		Personas:
+--	Personas:
+
 alter table usuario add foreign key(cedula) references persona(cedula) on update cascade on delete cascade;
 
 --		Profesor:
+
 alter table profesor add foreign key(categoria) references categoria(id) on update cascade on delete restrict;
 alter table profesor add foreign key(condicion) references condicion(id) on update cascade on delete restrict;
 alter table profesor add foreign key(dedicacion) references dedicacion(id) on update cascade on delete restrict;

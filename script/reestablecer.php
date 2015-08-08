@@ -3,13 +3,23 @@
 
 // Validación
 
-	if(!is_numeric($_POST["cedula"])) {
-		echo "Debe indicar una cédula válida&&error";
+	if((!$_POST["cedula"]) || (!$_POST["frase"]) || (!$_POST["contrasena"]) || (!$_POST["recontrasena"])) {
+		echo "Ningun campo puede estar vacio";
 		exit;
 	}
 
-	if((!$_POST["frase"]) || (!$_POST["contrasena"]) || (!$_POST["recontrasena"])) {
-		echo "Ningun campo puede estar vacio&&error";
+	if(! ereg("[0-9]{7,}", $_POST["cedula"])) {
+		echo "La cédula indicada no cumple con el patrón necesario, debe contener al menos 7 caracteres y todos ellos numéricos";
+		exit;
+	}
+
+	if(! ereg(".{4,}", $_POST["frase"])) {
+		echo "La frase indicada no cumple con el patrón necesario, debe contener al menos 4 caracteres";
+		exit;
+	}
+
+	if(! ereg(".{4,}", $_POST["contrasena"])) {
+		echo "La contraseña indicada no cumple con el patrón necesario, debe contener al menos 4 caracteres";
 		exit;
 	}
 
@@ -18,9 +28,9 @@
 		exit;
 	}
 
-// Fin validación
+// --------------------
 
-// Verificar que existe es usuario
+// Verificar que existe el usuario
 
 	$cedula = $_POST["cedula"];
 
@@ -33,11 +43,11 @@
 		exit;
 	}
 
-// Fin verificar usuario
+// --------------------
 
 // Verificar frase de recuperación
 
-	$frase = htmlspecialchars($_POST["frase"], ENT_QUOTES);
+	$frase = md5(htmlspecialchars($_POST["frase"], ENT_QUOTES));
 
 	$sql = "select frase from usuario where cedula='$cedula'";
 	$exe = pg_query($sigpa, $sql);
@@ -50,7 +60,9 @@
 		exit;
 	}
 
-	// Sino
+	// --------------------
+
+	// Si la frase esta bien
 
 	else {
 		$contrasena = md5(htmlspecialchars($_POST["contrasena"], ENT_QUOTES));
@@ -61,5 +73,7 @@
 		echo "Contraseña reestablecida satisfactóriamente&&success";
 	}
 
-// Fin verificar frase
+	// --------------------
+
+// --------------------
 ?>

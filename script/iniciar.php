@@ -4,19 +4,29 @@
 
 // Validación
 
-	if(!is_numeric($_POST["cedula"])) {
-		echo "Debe indicar una cédula válida&&error";
+	if(!$_POST["cedula"]) {
+		echo "La cédula no puede estar vacia";
+		exit;
+	}
+
+	if(! ereg("[0-9]{7,}", $_POST["cedula"])) {
+		echo "La cédula indicada no cumple con el patrón necesario, debe contener al menos 7 caracteres y todos ellos numéricos";
 		exit;
 	}
 
 	if(!$_POST["contrasena"]) {
-		echo "La contraseña no puede estar vacia&&error";
+		echo "La contraseña no puede estar vacia";
 		exit;
 	}
 
-// Fin validación
+	if(! ereg(".{4,}", $_POST["contrasena"])) {
+		echo "La contraseña indicada no cumple con el patrón necesario, debe contener al menos 4 caracteres";
+		exit;
+	}
 
-// Verificar que existe es usuario
+// --------------------
+
+// Verificar que existe el usuario
 
 	$cedula = $_POST["cedula"];
 
@@ -29,8 +39,7 @@
 		exit;
 	}
 
-// Fin verificar usuario
-
+// --------------------
 
 // Verificar la contraseña
 
@@ -47,7 +56,9 @@
 		exit;
 	}
 
-	// Sino
+	// --------------------
+
+	// Si la contraseña esta bien
 
 	else {
 		$_SESSION["cedula"] = $cedula;
@@ -60,19 +71,27 @@
 		$_SESSION["nombre"] = $persona->nombre;
 		$_SESSION["apellido"] = $persona->apellido;
 
+		// Recordar cédula
+
 		if($_POST["recordar"] == 1)
 			setcookie("cedula", "$cedula", time()+7*24*60*60, "/");
 
 		else
 			setcookie("cedula", "", time()-1, "/");
 
+		// --------------------
+
 		// Actualizar ultimo ingreso
 
 		$sql = "update usuario set ingreso='" . date("Y-m-d") . "' where cedula='$cedula'";
 		$exe = pg_query($sigpa, $sql);
 
+		// --------------------
+
 		echo "Ha ingresado satisfactoriamente&&success";
 	}
 
-// Fin verificar contraseña
+	// --------------------
+
+// --------------------
 ?>

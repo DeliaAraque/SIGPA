@@ -73,15 +73,15 @@
 							<div class="tab-pane fade in active" id="iniciar">
 								<form name="login" method="POST" action="script/iniciar.php" data-exe="$(location).attr('href', '.')" role="form">
 									<div class="form-group">
-										<div class="input-group" title="Ingrese su cédula de indentidad">
-											<input type="text" name="cedula" placeholder="Cédula" class="form-control" data-type="num" onKeyUp="Verif(this, 'usuario', true)" value="<?= $_COOKIE["cedula"]; ?>" autofocus="autofocus" required="required" />
+										<div class="input-group" title="Ingrese su cédula">
+											<input type="text" name="cedula" placeholder="Cédula" value="<?= $_COOKIE["cedula"]; ?>" class="form-control" onKeyUp="Verif(this, 'usuario', true)" pattern="[0-9]{7,}" autofocus="autofocus" required="required" title="Ingrese su cédula" />
 											<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su contraseña">
-											<input type="password" name="contrasena" placeholder="Contraseña" class="form-control" required="required" />
+											<input type="password" name="contrasena" placeholder="Contraseña" class="form-control" pattern=".{4,}" required="required" title="Ingrese su contraseña" />
 											<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
 										</div>
 									</div>
@@ -101,29 +101,30 @@
 							<div class="tab-pane fade" id="reestablecer">
 								<form name="reset" method="POST" action="script/reestablecer.php" onSubmit="return reestablecer(this)">
 									<div class="form-group">
-										<div class="input-group" title="Ingrese su cédula de indentidad">
-											<input type="text" name="cedula" placeholder="Cédula" class="form-control" data-type="num" onKeyUp="Verif(this, 'usuario', true)" required="required" />
+										<div class="input-group" title="Ingrese su cédula">
+											<input type="text" name="cedula" placeholder="Cédula" value="<?= $_COOKIE["cedula"]; ?>" class="form-control" onKeyUp="Verif(this, 'usuario', true)" pattern="[0-9]{7,}" required="required" title="Ingrese su cédula" />
 											<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su frase de recuperación">
-											<input type="password" name="frase" placeholder="Frase de recuperación" class="form-control" required="required" />
+											<input type="password" name="frase" placeholder="Frase de recuperación" class="form-control" pattern=".{4,}" required="required" />
 											<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
 										</div>
 									</div>
 
 									<div class="form-group">
-										<div class="input-group" title="Ingrese una nueva contraseña">
-											<input type="password" name="contrasena" placeholder="Nueva contraseña" class="form-control" onKeyUp="diff(document.reset.recontrasena, this)" required="required" />
+										<div class="input-group" title="Ingrese una nueva contraseña, debe contener al menos 4 caracteres">
+											<input type="password" name="contrasena" placeholder="Nueva contraseña" class="form-control" pattern=".{4,}" onKeyUp="diff(document.reset.recontrasena, this)" required="required" title="Ingrese una nueva contraseña, debe contener al menos 4 caracteres" />
 											<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
 										</div>
+										<p class="help-block">Una contraseña debe contener al menos 4 caracteres, le recomendamos que no use contraseñas comunes como "1234" o "abcd".</p>
 									</div>
 
 									<div class="form-group">
 										<div class="input-group" title="Repita la contraseña">
-											<input type="password" name="recontrasena" placeholder="Repita la contraseña" class="form-control" onKeyUp="diff(this, document.reset.contrasena)" required="required" />
+											<input type="password" name="recontrasena" placeholder="Repita la contraseña" class="form-control" pattern=".{4,}" onKeyUp="diff(this, document.reset.contrasena)" required="required" title="Repita la contraseña" />
 											<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
 										</div>
 									</div>

@@ -1,5 +1,6 @@
 .agregar,
 .editar,
+.consultar,
 .eliminar
 {
 	font-size: 1.5em;
@@ -123,4 +124,15 @@
 
 #historial pre {
 	max-height: 10em;
+}
+
+input:invalid,
+input:out-of-range {
+	border-color: #a94442;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483;
+}
+
+input:not([value]) {
+	border: 1px solid #ccc;
+	box-shadow: none;
 }
