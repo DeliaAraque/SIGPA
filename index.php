@@ -52,6 +52,8 @@
 
 </div>
 
+<div id="moreInfo"><div></div><span class="cerrar" title="Cerrar" onClick="moreInfoClose()">X</span></div>
+
 <div id="popUp" class="infoZone" onClick="popUpClose()">
 	<div></div>
 

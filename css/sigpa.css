@@ -1,23 +1,20 @@
 .agregar,
 .editar,
 .consultar,
-.eliminar
-{
+.eliminar {
 	font-size: 1.5em;
 	cursor: pointer;
 	color: red;
 }
 
-.infoZone
-{
+.infoZone {
 	position: fixed;
 	bottom: 0.5em;
 	right: 0.5em;
 	z-index: 10000000000;
 }
 
-#popUp
-{
+#popUp {
 	padding: 1em;
 	padding-right: 5em;
 	border-radius: 2em 0em 0em 2em;
@@ -26,8 +23,7 @@
 	right: -100%;
 }
 
-#popUp div:first-child
-{
+#popUp div:first-child {
 	min-height: 5em;
 
 	color: white;
@@ -35,8 +31,7 @@
 	padding: 2em;
 }
 
-.cerrar
-{
+.cerrar {
 	cursor: pointer;
 
 	position: absolute;
@@ -44,8 +39,7 @@
 	right: 1em;
 }
 
-@keyframes popUp
-{
+@keyframes popUp {
 	0%
 	{
 		right: -100%;
@@ -67,8 +61,7 @@
 	}
 }
 
-@-webkit-keyframes popUp
-{
+@-webkit-keyframes popUp {
 	0%
 	{
 		right: -100%;
@@ -90,8 +83,7 @@
 	}
 }
 
-@keyframes popUpClose
-{
+@keyframes popUpClose {
 	from
 	{
 		right: 0.5em;
@@ -103,8 +95,7 @@
 	}
 }
 
-@-webkit-keyframes popUpClose
-{
+@-webkit-keyframes popUpClose {
 	from
 	{
 		right: 0.5em;
@@ -116,8 +107,7 @@
 	}
 }
 
-#historial
-{
+#historial {
 	max-height: 25em;
 	overflow-y: auto;
 }
@@ -135,4 +125,66 @@ input:out-of-range {
 input:not([value]) {
 	border: 1px solid #ccc;
 	box-shadow: none;
+}
+
+#moreInfo {
+	height: 100%;
+	width: 100%;
+
+	padding: 2em 5em;
+	background: #fff;
+	overflow: auto;
+
+	position: fixed;
+	top: 100%;
+	left: 0%;
+	z-index: 100000;
+}
+
+@keyframes moreInfo {
+	from
+	{
+		top: 100%;
+	}
+
+	to
+	{
+		top: 0%;
+	}
+}
+
+@-webkit-keyframes moreInfo {
+	from
+	{
+		top: 100%;
+	}
+
+	to
+	{
+		top: 0%;
+	}
+}
+
+@keyframes moreInfoClose {
+	from
+	{
+		top: 0%;
+	}
+
+	to
+	{
+		top: 100%;
+	}
+}
+
+@-webkit-keyframes moreInfoClose {
+	from
+	{
+		top: 0%;
+	}
+
+	to
+	{
+		top: 100%;
+	}
 }
