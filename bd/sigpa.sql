@@ -21,7 +21,6 @@ create table "carreraSede" (
 	id serial primary key,
 	"idCarrera" text not null,
 	"idSede" int not null,
-	fecha date not null,
 	unique("idCarrera", "idSede")
 );
 
@@ -148,9 +147,9 @@ alter table "carreraSede" add foreign key("idCarrera") references carrera(id) on
 alter table "carreraSede" add foreign key("idSede") references sede(id) on update cascade on delete cascade;
 alter table "estructuraCS" add foreign key("idCS") references "carreraSede"(id) on update cascade on delete cascade;
 alter table "estructuraCS" add foreign key("idEstructura") references estructura(id) on update cascade on delete restrict;
-alter table malla add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete restrict;
+alter table malla add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete cascade;
 alter table "unidadCurricular" add foreign key("idEje") references eje(id) on update cascade on delete restrict;
-alter table "ucMalla" add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete restrict;
+alter table "ucMalla" add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete cascade;
 alter table "ucMalla" add foreign key("idMalla") references malla(id) on update cascade on delete cascade;
 
 --	Personas:
