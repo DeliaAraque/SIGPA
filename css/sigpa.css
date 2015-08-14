@@ -1,7 +1,8 @@
 .agregar,
 .editar,
 .consultar,
-.eliminar {
+.eliminar,
+.alerta {
 	font-size: 1.5em;
 	cursor: pointer;
 	color: red;

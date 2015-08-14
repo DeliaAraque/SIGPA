@@ -1,7 +1,24 @@
+insert into persona values
+	('0000000', 'Nombre', null, 'Apellido', null, 'm', 'correo@servidor.com', 'Calle #123, Ciudad edo. Estado', '04XX-1234567', '02XX-1234567');
+insert into usuario values
+	('0000000', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', null, 1);
+
 insert into area values
 	(default, 'Tecnología'),
 	(default, 'Ciencias Sociales'),
 	(default, 'Ciencias Agricolas y Ambientales');
+insert into carrera values
+	('01', 'PNF Agroalimentación', 3), 
+	('04', 'PNF Administración', 2), 
+	('05', 'PNF Geociencias', 1), 
+	('06', 'PNF Turismo', 2), 
+	('07', 'PNF Contaduria', 2), 
+	('08', 'PNF Fonoaudiología', 2), 
+	('10', 'PNF Psicología Social', 2), 
+	('09', 'PNF Seguridad Alimentaria Y Cultura Nutricional', 3), 
+	('11', 'PNF Historia', 2), 
+	('02', 'PNF Construcción Civil', 1), 
+	('03', 'PNF Informática', 1);
 insert into sede values
 	(default, 'Bailadores', '2009-03-03', '0000-0000000', 'Bailadores'),
 	(default, 'Barinas', '2009-11-12', '0000-0000000', 'Barinas'),
@@ -12,11 +29,12 @@ insert into sede values
 	(default, 'Tucaní', '2009-03-03', '0000-0000000', 'Tucaní');
 insert into estructura values
 	(default, 'PNF Trimestral', ' { "periodos" : [ { "nombre" : "Trayecto inicial", "id" : "T0", "duracion" : "3", "subperiodos" : false }, { "nombre" : "Trayecto 1", "id" : "T1", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 2", "id" : "T2", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 3", "id" : "T3", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 4", "id" : "T4", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] } ] } ');
-
-insert into persona values
-	('0000000', 'Nombre', null, 'Apellido', null, 'm', 'correo@servidor.com', 'Calle #123, Ciudad edo. Estado', '04XX-1234567', '02XX-1234567');
-insert into usuario values
-	('0000000', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', null, 1);
+insert into eje values
+	(default, 'Acreditable'), 
+	(default, 'Profesional'), 
+	(default, 'Proyecto'), 
+	(default, 'Socio Ambiental'), 
+	(default, 'Socio Crítico');
 
 insert into categoria values
 	('Agre', 'Agregado'),

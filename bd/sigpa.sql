@@ -44,9 +44,15 @@ create table "estructuraCS" (
 
 create table malla (
 	id text primary key,
-	fecha date not null,
+	fecha date not null
+);
+
+create table "mallaECS" (
+	id serial primary key,
 	estado boolean not null default true,
-	"idECS" int not null  -- ID de estructuraCS
+	"idECS" int not null,  -- ID de estructuraCS
+	"idMalla" text not null,
+	unique("idECS", "idMalla")
 );
 
 create table sede (
@@ -57,20 +63,21 @@ create table sede (
 	direccion text not null
 );
 
-create table "unidadCurricular" (
-	id text primary key,
-	nombre text not null unique,
+create table "ucMalla" (
+	id serial primary key,
 	"horasTeoricas" real not null,
 	"horasPracticas" real not null,
 	tipo boolean not null,
-	"idEje" int not null
-);
-
-create table "ucMalla" (
-	id serial primary key,
 	"idUC" text not null,
 	"idMalla" text not null,
 	unique("idUC", "idMalla")
+);
+
+create table "unidadCurricular" (
+	id text primary key,
+	nombre text not null,
+	"idCarrera" text not null,
+	"idEje" int not null
 );
 
 --	Personas:
@@ -147,10 +154,11 @@ alter table "carreraSede" add foreign key("idCarrera") references carrera(id) on
 alter table "carreraSede" add foreign key("idSede") references sede(id) on update cascade on delete cascade;
 alter table "estructuraCS" add foreign key("idCS") references "carreraSede"(id) on update cascade on delete cascade;
 alter table "estructuraCS" add foreign key("idEstructura") references estructura(id) on update cascade on delete restrict;
-alter table malla add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete cascade;
-alter table "unidadCurricular" add foreign key("idEje") references eje(id) on update cascade on delete restrict;
+alter table "mallaECS" add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete cascade;
+alter table "mallaECS" add foreign key("idMalla") references malla(id) on update cascade on delete restrict;
 alter table "ucMalla" add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete cascade;
 alter table "ucMalla" add foreign key("idMalla") references malla(id) on update cascade on delete cascade;
+alter table "unidadCurricular" add foreign key("idEje") references eje(id) on update cascade on delete restrict;
 
 --	Personas:
 

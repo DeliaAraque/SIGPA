@@ -6,7 +6,7 @@
 	$column = htmlspecialchars($_POST["campo"], ENT_QUOTES);
 	$value = htmlspecialchars($_POST["valor"], ENT_QUOTES);
 
-	$sql = "delete from $table where $column='$value'";
+	$sql = "delete from \"$table\" where \"$column\"='$value'";
 	$exe = pg_query($sigpa, $sql);
 
 	if($exe) {

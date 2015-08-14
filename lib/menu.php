@@ -166,6 +166,7 @@
 
 				<li><a href="javascript: embem('moduloPlanificacion/Area/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Áreas</a></li>
 				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Sedes</a></li>
+				<li><a href="javascript: embem('moduloPlanificacion/Eje/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Ejes</a></li>
 				<li>
 					<a href="#"><i class="fa fa-gear fa-fw"></i> Profesores<span class="fa arrow"></span></a>
 
@@ -183,7 +184,8 @@
 					<ul class="nav nav-second-level">
 						<li><a href="javascript: embem('moduloPlanificacion/Carrera/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Carreras</a></li>
 						<li><a href="javascript: embem('moduloPlanificacion/Carrera/Estructura/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Estructuras</a></li>
-						<li><a href="#"><i class="fa fa-check-square-o fa-fw"></i> Mallas</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Carrera/Malla/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Mallas</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Carrera/UC/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Unidades Curriculares</a></li>
 					</ul>
 				</li>
 
