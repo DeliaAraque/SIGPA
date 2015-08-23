@@ -66,16 +66,18 @@ create table sede (
 create table "ucMalla" (
 	id serial primary key,
 	"horasTeoricas" real not null,
-	"horasPracticas" real not null,
+	"horasPracticas" real,
 	tipo boolean not null,
+	periodo text not null,
 	"idUC" text not null,
 	"idMalla" text not null,
-	unique("idUC", "idMalla")
+	unique("idUC", "idMalla", periodo)
 );
 
 create table "unidadCurricular" (
 	id text primary key,
 	nombre text not null,
+	renombrable boolean not null default false,
 	"idCarrera" text not null,
 	"idEje" int not null
 );
@@ -155,7 +157,7 @@ alter table "carreraSede" add foreign key("idSede") references sede(id) on updat
 alter table "estructuraCS" add foreign key("idCS") references "carreraSede"(id) on update cascade on delete cascade;
 alter table "estructuraCS" add foreign key("idEstructura") references estructura(id) on update cascade on delete restrict;
 alter table "mallaECS" add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete cascade;
-alter table "mallaECS" add foreign key("idMalla") references malla(id) on update cascade on delete restrict;
+alter table "mallaECS" add foreign key("idMalla") references malla(id) on update cascade on delete cascade;
 alter table "ucMalla" add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete cascade;
 alter table "ucMalla" add foreign key("idMalla") references malla(id) on update cascade on delete cascade;
 alter table "unidadCurricular" add foreign key("idEje") references eje(id) on update cascade on delete restrict;
