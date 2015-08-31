@@ -116,6 +116,12 @@ create table dedicacion (
 	horas smallint not null
 );
 
+create table pertenece (
+	"idCS" int,
+	"idProfesor" int,
+	primary key("idCS", "idProfesor")
+);
+
 create table profesion (
 	id serial primary key,
 	nombre text not null unique
@@ -168,6 +174,8 @@ alter table usuario add foreign key(cedula) references persona(cedula) on update
 
 --		Profesor:
 
+alter table pertenece add foreign key("idCS") references "carreraSede"(id) on update cascade on delete cascade;
+alter table pertenece add foreign key("idProfesor") references profesor(cedula) on update cascade on delete cascade;
 alter table profesor add foreign key(categoria) references categoria(id) on update cascade on delete restrict;
 alter table profesor add foreign key(condicion) references condicion(id) on update cascade on delete restrict;
 alter table profesor add foreign key(dedicacion) references dedicacion(id) on update cascade on delete restrict;
