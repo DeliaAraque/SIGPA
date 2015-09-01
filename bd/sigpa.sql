@@ -20,6 +20,7 @@ create table carrera (
 create table "carreraSede" (
 	id serial primary key,
 	"idCarrera" text not null,
+	"idCoordinador" int not null unique,
 	"idSede" int not null,
 	unique("idCarrera", "idSede")
 );

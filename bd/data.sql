@@ -30,14 +30,14 @@ insert into carrera values
 	('02', 'PNF Construcción Civil', 1), 
 	('03', 'PNF Informática', 1);
 insert into "carreraSede" values
-	(default, '01', '3'),
-	(default, '02', '3'),
-	(default, '03', '3'),
-	(default, '04', '3'),
-	(default, '05', '3'),
-	(default, '06', '3'),
-	(default, '07', '3'),
-	(default, '08', '3');
+	(default, '01', '3048184', '3'),
+	(default, '02', '3767311', '3'),
+	(default, '03', '10256095', '3'),
+	(default, '04', '2287821', '3'),
+	(default, '05', '2149217', '3'),
+	(default, '06', '3910823', '3'),
+	(default, '07', '3939687', '3'),
+	(default, '08', '3661985', '3');
 insert into estructura values
 	(default, 'PNF Trimestral', ' { "periodos" : [ { "nombre" : "Trayecto inicial", "id" : "T0", "duracion" : "3", "subperiodos" : false }, { "nombre" : "Trayecto 1", "id" : "T1", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 2", "id" : "T2", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 3", "id" : "T3", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 4", "id" : "T4", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] } ] } ');
 insert into "estructuraCS" values
