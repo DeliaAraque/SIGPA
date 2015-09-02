@@ -181,7 +181,7 @@
 					<a href="#"><i class="fa fa-calendar-check-o fa-fw"></i> Planificación<span class="fa arrow"></span></a>
 
 					<ul class="nav nav-second-level">
-						<li><a href="javascript: embem('moduloPlanificacion/Periodos/index.php', '#page-wrapper')"><i class="fa fa-calendar fa-fw"></i> Períodos</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Periodo/index.php', '#page-wrapper')"><i class="fa fa-calendar fa-fw"></i> Períodos</a></li>
 					</ul>
 				</li>
 

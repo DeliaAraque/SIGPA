@@ -118,8 +118,8 @@ create table dedicacion (
 );
 
 create table pertenece (
-	"idCS" int,
-	"idProfesor" int,
+	"idCS" int not null,
+	"idProfesor" int not null,
 	primary key("idCS", "idProfesor")
 );
 
@@ -153,6 +153,17 @@ create table usuario (
 	nivel int not null
 );
 
+--	Planificación:
+
+create type tipo as enum('p', 'a');
+create table periodo (
+	id text not null,
+	"fechaInicio" date not null,
+	"fechaFin" date not null,
+	tipo tipo not null,
+	"idECS" int not null,
+	primary key(id, tipo, "idECS")
+);
 
 
 -- Configuración:
@@ -182,3 +193,7 @@ alter table profesor add foreign key(condicion) references condicion(id) on upda
 alter table profesor add foreign key(dedicacion) references dedicacion(id) on update cascade on delete restrict;
 alter table profesor add foreign key(cedula) references persona(cedula) on update cascade on delete cascade;
 alter table profesor add foreign key(profesion) references profesion(id) on update cascade on delete restrict;
+
+--	Planificación:
+
+alter table periodo add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete restrict;
