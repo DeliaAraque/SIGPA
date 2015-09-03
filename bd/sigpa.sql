@@ -86,6 +86,8 @@ create table "unidadCurricular" (
 --	Personas:
 
 create type sexo as enum('m', 'f');
+-- m -> Masculino
+-- f -> Femenino
 create table persona (
 	cedula int primary key,
 	nombre text not null,
@@ -156,13 +158,30 @@ create table usuario (
 --	Planificación:
 
 create type tipo as enum('p', 'a');
+-- p -> Planificación
+-- a -> Académico
 create table periodo (
+	"ID" serial primary key,
 	id text not null,
 	"fechaInicio" date not null,
 	"fechaFin" date not null,
 	tipo tipo not null,
 	"idECS" int not null,
-	primary key(id, tipo, "idECS")
+	unique(id, tipo, "idECS")
+);
+
+create type turno as enum('d', 'n');
+-- d -> Diurno
+-- n -> Nocturno
+create table seccion (
+	"ID" serial primary key,
+	id text not null,
+	turno turno not null,
+	multiplicador real not null,
+	grupos boolean default false,
+	"idPeriodo" int not null,
+	"periodoEstructura" text not null,
+	unique(id, "idPeriodo", "periodoEstructura")
 );
 
 
@@ -197,3 +216,4 @@ alter table profesor add foreign key(profesion) references profesion(id) on upda
 --	Planificación:
 
 alter table periodo add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete restrict;
+alter table seccion add foreign key("idPeriodo") references periodo("ID") on update cascade on delete restrict;

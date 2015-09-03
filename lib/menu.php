@@ -72,36 +72,62 @@
 
 			<!-- Fin registro de actividades -->
 
-			<!-- Períodos de planificación -->
+			<!-- Periodos de planificación -->
 
 		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Períodos de planificación">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Periodos de planificación">
 				<i class="fa fa-calendar fa-fw"></i> <i class="fa fa-caret-down"></i>
 			</a>
 
 			<ul class="dropdown-menu" style="width: 25em;">
-				<li><a class="text-center" href="#"><strong>Ver períodos de planificación</strong></a></li>
+				<li><a class="text-center" href="javascript: embem('moduloPlanificacion/Periodo/index.php', '#page-wrapper')"><strong>Ver periodos de planificación</strong></a></li>
+
+				<!-- Periodos -->
+
+<?php
+	$sql = "
+		select p.id as id, p.\"fechaInicio\" as \"fechaInicio\", p.\"fechaFin\" as \"fechaFin\", c.nombre as carrera, s.nombre as sede, e.nombre as estructura, p.\"fechaFin\"-p.\"fechaInicio\"+1 as \"diasTotal\", p.\"fechaFin\"-current_date+1 as \"diasRestantes\" 
+		from periodo as p 
+			join \"estructuraCS\" as ecs on ecs.id=p.\"idECS\" 
+			join estructura as e on e.id=ecs.\"idEstructura\" 
+			join \"carreraSede\" as cs on cs.id=ecs.\"idCS\" 
+			join carrera as c on c.id=cs.\"idCarrera\" 
+			join sede as s on s.id=cs.\"idSede\" 
+		where p.tipo='p' and p.\"fechaFin\">=current_date 
+		order by p.\"fechaInicio\" desc, p.\"fechaFin\" desc, p.id, c.nombre, s.nombre, e.nombre
+	";
+	$exe = pg_query($sigpa, $sql);
+
+	while($periodo = pg_fetch_object($exe)) {
+		$porcentaje = 100 - $periodo->diasRestantes * 100 / $periodo->diasTotal;
+?>
 
 				<li class="divider"></li>
 
 				<li><a>
 					<div>
 						<p>
-							<strong>Carrera (Sede)</strong>
-							<span class="pull-right text-muted">Fecha fin</span>
+							<strong><?= "$periodo->id, $periodo->carrera - $periodo->sede ($periodo->estructura)"; ?></strong>
+							<span class="pull-right text-muted"><?php $fecha = explode("-", $periodo->fechaFin); echo "$fecha[2]/$fecha[1]/$fecha[0]"; ?></span>
 						</p>
 
 						<div class="progress progress-striped active">
-							<div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-								Días restantes
+							<div class="progress-bar" role="progressbar" aria-valuenow="<?= $porcentaje; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $porcentaje; ?>%">
+								<?= "$periodo->diasRestantes " . (($periodo->diasRestantes == "1") ? "día" : "días"); ?>
 							</div>
 						</div>
 					</div>
 				</a></li>
+
+<?php
+	}
+?>
+
+				<!-- Fin periodos -->
 			</ul>
 		</li>
 
-			<!-- Fin períodos de planificación -->
+			<!-- Fin periodos de planificación -->
 
 			<!-- Usuario -->
 
@@ -181,7 +207,9 @@
 					<a href="#"><i class="fa fa-calendar-check-o fa-fw"></i> Planificación<span class="fa arrow"></span></a>
 
 					<ul class="nav nav-second-level">
-						<li><a href="javascript: embem('moduloPlanificacion/Periodo/index.php', '#page-wrapper')"><i class="fa fa-calendar fa-fw"></i> Períodos</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Carga/index.php', '#page-wrapper')"><i class="fa fa-hourglass fa-fw"></i> Carga académica</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Periodo/index.php', '#page-wrapper')"><i class="fa fa-calendar fa-fw"></i> Periodos</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Seccion/index.php', '#page-wrapper')"><i class="fa fa-font fa-fw"></i> Secciones</a></li>
 					</ul>
 				</li>
 
