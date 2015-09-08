@@ -100,6 +100,9 @@
 
 	while($periodo = pg_fetch_object($exe)) {
 		$porcentaje = 100 - $periodo->diasRestantes * 100 / $periodo->diasTotal;
+
+		if(! $porcentaje)
+			$porcentaje = 1;
 ?>
 
 				<li class="divider"></li>

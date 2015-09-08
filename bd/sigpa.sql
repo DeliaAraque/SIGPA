@@ -188,6 +188,7 @@ create table seccion (
 	turno turno not null,
 	multiplicador real not null,
 	grupos boolean default false,
+	"idMECS" int not null,
 	"idPeriodo" int not null,
 	"periodoEstructura" text not null,
 	unique(id, "idPeriodo", "periodoEstructura")
@@ -230,4 +231,5 @@ alter table carga add foreign key("idSeccion") references seccion("ID") on updat
 alter table carga add foreign key("idSuplente") references profesor(cedula) on update cascade on delete restrict;
 alter table carga add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete restrict;
 alter table periodo add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete restrict;
+alter table seccion add foreign key("idMECS") references "mallaECS"(id) on update cascade on delete restrict;
 alter table seccion add foreign key("idPeriodo") references periodo("ID") on update cascade on delete restrict;

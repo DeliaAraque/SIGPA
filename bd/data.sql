@@ -669,6 +669,7 @@ insert into "ucMalla" values
 	(default, '5', '0', false, 'T4-t2', 'PIACT4', 'PNFI-2012'), 
 	(default, '5', '0', false, 'T4-t3', 'PIACT4', 'PNFI-2012'), 
 	(default, '2', '3', true, 'T4-t2', 'PISI4', 'PNFI-2012');
+insert into "mallaECS" values(default, true, '1', 'PNFI-2012');
 
 insert into persona values
 	('13014569', 'Nelma', 'Del Valle', 'Uzcategui', 'De Barreto', 'f', 'redes.asesoria@gmail.com', 'Sin asignar', '0414-7416984', '02742211241'),
