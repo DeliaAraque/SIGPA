@@ -157,14 +157,14 @@
 						<dd>Potenciar el desarrollo de una docencia de excelencia, transversal y flexible que permita obtener un egresado conpetente y crítica en un contexto de permanente cambio.</dd>
 
 					<dt style="font-size: 1.3em;">Objetivo general</dt>
-						<dd>Supervisar las actividades académicas y administradtivas de docencia, investigación y extensión de la universidad en los niveles de estudios y pregrado</dd>
+						<dd>Supervisar las actividades académicas y administrativas de docencia, investigación y extensión de la universidad en los niveles de estudios y pregrado</dd>
 					
 					<dt style="font-size: 1.3em;">Objetivos especificos</dt>
 						<dd>
 							<ul>
 								<li>Controlar la materialización de los planes y programas de las ofertas académicas de la institución para contribuir con la formación de profesionales universitarios.</li>
 								<li>Convocar al concejo acdémico universitario de las diferentes universidades integradoras de los <abbr title="Proyecto Nacional de Formación" class="initialism">PNF</abbr> y Carreras cortas de acuerdo al diagrama estructural vigente.</li>
-								<li>Controlar las acciones necesarias para garantizar lagestión y unificación de los <abbr title="Proyecto Nacional de Formación" class="initialism">PNF</abbr> y carreras cortas en las sedes y los diferentes núcleos</li>
+								<li>Controlar las acciones necesarias para garantizar la gestión y unificación de los <abbr title="Proyecto Nacional de Formación" class="initialism">PNF</abbr> y carreras cortas en las sedes y los diferentes núcleos</li>
 								<li>Fomentar ante las universidades integradoras de los <abbr title="Proyecto Nacional de Formación" class="initialism">PNF</abbr> y carreras cortas los planes y proyectos en concordancia con las líneas emanadas del <abbr title="Ministerio del Poder Popular para Educación Universitaria, Ciencia y Tecnología" class="initialism">MPPEUCT</abbr> que permitan el buen desenvolvimiento de la academia universitaria</li>
 								<li>Garantizar la realización de las actividades docentes con la máxima calidad y eficiencia, en concordancia con los objetivos y políticas institucionales</li>
 								<li>Velar por los ajustes curriculares presentados por las unidades integradoras de los <abbr title="Proyecto Nacional de Formación" class="initialism">PNF</abbr> y carreras cortas de las sedes y de los núcleos</li>

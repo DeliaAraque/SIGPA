@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
 	<!-- Menú superior -->
 
@@ -93,7 +93,7 @@
 			join \"carreraSede\" as cs on cs.id=ecs.\"idCS\" 
 			join carrera as c on c.id=cs.\"idCarrera\" 
 			join sede as s on s.id=cs.\"idSede\" 
-		where p.tipo='p' and p.\"fechaFin\">=current_date 
+		where p.tipo='p' and p.\"fechaInicio\"<=current_date and p.\"fechaFin\">=current_date 
 		order by p.\"fechaInicio\" desc, p.\"fechaFin\" desc, p.id, c.nombre, s.nombre, e.nombre
 	";
 	$exe = pg_query($sigpa, $sql);
