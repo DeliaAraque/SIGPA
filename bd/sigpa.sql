@@ -133,9 +133,9 @@ create table profesion (
 create table profesor (
 	cedula int primary key,
 	categoria text not null,
-	condicion serial not null,
+	condicion int not null,
 	dedicacion text not null,
-	profesion serial not null
+	profesion int not null
 );
 
 --		Usuarios:
@@ -159,6 +159,7 @@ create table usuario (
 
 create table carga (
 	id bigserial primary key,
+	"dividirHT" boolean default false,
 	"idProfesor" int not null,
 	"idSeccion" int not null,
 	"idSuplente" int,
@@ -189,7 +190,7 @@ create table seccion (
 	multiplicador real not null,
 	grupos boolean default false,
 	"idMECS" int not null,
-	"idPeriodo" int not null,
+	"idPeriodo" int not null, -- Periodo académico
 	"periodoEstructura" text not null,
 	unique(id, "idPeriodo", "periodoEstructura")
 );
