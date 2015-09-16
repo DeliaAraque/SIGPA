@@ -22,6 +22,10 @@
 
 	<!-- Fin plantilla -->
 
+	<!--  moduloHorarios -->
+	<link href="moduloHorarios/css/style.css" rel="stylesheet" type="text/css" />
+	<script src="moduloHorarios/js/dinamico.js"></script>
+	<!--  fin moduloHorarios-->
 	<link href="css/palete.css" rel="stylesheet" type="text/css" />
 	<link href="css/sigpa.css" rel="stylesheet" type="text/css" />
 
