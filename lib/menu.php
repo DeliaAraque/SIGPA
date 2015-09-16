@@ -230,6 +230,7 @@
 
 				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Sedes</a></li>
 
+				<!--
 
 				<li>
 					<a href="#"><i class="fa fa-check-square-o fa-fw"></i> Cargas Académicas<span class="fa arrow"></span></a>
@@ -246,7 +247,10 @@
 
 				<li><a href="javascript: embem('moduloCarga/Actualizacion/index.php', '#page-wrapper')"><i class="fa fa-upload fa-fw"></i> Actualización de Datos</a></li>
 				<li><a href="javascript: embem('moduloCarga/Reportes/index.php', '#page-wrapper')"><i class="fa fa-file-text fa-fw"></i> Reportes Multiples</a></li>
-				<li><a href="javascript: embem('moduloHorarios/principal.php', '#page-wrapper')"><i class="fa fa-file-text fa-fw"></i> Gestion de Horarios</a></li>
+				
+				-->
+
+				<li><a href="javascript: moreInfo('moduloHorarios/index.html')"><i class="fa fa-file-text fa-fw"></i> Gestion de Horarios</a></li>
 <?php
 		break;
 	}

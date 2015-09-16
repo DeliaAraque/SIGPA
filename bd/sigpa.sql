@@ -234,3 +234,147 @@ alter table carga add foreign key("idUC") references "unidadCurricular"(id) on u
 alter table periodo add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete restrict;
 alter table seccion add foreign key("idMECS") references "mallaECS"(id) on update cascade on delete restrict;
 alter table seccion add foreign key("idPeriodo") references periodo("ID") on update cascade on delete restrict;
+
+
+
+--	Horarios:
+
+CREATE TABLE edificio (
+    id character varying NOT NULL,
+    edificio character varying
+);
+
+
+--
+-- Name: edificio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE edificio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: edificio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE edificio_id_seq OWNED BY edificio.id;
+
+
+--
+-- Name: salones; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE salones (
+    id integer NOT NULL,
+    salon character varying,
+    cod_edi character varying NOT NULL,
+    tipo text
+);
+
+
+--
+-- Name: salones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE salones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: salones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE salones_id_seq OWNED BY salones.id;
+
+
+--
+-- Name: horario; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE horario (
+    id_enlace character varying NOT NULL,
+    periodo character varying,
+    thora character varying,
+    chora character varying,
+    seccion character varying,
+    materia character varying,
+    profesor character varying,
+    carrera character varying,
+    salon integer,
+    hora integer,
+    id_bloque integer,
+    id integer DEFAULT nextval('salones_id_seq'::regclass)
+);
+
+
+--
+-- Name: salones_edificio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE salones_edificio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: salones_edificio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE salones_edificio_id_seq OWNED BY salones.cod_edi;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY salones ALTER COLUMN id SET DEFAULT nextval('salones_id_seq'::regclass);
+
+
+--
+-- Name: edificio_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY edificio
+    ADD CONSTRAINT edificio_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: salones_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY salones
+    ADD CONSTRAINT salones_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX id ON horario USING btree (id);
+
+
+--
+-- Name: horario_salon_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY horario
+    ADD CONSTRAINT horario_salon_id_fkey FOREIGN KEY (salon) REFERENCES salones(id);
+
+
+--
+-- Name: salones_edificio_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY salones
+    ADD CONSTRAINT salones_edificio_id_fkey FOREIGN KEY (cod_edi) REFERENCES edificio(id);
