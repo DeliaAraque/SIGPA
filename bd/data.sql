@@ -1,7 +1,7 @@
 insert into persona values
-	('0000000', 'Nombre', null, 'Apellido', null, 'm', 'correo@servidor.com', 'Calle #123, Ciudad edo. Estado', '04XX-1234567', '02XX-1234567');
+	('12345678', 'Nombre', null, 'Apellido', null, 'm', 'correo@servidor.com', 'Calle #123, Ciudad edo. Estado', '04XX-1234567', '02XX-1234567');
 insert into usuario values
-	('0000000', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', null, 1);
+	('12345678', '81dc9bdb52d04dc20036dbd8313ed055', '81dc9bdb52d04dc20036dbd8313ed055', null, 1);
 
 
 
