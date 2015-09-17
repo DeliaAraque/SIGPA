@@ -23,6 +23,7 @@
 
 	<link href="css/palete.css" rel="stylesheet" type="text/css" />
 	<link href="css/sigpa.css" rel="stylesheet" type="text/css" />
+	<link href="css/popup.css" rel="stylesheet" type="text/css" />
 
 	<script src="lib/sigpa.js"></script>
 
@@ -74,7 +75,7 @@
 								<form name="login" method="POST" action="script/iniciar.php" data-exe="$(location).attr('href', '.')" role="form">
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su cédula">
-											<input type="text" name="cedula" placeholder="Cédula" value="<?= $_COOKIE["cedula"]; ?>" class="form-control" onKeyUp="Verif(this, 'usuario', true)" pattern="[0-9]{7,}" autofocus="autofocus" required="required" title="Ingrese su cédula" />
+											<input type="text" name="cedula" placeholder="Cédula" value="<?= $_COOKIE["cedula"]; ?>" class="form-control" pattern="[0-9]{7,}" autofocus="autofocus" required="required" title="Ingrese su cédula" />
 											<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										</div>
 									</div>
@@ -102,7 +103,7 @@
 								<form name="reset" method="POST" action="script/reestablecer.php" onSubmit="return reestablecer(this)">
 									<div class="form-group">
 										<div class="input-group" title="Ingrese su cédula">
-											<input type="text" name="cedula" placeholder="Cédula" value="<?= $_COOKIE["cedula"]; ?>" class="form-control" onKeyUp="Verif(this, 'usuario', true)" pattern="[0-9]{7,}" required="required" title="Ingrese su cédula" />
+											<input type="text" name="cedula" placeholder="Cédula" value="<?= $_COOKIE["cedula"]; ?>" class="form-control" pattern="[0-9]{7,}" required="required" title="Ingrese su cédula" />
 											<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										</div>
 									</div>
