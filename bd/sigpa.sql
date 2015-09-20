@@ -160,6 +160,7 @@ create table usuario (
 create table carga (
 	id bigserial primary key,
 	"dividirHT" boolean default false,
+	"nuevoNombre" text,
 	"idProfesor" int not null,
 	"idSeccion" int not null,
 	"idSuplente" int,
@@ -229,7 +230,6 @@ alter table profesor add foreign key(profesion) references profesion(id) on upda
 
 alter table carga add foreign key("idProfesor") references profesor(cedula) on update cascade on delete restrict;
 alter table carga add foreign key("idSeccion") references seccion("ID") on update cascade on delete restrict;
-alter table carga add foreign key("idSuplente") references profesor(cedula) on update cascade on delete restrict;
 alter table carga add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete restrict;
 alter table periodo add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete restrict;
 alter table seccion add foreign key("idMECS") references "mallaECS"(id) on update cascade on delete restrict;
