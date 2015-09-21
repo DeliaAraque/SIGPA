@@ -190,9 +190,9 @@ create table seccion (
 	turno turno not null,
 	multiplicador real not null,
 	grupos boolean default false,
+	"idMECS" int not null,
 	"idPeriodo" int not null, -- Periodo académico
 	"periodoEstructura" text not null,
-	"idMECS" int not null,
 	unique(id, "idPeriodo", "periodoEstructura", "idMECS")
 );
 
