@@ -272,7 +272,7 @@ ALTER SEQUENCE edificio_id_seq OWNED BY edificio.id;
 CREATE TABLE salones (
     id integer NOT NULL,
     salon character varying,
-    cod_edi character varying NOT NULL,
+    cod_edi int not null,
     tipo text
 );
 
@@ -302,13 +302,13 @@ ALTER SEQUENCE salones_id_seq OWNED BY salones.id;
 
 CREATE TABLE horario (
     id_enlace character varying NOT NULL,
-    periodo character varying,
+    periodo int not null,
     thora character varying,
     chora character varying,
-    seccion character varying,
+    seccion int not null,
     materia character varying,
-    profesor character varying,
-    carrera character varying,
+    profesor int not null,
+    carrera int not null,
     salon integer,
     hora integer,
     id_bloque integer,
