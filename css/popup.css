@@ -28,6 +28,9 @@
 	position: absolute;
 	top: 0.5em;
 	right: 1em;
+
+	color: red;
+	font-size: 1.5em;
 }
 
 @keyframes popUp {
