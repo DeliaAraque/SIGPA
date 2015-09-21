@@ -240,8 +240,9 @@ alter table seccion add foreign key("idPeriodo") references periodo("ID") on upd
 --	Horarios:
 
 CREATE TABLE edificio (
-    id character varying NOT NULL,
-    edificio character varying
+    id serial primary key,
+    edificio character varying,
+    id_sede int not null
 );
 
 
