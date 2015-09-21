@@ -685,7 +685,6 @@ insert into persona values
 	('15296169', 'Rosaly', 'Carolina', 'Mendoza', 'Marquez', 'f', 'mendozarosaly@hotmail.com', 'Sin asignar', '04264153365', '02742661228'),
 	('3992405', 'Maria', 'Magaly', 'Valero', 'Lacruz', 'f', 'Sin asignar', 'Sin asignar', 'Sin asignar', null),
 	('14267080', 'Yulecxy ', 'Aurora', 'Uzcategui', 'Araque', 'f', 'yuluzar@hotmail.com', 'Sin asignar', '0414-3751830', '0274-2528083'),
-	('0222222', 'Jesus', null, 'Rodriguez', 'Ignacio', 'f', 'Sin asignar', 'Sin asignar', 'Sin asignar', null),
 	('3048184', 'Jose', null, 'Solano', null, 'f', 'Sin asignar', 'Sin asignar', 'Sin asignar', null),
 	('4768948', 'Beatriz Carolina', 'Del Carmen', 'Angeli', 'Maury', 'f', 'beatrizcarolinaangeli@gmail.com', 'Sin asignar', '04247349806', null),
 	('7080727', 'Ivan', null, 'Lopez', null, 'f', 'Sin asignar', 'Sin asignar', 'Sin asignar', null),
@@ -1034,7 +1033,6 @@ insert into profesor values
 	('15296169', 'No', '0', 'No', '0'),
 	('3992405', 'No', '0', 'No', '0'),
 	('14267080', 'No', '0', 'No', '0'),
-	('0222222', 'No', '0', 'No', '0'),
 	('3048184', 'No', '0', 'No', '0'),
 	('4768948', 'No', '0', 'No', '0'),
 	('7080727', 'No', '0', 'No', '0'),
@@ -1295,7 +1293,6 @@ insert into profesor values
 	('12722185', 'No', '0', 'No', '0');
 
 insert into pertenece values
-	('2', '0222222'),
 	('5', '2149217'),
 	('4', '2287821'),
 	('1', '3048184'),

@@ -190,10 +190,10 @@ create table seccion (
 	turno turno not null,
 	multiplicador real not null,
 	grupos boolean default false,
-	"idMECS" int not null,
 	"idPeriodo" int not null, -- Periodo académico
 	"periodoEstructura" text not null,
-	unique(id, "idPeriodo", "periodoEstructura")
+	"idMECS" int not null,
+	unique(id, "idPeriodo", "periodoEstructura", "idMECS")
 );
 
 
@@ -244,25 +244,6 @@ CREATE TABLE edificio (
     edificio character varying,
     id_sede int not null
 );
-
-
---
--- Name: edificio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE edificio_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: edificio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE edificio_id_seq OWNED BY edificio.id;
 
 
 --
@@ -340,14 +321,6 @@ ALTER SEQUENCE salones_edificio_id_seq OWNED BY salones.cod_edi;
 --
 
 ALTER TABLE ONLY salones ALTER COLUMN id SET DEFAULT nextval('salones_id_seq'::regclass);
-
-
---
--- Name: edificio_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY edificio
-    ADD CONSTRAINT edificio_pkey PRIMARY KEY (id);
 
 
 --
