@@ -193,6 +193,8 @@
 		case "1":
 ?>
 
+				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-map-marker fa-fw"></i> Sedes</a></li>
+
 				<li>
 					<a href="#"><i class="fa fa-university fa-fw"></i> Carreras<span class="fa arrow"></span></a>
 
@@ -201,18 +203,8 @@
 						<li><a href="javascript: embem('moduloPlanificacion/Carrera/index.php', '#page-wrapper')"><i class="fa fa-graduation-cap fa-fw"></i> Carreras</a></li>
 						<li><a href="javascript: embem('moduloPlanificacion/Eje/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Ejes</a></li>
 						<li><a href="javascript: embem('moduloPlanificacion/Estructura/index.php', '#page-wrapper')"><i class="fa fa-sitemap fa-fw"></i> Estructuras</a></li>
-						<li><a href="javascript: embem('moduloPlanificacion/Malla/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Mallas</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Malla/index.php', '#page-wrapper')"><i class="fa fa-th fa-fw"></i> Mallas</a></li>
 						<li><a href="javascript: embem('moduloPlanificacion/UC/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Unidades Curriculares</a></li>
-					</ul>
-				</li>
-
-				<li>
-					<a href="#"><i class="fa fa-calendar-check-o fa-fw"></i> Planificación<span class="fa arrow"></span></a>
-
-					<ul class="nav nav-second-level">
-						<li><a href="javascript: embem('moduloPlanificacion/Carga/index.php', '#page-wrapper')"><i class="fa fa-hourglass fa-fw"></i> Carga académica</a></li>
-						<li><a href="javascript: embem('moduloPlanificacion/Periodo/index.php', '#page-wrapper')"><i class="fa fa-calendar fa-fw"></i> Periodos</a></li>
-						<li><a href="javascript: embem('moduloPlanificacion/Seccion/index.php', '#page-wrapper')"><i class="fa fa-font fa-fw"></i> Secciones</a></li>
 					</ul>
 				</li>
 
@@ -228,7 +220,16 @@
 					</ul>
 				</li>
 
-				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Sedes</a></li>
+				<li>
+					<a href="#"><i class="fa fa-calendar-check-o fa-fw"></i> Planificación<span class="fa arrow"></span></a>
+
+					<ul class="nav nav-second-level">
+						<li><a href="javascript: embem('moduloPlanificacion/Periodo/index.php', '#page-wrapper')"><i class="fa fa-calendar fa-fw"></i> Periodos</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Seccion/index.php', '#page-wrapper')"><i class="fa fa-font fa-fw"></i> Secciones</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Carga/index.php', '#page-wrapper')"><i class="fa fa-hourglass fa-fw"></i> Carga académica</a></li>
+						<li><a href="javascript: moreInfo('moduloHorarios/index.html')"><i class="fa fa-th fa-fw"></i> Gestion de Horarios</a></li>
+					</ul>
+				</li>
 
 				<!--
 
@@ -250,7 +251,6 @@
 				
 				-->
 
-				<li><a href="javascript: moreInfo('moduloHorarios/index.html')"><i class="fa fa-file-text fa-fw"></i> Gestion de Horarios</a></li>
 <?php
 		break;
 	}
