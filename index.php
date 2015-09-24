@@ -83,6 +83,7 @@
 <script>
 	$(document).ready(loading(false));
 	formularios();
+	setInterval(notifications, 1000);
 </script>
 
 <!-- Fin bibliotecas plantilla -->

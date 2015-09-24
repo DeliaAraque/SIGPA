@@ -30,14 +30,15 @@
 			<!-- Registro de actividades -->
 
 		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Registro de actividades">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Registro de actividades" onClick="this.querySelector('#notification').style.display='none'">
 				<i class="fa fa-th-list fa-fw"></i> <i class="fa fa-caret-down"></i>
+				<i id="notification" class="fa fa-exclamation-circle fa-fw"></i>
 			</a>
 
 				<!-- Elementos del registro -->
 
 			<ul id="historial" class="dropdown-menu" style="width: 30em;">
-				<li><a class="text-center" href="#"><strong>Ver el registro completo</strong></a></li>
+				<li><a class="text-center" href="javascript: embem('script/registro.php', '#page-wrapper')"><strong>Ver el registro completo</strong></a></li>
 
 <?php
 	require "conexion.php";
@@ -45,7 +46,11 @@
 	$sql = "select * from historial order by id desc limit 5";
 	$exe = pg_query($sigpa, $sql);
 
+	$nN = 0;
+
 	while($historial = pg_fetch_object($exe)) {
+		if(! $nN++)
+			$last = $historial->id;
 ?>
 
 				<li class="divider"></li>
@@ -63,6 +68,8 @@
 
 <?php
 	}
+
+	echo "<input type=\"hidden\" id=\"lastNoti\" value=\"$last\" />";
 ?>
 			</ul>
 

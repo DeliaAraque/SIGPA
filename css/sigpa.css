@@ -28,3 +28,19 @@ input:not([value]) {
 	border: 1px solid #ccc;
 	box-shadow: none;
 }
+
+#notification {
+	color: red;
+	display: none;
+
+	position: absolute;
+	top: 0.5em;
+	right: 1em;
+}
+
+.logElement {
+	box-shadow: 0px 0px 0.1em rgba(0, 0, 0, 0.5);
+	padding: 1em;
+
+	margin: 1em;
+}
