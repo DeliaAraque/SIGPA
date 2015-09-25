@@ -1,6 +1,6 @@
 <?php
-	require "verifSesion.php";
-	require "../lib/conexion.php";
+	require "../../script/verifSesion.php";
+	require "../../lib/conexion.php";
 
 	$last = htmlspecialchars($_POST["last"], ENT_QUOTES);
 

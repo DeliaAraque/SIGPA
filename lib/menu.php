@@ -33,12 +33,13 @@
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Registro de actividades" onClick="this.querySelector('#notification').style.display='none'">
 				<i class="fa fa-th-list fa-fw"></i> <i class="fa fa-caret-down"></i>
 				<i id="notification" class="fa fa-exclamation-circle fa-fw"></i>
+				<audio src="css/notification.mp3"></audio>
 			</a>
 
 				<!-- Elementos del registro -->
 
 			<ul id="historial" class="dropdown-menu" style="width: 30em;">
-				<li><a class="text-center" href="javascript: embem('script/registro.php', '#page-wrapper')"><strong>Ver el registro completo</strong></a></li>
+				<li><a class="text-center" href="javascript: embem('data/Registro/index.php', '#page-wrapper')"><strong>Ver el registro completo</strong></a></li>
 
 <?php
 	require "conexion.php";

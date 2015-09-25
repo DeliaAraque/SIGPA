@@ -1,6 +1,6 @@
 <?php
-	require "verifSesion.php";
-	require "../lib/conexion.php";
+	require "../../script/verifSesion.php";
+	require "../../lib/conexion.php";
 ?>
 
 <div class="row">
