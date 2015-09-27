@@ -165,6 +165,7 @@ create table carga (
 	"idSeccion" int not null,
 	"idSuplente" int,
 	"idUC" text not null,
+	check("idProfesor" != "idSuplente"),
 	unique("idProfesor", "idSeccion", "idUC")
 );
 
