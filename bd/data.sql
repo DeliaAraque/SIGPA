@@ -952,7 +952,11 @@ insert into categoria values
 	('Asoc', 'Asociado'),
 	('Aux', 'Auxiliar Docente'),
 	('Inst', 'Instructor'),
-	('Tit', 'Titular');
+	('Tit', 'Titular'),
+	('AuxII', 'Auxiliar Docente II'),
+	('AuxIII', 'Auxiliar Docente III'),
+	('AuxIV', 'Auxiliar Docente IV'),
+	('AuxV', 'Auxiliar Docente V');
 insert into condicion values
 	(0, 'Sin asignar'),
 	(default, 'Contratado'),
