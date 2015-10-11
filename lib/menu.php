@@ -153,7 +153,7 @@
 					<span style="display: inline-block; margin-left: 0.3em;"><?= $_SESSION["cedula"]; ?><br><?= $_SESSION["nombre"]; ?><br/><?= $_SESSION["apellido"]; ?></span>
 				</a></li>
 
-				<li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuración</a></li>
+				<li><a href="javascript: embem('data/Configuracion/index.html', '#page-wrapper')"><i class="fa fa-gear fa-fw"></i> Configuración</a></li>
 
 				<li class="divider"></li>
 
