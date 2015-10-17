@@ -34,7 +34,7 @@
 
 	<title>SIGPA - Sistema de Información para la Gestión de la Planificación Académica</title>
 </head>
-<body>
+<body onBeforeUnload="return 'Parece que ha intentado navegar a otro lugar, le recomendamos que lo haga usando el menú y los botones de SIGPA. Si esta seguro de lo que hace o solo ha intentado refrescar la página puede continuar.'">
 <div id="wrapper">
 
 	<!-- Navegación -->
