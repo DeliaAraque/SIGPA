@@ -43,8 +43,8 @@ COPY carrera (id, nombre, "idArea") FROM stdin;
 09	PNF Seguridad Alimentaria Y Cultura Nutricional	3
 11	PNF Historia	2
 02	PNF Construcción Civil	1
-03	PNF Informática	1
 04	PNF Administración	2
+03	PNF Informática	1
 \.
 
 
@@ -70,12 +70,13 @@ COPY sede (id, nombre, fecha, telefono, direccion) FROM stdin;
 COPY "carreraSede" (id, "idCarrera", "idCoordinador", "idSede") FROM stdin;
 1	01	3048184	3
 2	02	3767311	3
-3	03	10256095	3
 5	05	2149217	3
 6	06	3910823	3
 7	07	3939687	3
 8	08	3661985	3
 4	04	8037619	3
+10	03	2288079	1
+3	03	10256095	3
 \.
 
 
@@ -144,6 +145,7 @@ COPY eje (id, nombre) FROM stdin;
 COPY estructura (id, nombre, estructura) FROM stdin;
 1	PNF Trimestral	 { "periodos" : [ { "nombre" : "Trayecto inicial", "id" : "T0", "duracion" : "3", "subperiodos" : false }, { "nombre" : "Trayecto 1", "id" : "T1", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 2", "id" : "T2", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 3", "id" : "T3", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] }, { "nombre" : "Trayecto 4", "id" : "T4", "duracion" : false, "subperiodos" : [ { "nombre" : "Trimestre 1", "id" : "t1", "duracion" : "3" }, { "nombre" : "Trimestre 2", "id" : "t2", "duracion" : "3" }, { "nombre" : "Trimestre 3", "id" : "t3", "duracion" : "3" } ] } ] } 
 2	Semestral	\n\t\t{\n\t\t\t"periodos" : [\n\t\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Semestre I",\n\t\t\t\t\t"id" : "S1",\n\t\t\n\t\t\t\t\t"duracion" : "6",\n\t\t\t\t\t"subperiodos" : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Semestre II",\n\t\t\t\t\t"id" : "S2",\n\t\t\n\t\t\t\t\t"duracion" : "6",\n\t\t\t\t\t"subperiodos" : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Semestre III",\n\t\t\t\t\t"id" : "S3",\n\t\t\n\t\t\t\t\t"duracion" : "6",\n\t\t\t\t\t"subperiodos" : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Semestre IV",\n\t\t\t\t\t"id" : "S4",\n\t\t\n\t\t\t\t\t"duracion" : "6",\n\t\t\t\t\t"subperiodos" : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Semestre V",\n\t\t\t\t\t"id" : "S5",\n\t\t\n\t\t\t\t\t"duracion" : "6",\n\t\t\t\t\t"subperiodos" : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Semestre VI",\n\t\t\t\t\t"id" : "S6",\n\t\t\n\t\t\t\t\t"duracion" : "6",\n\t\t\t\t\t"subperiodos" : false\n\t\t\t\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t
+3	Prosecucion	\n\t\t{\n\t\t\t"periodos" : [\n\t\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Trayecto de Transicion",\n\t\t\t\t\t"id" : "TT",\n\t\t\n\t\t\t\t\t"duracion" : "3",\n\t\t\t\t\t"subperiodos" : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Trayecto 3",\n\t\t\t\t\t"id" : "T3",\n\t\t\n\t\t\t\t\t"duracion" : false,\n\t\t\t\t\t"subperiodos" : [\n\t\t\t\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"nombre" : "Trimestre 1",\n\t\t\t\t\t\t\t"id" : "t1",\n\t\t\t\t\t\t\t"duracion" : "3"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"nombre" : "Trimestre 2",\n\t\t\t\t\t\t\t"id" : "t2",\n\t\t\t\t\t\t\t"duracion" : "3"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"nombre" : "Trimestre 3",\n\t\t\t\t\t\t\t"id" : "t3",\n\t\t\t\t\t\t\t"duracion" : "3"\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t"nombre" : "Trayecto 4",\n\t\t\t\t\t"id" : "T4",\n\t\t\n\t\t\t\t\t"duracion" : false,\n\t\t\t\t\t"subperiodos" : [\n\t\t\t\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"nombre" : "Trimestre 1",\n\t\t\t\t\t\t\t"id" : "t1",\n\t\t\t\t\t\t\t"duracion" : "3"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"nombre" : "Trimestre 2",\n\t\t\t\t\t\t\t"id" : "t2",\n\t\t\t\t\t\t\t"duracion" : "3"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t"nombre" : "Trimestre 3",\n\t\t\t\t\t\t\t"id" : "t3",\n\t\t\t\t\t\t\t"duracion" : "3"\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t
 \.
 
 
@@ -154,6 +156,8 @@ COPY estructura (id, nombre, estructura) FROM stdin;
 COPY "estructuraCS" (id, "idCS", "idEstructura") FROM stdin;
 1	3	1
 2	4	1
+4	4	3
+6	10	1
 \.
 
 
@@ -162,8 +166,10 @@ COPY "estructuraCS" (id, "idCS", "idEstructura") FROM stdin;
 --
 
 COPY malla (id, fecha) FROM stdin;
-PNFI-2012	2011-04-27
 PNFA-2014	2015-10-12
+PNFA-2014-PRO	2015-10-19
+PNFI-2012	2011-04-27
+PNFA-2010-2	2015-10-01
 \.
 
 
@@ -174,6 +180,8 @@ PNFA-2014	2015-10-12
 COPY "mallaECS" (id, estado, "idECS", "idMalla") FROM stdin;
 1	t	1	PNFI-2012
 2	t	2	PNFA-2014
+5	t	4	PNFA-2014-PRO
+4	t	2	PNFA-2010-2
 \.
 
 
@@ -255,7 +263,6 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 5559793	Edith	Iraiz	Calderon	Saras	f	eics_amigos@hotmail.com	Sin asignar	0414-7456832	\N
 5561396	Manuel	Antonio	Oliveros	Carruyo	f	mao5561@hotmail.com	Sin asignar	0426-5580062	0274-2216348
 5740339	Cecilia	Magdalena	Granados	De Brito	f	Sin asignar	Sin asignar	Sin asignar	\N
-5753564	Santo	Segundo	Romero	Coronel	f	vervhija@yahoo.es	Sin asignar	Sin asignar	\N
 5794416	Mariela	\N	Mendoza	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 5863317	Oscar	Geronimo	Mujica	Figueroa	f	oscar.mujica_89@hotmail.com	Sin asignar	0426-5507175	\N
 4054457	Victor	Alberto	Meza	Morales	f	victormeza02@hotmail.com	Sin asignar	Sin asignar	\N
@@ -304,7 +311,6 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 8038332	Marjorie	\N	Uzcategui	\N	f	mayouzca@hotmail.com	Sin asignar	0416-7743326	\N
 8038611	Frank	Reinaldo	Rodriguez	Calderon	f	srodriguez@inia.gob.ve	Sin asignar	Sin asignar	\N
 10102108	Yasmelia	Del Carmen	Zerpa	Vielma	f	Sin asignar	Sin asignar	Sin asignar	\N
-7934845	Maria	Carolina	Marquez	Uzcategui	f	mcarolinamar@hotmail.com	Sin asignar	Sin asignar	\N
 8002183	Luis	Enrique	Rojas	Ramirez	f	rojasluis64@gmail.com	Sin asignar	Sin asignar	\N
 8006639	Jose	De Jesus	Marquez	\N	f	chepomar@hotmail.com	Sin asignar	0414-7166051	2664709
 8039498	Tibayre	\N	Fernandez	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
@@ -462,6 +468,285 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 8037619	Miriam	Del Carmen	Muñoz	Ramirez	f	licmiriamuno@gmail.com	Sin asignar	04147027698	\N
 15142314	Pablo	Martin	Silgueiro	Soto	f	pablosilgueiro@gmail.com	Sin asignar	04267549299	\N
 4319574	Iraide	Celina	Zerpa	\N	f	iraidezerpa@gmail.com	Sin asignar	04265744008	\N
+5753564	Santo	Segundo	Coronel	Romero	m	ssrc513@gmail.com	Sin asignar	04164747101	\N
+11955850	Carlos	\N	Hernandez	\N	m	carloshla2007@gmail.com	Asd	04263281790	\N
+7934845	Maria	Carolina	Marquez	Uzcategui	f	mcarolinamar@hotmail.com	Sin asignar	04247708690	\N
+1010633	Lenix	\N	Omana	\N	f	lenix@ula.ve	Asd	04147485841	\N
+14281324	Jesus	\N	Casique	\N	m	casiquemorenojesus@gmail.com	Asd	04247127978	\N
+11953052	Gioconda	Marlin	Saez	Torres	f	giocopaul@gmail.com	Asdasd	0416-5222543	\N
+8223161	Vianney	\N	Canache	\N	m	fitosiciliano@hotmail.com	Asd	0424-7686768	\N
+9643447	Yasmin	\N	Carmona	\N	f	yasmincarmina310@gmail.com	Asd	0416-3700829	\N
+5871766	Doris	\N	Villalba	\N	f	dvilla44@gmail.com	Asd	0416-6700862	\N
+12722753	Emilia	\N	Graterol	\N	f	emiliagraterol@yahoo.com	Asd	0424-7139955	\N
+6729553	Maria	Gloria	Parra	\N	f	mariagloria.parrar@gmail.com	Asd	0416-8743486	\N
+8039160	Alejandro	\N	Rojas	\N	m	alejandrorojas23@yahoo.com	Asd	0426-7625391	\N
+16317126	Maria	\N	Carrero	\N	f	marca1911@yahoo.es	Av. qwe	04247625391	\N
+3309773	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+4768469	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5206999	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5349758	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8031593	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9279327	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9470586	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10426911	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10617743	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10687170	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10795287	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12276745	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13126220	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13803898	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+3586551	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5199025	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12457642	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+3062497	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8013671	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8041985	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9081546	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14131053	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+2288079	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+4385037	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+4468978	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5198965	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5222887	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7682243	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7901173	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8006635	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8025941	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8084037	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8709198	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8711187	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8991754	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9027962	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9048373	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9145227	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9346062	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10236687	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10896200	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10901133	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11165547	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12048936	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12800893	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13013943	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13229040	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13230783	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13965382	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13965387	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13965541	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14447272	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15235049	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15235336	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16604063	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16605994	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7783689	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8717503	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9397892	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11216746	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13804657	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+3990156	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5435898	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5446019	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5654904	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+6908190	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7545873	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7549702	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7772181	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8000405	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8029795	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8042180	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8081463	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9473824	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9474475	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11461500	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15295791	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8007748	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8773038	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10106333	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11959486	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11959905	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12349450	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17340511	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9390689	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16716898	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10751767	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13762920	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15693970	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17664344	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+2069838	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+3991395	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5502501	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+6966311	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7482782	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7785696	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8033769	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8034298	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9472709	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9602126	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9874227	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10108462	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10716040	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13499843	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14589482	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15295462	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18308852	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18618150	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18620438	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+20912440	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+84492794	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8049037	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12776115	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15584303	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17662445	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+3908624	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+4589713	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5201033	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8013569	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8023975	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11959873	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12778312	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15584878	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18310574	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18962414	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+19440209	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+21364550	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+84395445	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8022340	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10108118	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10896132	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12777719	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14771192	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15175341	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18798060	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+19487152	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+19487788	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13688279	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14917541	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17129511	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+6167653	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8076223	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8519916	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8705826	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9361725	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10856682	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10905552	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11462892	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11954097	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12220551	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12487701	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13013755	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14131507	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14255791	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14447036	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14447384	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15074652	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15234079	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15234490	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15695079	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16019616	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16019964	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16020533	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16020822	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16316134	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16657714	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17769893	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18579167	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18579209	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+22656117	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+3941437	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+4353531	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8045536	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8075648	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8707022	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11465010	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12487991	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13790769	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15695370	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15695737	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16907428	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17321417	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18264711	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+3297745	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+4700593	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+7973553	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9203225	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9390966	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9392858	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9496511	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10241655	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11236773	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11319506	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11460232	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11912990	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11914501	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11955728	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12354608	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12655010	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13208733	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13803295	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14022931	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14249554	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14957722	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15174952	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15357168	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15432243	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15947784	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16351978	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16716300	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16743379	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17436794	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17437536	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17794526	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18055149	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18208897	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18614251	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+18615818	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+19236516	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8038358	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11361473	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12321519	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13098687	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15621504	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15920357	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17129591	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17239002	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17662802	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+2086595	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8023615	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8035343	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8040696	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8043996	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9320887	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+9398159	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11960981	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13309223	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13648065	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13803902	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14067007	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14171327	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14267897	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14320450	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15174936	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15295994	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15296686	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15621939	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15755730	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+15784489	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16039221	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16199520	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16445626	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+16655032	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17130332	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17130671	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17323027	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+3223045	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+8039615	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10717019	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+12778229	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13966349	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+14107223	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+10172170	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+11036485	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+13524598	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+17129049	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 \.
 
 
@@ -565,6 +850,20 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 8045258	No	0	No	0
 8087415	No	0	No	0
 10797122	No	0	No	0
+11467397	No	0	No	0
+11468201	No	0	No	0
+11912316	No	0	No	0
+12353031	No	0	No	0
+12779975	No	0	No	0
+13099384	No	0	No	0
+13966605	No	0	No	0
+14400087	No	0	No	0
+15223533	No	0	No	0
+15381185	No	0	No	0
+15754311	No	0	No	0
+16377291	No	0	No	0
+17238348	No	0	No	0
+8002737	Asist	3	EXC	0
 3048184	Asist	3	TCv	0
 3992405	Asist	3	TC	0
 4484976	Agre	3	TC	0
@@ -574,11 +873,9 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 5355610	Asist	3	TC	0
 5447146	Asoc	3	TC	0
 5507269	Asoc	3	TC	0
-5740339	Asist	3	TC	0
 5794416	Asoc	3	TC	0
 7648734	Agre	3	EXC	0
-7934845	Agre	3	TC	0
-8002737	Asist	3	EXC	0
+7934845	Agre	3	TC	10
 8021306	Asist	3	TC	0
 8021736	Inst	3	MT	0
 8041510	Agre	3	TC	0
@@ -588,7 +885,6 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 8683060	Inst	3	TC	0
 8958864	Asist	3	TC	0
 9472514	Asoc	3	EXC	0
-9476268	Asoc	3	TC	0
 10102259	Agre	3	TC	0
 10104966	Inst	3	TC	0
 10314511	Asist	3	TC	0
@@ -601,7 +897,6 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 4472778	Agre	3	TCv	0
 4491607	Asist	3	TC	0
 5124273	Asist	3	TC	0
-5201622	Agre	3	TCv	0
 5239250	Asist	3	TC	0
 6953950	Asoc	3	EXC	0
 7168412	Asoc	3	TC	0
@@ -614,7 +909,6 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 8027793	Asist	3	TC	0
 8029075	Asist	3	TC	0
 8029696	Agre	3	TC	0
-8032732	Inst	3	TC	0
 8034029	Inst	3	TC	0
 8034371	Aux	3	TC	0
 8038332	Asist	3	TC	0
@@ -627,21 +921,18 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 9499979	Inst	3	TC	0
 10087275	Agre	3	EXC	0
 10108950	Agre	3	EXC	0
-10720364	Agre	3	TC	0
 11956576	Asist	3	TC	0
 13014569	Asist	3	TC	0
 13098763	Asist	3	EXC	0
 3727339	Asoc	3	EXC	0
 5466076	Agre	3	EXC	0
 5561396	Agre	3	EXC	0
-5753564	Tit	3	EXC	0
 7326064	Asist	3	TC	0
 8005159	Asist	3	EXC	0
 8039463	Asist	3	TC	0
 8046659	Agre	3	TC	0
 9478674	Inst	3	TC	0
 9501330	Agre	3	TC	0
-7080727	Agre	3	EXC	0
 8045307	Asoc	3	TC	0
 10713529	AuxII	3	EXC	0
 3692342	Inst	1	TC	0
@@ -654,7 +945,6 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 8079222	Inst	1	MT	0
 8656400	Inst	1	TC	0
 9234597	Inst	1	TC	0
-8021842	Inst	1	TCv	0
 5952723	Inst	1	TC	0
 9906615	Inst	1	TCv	0
 6940439	Inst	1	TC	0
@@ -665,8 +955,8 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 17663839	Inst	1	MT	0
 2149217	Inst	1	TC	0
 3791326	Inst	1	TCv	0
+8029045	Inst	1	TC	27
 8041620	Inst	1	TC	0
-8720054	Inst	1	TC	0
 9473374	Inst	1	TCv	0
 3574698	Inst	1	TC	0
 8038611	Inst	1	MT	0
@@ -677,32 +967,29 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 4492356	Inst	1	TC	0
 9473852	Inst	1	MT	0
 10109087	Inst	1	MT	0
-11467397	No	0	No	0
-11468201	No	0	No	0
-11912316	No	0	No	0
-12353031	No	0	No	0
-12779975	No	0	No	0
-13099384	No	0	No	0
-13966605	No	0	No	0
-14400087	No	0	No	0
-15223533	No	0	No	0
-8029045	Inst	1	TC	27
-15381185	No	0	No	0
-15754311	No	0	No	0
-16377291	No	0	No	0
-17238348	No	0	No	0
 17456574	No	0	No	0
 17499585	No	0	No	0
 16199115	No	0	No	0
 18581024	No	0	No	0
 9240195	No	0	No	0
+1010633	Inst	1	TC	10
+14281324	Inst	1	MT	50
+16317126	Inst	1	TC	2
 2287821	Agre	3	TC	0
+3309773	Asist	3	TCv	0
 3939687	Asist	3	TC	0
 3966127	Agre	3	EXC	0
+4319574	Asist	3	EXC	27
+4768469	Asist	3	TCv	0
 4769890	Asoc	3	EXC	0
+5206999	Asoc	3	EXC	0
+5349758	Asist	3	TC	0
 6547603	Asist	3	EXC	0
 7525829	Asoc	3	EXC	0
 7832738	Agre	3	EXC	0
+8031593	Asoc	3	TC	0
+8037619	Inst	3	TC	10
+8039160	Agre	3	TC	1
 9028433	Agre	3	EXC	0
 9475173	Asist	3	TC	0
 10712408	Asoc	3	EXC	0
@@ -744,12 +1031,20 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 14917178	Inst	3	TC	0
 15296169	Inst	3	TC	0
 16020374	Asist	3	TC	0
+5753564	Tit	3	EXC	49
 8034300	Asoc	3	EXC	0
 13098948	Agre	3	TC	0
 13649962	Asist	3	EXC	0
+15142314	Inst	3	TC	47
 10102108	Inst	3	EXC	0
 14268612	Asist	3	TC	0
+5871766	Inst	1	MT	50
+6729553	Inst	1	MT	50
+8223161	Inst	1	MT	10
+9643447	Inst	1	MT	10
+11955850	Inst	1	TC	10
 12048353	Inst	1	TC	0
+12722753	Inst	1	MT	50
 14267080	Inst	1	TC	0
 15175795	Inst	1	TC	0
 15565857	Inst	1	TC	0
@@ -799,9 +1094,276 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 14917365	Inst	1	MT	0
 15921593	Inst	1	TCv	0
 4768948	Inst	1	TC	0
-8037619	Inst	3	TC	10
-15142314	Inst	3	TC	47
-4319574	Asist	3	EXC	27
+11953052	Inst	1	TC	2
+9470586	Asoc	3	EXC	0
+10426911	Asist	3	EXC	0
+10617743	Agre	3	EXC	0
+10687170	Asist	3	TC	0
+10795287	Aux	3	TCv	0
+12276745	Agre	3	EXC	0
+13126220	Aux	3	TC	0
+13803898	Agre	3	TC	0
+3586551	Agre	3	TC	0
+5199025	Asist	3	TC	0
+12457642	Inst	3	TC	0
+3062497	AuxV	3	EXC	0
+8013671	Inst	3	TC	0
+8041985	Agre	3	EXC	0
+9081546	Asoc	3	EXC	0
+14131053	Inst	3	TC	0
+2288079	Asist	3	TC	0
+4385037	Asist	3	MT	0
+4468978	Asist	3	EXC	0
+5198965	Agre	3	TC	0
+5222887	Inst	3	TC	0
+7682243	Asist	3	TC	0
+7901173	Asist	3	TC	0
+8006635	Asist	3	TC	0
+8025941	Inst	3	TC	0
+8084037	Asist	3	TC	0
+8709198	Inst	3	TC	0
+8711187	Inst	3	MT	0
+8991754	Asist	3	TC	0
+9027962	Agre	3	TC	0
+9048373	Asist	3	TC	0
+9145227	Inst	3	EXC	0
+9346062	Asist	3	TC	0
+10236687	Inst	3	TC	0
+10896200	Asist	3	TC	0
+10901133	Asist	3	TC	0
+11165547	Inst	3	TC	0
+12048936	Asist	3	TC	0
+12800893	Inst	3	TC	0
+13013943	Asist	3	TC	0
+13229040	Aux	3	TC	0
+13230783	Asist	3	TC	0
+13965382	Inst	3	TC	0
+13965387	Inst	3	TC	0
+13965541	Asist	3	TC	0
+14447272	Inst	3	TC	0
+15235049	Inst	3	TC	0
+15235336	Inst	3	TC	0
+16604063	Inst	3	TC	0
+16605994	Asist	3	TC	0
+7783689	Asist	3	TC	0
+8717503	Inst	3	TC	0
+9397892	Inst	3	TC	0
+11216746	Asist	3	TC	0
+13804657	Asist	3	TC	0
+3990156	Agre	3	EXC	0
+5435898	Asist	3	EXC	0
+5446019	Asoc	3	EXC	0
+5654904	Asoc	3	EXC	0
+6908190	Agre	3	TCv	0
+7545873	Agre	3	TC	0
+7549702	Asist	3	TCv	0
+7772181	Asist	3	TC	0
+8000405	Inst	3	TC	0
+8029795	Inst	3	TC	0
+8042180	Asist	3	TC	0
+8081463	Inst	3	MT	0
+9474475	Inst	3	TC	0
+11461500	Asist	3	EXC	0
+15295791	Aux	3	TC	0
+8007748	Inst	1	TCv	0
+8773038	Inst	1	TC	0
+10106333	Inst	1	MT	0
+11959486	Inst	1	TC	0
+11959905	Inst	1	TC	0
+12349450	Inst	1	TC	0
+17340511	Inst	1	TC	0
+9390689	Inst	1	TCv	0
+16716898	Inst	1	TC	0
+10751767	Inst	1	TCv	0
+13762920	Inst	1	MT	0
+15693970	Inst	1	TCv	0
+17664344	Inst	1	TCv	0
+2069838	Inst	1	TC	0
+3991395	Inst	1	TC	0
+5502501	Aux	1	MT	0
+6966311	Inst	1	TC	0
+7482782	Inst	1	MT	0
+7785696	Inst	1	MT	0
+8033769	Inst	1	MT	0
+8034298	Inst	1	MT	0
+9472709	Inst	1	MT	0
+9602126	Inst	1	MT	0
+9874227	Inst	1	MT	0
+10108462	Inst	1	TCv	0
+10716040	Inst	1	MT	0
+13499843	Aux	1	MT	0
+14589482	Inst	1	MT	0
+15295462	Aux	1	MT	0
+18308852	Inst	1	MT	0
+18618150	Aux	1	MT	0
+18620438	Aux	1	MT	0
+20912440	Aux	1	MT	0
+84492794	Inst	1	MT	0
+8049037	Inst	1	TC	0
+12776115	Inst	1	TC	0
+15584303	Inst	1	TCv	0
+17662445	Inst	1	TC	0
+3908624	Inst	1	MT	0
+4589713	Inst	1	TC	0
+5201033	Inst	1	TC	0
+8013569	Inst	1	TC	0
+8023975	Inst	1	MT	0
+11959873	Inst	1	TCv	0
+12778312	Inst	1	MT	0
+15584878	Inst	1	TC	0
+18310574	Inst	1	TC	0
+18962414	Inst	1	TC	0
+19440209	Inst	1	TC	0
+21364550	Inst	1	TC	0
+84395445	Inst	1	MT	0
+8022340	Inst	1	TCv	0
+10108118	Inst	1	TC	0
+10896132	Inst	1	TC	0
+12777719	Inst	1	TC	0
+14771192	Inst	1	MT	0
+15175341	Inst	1	TC	0
+18798060	Inst	1	TC	0
+19487152	Inst	1	TC	0
+19487788	Inst	1	MT	0
+13688279	Inst	1	TCv	0
+14917541	Inst	1	TC	0
+17129511	Inst	1	TC	0
+6167653	Inst	1	TC	0
+8076223	Inst	1	TC	0
+8519916	Inst	1	TC	0
+8705826	Inst	1	TC	0
+9361725	Inst	1	MT	0
+10856682	Inst	1	MT	0
+10905552	Inst	1	TCv	0
+11462892	Inst	1	TC	0
+11954097	Inst	1	TC	0
+12220551	Inst	1	MT	0
+12487701	Inst	1	TC	0
+13013755	Inst	1	TC	0
+14131507	Inst	1	TCv	0
+14255791	Inst	1	TC	0
+14447036	Inst	1	MT	0
+14447384	Inst	1	TC	0
+15074652	Inst	1	TC	0
+5740339	Asist	3	TC	0
+9279327	AuxIII	3	EXC	0
+9476268	Asoc	3	TC	0
+5201622	Agre	3	TCv	0
+8032732	Inst	3	TC	0
+10720364	Agre	3	TC	0
+7080727	Agre	3	EXC	0
+9473824	Agre	3	TC	0
+8021842	Inst	1	TCv	0
+8720054	Inst	1	TC	0
+15234079	Inst	1	TC	0
+15234490	Inst	1	TC	0
+15695079	Inst	1	TC	0
+16019616	Aux	1	TC	0
+16019964	Inst	1	TC	0
+16020533	Inst	1	MT	0
+16020822	Inst	1	TC	0
+16316134	Inst	1	TC	0
+16657714	Inst	1	TC	0
+17769893	Inst	1	TC	0
+18579167	Inst	1	TC	0
+18579209	Inst	1	TC	0
+22656117	Inst	1	TC	0
+3941437	Inst	1	TC	0
+4353531	Inst	1	TC	0
+8045536	Inst	1	TC	0
+8075648	Inst	1	TC	0
+8707022	Inst	1	TCv	0
+11465010	Inst	1	MT	0
+12487991	Inst	1	TC	0
+13790769	Inst	1	TC	0
+15695370	Inst	1	MT	0
+15695737	Inst	1	TC	0
+16907428	Inst	1	TC	0
+17321417	Inst	1	TC	0
+18264711	Inst	1	TC	0
+3297745	Inst	1	MT	0
+4700593	Inst	1	TCv	0
+7973553	Inst	1	TCv	0
+9203225	Inst	1	TCv	0
+9390966	Inst	1	TC	0
+9392858	Inst	1	TC	0
+9496511	Inst	1	MT	0
+10241655	Inst	1	TCv	0
+11236773	Inst	1	TC	0
+11319506	Inst	1	TC	0
+11460232	Inst	1	TCv	0
+11912990	Inst	1	TCv	0
+11914501	Inst	1	MT	0
+11955728	Inst	1	MT	0
+12354608	Inst	1	TC	0
+12655010	Inst	1	MT	0
+13208733	Inst	1	TCv	0
+13803295	Inst	1	TCv	0
+14022931	Inst	1	TC	0
+14249554	Inst	1	TC	0
+14957722	Inst	1	TC	0
+15174952	Inst	1	MT	0
+15357168	Inst	1	TC	0
+15432243	Inst	1	TC	0
+15947784	Inst	1	MT	0
+16351978	Inst	1	TC	0
+16716300	Inst	1	TC	0
+16743379	Inst	1	TC	0
+17436794	Inst	1	TC	0
+17437536	Inst	1	TC	0
+17794526	Inst	1	TC	0
+18055149	Inst	1	TC	0
+18208897	Inst	1	TC	0
+18614251	Inst	1	TCv	0
+18615818	Inst	1	TC	0
+19236516	Inst	1	MT	0
+8038358	Aux	1	TCv	0
+11361473	Inst	1	TCv	0
+12321519	Inst	1	MT	0
+13098687	Aux	1	MT	0
+15621504	Aux	1	TCv	0
+15920357	Aux	1	TC	0
+17129591	Aux	1	MT	0
+17239002	Inst	1	MT	0
+17662802	Aux	1	MT	0
+2086595	Inst	1	MT	0
+8023615	Inst	1	TCv	0
+8035343	Inst	1	MT	0
+8040696	Inst	1	MT	0
+8043996	Inst	1	TC	0
+9320887	Inst	1	MT	0
+9398159	Inst	1	TC	0
+11960981	Inst	1	TC	0
+13309223	Inst	1	MT	0
+13648065	Inst	1	MT	0
+13803902	Inst	1	MT	0
+14067007	Inst	1	TC	0
+14171327	Inst	1	MT	0
+14267897	Inst	1	TC	0
+14320450	Inst	1	MT	0
+15174936	Aux	1	TCv	0
+15295994	Aux	1	TC	0
+15296686	Inst	1	TC	0
+15621939	Inst	1	MT	0
+15755730	Inst	1	MT	0
+15784489	Inst	1	TC	0
+16039221	Inst	1	MT	0
+16199520	Inst	1	MT	0
+16445626	Inst	1	MT	0
+16655032	Inst	1	TC	0
+17130332	Inst	1	MT	0
+17130671	Inst	1	MT	0
+17323027	Aux	1	TC	0
+3223045	Inst	1	TC	0
+8039615	Inst	1	TCv	0
+10717019	Inst	1	TCv	0
+12778229	Inst	1	MT	0
+13966349	Inst	1	MT	0
+14107223	Inst	1	TCv	0
+10172170	Inst	1	TCv	0
+11036485	Inst	1	TCv	0
+13524598	Inst	1	MT	0
+17129049	Inst	1	TCv	0
 \.
 
 
@@ -922,12 +1484,9 @@ ELEC6042	Electiva IV	t	04	1
 FSC1244	Formación Socio Crítica IV	f	04	5
 PORTINST-434	Portugues Instrumental	f	08	2
 PRACPROF-41216	Practicas Profesionales III	f	08	2
-PRO570419	Dirección, Control y Evaluación de Sistemas Adm	f	04	3
 PRO660422	Desarrollo de Nuevas Tendencias en la Gestión Contable Finan	f	07	3
-PRO700424	Dirección, Control y Evaluación de Sistemas Adm	f	04	3
 PROYSOCI-479	Proyecto Sociointegrador IV	f	08	3
 SALUOCFO-456	Salud Ocupacional en Fonoaudiología	f	08	2
-SHDD9043	Seminario Habilidades Directivas II	f	04	2
 AGBSD142	Biodiversidad y Sociodiversidad	f	01	2
 AGPFI1126	Proyecto Formativo I	f	01	3
 AGPFI1166	Proyecto Formativo I	f	01	3
@@ -1037,6 +1596,7 @@ AGREA262	Reproducción de Especies Animales	f	01	2
 AGSC00	Servicio Comunitario	f	01	5
 AGSEA242	Suelo, Ecología y Agricultura	f	01	2
 AGSEA262	Suelo, Ecología y Agricultura	f	01	2
+PG234	Minería II	f	05	2
 AGTCSI242	Topografía Catastro y Sistemas de Información Geográfica	f	01	2
 AGTOG262	Topografía	f	01	2
 AVTTT2-1084	Administración de Agencias de Viajes y Transporte Turistico	f	06	2
@@ -1145,7 +1705,6 @@ PG225	Soberanía Política e Independencia Económica II	f	05	5
 PG231	Estratigrafía	f	05	2
 PG232	Geología de Campo	f	05	2
 PG233	Mecánica Racional	f	05	2
-PG234	Minería II	f	05	2
 PG235	Políticas Energeticas	f	05	5
 PG311	Estadistica	f	05	2
 PG312	Mecánica de Fluidos	f	05	2
@@ -1381,6 +1940,41 @@ PRO2749	Proyecto IV	f	04	3
 GP9043	Gestión Pública	f	04	2
 IOP9043	Investigación de Operaciones	f	04	2
 AMS6002	Administración en el Nuevo Modelo Social	f	04	2
+ADF6042	Administración Financiera	f	04	2
+SIF6042	Sistemas Financieros	f	04	2
+FSC18046	Formación Socio Crítica IV	f	04	5
+PNNC9003	Proyecto Nacional y Nueva Ciudadanía	f	04	5
+PCG6042	Control de Gestión Administrativa	f	04	2
+PP13041	Paquetes Informáticos Aplicados a la Administración	f	04	2
+PRO6002	La Administración en el Nuevo Modelo Social	f	04	2
+GRPC3001	Gestión de Riesgos y Protección Civil	f	04	2
+MAT6002	Matemática	f	04	2
+PRO570419	Dirección, Control y Evaluación de Sistemas Administrativos	f	04	3
+DIE6002	Desarrollo Integral	f	04	2
+APAA3041	Auditoria Administrativa	f	04	2
+OF6012	Operaciones Financieras	f	04	2
+ELEC49043	Electiva IV	t	04	1
+AFPS6033	Electiva III	t	04	1
+ES3011	Estadistica	f	04	2
+AEF9032	Analisis e Interpretación de Estados Financieros	f	04	2
+FSC18016	Formación Socio Crítica I	f	04	5
+PPL6032	Planificación	f	04	2
+PTE3011	Técnicas de Expresión Oral y Escrita	f	04	2
+FSC18036	Formación Socio Crítica III	f	04	5
+DFC6012	Deberes Formales del Contribuyente	f	04	2
+PRO570319	Planificación, Diseño, Desarrollo e Innovación de Sistemas Administrativos	f	04	2
+CON12014	Contabilidad I	f	04	2
+PRE9033	Presupuesto Público y Privado	f	04	2
+ADC6022	Administración de Costos	f	04	2
+FA12014	Fundamentos de la Administración	f	04	2
+PCG3011	Contabilidad Gubernamental	f	04	2
+PDF3012	Deberes Formales del Contribuyente	f	04	2
+TPM6012	Teoría y Práctica del Mercadeo	f	04	2
+SHA9023	Seminario Habilidades Directivas I	f	04	2
+CGA9023	Electiva I	t	04	1
+FSC18026	Formación Socio Crítica II	f	04	5
+ELEC29023	Electiva II	t	04	1
+SHDD9043	Seminario Habilidades Directivas II	f	04	2
 \.
 
 
@@ -1396,14 +1990,14 @@ COPY carga (id, "dividirHT", "nuevoNombre", "idProfesor", "idSeccion", "idSuplen
 -- Name: carga_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('carga_id_seq', 1, false);
+SELECT pg_catalog.setval('carga_id_seq', 98, true);
 
 
 --
 -- Name: carreraSede_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"carreraSede_id_seq"', 8, true);
+SELECT pg_catalog.setval('"carreraSede_id_seq"', 10, true);
 
 
 --
@@ -1439,14 +2033,14 @@ SELECT pg_catalog.setval('eje_id_seq', 5, true);
 -- Name: estructuraCS_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"estructuraCS_id_seq"', 2, true);
+SELECT pg_catalog.setval('"estructuraCS_id_seq"', 6, true);
 
 
 --
 -- Name: estructura_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('estructura_id_seq', 2, true);
+SELECT pg_catalog.setval('estructura_id_seq', 3, true);
 
 
 --
@@ -1536,6 +2130,210 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1444674833	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Deberes Formales del Contribuyente II islr</strong>	update &quot;unidadCurricular&quot; set id=&#039;DFC9023&#039;, nombre=&#039;Deberes Formales del Contribuyente II&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PDF3012&#039;
 1444674862	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Presupuesto Público y Privado</strong>	update &quot;unidadCurricular&quot; set id=&#039;PPP9023&#039;, nombre=&#039;Presupuesto Público y Privado&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PPP9033&#039;
 1444674923	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2014</strong>	update malla set id=&#039;PNFA-2014&#039;, fecha=&#039;2015-10-12&#039; where id=&#039;PNFA-2014&#039;
+1444937925	Nombre Apellido (12345678)	Se agregó la estructura <strong>Prosecucion</strong>	insert into estructura values(default, &#039;Prosecucion&#039;, &#039;\n\t\t{\n\t\t\t&quot;periodos&quot; : [\n\t\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Trayecto de Transicion&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;TT&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t&#039;)
+1444937973	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Administración</strong>	update carrera set id=&#039;04&#039;, nombre=&#039;PNF Administración&#039;, &quot;idArea&quot;=&#039;2&#039; where id=&#039;04&#039;
+1444938216	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFA-2014-PRO</strong>	insert into malla values(&#039;PNFA-2014-PRO&#039;, &#039;2015-10-15&#039;) returning id
+1444938443	Nombre Apellido (12345678)	Se activó el nuevo periodo <strong>2015-B</strong>	insert into periodo values(default, &#039;2015-B&#039;, &#039;2015-10-12&#039;, &#039;2015-10-25&#039;, &#039;p&#039;, &#039;2&#039;)\n\ninsert into periodo values(default, &#039;2015-B&#039;, &#039;2015-10-15&#039;, &#039;2015-11-29&#039;, &#039;a&#039;, &#039;2&#039;)
+1444938444	Nombre Apellido (12345678)	Se activó el nuevo periodo <strong>2015-B</strong>	insert into periodo values(default, &#039;2015-B&#039;, &#039;2015-10-12&#039;, &#039;2015-10-25&#039;, &#039;p&#039;, &#039;3&#039;)\n\ninsert into periodo values(default, &#039;2015-B&#039;, &#039;2015-10-15&#039;, &#039;2015-11-29&#039;, &#039;a&#039;, &#039;3&#039;)
+1444938547	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T1-t1</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;2&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t1&#039;)
+1444938579	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T1-t1</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;2&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t1&#039;)
+1444938866	Nombre Apellido (12345678)	Se agregó al profesor <strong>Maria Carrera (16317126)</strong>	insert into persona values(&#039;16317126&#039;, &#039;Maria&#039;, null, &#039;Carrera&#039;, null, &#039;f&#039;, &#039;marca1911@yahoo.es&#039;, &#039;Av. qwe&#039;, &#039;04247625391&#039;, null)\n\ninsert into profesor values(&#039;16317126&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;2&#039;)
+1444938905	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Carrera Maria (16317126)</strong>	insert into carga values(default, false, null, &#039;16317126&#039;, &#039;1&#039;, null, &#039;CON15015&#039;)
+1444938906	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Carrera Maria (16317126)</strong>	insert into carga values(default, false, null, &#039;16317126&#039;, &#039;2&#039;, null, &#039;CON15015&#039;)
+1444938966	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Vasquez Rosa (8021736)</strong>	insert into carga values(default, false, null, &#039;8021736&#039;, &#039;1&#039;, null, &#039;EOE6012&#039;)
+1444939015	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Perez Idalba (9473423)</strong>	insert into carga values(default, false, null, &#039;9473423&#039;, &#039;1&#039;, null, &#039;FSC12014&#039;)
+1444939024	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Perez Idalba (9473423)</strong>	insert into carga values(default, false, null, &#039;9473423&#039;, &#039;2&#039;, null, &#039;EOE6012&#039;)
+1444939072	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Marquez Yadira (9475173)</strong>	insert into carga values(default, false, null, &#039;9475173&#039;, &#039;1&#039;, null, &#039;TIC6012&#039;)
+1444946963	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Seminario Habilidades Directivas II</strong>	update &quot;unidadCurricular&quot; set id=&#039;SHDD9043&#039;, nombre=&#039;Habilidades Directivas II&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;SHDD9043&#039;
+1444947068	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Administración Financiera</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ADF6042&#039;, &#039;Administración Financiera&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444947121	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Sistemas Financieros</strong>	insert into &quot;unidadCurricular&quot; values(&#039;SIF6042&#039;, &#039;Sistemas Financieros&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444947246	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica IV</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC18046&#039;, &#039;Formación Socio Crítica IV&#039;, false, &#039;04&#039;, &#039;5&#039;)
+1444947325	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Proyecto Nacional y Nueva Ciudadanía</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PNNC9003&#039;, &#039;Proyecto Nacional y Nueva Ciudadanía&#039;, false, &#039;04&#039;, &#039;5&#039;)
+1444947338	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Control de Gestión Administrativa</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PCG6042&#039;, &#039;Control de Gestión Administrativa&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444947384	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Paquetes Informáticos Aplicados a la Administración</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PP13041&#039;, &#039;Paquetes Informáticos Aplicados a la Administración&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444947871	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>La Administración en el Nuevo Modelo Social</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRO6002&#039;, &#039;La Administración en el Nuevo Modelo Social&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444948048	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Gestión de Riesgos y Protección Civil</strong>	insert into &quot;unidadCurricular&quot; values(&#039;GRPC3001&#039;, &#039;Gestión de Riesgos y Protección Civil&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444948188	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Matemática</strong>	insert into &quot;unidadCurricular&quot; values(&#039;MAT6002&#039;, &#039;Matemática&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444948287	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Dirección, Control y Evaluación de Sistemas Adm</strong>	update &quot;unidadCurricular&quot; set id=&#039;PRO570419&#039;, nombre=&#039;Dirección, Control y Evaluación de Sistemas Administrativos&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;3&#039; where id=&#039;PRO570419&#039;
+1444948337	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Desarrollo Integral</strong>	insert into &quot;unidadCurricular&quot; values(&#039;DIE6002&#039;, &#039;Desarrollo Integral&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444948347	Nombre Apellido (12345678)	Se eliminó <strong>PRO700424</strong>	delete from &quot;unidadCurricular&quot; where &quot;id&quot;=&#039;PRO700424&#039;
+1444948397	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Auditoria Administrativa</strong>	insert into &quot;unidadCurricular&quot; values(&#039;APAA3041&#039;, &#039;Auditoria Administrativa&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1445375889	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1444948398	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Operaciones Financieras</strong>	insert into &quot;unidadCurricular&quot; values(&#039;OF6012&#039;, &#039;Operaciones Financieras&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444948462	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva IV</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ELEC49043&#039;, &#039;Electiva IV&#039;, true, &#039;04&#039;, &#039;1&#039;)
+1444948505	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva III</strong>	insert into &quot;unidadCurricular&quot; values(&#039;AFPS6033&#039;, &#039;Electiva III&#039;, true, &#039;04&#039;, &#039;1&#039;)
+1444948513	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Estadistica</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ES3011&#039;, &#039;Estadistica&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444948585	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Analisis e Interpretación de Estados Financieros</strong>	insert into &quot;unidadCurricular&quot; values(&#039;AEF9032&#039;, &#039;Analisis e Interpretación de Estados Financieros&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444948810	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC18016&#039;, &#039;Formación Socio Crítica I&#039;, false, &#039;04&#039;, &#039;5&#039;)
+1444948915	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Planificación</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PPL6032&#039;, &#039;Planificación&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444948940	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Técnicas de Expresión Oral y Escrita</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PTE3011&#039;, &#039;Técnicas de Expresión Oral y Escrita&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949023	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica III</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC18036&#039;, &#039;Formación Socio Crítica III&#039;, false, &#039;04&#039;, &#039;5&#039;)
+1444949079	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Deberes Formales del Contribuyente</strong>	insert into &quot;unidadCurricular&quot; values(&#039;DFC6012&#039;, &#039;Deberes Formales del Contribuyente&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949127	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Planificación, Diseño, Desarrollo e Innovación de Sistemas Administrativos</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRO570319&#039;, &#039;Planificación, Diseño, Desarrollo e Innovación de Sistemas Administrativos&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949189	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Contabilidad I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;CON12014&#039;, &#039;Contabilidad I&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949197	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Presupuesto Público y Privado</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRE9033&#039;, &#039;Presupuesto Público y Privado&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949235	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Administración de Costos</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ADC6022&#039;, &#039;Administración de Costos&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949311	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Fundamentos de la Administración</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FA12014&#039;, &#039;Fundamentos de la Administración&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949325	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Contabilidad Gubernamental</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PCG3011&#039;, &#039;Contabilidad Gubernamental&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949384	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Deberes Formales del Contribuyente</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PDF3012&#039;, &#039;Deberes Formales del Contribuyente&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949481	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Teoría y Práctica del Mercadeo</strong>	insert into &quot;unidadCurricular&quot; values(&#039;TPM6012&#039;, &#039;Teoría y Práctica del Mercadeo&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949738	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Seminario Habilidades Directivas I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;SHA9023&#039;, &#039;Seminario Habilidades Directivas I&#039;, false, &#039;04&#039;, &#039;2&#039;)
+1444949813	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;CGA9023&#039;, &#039;Electiva I&#039;, true, &#039;04&#039;, &#039;1&#039;)
+1444949858	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC18026&#039;, &#039;Formación Socio Crítica II&#039;, false, &#039;04&#039;, &#039;5&#039;)
+1444949911	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ELEC29023&#039;, &#039;Electiva II&#039;, true, &#039;04&#039;, &#039;1&#039;)
+1445015823	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFA-2010</strong>	insert into malla values(&#039;PNFA-2010&#039;, &#039;2015-10-16&#039;) returning id
+1445116917	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
+1445116969	Nombre Apellido (12345678)	Se creó el respaldo <strong>2015-10-17_16-52-47.sql</strong>	No SQL
+1445123446	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
+1445123545	Nombre Apellido (12345678)	Se eliminó el respaldo <strong>2015-10-17_16-52-47.sql</strong>	No SQL
+1445123549	Nombre Apellido (12345678)	Se creó el respaldo <strong>2015-10-17_18-42-29.sql</strong>	No SQL
+1445124445	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
+1445284277	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Gonzalez Silvia (15175795)</strong>	insert into carga values(default, false, null, &#039;15175795&#039;, &#039;4&#039;, null, &#039;PRO570119&#039;)
+1445124471	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Habilidades Directivas II</strong>	update &quot;unidadCurricular&quot; set id=&#039;SHDD9043&#039;, nombre=&#039;Seminario Habilidades Directivas II&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;SHDD9043&#039;
+1445141723	Nombre Apellido (12345678)	Se eliminó el respaldo <strong>2015-10-17_18-42-29.sql</strong>	No SQL
+1445273779	Nombre Apellido (12345678)	Se eliminó la malla <strong>PNFA-2014-PRO</strong>	delete from malla where id=&#039;PNFA-2014-PRO&#039; returning id
+1445274035	Nombre Apellido (12345678)	Se eliminó <strong>2015-B</strong> de <strong>PNF Administración - Ejido (Prosecucion)</strong>	delete from periodo where id=&#039;2015-B&#039; and &quot;idECS&quot;=&#039;3&#039;
+1445274072	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Administración</strong>	update carrera set id=&#039;04&#039;, nombre=&#039;PNF Administración&#039;, &quot;idArea&quot;=&#039;2&#039; where id=&#039;04&#039;
+1445274348	Nombre Apellido (12345678)	Se modificó la estructura <strong>Prosecucion</strong>	update estructura set nombre=&#039;Prosecucion&#039;, estructura=&#039;\n\t\t{\n\t\t\t&quot;periodos&quot; : [\n\t\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Trayecto de Transicion&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;TT&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Trayecto 3&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;T3&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : false,\n\t\t\t\t\t&quot;subperiodos&quot; : [\n\t\t\t\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 1&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t1&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 2&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t2&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 3&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t3&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Trayecto 4&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;T4&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : false,\n\t\t\t\t\t&quot;subperiodos&quot; : [\n\t\t\t\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 1&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t1&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 2&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t2&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 3&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t3&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t&#039; where nombre=&#039;Prosecucion&#039;
+1445274398	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Administración</strong>	update carrera set id=&#039;04&#039;, nombre=&#039;PNF Administración&#039;, &quot;idArea&quot;=&#039;2&#039; where id=&#039;04&#039;
+1445275147	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFA-2014-PRO</strong>	insert into malla values(&#039;PNFA-2014-PRO&#039;, &#039;2015-10-19&#039;) returning id
+1445280959	Nombre Apellido (12345678)	Se modificó el periodo <strong>2015-B</strong> de <strong>PNF Administración - Ejido (PNF Trimestral)</strong>	update periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2015-10-12&#039;, &quot;fechaFin&quot;=&#039;2015-10-25&#039; where id=&#039;2015-B&#039; and tipo=&#039;p&#039; and &quot;idECS&quot;=&#039;2&#039;\n\nupdate periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2015-05-18&#039;, &quot;fechaFin&quot;=&#039;2015-10-03&#039; where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=&#039;2&#039;
+1445281856	Nombre Apellido (12345678)	Se modificó al profesor <strong>Santo Coronel (5753564)</strong>	update persona set cedula=&#039;5753564&#039;, nombre=&#039;Santo&#039;, &quot;segundoNombre&quot;=&#039;Segundo&#039;, apellido=&#039;Coronel&#039;, &quot;segundoApellido&quot;=&#039;Romero&#039;, sexo=&#039;m&#039;, correo=&#039;ssrc513@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04164747101&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;5753564&#039;\n\nupdate profesor set cedula=&#039;5753564&#039;, categoria=&#039;Tit&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;49&#039; where cedula=&#039;5753564&#039;
+1445281897	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Coronel Santo (5753564)</strong>	insert into carga values(default, false, null, &#039;5753564&#039;, &#039;2&#039;, null, &#039;FSC12014&#039;)
+1445282028	Nombre Apellido (12345678)	Se agregó al profesor <strong>Carlos Hernandez (11955850)</strong>	insert into persona values(&#039;11955850&#039;, &#039;Carlos&#039;, null, &#039;Hernandez&#039;, null, &#039;m&#039;, &#039;carloshla2007@gmail.com&#039;, &#039;Asd&#039;, &#039;04263281790&#039;, null)\n\ninsert into profesor values(&#039;11955850&#039;, &#039;Tit&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;10&#039;)
+1445282087	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Hernandez Carlos (11955850)</strong>	insert into carga values(default, false, null, &#039;11955850&#039;, &#039;1&#039;, null, &#039;FAD15015&#039;)
+1445282279	Nombre Apellido (12345678)	Se desasignó la sección <strong>A</strong> del <strong>T1-t1</strong> del profesor <strong>Hernandez Carlos (11955850)</strong>	delete from carga where id=&#039;8&#039;
+1445282354	Nombre Apellido (12345678)	Se modificó al profesor <strong>Maria Marquez (7934845)</strong>	update persona set cedula=&#039;7934845&#039;, nombre=&#039;Maria&#039;, &quot;segundoNombre&quot;=&#039;Carolina&#039;, apellido=&#039;Marquez&#039;, &quot;segundoApellido&quot;=&#039;Uzcategui&#039;, sexo=&#039;f&#039;, correo=&#039;mcarolinamar@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04247708690&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;7934845&#039;\n\nupdate profesor set cedula=&#039;7934845&#039;, categoria=&#039;Agre&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;10&#039; where cedula=&#039;7934845&#039;
+1445282372	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Marquez Maria (7934845)</strong>. Suple <strong>Sifontes Omel (9906067)</strong>	insert into carga values(default, false, null, &#039;7934845&#039;, &#039;1&#039;, 9906067, &#039;FAD15015&#039;)
+1445282395	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Hernandez Carlos (11955850)</strong>	insert into carga values(default, false, null, &#039;11955850&#039;, &#039;2&#039;, null, &#039;FAD15015&#039;)
+1445282650	Nombre Apellido (12345678)	Se agregó al profesor <strong>Lenix Omana (1010633)</strong>	insert into persona values(&#039;1010633&#039;, &#039;Lenix&#039;, null, &#039;Omana&#039;, null, &#039;f&#039;, &#039;lenix@ula.ve&#039;, &#039;Asd&#039;, &#039;04147485841&#039;, null)\n\ninsert into profesor values(&#039;1010633&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;10&#039;)
+1445282673	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Omana Lenix (1010633)</strong>	insert into carga values(default, false, null, &#039;1010633&#039;, &#039;2&#039;, null, &#039;PRO27019&#039;)
+1445282766	Nombre Apellido (12345678)	Se agregó al profesor <strong>Jesus Casique (14281324)</strong>	insert into persona values(&#039;14281324&#039;, &#039;Jesus&#039;, null, &#039;Casique&#039;, null, &#039;m&#039;, &#039;casiquemorenojesus@gmail.com&#039;, &#039;Asd&#039;, &#039;04247127978&#039;, null)\n\ninsert into profesor values(&#039;14281324&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;50&#039;)
+1445282784	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Casique Jesus (14281324)</strong>	insert into carga values(default, false, null, &#039;14281324&#039;, &#039;1&#039;, null, &#039;PRO27019&#039;)
+1445282813	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Sarmiento Carlos (11705856)</strong>	insert into carga values(default, false, null, &#039;11705856&#039;, &#039;2&#039;, null, &#039;TIC6012&#039;)
+1445283005	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T1-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t3&#039;)
+1445283043	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T1-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t3&#039;)
+1445283082	Nombre Apellido (12345678)	Se agregó la sección <strong>C</strong> del <strong>T1-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;C&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t3&#039;)
+1445283345	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Carrera Maria (16317126)</strong>	insert into carga values(default, false, null, &#039;16317126&#039;, &#039;3&#039;, null, &#039;CON12014&#039;)
+1445283379	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Contreras Olga (11108398)</strong>	insert into carga values(default, false, null, &#039;11108398&#039;, &#039;4&#039;, null, &#039;CON12014&#039;)
+1445283783	Nombre Apellido (12345678)	Se agregó al profesor <strong>Gioconda Saez (11953052)</strong>	insert into persona values(&#039;11953052&#039;, &#039;Gioconda&#039;, &#039;Marlin&#039;, &#039;Saez&#039;, &#039;Torres&#039;, &#039;f&#039;, &#039;giocopaul@gmail.com&#039;, &#039;Asdasd&#039;, &#039;0416-5222543&#039;, null)\n\ninsert into profesor values(&#039;11953052&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;2&#039;)
+1445284113	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Saez Gioconda (11953052)</strong>	insert into carga values(default, false, null, &#039;11953052&#039;, &#039;5&#039;, null, &#039;CON12014&#039;)
+1445284131	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Colina Judith (6547603)</strong>	insert into carga values(default, false, null, &#039;6547603&#039;, &#039;3&#039;, null, &#039;DFC6012&#039;)
+1445284140	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Gutierrez Pedro (9234597)</strong>	insert into carga values(default, false, null, &#039;9234597&#039;, &#039;4&#039;, null, &#039;DFC6012&#039;)
+1445284147	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Ochoa Alejandro (12048353)</strong>	insert into carga values(default, false, null, &#039;12048353&#039;, &#039;5&#039;, null, &#039;DFC6012&#039;)
+1445284178	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;3&#039;, null, &#039;DAR9013&#039;)
+1445284179	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;4&#039;, null, &#039;DAR9013&#039;)
+1445284180	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;5&#039;, null, &#039;DAR9013&#039;)
+1445284216	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;3&#039;, null, &#039;FSC18016&#039;)
+1445284217	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;4&#039;, null, &#039;FSC18016&#039;)
+1445284227	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Sifontes Omel (9906067)</strong>	insert into carga values(default, false, null, &#039;9906067&#039;, &#039;5&#039;, null, &#039;FSC18016&#039;)
+1445284263	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Contreras Olga (11108398)</strong>	insert into carga values(default, false, null, &#039;11108398&#039;, &#039;3&#039;, null, &#039;PRO570119&#039;)
+1445284389	Nombre Apellido (12345678)	Se agregó al profesor <strong>Vianney Canache (8223161)</strong>	insert into persona values(&#039;8223161&#039;, &#039;Vianney&#039;, null, &#039;Canache&#039;, null, &#039;m&#039;, &#039;fitosiciliano@hotmail.com&#039;, &#039;Asd&#039;, &#039;0424-7686768&#039;, null)\n\ninsert into profesor values(&#039;8223161&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;10&#039;)
+1445284408	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Canache Vianney (8223161)</strong>	insert into carga values(default, false, null, &#039;8223161&#039;, &#039;5&#039;, null, &#039;PRO570119&#039;)
+1445284428	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Abarca Oswaldo (3966127)</strong>	insert into carga values(default, false, null, &#039;3966127&#039;, &#039;3&#039;, null, &#039;IDI9013&#039;)
+1445284434	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Sosa Zoila (4489957)</strong>	insert into carga values(default, false, null, &#039;4489957&#039;, &#039;4&#039;, null, &#039;IDI9013&#039;)
+1445284441	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Puentes Lilian (8683060)</strong>	insert into carga values(default, false, null, &#039;8683060&#039;, &#039;5&#039;, null, &#039;IDI9013&#039;)
+1445284492	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Nava Emiro (8041510)</strong>	insert into carga values(default, false, null, &#039;8041510&#039;, &#039;3&#039;, null, &#039;OF6012&#039;)
+1445284971	Nombre Apellido (12345678)	Se agregó al profesor <strong>Yasmin Carmona (9643447)</strong>	insert into persona values(&#039;9643447&#039;, &#039;Yasmin&#039;, null, &#039;Carmona&#039;, null, &#039;f&#039;, &#039;yasmincarmina310@gmail.com&#039;, &#039;Asd&#039;, &#039;0416-3700829&#039;, null)\n\ninsert into profesor values(&#039;9643447&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;10&#039;)
+1445284987	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Carmona Yasmin (9643447)</strong>	insert into carga values(default, false, null, &#039;9643447&#039;, &#039;4&#039;, null, &#039;OF6012&#039;)
+1445285002	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Omana Lenix (1010633)</strong>	insert into carga values(default, false, null, &#039;1010633&#039;, &#039;5&#039;, null, &#039;OF6012&#039;)
+1445285022	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Ochoa Alejandro (12048353)</strong>	insert into carga values(default, false, null, &#039;12048353&#039;, &#039;3&#039;, null, &#039;TPM6012&#039;)
+1445285037	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Quintero Jose  (8022671)</strong>	insert into carga values(default, false, null, &#039;8022671&#039;, &#039;4&#039;, null, &#039;TPM6012&#039;)
+1445285048	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Quintero Jose  (8022671)</strong>	insert into carga values(default, false, null, &#039;8022671&#039;, &#039;5&#039;, null, &#039;TPM6012&#039;)
+1445285096	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T2-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T2-t3&#039;)
+1445285107	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T2-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T2-t3&#039;)
+1445285205	Nombre Apellido (12345678)	Se agregó al profesor <strong>Doris Villalba (5871766)</strong>	insert into persona values(&#039;5871766&#039;, &#039;Doris&#039;, null, &#039;Villalba&#039;, null, &#039;f&#039;, &#039;dvilla44@gmail.com&#039;, &#039;Asd&#039;, &#039;0416-6700862&#039;, null)\n\ninsert into profesor values(&#039;5871766&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;50&#039;)
+1445285220	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Villalba Doris (5871766)</strong>	insert into carga values(default, false, null, &#039;5871766&#039;, &#039;6&#039;, null, &#039;PCG3011&#039;)
+1445285233	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Curvelo Jose (12817844)</strong>	insert into carga values(default, false, null, &#039;12817844&#039;, &#039;7&#039;, null, &#039;PCG3011&#039;)
+1445285245	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Pazos Denisse (10314511)</strong>	insert into carga values(default, false, null, &#039;10314511&#039;, &#039;6&#039;, null, &#039;CON12024&#039;)
+1445285246	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Pazos Denisse (10314511)</strong>	insert into carga values(default, false, null, &#039;10314511&#039;, &#039;7&#039;, null, &#039;CON12024&#039;)
+1445285267	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Casique Jesus (14281324)</strong>	insert into carga values(default, false, null, &#039;14281324&#039;, &#039;6&#039;, null, &#039;PDF3012&#039;)
+1445285268	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Casique Jesus (14281324)</strong>	insert into carga values(default, false, null, &#039;14281324&#039;, &#039;7&#039;, null, &#039;PDF3012&#039;)
+1445285306	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Peña Maritza (9028433)</strong>	insert into carga values(default, false, &#039;Calidad y Gestión Ambiental&#039;, &#039;9028433&#039;, &#039;6&#039;, null, &#039;ELEC29023&#039;)
+1445285307	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Peña Maritza (9028433)</strong>	insert into carga values(default, false, &#039;Calidad y Gestión Ambiental&#039;, &#039;9028433&#039;, &#039;7&#039;, null, &#039;ELEC29023&#039;)
+1445285341	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Garay Migdalia  (3692342)</strong>	insert into carga values(default, false, null, &#039;3692342&#039;, &#039;6&#039;, null, &#039;FSC18026&#039;)
+1445285357	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Sifontes Omel (9906067)</strong>	insert into carga values(default, false, null, &#039;9906067&#039;, &#039;7&#039;, null, &#039;FSC18026&#039;)
+1445286302	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Cardozo Dolly (5447146)</strong>	insert into carga values(default, false, null, &#039;5447146&#039;, &#039;6&#039;, null, &#039;SHA9023&#039;)
+1445286311	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Garay Migdalia  (3692342)</strong>	insert into carga values(default, false, null, &#039;3692342&#039;, &#039;7&#039;, null, &#039;SHA9023&#039;)
+1445286329	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Gutierrez Pedro (9234597)</strong>	insert into carga values(default, false, null, &#039;9234597&#039;, &#039;6&#039;, null, &#039;PRO57019&#039;)
+1445286338	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Hernandez Carlos (11955850)</strong>	insert into carga values(default, false, null, &#039;11955850&#039;, &#039;7&#039;, null, &#039;PRO57019&#039;)
+1445286965	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T3-t2</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t2&#039;)
+1445286980	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T3-t2</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t2&#039;)
+1445287002	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Carmona Yasmin (9643447)</strong>	insert into carga values(default, false, null, &#039;9643447&#039;, &#039;8&#039;, null, &#039;ADP9033&#039;)
+1445287086	Nombre Apellido (12345678)	Se agregó al profesor <strong>Emilia Graterol (12722753)</strong>	insert into persona values(&#039;12722753&#039;, &#039;Emilia&#039;, null, &#039;Graterol&#039;, null, &#039;f&#039;, &#039;emiliagraterol@yahoo.com&#039;, &#039;Asd&#039;, &#039;0424-7139955&#039;, null)\n\ninsert into profesor values(&#039;12722753&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;50&#039;)
+1445287094	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Graterol Emilia (12722753)</strong>	insert into carga values(default, false, null, &#039;12722753&#039;, &#039;9&#039;, null, &#039;ADP9033&#039;)
+1445287118	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Guillen Rodrigo (10104966)</strong>	insert into carga values(default, false, null, &#039;10104966&#039;, &#039;8&#039;, null, &#039;ADM6032&#039;)
+1445287119	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Guillen Rodrigo (10104966)</strong>	insert into carga values(default, false, null, &#039;10104966&#039;, &#039;9&#039;, null, &#039;ADM6032&#039;)
+1445287133	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;8&#039;, null, &#039;DAR9033&#039;)
+1445287134	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;9&#039;, null, &#039;DAR9033&#039;)
+1445287151	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;8&#039;, null, &#039;FSC18036&#039;)
+1445287152	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;9&#039;, null, &#039;FSC18036&#039;)
+1445287165	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Abarca Oswaldo (3966127)</strong>	insert into carga values(default, false, null, &#039;3966127&#039;, &#039;8&#039;, null, &#039;IDI9033&#039;)
+1445287166	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Abarca Oswaldo (3966127)</strong>	insert into carga values(default, false, null, &#039;3966127&#039;, &#039;9&#039;, null, &#039;IDI9033&#039;)
+1445287179	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Marquez Jose (9472514)</strong>	insert into carga values(default, false, null, &#039;9472514&#039;, &#039;8&#039;, null, &#039;PPL6032&#039;)
+1445287186	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Cardozo Dolly (5447146)</strong>	insert into carga values(default, false, null, &#039;5447146&#039;, &#039;9&#039;, null, &#039;PPL6032&#039;)
+1445287206	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Carmona Yasmin (9643447)</strong>	insert into carga values(default, false, null, &#039;9643447&#039;, &#039;8&#039;, null, &#039;PRO570319&#039;)
+1445287212	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Colina Judith (6547603)</strong>	insert into carga values(default, false, null, &#039;6547603&#039;, &#039;9&#039;, null, &#039;PRO570319&#039;)
+1445287224	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Pazos Denisse (10314511)</strong>	insert into carga values(default, false, null, &#039;10314511&#039;, &#039;8&#039;, null, &#039;PRE9033&#039;)
+1445287232	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Oballos Marielba (13525905)</strong>	insert into carga values(default, false, null, &#039;13525905&#039;, &#039;9&#039;, null, &#039;PRE9033&#039;)
+1445287454	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T3-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t3&#039;)
+1445287535	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T3-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t3&#039;)
+1445287554	Nombre Apellido (12345678)	Se agregó la sección <strong>C</strong> del <strong>T3-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;C&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t3&#039;)
+1445287943	Nombre Apellido (12345678)	Se agregó al profesor <strong>Maria Parra (6729553)</strong>	insert into persona values(&#039;6729553&#039;, &#039;Maria&#039;, &#039;Gloria&#039;, &#039;Parra&#039;, null, &#039;f&#039;, &#039;mariagloria.parrar@gmail.com&#039;, &#039;Asd&#039;, &#039;0416-8743486&#039;, null)\n\ninsert into profesor values(&#039;6729553&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;50&#039;)
+1445287991	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Marquez Maria (7934845)</strong>. Suple <strong>Canache Vianney (8223161)</strong>	insert into carga values(default, false, null, &#039;7934845&#039;, &#039;10&#039;, 8223161, &#039;ADM6032&#039;)
+1445287992	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Marquez Maria (7934845)</strong>. Suple <strong>Parra Maria (6729553)</strong>	insert into carga values(default, false, null, &#039;7934845&#039;, &#039;11&#039;, 6729553, &#039;ADM6032&#039;)
+1445288004	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Silvia (15175795)</strong>	insert into carga values(default, false, null, &#039;15175795&#039;, &#039;12&#039;, null, &#039;ADM6032&#039;)
+1445288349	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;10&#039;, null, &#039;DAR9033&#039;)
+1445288350	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;11&#039;, null, &#039;DAR9033&#039;)
+1445288351	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;12&#039;, null, &#039;DAR9033&#039;)
+1445288658	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Garay Migdalia  (3692342)</strong>	insert into carga values(default, false, null, &#039;3692342&#039;, &#039;10&#039;, null, &#039;FSC18036&#039;)
+1445288670	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Coronel Santo (5753564)</strong>	insert into carga values(default, false, null, &#039;5753564&#039;, &#039;11&#039;, null, &#039;FSC18036&#039;)
+1445288671	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Coronel Santo (5753564)</strong>	insert into carga values(default, false, null, &#039;5753564&#039;, &#039;12&#039;, null, &#039;FSC18036&#039;)
+1445288690	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Monsalve Merilin (17523454)</strong>	insert into carga values(default, false, null, &#039;17523454&#039;, &#039;10&#039;, null, &#039;PRO570319&#039;)
+1445288696	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Marquez Jose (9472514)</strong>	insert into carga values(default, false, null, &#039;9472514&#039;, &#039;11&#039;, null, &#039;PRO570319&#039;)
+1445288704	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Oballos Marielba (13525905)</strong>	insert into carga values(default, false, null, &#039;13525905&#039;, &#039;12&#039;, null, &#039;PRO570319&#039;)
+1445288851	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
+1445288920	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
+1445289152	Nombre Apellido (12345678)	Se agregó al profesor <strong>Alejandro Rojas (8039160)</strong>	insert into persona values(&#039;8039160&#039;, &#039;Alejandro&#039;, null, &#039;Rojas&#039;, null, &#039;m&#039;, &#039;alejandrorojas23@yahoo.com&#039;, &#039;Asd&#039;, &#039;0426-7625391&#039;, null)\n\ninsert into profesor values(&#039;8039160&#039;, &#039;Asist&#039;, &#039;3&#039;, &#039;EXC&#039;, &#039;1&#039;)
+1445289234	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Alejandro (8039160)</strong>	insert into carga values(default, false, null, &#039;8039160&#039;, &#039;10&#039;, null, &#039;TIC6032&#039;)
+1445289235	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Alejandro (8039160)</strong>	insert into carga values(default, false, null, &#039;8039160&#039;, &#039;11&#039;, null, &#039;TIC6032&#039;)
+1445289236	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Alejandro (8039160)</strong>	insert into carga values(default, false, null, &#039;8039160&#039;, &#039;12&#039;, null, &#039;TIC6032&#039;)
+1445289469	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T4-t2</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T4-t2&#039;)
+1445289487	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T4-t2</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T4-t2&#039;)
+1445289657	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Cardozo Dolly (5447146)</strong>	insert into carga values(default, false, null, &#039;5447146&#039;, &#039;13&#039;, null, &#039;ADF6042&#039;)
+1445289668	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Carrera Maria (16317126)</strong>	insert into carga values(default, false, null, &#039;16317126&#039;, &#039;14&#039;, null, &#039;ADF6042&#039;)
+1445289683	Nombre Apellido (12345678)	Se modificó al profesor <strong>Maria Carrero (16317126)</strong>	update persona set cedula=&#039;16317126&#039;, nombre=&#039;Maria&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Carrero&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;marca1911@yahoo.es&#039;, direccion=&#039;Av. qwe&#039;, telefono=&#039;04247625391&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;16317126&#039;\n\nupdate profesor set cedula=&#039;16317126&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;2&#039; where cedula=&#039;16317126&#039;
+1445289706	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Oballos Marielba (13525905)</strong>	insert into carga values(default, false, null, &#039;13525905&#039;, &#039;13&#039;, null, &#039;PCG6042&#039;)
+1445289719	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Gonzalez Silvia (15175795)</strong>	insert into carga values(default, false, null, &#039;15175795&#039;, &#039;14&#039;, null, &#039;PCG6042&#039;)
+1445289744	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Muñoz Miriam (8037619)</strong>	insert into carga values(default, false, null, &#039;8037619&#039;, &#039;13&#039;, null, &#039;PRO570419&#039;)
+1445289753	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Ochoa Alejandro (12048353)</strong>	insert into carga values(default, false, null, &#039;12048353&#039;, &#039;14&#039;, null, &#039;PRO570419&#039;)
+1445289803	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Hernandez Carlos (11955850)</strong>	insert into carga values(default, false, &#039;Administración de Empresas de Producción Social&#039;, &#039;11955850&#039;, &#039;13&#039;, null, &#039;AFPS6033&#039;)
+1445289828	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Parra Maria (6729553)</strong>	insert into carga values(default, false, &#039;Administración de Empresas de Producción Social&#039;, &#039;6729553&#039;, &#039;14&#039;, null, &#039;AFPS6033&#039;)
+1445289862	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Villamizar Mayuly (10718393)</strong>	insert into carga values(default, false, &#039;Administración de Empresas Turisticas&#039;, &#039;10718393&#039;, &#039;13&#039;, null, &#039;ELEC49043&#039;)
+1445289874	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Colina Judith (6547603)</strong>	insert into carga values(default, false, &#039;Administración de Empresas Turisticas&#039;, &#039;6547603&#039;, &#039;14&#039;, null, &#039;ELEC49043&#039;)
+1445289894	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;13&#039;, null, &#039;FSC18046&#039;)
+1445289911	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Garay Migdalia  (3692342)</strong>	insert into carga values(default, false, null, &#039;3692342&#039;, &#039;14&#039;, null, &#039;FSC18046&#039;)
+1445289923	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Marquez Jose (9472514)</strong>	insert into carga values(default, false, null, &#039;9472514&#039;, &#039;13&#039;, null, &#039;FEP9043&#039;)
+1445289942	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Monsalve Merilin (17523454)</strong>	insert into carga values(default, false, null, &#039;17523454&#039;, &#039;14&#039;, null, &#039;FEP9043&#039;)
+1445289961	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Parra Maria (6729553)</strong>	insert into carga values(default, false, null, &#039;6729553&#039;, &#039;13&#039;, null, &#039;SHDD9043&#039;)
+1445289969	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Villamizar Mayuly (10718393)</strong>	insert into carga values(default, false, null, &#039;10718393&#039;, &#039;14&#039;, null, &#039;SHDD9043&#039;)
+1445290888	Nombre Apellido (12345678)	Se creó el respaldo <strong>2015-10-19_17-11-26.sql</strong>	No SQL
+1445371538	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
+1445371679	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-01&#039; where id=&#039;PNFA-2010&#039;
+1445375830	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445376169	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445391099	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Informática</strong>	update carrera set id=&#039;03&#039;, nombre=&#039;PNF Informática&#039;, &quot;idArea&quot;=&#039;1&#039; where id=&#039;03&#039;
+1445391114	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Informática</strong>	update carrera set id=&#039;03&#039;, nombre=&#039;PNF Informática&#039;, &quot;idArea&quot;=&#039;1&#039; where id=&#039;03&#039;
+1445391131	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Informática</strong>	update carrera set id=&#039;03&#039;, nombre=&#039;PNF Informática&#039;, &quot;idArea&quot;=&#039;1&#039; where id=&#039;03&#039;
+1445391162	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445391178	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445391223	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445391268	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445391465	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445392882	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445432885	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445433015	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
+1445433071	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010-2</strong>	update malla set id=&#039;PNFA-2010-2&#039;, fecha=&#039;2015-10-01&#039; where id=&#039;PNFA-2010&#039;
 \.
 
 
@@ -1559,14 +2357,14 @@ COPY horario (id_enlace, periodo, thora, chora, seccion, materia, profesor, carr
 -- Name: mallaECS_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"mallaECS_id_seq"', 2, true);
+SELECT pg_catalog.setval('"mallaECS_id_seq"', 6, true);
 
 
 --
 -- Name: periodo_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"periodo_ID_seq"', 1, false);
+SELECT pg_catalog.setval('"periodo_ID_seq"', 4, true);
 
 
 --
@@ -1944,6 +2742,19 @@ COPY pertenece ("idCS", "idProfesor") FROM stdin;
 2	12352023
 2	14916156
 1	14916156
+4	16317126
+7	16317126
+4	11955850
+4	1010633
+4	14281324
+4	11953052
+4	8223161
+4	9643447
+4	5871766
+4	12722753
+4	6729553
+4	8039160
+10	2288079
 \.
 
 
@@ -1972,7 +2783,7 @@ SELECT pg_catalog.setval('salones_id_seq', 1, false);
 -- Name: seccion_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"seccion_ID_seq"', 1, false);
+SELECT pg_catalog.setval('"seccion_ID_seq"', 14, true);
 
 
 --
@@ -1987,82 +2798,58 @@ SELECT pg_catalog.setval('sede_id_seq', 7, true);
 --
 
 COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "idMalla") FROM stdin;
-1	5	0	f	T0	PIMT004	PNFI-2012
-2	5	0	f	T1-t1	PIMT1	PNFI-2012
-3	5	0	f	T2-t1	PIMT2	PNFI-2012
-4	2	3	t	T2-t2	PIBD2	PNFI-2012
-5	5	0	f	T3-t1	PIMA3	PNFI-2012
-6	2	3	t	T3-t2	PIMB3	PNFI-2012
-7	2	3	f	T3-t3	PIIO3	PNFI-2012
-8	5	0	f	T4-t1	PIFC4	PNFI-2012
-9	2	3	t	T4-t2	PIRA4	PNFI-2012
-10	2	3	t	T4-t3	PIAI4	PNFI-2012
-11	5	0	f	T0	PIPNP03	PNFI-2012
-12	5	0	f	T0	PITIP02	PNFI-2012
-13	5	0	f	T1-t2	PIMT1	PNFI-2012
-14	5	0	f	T1-t3	PIMT1	PNFI-2012
-15	2	3	t	T1-t1	PIAC1	PNFI-2012
-16	2	3	t	T1-t2	PIAC1	PNFI-2012
-17	2	3	t	T1-t3	PIAC1	PNFI-2012
-18	5	0	f	T1-t1	PIFC1	PNFI-2012
-19	5	0	f	T1-t2	PIFC1	PNFI-2012
-20	5	0	f	T1-t3	PIFC1	PNFI-2012
-21	2	3	t	T1-t1	PIAP1	PNFI-2012
-22	2	3	t	T1-t2	PIAP1	PNFI-2012
-23	2	3	t	T1-t3	PIAP1	PNFI-2012
-24	5	0	f	T1-t1	PIPT1	PNFI-2012
-25	5	0	f	T1-t2	PIPT1	PNFI-2012
-26	5	0	f	T1-t3	PIPT1	PNFI-2012
-27	5	0	f	T1-t1	PIID1	PNFI-2012
-28	5	0	f	T1-t2	PIID1	PNFI-2012
-29	5	0	f	T1-t3	PIID1	PNFI-2012
-30	5	0	f	T1-t1	PIACT1	PNFI-2012
-31	5	0	f	T1-t2	PIACT1	PNFI-2012
-32	5	0	f	T1-t3	PIACT1	PNFI-2012
-33	5	0	f	T2-t2	PIMT2	PNFI-2012
+168	2	0	f	T0	GRPC3001	PNFA-2010-2
+167	3	0	f	T0	PRO6002	PNFA-2010-2
+169	3	0	f	T0	MAT6002	PNFA-2010-2
+164	4	0	f	T0	PNNC9003	PNFA-2010-2
+180	4	0	f	T1-t1	CON12014	PNFA-2010-2
+202	3	0	f	T2-t1	FSC18026	PNFA-2010-2
+212	2	0	f	T2-t1	MLO0602	PNFA-2010-2
+206	6	0	f	T2-t1	PRO57019	PNFA-2010-2
+198	4	0	f	T2-t1	THAT9023	PNFA-2010-2
+211	2	2	t	T2-t1	PTI6022	PNFA-2010-2
+214	4	0	f	T2-t2	ADC6022	PNFA-2010-2
+194	4	0	f	T2-t2	CON12024	PNFA-2010-2
+200	4	0	f	T2-t2	ELEC29023	PNFA-2010-2
+203	3	0	f	T2-t2	FSC18026	PNFA-2010-2
+196	3	0	f	T2-t2	OYS9023	PNFA-2010-2
+207	6	0	f	T2-t2	PRO57019	PNFA-2010-2
 34	2	3	t	T2-t1	PIRC2	PNFI-2012
+4	2	3	t	T2-t2	PIBD2	PNFI-2012
+37	2	0	f	T2-t2	PIFC2	PNFI-2012
+33	5	0	f	T2-t2	PIMT2	PNFI-2012
+40	2	4	t	T2-t2	PIPP2	PNFI-2012
+199	4	0	f	T2-t2	THAT9023	PNFA-2010-2
+210	3	0	f	T2-t3	PCG3011	PNFA-2010-2
+195	4	0	f	T2-t3	CON12024	PNFA-2010-2
+43	6	0	f	T2-t2	PIPT2	PNFI-2012
 35	2	3	t	T2-t2	PIRC2	PNFI-2012
-36	5	0	f	T2-t1	PIFC2	PNFI-2012
-37	5	0	f	T2-t2	PIFC2	PNFI-2012
-38	5	0	f	T2-t3	PIFC2	PNFI-2012
-39	2	3	t	T2-t1	PIPP2	PNFI-2012
-40	2	3	t	T2-t2	PIPP2	PNFI-2012
-41	2	3	t	T2-t3	PIPP2	PNFI-2012
-42	5	0	f	T2-t1	PIPT2	PNFI-2012
-43	5	0	f	T2-t2	PIPT2	PNFI-2012
-44	5	0	f	T2-t3	PIPT2	PNFI-2012
-45	5	0	f	T2-t1	PIS03	PNFI-2012
-46	5	0	f	T2-t1	PIACT2	PNFI-2012
-47	5	0	f	T2-t2	PIACT2	PNFI-2012
-48	5	0	f	T2-t3	PIACT2	PNFI-2012
-49	5	0	f	T3-t2	PIMA3	PNFI-2012
-50	5	0	f	T3-t1	PISO3	PNFI-2012
-51	5	0	f	T3-t1	PIFC3	PNFI-2012
-52	5	0	f	T3-t2	PIFC3	PNFI-2012
-53	5	0	f	T3-t3	PIFC3	PNFI-2012
-54	5	0	f	T3-t1	PIPT3	PNFI-2012
-55	5	0	f	T3-t2	PIPT3	PNFI-2012
-56	5	0	f	T3-t3	PIPT3	PNFI-2012
+38	2	0	f	T2-t3	PIFC2	PNFI-2012
+41	2	4	t	T2-t3	PIPP2	PNFI-2012
+44	6	0	f	T2-t3	PIPT2	PNFI-2012
+51	2	0	f	T3-t1	PIFC3	PNFI-2012
 57	5	0	f	T3-t1	PIIS3	PNFI-2012
+5	5	0	f	T3-t1	PIMA3	PNFI-2012
+54	6	0	f	T3-t1	PIPT3	PNFI-2012
+50	5	0	f	T3-t1	PISO3	PNFI-2012
+52	2	0	f	T3-t2	PIFC3	PNFI-2012
+209	2	0	f	T2-t3	PDF3012	PNFA-2010-2
+201	4	0	f	T2-t3	ELEC29023	PNFA-2010-2
+204	3	0	f	T2-t3	FSC18026	PNFA-2010-2
 58	5	0	f	T3-t2	PIIS3	PNFI-2012
-59	5	0	f	T3-t3	PIIS3	PNFI-2012
-60	5	0	f	T3-t1	PIACT3	PNFI-2012
-61	5	0	f	T3-t2	PIACT3	PNFI-2012
-62	5	0	f	T3-t3	PIACT3	PNFI-2012
-63	5	0	f	T4-t2	PIFC4	PNFI-2012
-64	5	0	f	T4-t3	PIFC4	PNFI-2012
-65	5	0	f	T4-t1	PIPT4	PNFI-2012
-66	5	0	f	T4-t2	PIPT4	PNFI-2012
-67	5	0	f	T4-t3	PIPT4	PNFI-2012
-68	5	0	f	T4-t1	PIGP4	PNFI-2012
-69	2	3	t	T4-t1	PIAB4	PNFI-2012
-70	5	0	f	T4-t1	PIID4	PNFI-2012
-71	5	0	f	T4-t2	PIID4	PNFI-2012
-72	5	0	f	T4-t3	PIID4	PNFI-2012
-73	5	0	f	T4-t1	PIACT4	PNFI-2012
-74	5	0	f	T4-t2	PIACT4	PNFI-2012
-75	5	0	f	T4-t3	PIACT4	PNFI-2012
-76	2	3	t	T4-t2	PISI4	PNFI-2012
+197	3	0	f	T2-t3	OYS9023	PNFA-2010-2
+192	4	0	f	T2-t3	SHA9023	PNFA-2010-2
+208	6	0	f	T2-t3	PRO57019	PNFA-2010-2
+229	4	0	f	T3-t1	ADP9033	PNFA-2010-2
+233	4	0	f	T3-t1	AEF9032	PNFA-2010-2
+228	2	0	f	T3-t1	TDR3031	PNFA-2010-2
+222	3	0	f	T3-t1	FSC18036	PNFA-2010-2
+220	3	0	f	T3-t1	IDI9033	PNFA-2010-2
+226	4	0	f	T3-t1	PPL6032	PNFA-2010-2
+217	6	0	f	T3-t1	PRO570319	PNFA-2010-2
+215	4	0	f	T3-t1	PRE9033	PNFA-2010-2
+230	4	0	f	T3-t2	ADP9033	PNFA-2010-2
+231	4	0	f	T3-t2	ADM6032	PNFA-2010-2
 91	2	0	f	T0	DI6001	PNFA-2014
 92	4	0	f	T0	GRPC6002	PNFA-2014
 77	4	0	f	T0	MAD9013	PNFA-2014
@@ -2111,6 +2898,25 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 136	4	0	f	T3-t1	AEF9033	PNFA-2014
 135	3	0	f	T3-t1	COG6032	PNFA-2014
 134	3	0	f	T3-t1	EST6032	PNFA-2014
+234	2	0	f	T3-t2	DAR9033	PNFA-2010-2
+223	3	0	f	T3-t2	FSC18036	PNFA-2010-2
+221	3	0	f	T3-t2	IDI9033	PNFA-2010-2
+227	4	0	f	T3-t2	PPL6032	PNFA-2010-2
+218	6	0	f	T3-t2	PRO570319	PNFA-2010-2
+216	4	0	f	T3-t2	PRE9033	PNFA-2010-2
+232	4	0	f	T3-t3	ADM6032	PNFA-2010-2
+235	2	0	f	T3-t3	DAR9033	PNFA-2010-2
+14	5	0	f	T1-t3	PIMT1	PNFI-2012
+26	6	0	f	T1-t3	PIPT1	PNFI-2012
+36	2	0	f	T2-t1	PIFC2	PNFI-2012
+45	5	0	f	T2-t1	PIS03	PNFI-2012
+3	5	0	f	T2-t1	PIMT2	PNFI-2012
+39	2	4	t	T2-t1	PIPP2	PNFI-2012
+224	3	0	f	T3-t3	FSC18036	PNFA-2010-2
+219	6	0	f	T3-t3	PRO570319	PNFA-2010-2
+225	2	2	t	T3-t3	TIC6032	PNFA-2010-2
+42	6	0	f	T2-t1	PIPT2	PNFI-2012
+252	4	0	f	T4-t1	ADF6042	PNFA-2010-2
 130	4	0	f	T3-t1	FSC12034	PNFA-2014
 132	4	0	f	T3-t1	PYG9033	PNFA-2014
 84	4	0	f	T3-t1	PRO2739	PNFA-2014
@@ -2144,6 +2950,133 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 150	1	2	t	T4-t3	PIA9043	PNFA-2014
 143	4	0	f	T4-t3	PRO2749	PNFA-2014
 157	4	0	f	T0	AMS6002	PNFA-2014
+49	5	0	f	T3-t2	PIMA3	PNFI-2012
+6	5	0	t	T3-t2	PIMB3	PNFI-2012
+55	6	0	f	T3-t2	PIPT3	PNFI-2012
+53	2	0	f	T3-t3	PIFC3	PNFI-2012
+59	5	0	f	T3-t3	PIIS3	PNFI-2012
+7	2	3	f	T3-t3	PIIO3	PNFI-2012
+56	6	0	f	T3-t3	PIPT3	PNFI-2012
+69	2	3	t	T4-t1	PIAB4	PNFI-2012
+170	2	0	f	T0	DIE6002	PNFA-2010-2
+20	2	0	f	T1-t3	PIFC1	PNFI-2012
+29	2	0	f	T1-t3	PIID1	PNFI-2012
+12	5	0	f	T0	PITIP02	PNFI-2012
+1	5	0	f	T0	PIMT004	PNFI-2012
+11	5	0	f	T0	PIPNP03	PNFI-2012
+21	2	4	t	T1-t1	PIAP1	PNFI-2012
+15	2	3	t	T1-t1	PIAC1	PNFI-2012
+256	4	0	f	TT	ANM60T2	PNFA-2014-PRO
+257	4	0	f	T3-t1	AEF9033	PNFA-2014-PRO
+258	3	0	f	T3-t2	ADP9033	PNFA-2014-PRO
+259	4	0	f	T3-t3	ADC9033	PNFA-2014-PRO
+260	4	0	f	T4-t1	ADF9043	PNFA-2014-PRO
+261	1	2	t	T4-t2	PIA9043	PNFA-2014-PRO
+262	4	0	f	T4-t3	ADD9043	PNFA-2014-PRO
+263	4	0	f	TT	SEM160T2	PNFA-2014-PRO
+264	4	0	f	TT	SEM260T2	PNFA-2014-PRO
+265	4	0	f	TT	EEP60T2	PNFA-2014-PRO
+266	4	0	f	TT	GEA60T2	PNFA-2014-PRO
+267	4	0	f	TT	PNC60T2	PNFA-2014-PRO
+268	3	0	f	T3-t1	COG6032	PNFA-2014-PRO
+269	3	0	f	T3-t1	EST6032	PNFA-2014-PRO
+270	4	0	f	T3-t1	FSC12034	PNFA-2014-PRO
+271	4	0	f	T3-t2	FSC12034	PNFA-2014-PRO
+272	4	0	f	T3-t1	PYG9033	PNFA-2014-PRO
+273	4	0	f	T3-t2	PYG9033	PNFA-2014-PRO
+274	4	0	f	T3-t1	PRO2739	PNFA-2014-PRO
+275	4	0	f	T3-t2	PRO2739	PNFA-2014-PRO
+276	4	0	f	T3-t3	PRO2739	PNFA-2014-PRO
+277	3	0	f	T3-t3	ADP9033	PNFA-2014-PRO
+278	4	0	f	T3-t2	HDI9033	PNFA-2014-PRO
+279	3	0	f	T3-t2	SAD6032	PNFA-2014-PRO
+280	3	0	f	T3-t3	ADM6032	PNFA-2014-PRO
+281	3	0	f	T3-t3	ELC6032	PNFA-2014-PRO
+282	3	0	f	T4-t1	FSC1244	PNFA-2014-PRO
+283	3	0	f	T4-t2	FSC1244	PNFA-2014-PRO
+284	3	0	f	T4-t1	FEP9043	PNFA-2014-PRO
+285	3	0	f	T4-t2	FEP9043	PNFA-2014-PRO
+286	4	0	f	T4-t1	GP9043	PNFA-2014-PRO
+287	4	0	f	T4-t2	GP9043	PNFA-2014-PRO
+288	3	0	f	T4-t1	IOP9043	PNFA-2014-PRO
+289	3	0	f	T4-t2	IOP9043	PNFA-2014-PRO
+290	4	0	f	T4-t1	PRO2749	PNFA-2014-PRO
+291	4	0	f	T4-t2	PRO2749	PNFA-2014-PRO
+292	4	0	f	T4-t3	PRO2749	PNFA-2014-PRO
+293	1	2	t	T4-t3	PIA9043	PNFA-2014-PRO
+294	4	0	f	T4-t2	SISF9043	PNFA-2014-PRO
+295	3	0	f	T4-t3	CGA9043	PNFA-2014-PRO
+296	3	0	f	T4-t3	ELEC49043	PNFA-2014-PRO
+18	2	0	f	T1-t1	PIFC1	PNFI-2012
+174	4	0	f	T1-t1	ES3011	PNFA-2010-2
+175	3	0	f	T1-t1	FSC18016	PNFA-2010-2
+184	3	0	f	T1-t1	FA12014	PNFA-2010-2
+189	6	0	f	T1-t1	PRO570119	PNFA-2010-2
+178	4	0	f	T1-t1	PTE3011	PNFA-2010-2
+183	2	2	t	T1-t1	PTI6012	PNFA-2010-2
+181	4	0	f	T1-t2	CON12014	PNFA-2010-2
+172	2	0	f	T1-t2	DAR9013	PNFA-2010-2
+176	3	0	f	T1-t2	FSC18016	PNFA-2010-2
+185	3	0	f	T1-t2	FA12014	PNFA-2010-2
+243	6	0	f	T4-t1	PRO570419	PNFA-2010-2
+236	4	0	f	T4-t1	AFPS6033	PNFA-2010-2
+248	3	0	f	T4-t1	FSC18046	PNFA-2010-2
+238	4	0	f	T4-t1	FEP9043	PNFA-2010-2
+246	2	2	t	T4-t1	PP13041	PNFA-2010-2
+253	4	0	f	T4-t2	ADF6042	PNFA-2010-2
+247	3	0	f	T4-t2	PCG6042	PNFA-2010-2
+244	6	0	f	T4-t2	PRO570419	PNFA-2010-2
+237	4	0	f	T4-t2	AFPS6033	PNFA-2010-2
+240	4	0	f	T4-t2	ELEC49043	PNFA-2010-2
+249	3	0	f	T4-t2	FSC18046	PNFA-2010-2
+27	2	0	f	T1-t1	PIID1	PNFI-2012
+2	5	0	f	T1-t1	PIMT1	PNFI-2012
+24	6	0	f	T1-t1	PIPT1	PNFI-2012
+22	2	4	t	T1-t2	PIAP1	PNFI-2012
+16	2	3	t	T1-t2	PIAC1	PNFI-2012
+19	2	0	f	T1-t2	PIFC1	PNFI-2012
+28	2	0	f	T1-t2	PIID1	PNFI-2012
+13	5	0	f	T1-t2	PIMT1	PNFI-2012
+25	6	0	f	T1-t2	PIPT1	PNFI-2012
+239	4	0	f	T4-t2	FEP9043	PNFA-2010-2
+254	2	0	f	T4-t2	SHDD9043	PNFA-2010-2
+23	2	4	t	T1-t3	PIAP1	PNFI-2012
+17	2	3	t	T1-t3	PIAC1	PNFI-2012
+242	4	0	f	T4-t3	APAA3041	PNFA-2010-2
+245	6	0	f	T4-t3	PRO570419	PNFA-2010-2
+241	4	0	f	T4-t3	ELEC49043	PNFA-2010-2
+250	3	0	f	T4-t3	FSC18046	PNFA-2010-2
+255	2	0	f	T4-t3	SHDD9043	PNFA-2010-2
+251	3	0	f	T4-t3	SIF6042	PNFA-2010-2
+297	5	0	f	T2-t3	PIEL2	PNFI-2012
+8	2	0	f	T4-t1	PIFC4	PNFI-2012
+68	5	0	f	T4-t1	PIGP4	PNFI-2012
+70	2	0	f	T4-t1	PIID4	PNFI-2012
+65	6	0	f	T4-t1	PIPT4	PNFI-2012
+63	2	0	f	T4-t2	PIFC4	PNFI-2012
+71	2	0	f	T4-t2	PIID4	PNFI-2012
+66	6	0	f	T4-t2	PIPT4	PNFI-2012
+9	2	3	t	T4-t2	PIRA4	PNFI-2012
+76	2	3	t	T4-t2	PISI4	PNFI-2012
+10	2	3	t	T4-t3	PIAI4	PNFI-2012
+64	2	0	f	T4-t3	PIFC4	PNFI-2012
+72	2	0	f	T4-t3	PIID4	PNFI-2012
+67	6	0	f	T4-t3	PIPT4	PNFI-2012
+190	6	0	f	T1-t2	PRO570119	PNFA-2010-2
+186	4	0	f	T1-t2	IDI9013	PNFA-2010-2
+165	4	0	f	T1-t2	OF6012	PNFA-2010-2
+179	4	0	f	T1-t2	PTE3011	PNFA-2010-2
+182	4	0	f	T1-t3	CON12014	PNFA-2010-2
+166	3	0	f	T1-t3	DFC6012	PNFA-2010-2
+173	2	0	f	T1-t3	DAR9013	PNFA-2010-2
+177	3	0	f	T1-t3	FSC18016	PNFA-2010-2
+191	6	0	f	T1-t3	PRO570119	PNFA-2010-2
+187	4	0	f	T1-t3	IDI9013	PNFA-2010-2
+171	4	0	f	T1-t3	OF6012	PNFA-2010-2
+188	2	0	f	T1-t3	TPM6012	PNFA-2010-2
+213	4	0	f	T2-t1	ADC6022	PNFA-2010-2
+193	4	0	f	T2-t1	CON12024	PNFA-2010-2
+205	4	0	f	T2-t1	CGA9023	PNFA-2010-2
 \.
 
 
@@ -2151,7 +3084,7 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 -- Name: ucMalla_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"ucMalla_id_seq"', 157, true);
+SELECT pg_catalog.setval('"ucMalla_id_seq"', 297, true);
 
 
 --
@@ -2159,7 +3092,7 @@ SELECT pg_catalog.setval('"ucMalla_id_seq"', 157, true);
 --
 
 COPY usuario (cedula, contrasena, frase, ingreso, nivel) FROM stdin;
-12345678	81dc9bdb52d04dc20036dbd8313ed055	81dc9bdb52d04dc20036dbd8313ed055	2015-10-12	1
+12345678	81dc9bdb52d04dc20036dbd8313ed055	81dc9bdb52d04dc20036dbd8313ed055	2015-10-20	1
 \.
 
 
