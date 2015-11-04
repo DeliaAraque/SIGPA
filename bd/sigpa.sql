@@ -230,7 +230,7 @@ alter table profesor add foreign key(profesion) references profesion(id) on upda
 --	Planificación:
 
 alter table carga add foreign key("idProfesor") references profesor(cedula) on update cascade on delete restrict;
-alter table carga add foreign key("idSeccion") references seccion("ID") on update cascade on delete restrict;
+alter table carga add foreign key("idSeccion") references seccion("ID") on update cascade on delete cascade;
 alter table carga add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete restrict;
 alter table periodo add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete restrict;
 alter table seccion add foreign key("idMECS") references "mallaECS"(id) on update cascade on delete restrict;

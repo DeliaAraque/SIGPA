@@ -19,6 +19,7 @@ COPY area (id, nombre) FROM stdin;
 1	Tecnología
 2	Ciencias Sociales
 3	Ciencias Agricolas y Ambientales
+4	Salud
 \.
 
 
@@ -26,7 +27,7 @@ COPY area (id, nombre) FROM stdin;
 -- Name: area_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('area_id_seq', 3, true);
+SELECT pg_catalog.setval('area_id_seq', 4, true);
 
 
 --
@@ -45,6 +46,17 @@ COPY carrera (id, nombre, "idArea") FROM stdin;
 02	PNF Construcción Civil	1
 04	PNF Administración	2
 03	PNF Informática	1
+12	PNF Enfermería Integral Comunitaria	4
+42	Construccion Civil	1
+44	Turismo	3
+45	Informatica	1
+46	Hoteleria	3
+47	Contaduria	3
+48	Manejo de Emergencias	2
+43	Mineria	1
+41	Agrotecnia	3
+49	Radiologia e Imagenologia	3
+50	Enfermeria	2
 \.
 
 
@@ -77,6 +89,7 @@ COPY "carreraSede" (id, "idCarrera", "idCoordinador", "idSede") FROM stdin;
 4	04	8037619	3
 10	03	2288079	1
 3	03	10256095	3
+11	12	3966127	3
 \.
 
 
@@ -158,6 +171,7 @@ COPY "estructuraCS" (id, "idCS", "idEstructura") FROM stdin;
 2	4	1
 4	4	3
 6	10	1
+7	11	1
 \.
 
 
@@ -166,10 +180,11 @@ COPY "estructuraCS" (id, "idCS", "idEstructura") FROM stdin;
 --
 
 COPY malla (id, fecha) FROM stdin;
-PNFA-2014	2015-10-12
-PNFA-2014-PRO	2015-10-19
 PNFI-2012	2011-04-27
 PNFA-2010-2	2015-10-01
+PNFA-2014-PRO	2015-10-19
+PNFA-2014	2015-10-12
+PNFA-2010-3	2015-10-27
 \.
 
 
@@ -182,6 +197,7 @@ COPY "mallaECS" (id, estado, "idECS", "idMalla") FROM stdin;
 2	t	2	PNFA-2014
 5	t	4	PNFA-2014-PRO
 4	t	2	PNFA-2010-2
+8	t	2	PNFA-2010-3
 \.
 
 
@@ -190,6 +206,10 @@ COPY "mallaECS" (id, estado, "idECS", "idMalla") FROM stdin;
 --
 
 COPY periodo ("ID", id, "fechaInicio", "fechaFin", tipo, "idECS") FROM stdin;
+5	2015-B	2015-10-27	2015-10-28	p	2
+6	2015-B	2015-05-18	2015-10-02	a	2
+7	2015-B	2015-10-27	2015-10-28	p	4
+8	2015-B	2015-05-18	2015-10-02	a	4
 \.
 
 
@@ -198,7 +218,6 @@ COPY periodo ("ID", id, "fechaInicio", "fechaFin", tipo, "idECS") FROM stdin;
 --
 
 COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo, correo, direccion, telefono, "telefonoFijo") FROM stdin;
-12345678	Nombre	\N	Apellido	\N	m	correo@servidor.com	Calle #123, Ciudad edo. Estado	04XX-1234567	02XX-1234567
 13014569	Nelma	Del Valle	Uzcategui	De Barreto	f	redes.asesoria@gmail.com	Sin asignar	0414-7416984	02742211241
 9499979	Rodolfo	Jose	Gonzalez	Gomez	f	rodolfogonzalezgomez@gmail.com	Sin asignar	04265770067	02742448880
 11956576	Agni	Carolina	Sarache	Balza	f	carolina_sarache@yahoo.es	Sin asignar	0416-4708970	0274-2664556
@@ -269,6 +288,7 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 4491607	Jesus	Alfonso	Rivas	Chacon	f	alfonsorivas17@hotmail.com	Sin asignar	0416-9980201	\N
 5124273	Corrado	\N	Canto	Pacheco	f	ccantopacheco@hotmail.com	Sin asignar	Sin asignar	\N
 5952723	Leticia	Del Carmen	Mogollon	De Chalbaud	f	Sin asignar	Sin asignar	Sin asignar	\N
+3309773	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 6558454	Andres	Julian	Forti	Cavazzoni	f	aforti1963@hotmail.com, aforti@inia.gob.ve	Sin asignar	Sin asignar	\N
 6940439	Zandra	Virginia	Ortega	Guerra	f	zandravirginia@yahoo.es	Sin asignar	04146086140	\N
 8028204	Nancy	Margot	Villarreal	Villanueva	f	nanavillarreal@gmail.com	Sin asignar	04147451751	\N
@@ -468,20 +488,19 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 8037619	Miriam	Del Carmen	Muñoz	Ramirez	f	licmiriamuno@gmail.com	Sin asignar	04147027698	\N
 15142314	Pablo	Martin	Silgueiro	Soto	f	pablosilgueiro@gmail.com	Sin asignar	04267549299	\N
 4319574	Iraide	Celina	Zerpa	\N	f	iraidezerpa@gmail.com	Sin asignar	04265744008	\N
-5753564	Santo	Segundo	Coronel	Romero	m	ssrc513@gmail.com	Sin asignar	04164747101	\N
 11955850	Carlos	\N	Hernandez	\N	m	carloshla2007@gmail.com	Asd	04263281790	\N
 7934845	Maria	Carolina	Marquez	Uzcategui	f	mcarolinamar@hotmail.com	Sin asignar	04247708690	\N
-1010633	Lenix	\N	Omana	\N	f	lenix@ula.ve	Asd	04147485841	\N
 14281324	Jesus	\N	Casique	\N	m	casiquemorenojesus@gmail.com	Asd	04247127978	\N
 11953052	Gioconda	Marlin	Saez	Torres	f	giocopaul@gmail.com	Asdasd	0416-5222543	\N
 8223161	Vianney	\N	Canache	\N	m	fitosiciliano@hotmail.com	Asd	0424-7686768	\N
-9643447	Yasmin	\N	Carmona	\N	f	yasmincarmina310@gmail.com	Asd	0416-3700829	\N
 5871766	Doris	\N	Villalba	\N	f	dvilla44@gmail.com	Asd	0416-6700862	\N
 12722753	Emilia	\N	Graterol	\N	f	emiliagraterol@yahoo.com	Asd	0424-7139955	\N
-6729553	Maria	Gloria	Parra	\N	f	mariagloria.parrar@gmail.com	Asd	0416-8743486	\N
 8039160	Alejandro	\N	Rojas	\N	m	alejandrorojas23@yahoo.com	Asd	0426-7625391	\N
 16317126	Maria	\N	Carrero	\N	f	marca1911@yahoo.es	Av. qwe	04247625391	\N
-3309773	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+1010633	Lenix	\N	Omaña	\N	f	lenix@ula.ve	Asd	04147485841	\N
+12345678	Nombre	\N	Apellido	\N	m	correo@servidor.com	Calle #123, Ciudad edo. Estado	0400-1234567	0200-1234567
+9643447	Yasmin	\N	Carmona	\N	f	yasmincarmina310@gmail.com	Asd	0416-3700829	\N
+6729553	Maria	Gloria	Parra	\N	f	mariagloria.parrar@gmail.com	Asd	0416-8743486	\N
 4768469	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 5206999	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 5349758	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
@@ -497,6 +516,7 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 13803898	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 3586551	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 5199025	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
+5753564	Santos	Segundo	Coronel	Romero	m	ssrc513@gmail.com	Sin asignar	04164747101	\N
 12457642	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 3062497	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 8013671	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
@@ -972,9 +992,12 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 16199115	No	0	No	0
 18581024	No	0	No	0
 9240195	No	0	No	0
-1010633	Inst	1	TC	10
 14281324	Inst	1	MT	50
 16317126	Inst	1	TC	2
+1010633	Inst	1	TC	10
+6729553	Inst	1	TC	50
+5753564	Tit	3	EXC	49
+9643447	Inst	1	TC	10
 2287821	Agre	3	TC	0
 3309773	Asist	3	TCv	0
 3939687	Asist	3	TC	0
@@ -1031,7 +1054,6 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 14917178	Inst	3	TC	0
 15296169	Inst	3	TC	0
 16020374	Asist	3	TC	0
-5753564	Tit	3	EXC	49
 8034300	Asoc	3	EXC	0
 13098948	Agre	3	TC	0
 13649962	Asist	3	EXC	0
@@ -1039,9 +1061,7 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 10102108	Inst	3	EXC	0
 14268612	Asist	3	TC	0
 5871766	Inst	1	MT	50
-6729553	Inst	1	MT	50
 8223161	Inst	1	MT	10
-9643447	Inst	1	MT	10
 11955850	Inst	1	TC	10
 12048353	Inst	1	TC	0
 12722753	Inst	1	MT	50
@@ -1095,6 +1115,7 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 15921593	Inst	1	TCv	0
 4768948	Inst	1	TC	0
 11953052	Inst	1	TC	2
+12345678	No	0	No	0
 9470586	Asoc	3	EXC	0
 10426911	Asist	3	EXC	0
 10617743	Agre	3	EXC	0
@@ -1372,6 +1393,21 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 --
 
 COPY seccion ("ID", id, turno, multiplicador, grupos, "idMECS", "idPeriodo", "periodoEstructura") FROM stdin;
+15	A	d	1	f	8	6	T4-t2
+16	B	n	1.5	f	8	6	T4-t2
+17	A	d	1	f	8	6	T3-t3
+18	B	n	1.5	f	8	6	T3-t3
+19	C	n	1.5	f	8	6	T3-t3
+20	A	n	1.5	f	8	6	T3-t2
+21	B	d	1	f	8	6	T3-t2
+22	A	d	1	f	8	6	T2-t3
+23	B	n	1.5	f	8	6	T2-t3
+24	A	d	1	f	8	6	T1-t3
+25	B	d	1	f	8	6	T1-t3
+26	C	n	1.5	f	8	6	T1-t3
+27	A	d	1	f	2	6	T1-t1
+28	B	n	1.5	f	2	6	T1-t1
+29	A	d	1.5	f	5	8	TT
 \.
 
 
@@ -1519,7 +1555,6 @@ PGT12	Topografia	f	05	2
 PGT13	Quimica	f	05	2
 PGT14	Geología General	f	05	2
 PGT15	Dimensión Humana	f	05	5
-PGT16	Acreditable I	f	05	1
 PGT17	Proyecto I	f	05	3
 PRO570119	Identificar y Conocer los Procesos Administrativos en Distin	f	04	3
 PRO700124	Anál y Ejec de los Procesos Adm en las Distintas Organiz.	f	04	3
@@ -1538,13 +1573,11 @@ RECUPSFO-245	Recursos Psicoterapeuticos en Fonoaudiología	f	08	2
 SEV15025	Sistema Economico y Modelos de Desarrollo Venezolano	f	07	5
 AGMSA342	Manejo Sanitario Animal	f	01	2
 PGT35	Ambiente	f	05	2
-PGT36	Acreditable II	f	05	1
 PGT37	Proyecto III	f	05	3
 PRO6604223	Electiva III	f	07	2
 70002	Seminario Niif Para Pymes	f	07	2
 AGFIAIP	Física Aplicada	f	01	2
 70013	Electiva II	f	07	2
-ACACT2	Actividades Acreditables II	f	06	1
 ADETT2-722	Administración de Empresas Turisticas	f	06	2
 AGAGC242	Agroclimatología 	f	01	2
 AGDREV242	Diseminación y Reprod. de Especies Vegetales	f	01	2
@@ -1559,13 +1592,11 @@ AGETD362	Estadística	f	01	2
 70006	Herramientas Tecnológicas II	f	07	2
 70011	Ajuste Por Inflación Financiero	f	07	2
 70012	Bases Epistemologicas de las Ciencias Contables I	f	07	2
-ACACT3	Actividades Acreditables III	f	06	1
 ADP9033	Administración de la Producción	f	04	2
 AGAGR342	Agroestadística	f	01	2
 AGAMI001	Metodología de la Investigación	f	01	1
 AGEPS342	Economía Política y Social I	f	01	5
 AGMEI362	Manejo Ecológico de Insectos y Enfermedades	f	01	5
-ACACT4	Actividades Acreditables IV	f	06	1
 AGCTS442	Ciencia, Tecnología y Sociedad.	f	01	5
 AGCTS462	Ciencia, Tecnología y Sociedad	f	01	5
 AGECE442	Economía Ecológica	f	01	2
@@ -1772,7 +1803,6 @@ PCC000001	Física Aplicada	f	02	2
 70008	Electiva I	f	07	2
 70009	Ingles I	f	07	2
 70010	Deberes Formales del Contribuyente	f	07	2
-ACACT1	Actividades Acreditables I	f	06	1
 AGBSD162	Biodiversidad y Sociodiversidad	f	01	2
 AGCGA142	Cálculo Geométrico Aplicado	f	01	2
 AGCGA16	Cálculo Geométrico Aplicado	f	01	2
@@ -1821,6 +1851,7 @@ PCC215309	Analisis Estadisticos	f	02	2
 PG111	Matematica I	f	05	2
 PG112	Sistemas de Representación Grafica	f	05	2
 PG114	Introducción a la Geociencia	f	05	2
+51208	Estructura De Datos	f	45	1
 PG115	Dimensión Universal del Hombre I	f	05	5
 PG117	Redacción de Informes Técnicos	f	05	1
 PG121	Matematica II	f	05	2
@@ -1867,14 +1898,9 @@ PIAB4	Administración de Base de Datos	f	03	2
 PIAI4	Auditoría Informática	f	03	2
 PIMB3	Modelado de Base de Datos	f	03	2
 PIBD2	Base de Datos	f	03	2
-PIACT1	Actividad Acreditable I	t	03	1
-PIACT2	Actividad Acreditable II	t	03	1
-PIACT3	Actividad Acreditable III	t	03	1
-PIACT4	Actividad Acreditable IV	t	03	1
 PIPP2	Programación II	f	03	2
 ADAW	Electiva Desarrollo de Aplicaciones en la Web	f	03	2
 PIPT1	Proyecto Sociotecnológico I	f	03	3
-PIAP1	Algorítmica y Programación  I	f	03	2
 PIPT3	Proyecto Sociotecnológico III	f	03	3
 PIPT4	Proyecto Sociotecnológico IV	f	03	3
 PIMT1	Matemática I	f	03	2
@@ -1913,7 +1939,6 @@ GRPC6002	Gestión de Riesgos y Protección Civil	f	04	2
 PRO27019	Proyecto	f	04	3
 FAD15015	Fundamentos de la Administración	f	04	2
 FSC12014	Formación Socio Crítica I	f	04	5
-EOE6012	Expresión Oral y Escrita	f	04	2
 TIC6012	TICs	f	04	2
 MAJ6012	Marco Jurídico I	f	04	2
 PRYII27029	Proyecto II	f	04	3
@@ -1922,16 +1947,13 @@ FDE9023	Fundamentos de Economía	f	04	2
 MAJ6022	Marco Jurídico II	f	04	2
 GEA6022	Gestión Ecológica Ambiental	f	04	4
 GTH9023	Gestión de Talento Humano	f	04	2
-PAACT1	Actividad Acreditable I	t	04	1
-PAACT2	Actividad Acreditable II	t	04	1
-PAACT3	Actividad Acreditable III	t	04	1
-PAACT4	Actividad Acreditable IV	t	04	1
 EEP60T2	Ética en el Ejercicio Profesional	f	04	5
 GEA60T2	Gestión Ecológica y Ambiental	f	04	4
 PNC60T2	Proyecto Nacional y Nueva Ciudadanía Transición	f	04	5
-SEM160T2	Área Contable	f	04	2
 SEM260T2	Desarrollo Social Comunitario	f	04	5
+SEM160T2	Actualización Contable	f	04	2
 PRO2739	Proyecto III	f	04	3
+PIAP1	Algorítmica y Programación	f	03	2
 EST6032	Estadística II	f	04	2
 SAD6032	Sistemas Administrativos	f	04	2
 HDI9033	Habilidades Directivas II	f	04	2
@@ -1945,7 +1967,6 @@ SIF6042	Sistemas Financieros	f	04	2
 FSC18046	Formación Socio Crítica IV	f	04	5
 PNNC9003	Proyecto Nacional y Nueva Ciudadanía	f	04	5
 PCG6042	Control de Gestión Administrativa	f	04	2
-PP13041	Paquetes Informáticos Aplicados a la Administración	f	04	2
 PRO6002	La Administración en el Nuevo Modelo Social	f	04	2
 GRPC3001	Gestión de Riesgos y Protección Civil	f	04	2
 MAT6002	Matemática	f	04	2
@@ -1968,13 +1989,1161 @@ PRE9033	Presupuesto Público y Privado	f	04	2
 ADC6022	Administración de Costos	f	04	2
 FA12014	Fundamentos de la Administración	f	04	2
 PCG3011	Contabilidad Gubernamental	f	04	2
-PDF3012	Deberes Formales del Contribuyente	f	04	2
 TPM6012	Teoría y Práctica del Mercadeo	f	04	2
 SHA9023	Seminario Habilidades Directivas I	f	04	2
 CGA9023	Electiva I	t	04	1
 FSC18026	Formación Socio Crítica II	f	04	5
 ELEC29023	Electiva II	t	04	1
 SHDD9043	Seminario Habilidades Directivas II	f	04	2
+PDF3012	Deberes Formales del Contribuyente II	f	04	2
+PP13041	Paquetes Informáticos Aplicados a los Procesos Administrativos	f	04	2
+EOE6012	Técnicas de Expresión Oral y Escrita	f	04	2
+43107	Ingles I	f	44	1
+80203	Física	f	48	1
+71401	Introduccion A La Informatica	f	47	1
+51102	Lenguaje Y Comunicacion	f	45	1
+10115	Tecnicas Y Habitos De Estudio	f	41	1
+11101	Tec. De Estud. E Investigacion	f	41	1
+11102	Lengua Y Comunicacion	f	41	1
+11103	Matematicas	f	41	1
+11104	Quimica	f	41	1
+11105	Agroclimatologia	f	41	1
+11106	Botanica	f	41	1
+11107	Educacion Fisica Base I	f	41	1
+11201	Dinamica Comportamiento Humano	f	41	1
+11202	Estadistica	f	41	1
+11203	Dibujo	f	41	1
+11204	Fund. Anat. Fisiologia Animal	f	41	1
+11205	Edafologia	f	41	1
+11206	Fisiologia Vegetal	f	41	1
+11301	Sociologia Rural	f	41	1
+11302	Topografia	f	41	1
+11303	Entomologia	f	41	1
+11304	Bovinos	f	41	1
+11305	Forrajicultura Y Alim. Animal	f	41	1
+11306	Olericultura	f	41	1
+11307	Cons. Rec. Nat. Renovables	f	41	1
+11315	Servicio Comunitario	f	41	1
+11401	Prin. Ec. Adm. Empresas Agrop.	f	41	1
+11402	Maq. Y Equipos Agropecuarios	f	41	1
+11403	Fitopatologia	f	41	1
+11404	Avicultura	f	41	1
+11405	Cultivos Tropicales	f	41	1
+11501	Form. Y Eval. De Proyectos	f	41	1
+11502	Riego Y Drenaje	f	41	1
+11503	Genetica Y Mejoramiento Agrop.	f	41	1
+11504	Porcinotecnia	f	41	1
+11505	Fruticultura	f	41	1
+11601	Extension Agricola	f	41	1
+11602	Construccion Agropecuaria	f	41	1
+11603	Prev. Y Cont. De Enfermedades	f	41	1
+11604	Raices Y Tuberculos	f	41	1
+31101	Matematicas I	f	43	1
+31102	Geologia Fisica	f	43	1
+31103	Geometria Descriptiva	f	43	1
+31104	Introduccion A La Mineria	f	43	1
+31105	Lengua Y Comunicacion	f	43	1
+31106	Tec. De Est. E Investigacion	f	43	1
+31107	Educacion Fisica Base I	f	43	1
+31201	Matematicas Ii	f	43	1
+31202	Geologia Estructural	f	43	1
+31203	Dibujo	f	43	1
+31204	Legislacion Minera	f	43	1
+31205	Quimica General	f	43	1
+31206	Dinamica Comportamiento Humano	f	43	1
+31301	Metodos Prosp. Minera	f	43	1
+31302	Mineralogia	f	43	1
+31303	Topografia I	f	43	1
+31304	Mecanica De Rocas	f	43	1
+31305	Quimica Analitica	f	43	1
+31306	Instalaciones Electricas	f	43	1
+31307	Seminario	f	43	1
+31315	Servicio Comunitario	f	43	1
+80608	Pasantias	f	48	1
+31401	Yacimientos Minerales	f	43	1
+31402	Principios De Termodinamica	f	43	1
+31403	Topografia Ii	f	43	1
+31404	Laboreo A Cielo Abierto	f	43	1
+31405	Docimasia	f	43	1
+31501	Planeamiento De Minas	f	43	1
+31502	Evaluacion De Yacimientos	f	43	1
+31503	Obras Subterraneas	f	43	1
+31504	Computacion	f	43	1
+31505	Prep. Y Concent. De Minerales	f	43	1
+31601	Org. Adm. De Emp. Mineras	f	43	1
+31602	Evaluacion De Proyectos	f	43	1
+31603	Higiene Y Seguridad Industrial	f	43	1
+51101	Tec. De Inv. Documental	f	45	1
+51103	Logica	f	45	1
+51104	Matematica I	f	45	1
+51105	Educ. Fisica Y Deportes	f	45	1
+51106	Ingles Instrumental I	f	45	1
+51107	Administracion De Empresas	f	45	1
+51108	Informatica Basica	f	45	1
+51201	Educacion Ambiental	f	45	1
+51202	Actividades Complementarias	f	45	1
+51203	Organizacion Y Metodos	f	45	1
+51204	Matematicas Ii	f	45	1
+51205	Ingles Instrumental Ii	f	45	1
+51206	Sistemas De Informacion	f	45	1
+51207	Lenguaje De Programacion I	f	45	1
+51301	Estadistica General	f	45	1
+51302	Educacion Ciudadana	f	45	1
+51303	Calculo Matricial	f	45	1
+51304	Anal. Y Dis. De Sistemas I	f	45	1
+51305	Arquitectura Del Computador	f	45	1
+51306	Lenguaje De Programacion Ii	f	45	1
+51307	Base De Datos	f	45	1
+51315	Servicio Comunitario	f	45	1
+51401	Estadistica Probabilistica	f	45	1
+51402	Anal. Y Dis. De Sistemas Ii	f	45	1
+51403	Sistemas Operativos	f	45	1
+51404	Teleprocesos	f	45	1
+51405	Lenguaje De Programacion Iii	f	45	1
+51406	Modelo De Datos	f	45	1
+51501	Inform. Soc. Y Organizacion	f	45	1
+51502	Planificacion De Proyectos	f	45	1
+51503	Redes Locales	f	45	1
+51504	Lenguaje De Programacion Iv	f	45	1
+51601	Trabajo Especial De Grado	f	45	1
+51602	Pasantias Profesionales	f	45	1
+81601	Pasantias	f	48	1
+81602	Proyecto De Grado	f	48	1
+10102	Matematicas	f	41	1
+21514	Dibujo Cadd	f	42	1
+31411	Mineria De Campo I	f	43	1
+10103	Lenguaje Y Comunicacion	f	41	1
+10104	Botanica General	f	41	1
+10105	Principios De Climatologia	f	41	1
+10106	Quimica General	f	41	1
+10107	Dibujo Tecnico	f	41	1
+10108	Orientacion I	f	41	1
+10109	Botanica	f	41	1
+10110	Lenguaje Y Comunicacion	f	41	1
+10111	Princ.de Econ Y Adm.de Empresa	f	41	1
+10112	Dibujo Tecnico	f	41	1
+10113	Agroclimatologia	f	41	1
+10114	Educacion Fisica I	f	41	1
+10201	Dinamica Del Comp. Humano	f	41	1
+10202	Estadistica	f	41	1
+10203	Fitopatologia	f	41	1
+10204	Fisiologia Vegetal	f	41	1
+10205	Anatomia Y Fisiologia Animal	f	41	1
+10206	Edafologia	f	41	1
+10207	Topografia	f	41	1
+10208	Orientacion Ii	f	41	1
+10301	Metodologia De La Investig.	f	41	1
+10302	Sociologia Rural	f	41	1
+10303	Entomologia	f	41	1
+10304	Cultivos I	f	41	1
+10305	Zootecnia I	f	41	1
+10306	Pastos Y Forrajes	f	41	1
+10307	Construcciones Rurales	f	41	1
+10308	Sociologia Rural	f	41	1
+10401	Mejoramiento Biotico	f	41	1
+10402	Credito Y Comerc. Agropecuaria	f	41	1
+10403	Ingles Tecnico	f	41	1
+10404	Maquinaria Agricola	f	41	1
+10411	Control De Malezas	f	41	1
+10412	Cultivos Ii	f	41	1
+10413	Zootecnia Ii	f	41	1
+10414	Sanidad Animal	f	41	1
+10415	Control De Malezas	f	41	1
+10416	Bovinos	f	41	1
+10417	Control De Malezas	f	41	1
+10501	Planificacion Agricola	f	41	1
+10502	Legislacion Agraria	f	41	1
+10503	Consev. Recursos Naturales	f	41	1
+10504	Industrializacion Agricola	f	41	1
+10505	Riego Y Drenaje	f	41	1
+10511	Cultivos Iii	f	41	1
+10512	Zootecnia Iii	f	41	1
+10601	Adminst. De Empresas Agrop.	f	41	1
+10602	Extension Agricola	f	41	1
+10603	Pasantias	f	41	1
+10604	Proyecto Productor Indepen.	f	41	1
+10611	Cultivos Iv	f	41	1
+10612	Zootecnia Iv	f	41	1
+11108	Educacion Fisica I	f	41	1
+11207	Educacion Fisica Base Ii	f	41	1
+11514	Redaccion De Informes	f	41	1
+20101	Dibujo I	f	42	1
+20102	Geometria Descriptiva	f	42	1
+20103	Fisica	f	42	1
+20104	Materiales I	f	42	1
+20105	Matematicas	f	42	1
+20106	Tecnicas Habitos De Estudio	f	42	1
+20107	Lenguaje Y Comunicacion	f	42	1
+20108	Cultura I	f	42	1
+20109	Geologia	f	42	1
+20201	Dibujo Ii	f	42	1
+20202	Mecanica De Suelos	f	42	1
+20203	Topografia I	f	42	1
+20204	Materiales Ii	f	42	1
+20205	Geometria Analitica	f	42	1
+20206	Dinamica Comportamiento Humano	f	42	1
+20207	Ingles Tecnico	f	42	1
+20208	Matematicas Ii	f	42	1
+20301	Dibujo Iii	f	42	1
+20302	Instalaciones Sanitarias	f	42	1
+20303	Topografia Ii	f	42	1
+20304	Construccion I	f	42	1
+20305	Mecanica Racional	f	42	1
+20306	Metodologia De Investigacion	f	42	1
+20307	Programacion Grafica	f	42	1
+20308	Resistencia De Materiales	f	42	1
+20309	Seminario	f	42	1
+20310	Mecanica De Fluidos	f	42	1
+20401	Instalaciones Electricas	f	42	1
+20402	Construccion Ii	f	42	1
+20403	Construcciones Viales I	f	42	1
+20404	Estructuras I	f	42	1
+20405	Redaccion De Informes	f	42	1
+20406	Computacion	f	42	1
+20407	Vias	f	42	1
+20408	Estructura	f	42	1
+20501	Marqueteria	f	42	1
+20502	Maquinarias Y Equipos	f	42	1
+20503	Construccion Iii	f	42	1
+20504	Construcciones Viales Ii	f	42	1
+20505	Estructuras Ii	f	42	1
+20506	Ejercicio Profesional	f	42	1
+20507	Administracion De Empresas	f	42	1
+20509	Concreto	f	42	1
+20510	Administracion De Obras	f	42	1
+20601	Taller Mantenimiento Obras V.	f	42	1
+20602	Prefabricacion	f	42	1
+20603	Taller Mantenimiento Edificios	f	42	1
+20604	Pasantias	f	42	1
+21107	Cultura I	f	42	1
+21207	Cultura Ii	f	42	1
+21208	Educacion Fisica Base Ii	f	42	1
+21412	Higiene Y Saneamiento	f	42	1
+21511	Maquinaria Y Equipo	f	42	1
+30101	Matematicas I	f	43	1
+30102	Geologia Fisica	f	43	1
+30103	Introduccion A La Mineria	f	43	1
+30104	Geometria Descriptiva	f	43	1
+30105	Dibujo	f	43	1
+30106	Tecnicas Y Habitos De Estudio	f	43	1
+30107	Orientacion I	f	43	1
+30201	Matematicas Ii	f	43	1
+30202	Geologia Estructural	f	43	1
+30203	Topografia I	f	43	1
+30204	Lenguaje Y Comunicacion	f	43	1
+30205	Quimica General	f	43	1
+30206	Dinamica Comportamiento Humano	f	43	1
+30207	Orientacion Ii	f	43	1
+30301	Metodos Prosp. Minera	f	43	1
+30302	Electrotecnia	f	43	1
+30303	Mineralogia	f	43	1
+30304	Topografia Ii	f	43	1
+30305	Ingles Tecnico	f	43	1
+30306	Quimica Analitica	f	43	1
+30307	Metodologia De La Investigac.	f	43	1
+30401	Metodos De Eval. De Yacimiento	f	43	1
+30402	Motores Y Maquinarias Mineras	f	43	1
+30403	Mecanica De Materiales	f	43	1
+30404	Yacimientos Minerales	f	43	1
+30405	Legislacion Minera Y Laboral	f	43	1
+30406	Hiegiene Y Segurid. Industrial	f	43	1
+30407	Docimasia	f	43	1
+30501	Introd A La Econom Y Eval Proy	f	43	1
+30502	Metod. De Perforacion Y Excav.	f	43	1
+30503	Mecanica De Rocas	f	43	1
+30504	Laboreo A Cielo Abierto	f	43	1
+30505	Prep. Y Concent. De Menas	f	43	1
+30511	Electiva	f	43	1
+30512	Principios De Termodinamica	f	43	1
+30601	Organ. Y Adm. De Emp. Mineras	f	43	1
+30602	Obras Subterraneas	f	43	1
+30603	Pasantias	f	43	1
+30611	Hidrogeologia	f	43	1
+31108	Educacion Fisica I	f	43	1
+31207	Educacion Fisica Base Ii	f	43	1
+31208	Educacion Fisica Ii	f	43	1
+31511	Mineria De Campo Ii	f	43	1
+41101	Matematicas	f	44	1
+41102	Lengua Y Comunicacion	f	44	1
+41103	Contabilidad	f	44	1
+41104	Teoria Y Tecnicas De Turismo	f	44	1
+41105	Ingles I	f	44	1
+41106	Tec. De Est. E Investigacion	f	44	1
+41107	Cultura I	f	44	1
+41108	Educacion Fisica Base I	f	44	1
+41201	Estadistica General	f	44	1
+41202	Administracion	f	44	1
+41203	Economia	f	44	1
+41204	Manif. Cult. Y Turisticas	f	44	1
+41205	Ingles Ii	f	44	1
+41206	Problemas Soc. Del Pais	f	44	1
+41207	Geog. Turistica I	f	44	1
+41208	Cultura Ii	f	44	1
+41209	Educacion Fisica Base Ii	f	44	1
+41302	Adm. De Emp. Turistica	f	44	1
+41303	Computacion	f	44	1
+41304	Legislacion Turistica	f	44	1
+41305	Ingles Iii	f	44	1
+41306	Psicologia General	f	44	1
+41307	Geografia Turistica Ii	f	44	1
+41401	Presupuesto	f	44	1
+41402	Tec. De Oper. E.turisticas I	f	44	1
+41403	Administracion De Personal	f	44	1
+41404	Mercado Turistico	f	44	1
+41405	Ingles Iv	f	44	1
+41406	Transporte	f	44	1
+41501	Contabilidad Aplicada	f	44	1
+41502	Tec. De Opr. E.turisticas Ii	f	44	1
+41503	Planificacion Turistica	f	44	1
+41504	Promocion Turistica	f	44	1
+41505	Analis. De Prob. Y Toma De Dec	f	44	1
+41601	Anl. De Edos. Financieros	f	44	1
+41602	Form. Y Eval. De Proy. Turist.	f	44	1
+41603	Pasantias	f	44	1
+42101	Matematicas	f	44	1
+42102	Lengua Y Comunicacion	f	44	1
+42103	Contabilidad	f	44	1
+42104	Teoria Y Tec. De Turismo	f	44	1
+42105	Ingles I	f	44	1
+42106	Tec. De Est. E Investigacion	f	44	1
+42107	Cultura I	f	44	1
+42108	Educacion Fisica Base I	f	44	1
+42201	Estadistica General	f	44	1
+42202	Administracion	f	44	1
+42203	Economia	f	44	1
+42204	Manisf. Culturales Y Turist.	f	44	1
+42205	Ingles Ii	f	44	1
+42206	Prob. Socio-economicos Pais	f	44	1
+42207	Geografia Turist. I	f	44	1
+42208	Cultura Ii	f	44	1
+42209	Educacion Fisica Ii	f	44	1
+42301	Matematicas Financiera	f	44	1
+42302	Adm. Empresas Hoteleras	f	44	1
+42303	Computacion	f	44	1
+42304	Legislacion Turistica	f	44	1
+42305	Ingles Iii	f	44	1
+42306	Psicologia General	f	44	1
+42307	Geografia Turistica Ii	f	44	1
+42401	Presupuesto	f	44	1
+42402	Tec. De Oper. Hotelera I	f	44	1
+42403	Adm. De Personal	f	44	1
+42404	Mercado Turistico	f	44	1
+42405	Ingles Iv	f	44	1
+42406	Prog. Y Coord. De Eventos	f	44	1
+42501	Contabilidad Hotelera	f	44	1
+42502	Tec. De Oper. Hotelera Ii	f	44	1
+42503	Planificacion Turistica	f	44	1
+42504	Promocion Turistica	f	44	1
+42505	Anal. Del Prob. Y Toma De Dec.	f	44	1
+42601	Anal. De Edos. Financieros	f	44	1
+42602	Form. Y Eval. De Proy. Turist.	f	44	1
+42603	Pasantias	f	44	1
+43313	Geog. Tur. Area Del Caribe	f	44	1
+43314	Aleman Ii	f	44	1
+43511	Fundamentos De Ecoturismo	f	44	1
+51412	Contabilidad Computarizada	f	45	1
+51507	Tecnologia Gerenciales	f	45	1
+61308	Electiva	f	46	1
+61312	Ecoalojamiento	f	46	1
+61411	Aleman Ii	f	46	1
+61412	Parques Nacionales	f	46	1
+61511	Aleman Iii	f	46	1
+61512	Tec. De Preparacion De Alim.	f	46	1
+71411	Economia Administrativa	f	47	1
+11411	Cereales Y Leguminosas	f	41	1
+11412	Ovinos-caprinos-conejos	f	41	1
+11413	Ingles Tecnico	f	41	1
+11414	Control De Malezas	f	41	1
+11511	Industria Agropecuaria	f	41	1
+11512	Apicultura-truchicultura	f	41	1
+11513	Legislacion Agropecuaria	f	41	1
+11515	Computacion I	f	41	1
+21101	Matematicas I	f	42	1
+21102	Fisica	f	42	1
+21103	Geologia	f	42	1
+21104	Geometria Descriptiva	f	42	1
+21105	Lengua Y Comunicacion	f	42	1
+21106	Tecnicas De Estudio E Inv.	f	42	1
+21108	Educacion Fisica Base I	f	42	1
+21201	Matematicas Ii	f	42	1
+21202	Mecanica Racional	f	42	1
+21203	Materiales	f	42	1
+21204	Topografia I	f	42	1
+21205	Dibujo I	f	42	1
+21206	Dinamica Del Comp. Humano	f	42	1
+21301	Mecanica De Fluidos	f	42	1
+21302	Resistencia De Materiales	f	42	1
+21303	Mecanica De Suelos	f	42	1
+21304	Topografia Ii	f	42	1
+21306	Computacion	f	42	1
+21307	Seminario	f	42	1
+21401	Instalaciones Sanitarias	f	42	1
+21402	Estructura	f	42	1
+21403	Construccion I	f	42	1
+21404	Vias	f	42	1
+21405	Modelos Maqueteria	f	42	1
+21406	Dibujo Cadd	f	42	1
+21411	Instalaciones Electricas	f	42	1
+21413	Ingles Tecnico	f	42	1
+21501	Infraestr. Obras Hidraulicas	f	42	1
+21502	Concreto	f	42	1
+21503	Construccion Ii	f	42	1
+21504	Construcciones Viales	f	42	1
+21505	Administracion De Obras	f	42	1
+21512	Pavimentos(laboratorio)	f	42	1
+21513	Redacion De Informes Tecnicos	f	42	1
+21601	Taller De Mant Obra Hidraulica	f	42	1
+21602	Taller De Mant. Edificio	f	42	1
+21603	Taller De Mant. Obras Viales	f	42	1
+31412	Mecanica De Suelos	f	43	1
+31413	Cartografia Minera	f	43	1
+31512	Hidrogeologia	f	43	1
+31513	Ingles Tecnico	f	43	1
+41301	Matematica Financiera	f	44	1
+43101	Lenguaje Instruc. Y Comunic.	f	44	1
+43102	Educacion Ambiental	f	44	1
+43103	Matematicas General	f	44	1
+43104	Teoria Y Tecnica Del Turismo	f	44	1
+43105	Patrimonio Historico	f	44	1
+43106	Educacion Fisica Y Deporte	f	44	1
+43108	Metodologia De La Investig.	f	44	1
+43201	Prob Del Desarr Social Y Econ.	f	44	1
+43202	Administracion	f	44	1
+43203	Contabilidad	f	44	1
+43204	Introduccion A La Informatica	f	44	1
+43205	Geografia Turistica	f	44	1
+43206	Fundamentos De Economia	f	44	1
+43207	Ingles Ii	f	44	1
+43211	Taller De Fonetica (elect.)	f	44	1
+43212	Tecnicas Y Habitos De Estudio	f	44	1
+43213	Recursos Turisticos Regionales	f	44	1
+43301	Tecnicas De Animac. Y Recreac.	f	44	1
+43303	Contabilidad Aplicada	f	44	1
+43304	Estadistica	f	44	1
+43305	Manif. Culturales Y Turisticas	f	44	1
+43306	Legislacion Turistica	f	44	1
+43307	Ingles Iii	f	44	1
+43311	Analisis Estados Financieros	f	44	1
+43312	Organizacion Y Metodo	f	44	1
+43315	Turismo Naturaleza Bajo Impac.	f	44	1
+43316	Electiva (tur. Áreas Proteg.)	f	44	1
+43401	Trafico Aereo I	f	44	1
+43402	Tecn. De Oper. Turisticas I	f	44	1
+43403	Presupuesto Turistico	f	44	1
+43404	Mercadeo Turistico	f	44	1
+43405	Planificacion Turistica	f	44	1
+43406	Transporte Acuat. Y Terrestre	f	44	1
+43407	Ingles Iv	f	44	1
+43408	Taller De Superv. De Personal	f	44	1
+43411	Taller Acond. Turis Centros P.	f	44	1
+43412	Campamento Y Excursiones (e.)	f	44	1
+43413	Ingles Conversacional (elect.)	f	44	1
+43414	Aleman Iii	f	44	1
+43415	Ecoturismo (electiva)	f	44	1
+43501	Trafico Aereo Ii	f	44	1
+43502	Tecnicas De Oper Turisticas Ii	f	44	1
+43503	Relaciones Publicas	f	44	1
+43504	Form Y Eval De Proy Turisticos	f	44	1
+43505	Analisis De Prob Y Toma De D.	f	44	1
+43506	Prog Y Coord De Event Y Prot.	f	44	1
+43507	Autodesarrollo Y Etica Prof.	f	44	1
+43512	Taller De Com. Y Auto Estima	f	44	1
+43513	Fundamento De Ecoturismo Ii	f	44	1
+43514	Gestion Hospitalidad (e)	f	44	1
+43601	Pasantias	f	44	1
+51411	Auditoria De Sistemas	f	45	1
+51413	Gnu - Linux	f	45	1
+51505	Base De Datos Distribuidas	f	45	1
+51506	Tecnologia Internet	f	45	1
+51508	Edumatica	f	45	1
+51509	Aplicaciones Multimedia	f	45	1
+51510	Diseño Instruccional Tic	f	45	1
+51511	Comunicacion Satelital	f	45	1
+51512	Programacion Aplicada	f	45	1
+51513	Java	f	45	1
+51514	Software Estadistico	f	45	1
+61101	Matematicas General	f	46	1
+61102	Lenguaje Y Comunicacion	f	46	1
+61103	Organizacion Y Alojamiento	f	46	1
+61104	Teoria Y Tecnicas Del Turismo	f	46	1
+61105	Educacion Fisica Y Deporte	f	46	1
+61106	Metodologia De La Invest.	f	46	1
+61107	Ingles I	f	46	1
+61201	Prob.del Desarrollo Ec. Y Soc.	f	46	1
+61202	Fundamentos De Economia	f	46	1
+61203	Habitacion I	f	46	1
+61204	Administracion	f	46	1
+61205	Contabilidad	f	46	1
+61206	Gestion De Alimentos Y Bebidas	f	46	1
+61207	Ingles Ii	f	46	1
+61208	Taller Acond. Turis. Y Pobla.	f	46	1
+61209	Taller De Fonetica (electv.)	f	46	1
+61301	Estadistica	f	46	1
+61302	Legislacion Turistica	f	46	1
+61303	Habitacion Ii	f	46	1
+61304	Introd. A La Informatica	f	46	1
+61305	Contabilidad Hotelera	f	46	1
+61306	Control Costos Alimentos Y B.	f	46	1
+61307	Ingles Iii	f	46	1
+61311	Campamento Y Excursion (e)	f	46	1
+61313	Gest Calidad En Alojam. (e)	f	46	1
+61401	Mercadeo Hotelero	f	46	1
+61402	Planificacion Hotelera	f	46	1
+61403	Educacion Ambiental	f	46	1
+61404	Equip. Y Mant. De Planta Fis.	f	46	1
+61405	Presupuesto Hotelero	f	46	1
+61406	Taller De Superv. De Personal	f	46	1
+61407	Ingles Iv	f	46	1
+61408	Tecnicas De Anim. Y Recreacion	f	46	1
+61413	Control De Calidad Y Sist.de C	f	46	1
+61415	Ecoturismo (electiva)	f	46	1
+61501	Relaciones Publicas	f	46	1
+61502	Analis. De Prob. Y Toma Dec.	f	46	1
+61503	Autodesarrollo Y Etica Prof.	f	46	1
+61504	Gerencia Hotelera	f	46	1
+61505	Form. De Proyectos Hoteleros	f	46	1
+61506	Higiene Y Seguridad Indust.	f	46	1
+61507	Prog Y Coord De Event Y Prot.	f	46	1
+61508	Ingles Conversacional (elect)	f	46	1
+61601	Pasantias	f	46	1
+71101	Introduccion A La Administ.	f	47	1
+71102	Contabilidad I	f	47	1
+71103	Matematica Instrumental	f	47	1
+71104	Problematica Socio Economica	f	47	1
+71105	Fundamento De Derecho	f	47	1
+71106	Lenguaje Y Comunicacion	f	47	1
+71201	Introduccion A La Economia	f	47	1
+71202	Contabilidad Ii	f	47	1
+71203	Matematica Financiera	f	47	1
+71204	Estadistica General	f	47	1
+71205	Legislacion Laboral	f	47	1
+71206	Redaccion Informes Tecnicos	f	47	1
+71301	Tecnicas De Supervision	f	47	1
+71302	Contabilidad Iii	f	47	1
+71303	Finanzas	f	47	1
+71304	Estadistica Aplicada	f	47	1
+71305	Legislacion Fiscal	f	47	1
+71306	Legislacion Mercantil	f	47	1
+71307	Educ. Fisica Y Deportes	f	47	1
+71402	Contabilidad Iv	f	47	1
+71403	Contabilidad De Costos I	f	47	1
+71404	Auditoria I	f	47	1
+71405	Contabilidad Fiscal	f	47	1
+71406	Impuesto Sobre La Renta	f	47	1
+71412	Toma De Decisiones (electiva)	f	47	1
+71413	Presupuesto Publico (electiva)	f	47	1
+71414	Contabilidad Publica (elect.)	f	47	1
+71416	Cont Empresas Turis (electiva)	f	47	1
+71501	Contabilidad Mecanizada	f	47	1
+71502	Contabilidad De Costos Ii	f	47	1
+71503	Presupuesto	f	47	1
+71504	Auditoria Ii	f	47	1
+71505	Sistemas Procedim. Contables	f	47	1
+71506	Metodologia De La Investig.	f	47	1
+71512	Auto Desarrollo Y Etica Profs.	f	47	1
+71513	Ingles Tecnico	f	47	1
+71514	Contab. Ambiental (electiva)	f	47	1
+71601	Analisis Estados Financieros	f	47	1
+71602	Taller De Contabilidad	f	47	1
+81101	Educacion Fisica Y Deporte	f	48	1
+81102	Fisica	f	48	1
+81103	Quimica	f	48	1
+81104	Lenguaje Y Comunicacion	f	48	1
+81105	Logica Matematica	f	48	1
+81106	Ingles	f	48	1
+81107	Introd. Manejo Emergencias	f	48	1
+81201	Computacion	f	48	1
+81202	Sistemas De Telecomunicaciones	f	48	1
+81203	Ecologia	f	48	1
+81204	Geografia Aplicada	f	48	1
+81205	Estadistica Aplicada	f	48	1
+81206	Auxilio Medico De Emergencia I	f	48	1
+81207	Tecnicas De Investigacion I	f	48	1
+81301	Tecnicas De Busqueda Y Rescate	f	48	1
+81302	Materiales Peligrosos	f	48	1
+81303	Emergencias Ambientales	f	48	1
+81304	Elementos Constructivos	f	48	1
+81305	Prevencion De Perdidas	f	48	1
+81306	Auxilio Medico Emergencias Ii	f	48	1
+81307	Tecnicas De Investigacion Ii	f	48	1
+81401	Tecnicas Busqueda Y Rescate Ii	f	48	1
+81402	Lineas Vitales	f	48	1
+81403	Subsistencia Extraurbana	f	48	1
+81404	Metodos Proteccion Civil I	f	48	1
+81405	Investigacion De Siniestros	f	48	1
+81406	Planificacion Para Emergencias	f	48	1
+81408	Incendios I	f	48	1
+81409	Tecnicas Produccion Indust.	f	48	1
+81410	Seguridad E Higiene Indust.	f	48	1
+81411	Metodos De Capacitacion	f	48	1
+81412	Sociologia De Los Desastres	f	48	1
+81413	Domotica	f	48	1
+81501	Manejo De Alberges	f	48	1
+81502	Manejo De Desastres	f	48	1
+81503	Legislacion Aplicada	f	48	1
+81504	Crisis Y Comportamiento Humano	f	48	1
+81505	Gerencia Sistema Emergencia	f	48	1
+81506	Riesgos Naturales Ii	f	48	1
+81507	Incendios Ii	f	48	1
+81508	Seguridad Escolar	f	48	1
+81509	Emergencias Industriales	f	48	1
+81510	Tec. Control Calidad Indust.	f	48	1
+81511	Metodos Proteccion Civil Ii	f	48	1
+81512	Form.y Evaluacion De Proyectos	f	48	1
+11605	Pasantias	f	41	1
+31604	Pasantias	f	43	1
+71603	Pasantias	f	47	1
+71604	Trabajo Especial De Grado	f	47	1
+21604	Pasantias	f	42	1
+21315	Servicio Comunitario	f	42	1
+71315	Servicio Comunitario	f	47	1
+61315	Servicio Comunitario	f	46	1
+81315	Servicio Comunitario	f	48	1
+43318	Servicio Comunitario	f	44	1
+91101	Computacion General	f	49	1
+91102	Fisica De La Radiologia	f	49	1
+91103	Deporte Y Cultura	f	49	1
+91104	Radiologia I	f	49	1
+91105	Anatomia	f	49	1
+91106	Terminologia Medica	f	49	1
+91107	Atencion Al Paciente	f	49	1
+21305	Dibujo Ii	f	42	1
+43302	Admon. De Empresas Turisticas	f	44	1
+71415	(electiva) Cont Empresas Agric	f	47	1
+91201	Fisiologia	f	49	1
+91202	Etica	f	49	1
+91203	Psicologia	f	49	1
+91204	Matematica	f	49	1
+91205	Ingles Instrumental	f	49	1
+91206	Radiologia Ii	f	49	1
+91207	Redaccion De Informes	f	49	1
+91301	Uso Farmacos En La Radiologia	f	49	1
+91302	Electiva I	f	49	1
+91303	Gerencia Servicio Radiologico	f	49	1
+91304	Estadistica Aplicada	f	49	1
+91305	Proteccion Radiologica I	f	49	1
+91306	Radiologia Iii	f	49	1
+91307	Practicas Radiograficas I	f	49	1
+91401	Radiologia Legal	f	49	1
+91402	Electiva Ii	f	49	1
+91403	Metodologia Investigacion I	f	49	1
+91404	Epidemiologia	f	49	1
+91405	Proteccion Radiologica Ii	f	49	1
+91406	Radiologia Iv	f	49	1
+91501	Servicio Comunitario	f	49	1
+91502	Politicas Publicas	f	49	1
+91503	Metodologia Investigacion Ii	f	49	1
+91504	Gestion En Salud	f	49	1
+91505	Sociologia De La Salud	f	49	1
+91506	Radiologia V	f	49	1
+91507	Practicas Radiograficas Iii	f	49	1
+71511	Seminario Niif (electiva)	f	47	1
+80101	Gestión De Emergencias Y Desastres	f	48	1
+80102	Formulación Y Evaluación De Proyectos Comunitarios	f	48	1
+80103	Técnicas De Investigación Documental	f	48	1
+80104	Legislación Aplicada A La Gestión De Riesgos	f	48	1
+80105	Sistemas De Comunicaciones	f	48	1
+80106	Métodos De Proteccion Civil	f	48	1
+80107	Proyecto I	f	48	1
+80113	Lenguaje Y Comunicación	f	48	1
+80114	Matemática General	f	48	1
+80201	Identificación Y Manejo De Emergencias Ambientales	f	48	1
+80202	Inglés Instrumental	f	48	1
+80204	Riesgos Naturales	f	48	1
+80205	Ecología	f	48	1
+80206	Geografía Aplicada Al Manejo De Emergencias Y Desastres	f	48	1
+80207	Proyecto Ii	f	48	1
+80300	Servicio Comunitario	f	48	1
+80301	Técnicas De Intervencion Y Rescate (sari Y Sarii)	f	48	1
+80302	Química	f	48	1
+80303	Materiales Peligrosos	f	48	1
+80304	Auxilio Médico Pre-hospitalario	f	48	1
+80305	Subsistencia Extra-urbana	f	48	1
+80306	Proyecto Iii	f	48	1
+80310	Planificación Para Emergencias Y Desastres	f	48	1
+80313	Educación Física Y Deporte	f	48	1
+80401	Emergencias Industriales Y De Origen Tecnológico	f	48	1
+80402	Estadística Aplicada	f	48	1
+80403	Técnicas De Prevención Y Control De Incendios	f	48	1
+80404	Seguridad Y Salud Ocupacional	f	48	1
+80405	Investigación De Siniestros	f	48	1
+80406	Proyecto Iv	f	48	1
+80407	Emergencias Industriales Y De Origen Tecnológico	f	48	1
+80411	Sociología De Desastre	f	48	1
+80412	Técnicas De Capacitación	f	48	1
+80501	Manejo De Desastres	f	48	1
+80502	Manejo De Alberges	f	48	1
+80503	Lineas Vitales	f	48	1
+80507	Proyecto V	f	48	1
+80510	Técnicas Y Elementos De Construcción	f	48	1
+80513	Crisis Y Comportamiento Humano	f	48	1
+80514	Seguridad Escolar	f	48	1
+80602	Gerencia De Sistemas De Emergencia	f	48	1
+80607	Trabajo Especial De Grado	f	48	1
+100101	Comunicación Y Lenguaje	f	50	1
+100102	Psicología Básica	f	50	1
+100103	Morfología	f	50	1
+100104	Sociantropología	f	50	1
+100105	Enfermería Básica	f	50	1
+100106	Inglés	f	50	1
+100107	Nutrición Y Dietética	f	50	1
+100201	Bioquímica	f	50	1
+100202	Salud Y Desarrollo Social Y Económico	f	50	1
+100203	Bioestadística Y Epidemiología	f	50	1
+100204	Anatomía Humana	f	50	1
+100205	Inglés Instrumental	f	50	1
+100206	Enfermería Materno Infantil I	f	50	1
+100301	Farmacología	f	50	1
+100302	Microbiología Y Parasitología	f	50	1
+100303	Fisiología	f	50	1
+100304	Enfermería Materno Infantil Ii	f	50	1
+100402	Metodología De La Investigación	f	50	1
+100403	Enf. Salud Mental Y Psiquiatrica	f	50	1
+100501	Admón. De La Atención De Enf.	f	50	1
+100504	Proyecto De Investigación Y Desarrollo Técnico	f	50	1
+100602	Presentación Proyecto Grado	f	50	1
+51515	Ingenieria Del Software	f	45	1
+91407	Practicas Radiograficas Ii	f	49	1
+12101	Investigación Documental	f	41	1
+12102	Protección Vegetal I	f	41	1
+12103	Botánica	f	41	1
+40405	Idiomas Iii	f	44	1
+12104	Química	f	41	1
+12105	Agroclimatología	f	41	1
+12106	Formulación Y Evaluación De Proyectos	f	41	1
+12107	Manejo De Suelos Y Aguas I	f	41	1
+12108	Matemática General	f	41	1
+12109	Estadística Descriptiva	f	41	1
+12110	Proyecto I	f	41	1
+ELEC19023	Electiva I	f	04	2
+12111	Maquinaria Y Equipos Agropecuarios I	f	41	1
+12112	Procesos Agroindustriales I	f	41	1
+12201	Legislación Agraria	f	41	1
+12202	Sociología Rural	f	41	1
+12203	Extensión Agropecuaria	f	41	1
+12204	Mejoramiento Agropecuario	f	41	1
+12205	Instalaciones Pecuarias I	f	41	1
+12206	Forrajicultura Y Alimentación Animal I	f	41	1
+12207	Proyecto Ii	f	41	1
+12208	Maquinarias Y Equipos Agropecuarios Ii	f	41	1
+12209	Prevención Y Control De Enfermedades I	f	41	1
+12210	Agroindustria Animal I	f	41	1
+12211	Fundamentos De Anatomía Y Fisiología Animal I	f	41	1
+12212	Mejoramiento Animal	f	41	1
+12301	Dibujo	f	41	1
+12302	Protección Vegetal Ii	f	41	1
+12303	Comercialización Y Mercadeo I	f	41	1
+12304	Ingles Técnico	f	41	1
+12305	Manejo De Suelos Y Aguas Ii	f	41	1
+12306	Fisiología Vegetal	f	41	1
+12307	Proyecto Iii	f	41	1
+12308	Procesos Agroindustriales Ii	f	41	1
+12309	Maquinaria Y Equipos Agropecuarios Iii	f	41	1
+12401	Educación Física	f	41	1
+12402	Instalaciones Pecuarias Ii	f	41	1
+12403	Forrajicultura Y Alimentacion Animal Ii	f	41	1
+12404	Topografía	f	41	1
+12405	Fundamentos De Anat. Y Fisiolog. Animal	f	41	1
+12406	Prevención Y Control De Enfermedades En Animales	f	41	1
+12407	Proyecto Sobre Especies Menores	f	41	1
+12408	Comercialización Y Mercadeo Ii	f	41	1
+12501	Dinámica Del Comportamiento Humano	f	41	1
+12502	Raíces Y Tubérculos	f	41	1
+12503	Lenguaje Y Comunicacion	f	41	1
+12504	Manejo Postcosecha	f	41	1
+12505	Cereales Y Leguminosas	f	41	1
+12506	Horticultura	f	41	1
+12507	Proyecto V	f	41	1
+12508	Procesos Agroindustriales Iii	f	41	1
+12509	Comercialización Y Mercadeo Iii	f	41	1
+12510	Protección Vegetal Iii	f	41	1
+12511	Cultivos Hidropónicos	f	41	1
+12601	Pasantías	f	41	1
+100601	Practica Profesional Integral	f	50	1
+100401	Fisiopatología	f	50	1
+100404	Enf. Médico Quirúrgico I	f	50	1
+100503	Enfermería Comunitaria	f	50	1
+100502	Enf. Médico Quirúrgico Ii	f	50	1
+100207	Proyecto Ii	f	50	1
+100108	Proyecto I	f	50	1
+100306	Proyecto Iii	f	50	1
+100405	Proyecto Iv	f	50	1
+81407	Riesgos Naturales I	f	48	1
+91601	Trabajo Especial De Grado	f	49	1
+91602	Pasantias	f	49	1
+12512	Proyecto Sobre Oler. Y Flor.	f	41	1
+100305	Educación Para La Salud	f	50	1
+40115	Educacion Ambiental	f	44	1
+40211	Patrimonio Historico	f	44	1
+40517	Ingles Iv	f	44	1
+40212	Geografia Turistica	f	44	1
+40101	Teoría Y Técnica Del Turismo	f	44	1
+40102	Liderazgo, Protagonismo Y Participación	f	44	1
+40103	Desarrollo Endógeno	f	44	1
+40104	Legislación Turística	f	44	1
+40105	Fundamentos De Economía Turística	f	44	1
+40106	Proyecto I	f	44	1
+40112	Educación Física	f	44	1
+40113	Lenguaje Y Comunicación	f	44	1
+40114	Matemática General	f	44	1
+40201	Metodología De La Investigación	f	44	1
+40202	Formulación Y Evaluación De Proyectos Turísticos	f	44	1
+40203	Planificación Y Pensamiento Estratégico En Turísmo	f	44	1
+40204	Estadística	f	44	1
+40205	Idiomas I	f	44	1
+40206	Proyectos Ii	f	44	1
+40210	Informática Básica	f	44	1
+40301	Administración	f	44	1
+40302	Contabilidad	f	44	1
+40303	Técnicas De Operación De Empresas Turísticas I (alojamiento)	f	44	1
+40304	Manifestaciones Culturales (perfiles Psicodemográficos)	f	44	1
+40305	Idiomas Ii	f	44	1
+40306	Proyectos Iii	f	44	1
+40307	Análisis Situacional Y Toma De Decisiones	f	44	1
+40323	Servicio Comunitario	f	44	1
+40401	Organización De Eventos Y Protocolo	f	44	1
+40402	Técnicas De Animación Y Recreación	f	44	1
+40403	Transporte Turístico	f	44	1
+40404	Técnicas De Operación De Empresas Turísticas Ii	f	44	1
+40406	Proyectos Iv	f	44	1
+40407	Tráfico Aéreo I	f	44	1
+40408	Relaciones Públicas	f	44	1
+40409	Contabilidad Aplicada	f	44	1
+40413	Mercadeo Turístico	f	44	1
+40414	Taller De Fonética	f	44	1
+40501	Ecología Y Turismo	f	44	1
+40502	Patrimonio Cultural Y Turístico	f	44	1
+40503	Idiomas Iv	f	44	1
+40504	Historia Regional Y Nacional	f	44	1
+40505	Geografía Regional Y Nacional	f	44	1
+40506	Aproximación A La Tipología Y Modalidades Del Turismo Cont	f	44	1
+40507	Proyectos V	f	44	1
+40509	Tráfico Aéreo Ii	f	44	1
+40510	Autodesarrollo Y Ética Profesional	f	44	1
+40511	Presupuesto Turístico	f	44	1
+40516	Taller De Supervisión De Personal	f	44	1
+40607	Pasantias	f	44	1
+40512	Análisis De Problemas Y Toma De Decisiones	f	44	1
+AGOBTAA342	Operaciones Básicas En La Transf Agroecológica De Alimentos	f	01	2
+MA6002	Matematica	f	04	2
+ADP6032	Administración De La Producción	f	04	2
+AIEF6042	Análisis E Interpretación De Estados Financieros	f	04	2
+DIE002	Desarrollo Integral	f	04	2
+PIEL1	Electiva I	f	03	2
+FEP3031	Formulación Y Evaluación De Proyecto	f	04	2
+AF6042	Administración Financiera	f	04	2
+CON9023	Contabilidad Ii	f	04	2
+ELEC39043	Electiva Iii	f	04	2
+PSAPD15035	Participación Social En La Adm, Producción Y Distribucción	f	04	5
+PRO700324	Diseño Planificación Desarrollo E Innovación De Sistema Adm	f	04	3
+PRO700424	Dirección, Control Y Evaluación De Sistemas Adm	f	04	3
+PISC2	Servicio Comunitario	f	03	5
+PIEL4	Electiva Iv	f	03	2
+PIIS2	Ingenieria Del Software I	f	03	2
+AEPS6033	Electiva Iii	f	04	2
+MATEti-963	Matematicas	f	06	2
+DEINti-301	Desarrollo Integral	f	06	2
+IDIOti-602	Idiomas	f	06	2
+TECOti-361	Tecnologias De La Comunicacion	f	06	2
+PNNCti-963	Proyecto Nacional Y Nueva Ciudadania	f	06	5
+IUTSti-482	Intr. A La Univ. Y El Turismo En El Nuevo Modelo Social	f	06	2
+30001	Fundamento De Ingenieria Del Software	f	03	2
+30002	Matematica Avanzada	f	03	2
+PRO630321	Diseño Y Evaluación De Los Sistemas De Información Contables	f	07	3
+GPS15035	Gestión Y Participación Social En El Nuevo Modelo De Desarro	f	07	5
+FPNTt1-61220	Fomento Del Patrimonio Nacional Y Turistico	f	06	3
+PANTt1-1445	Patrimonio Nacional Y Turístico	f	06	5
+IDIOt1-2167	Idiomas I	f	06	2
+TETUt1-602	Teoría Del Turismo	f	06	2
+GETUt1-602	Geografía Turística	f	06	2
+DTCSt3-61220	Desarrollo Del Turismo Comunitario Y Social	f	06	3
+DSRSt3-1445	Des. Sustentable Y Sost. De Los Recursos Y Serv. Tur.	f	06	5
+IDIOt3-28810	Idiomas Iii	f	06	2
+GDTUt3-2167	Gestión De Destinos Turísticos	f	06	2
+MOTUt3-963	Modalidades Turísticas	f	06	2
+INMEt3-963	Investigación De Mercados Emisores	f	06	2
+PLMTt3-963	Plan De Mercadeo Turístico	f	06	2
+PLTUt1-722	Planificación Turística	f	06	2
+DIPTt1-601	Diseño De Producto Turístico	f	06	2
+ACACt3	Actividades Acreditables Iii	f	06	1
+ACACt1	Actividades Acreditables I	f	06	1
+IUTStt-36	Introduccion A La Universidad Y El Turismo	f	06	2
+PNNCtt-48	Proyecto Nacional Y Nueva Ciudadania	f	06	5
+TECOtt-48	Tecnologias De La Comunicacion	f	06	2
+IDIOtt-48	Idiomas	f	06	2
+OUPSt2-61220	Oper. Unidades Prod. Social Y Facilitacion De Serv. Turist.	f	06	3
+IDIOt2-2167	Idiomas Ii	f	06	2
+ADETt2-722	Administracion De Empresas Turisticas	f	06	2
+DCCTt2-1445	Desarrollo Y Calidad De Vida De Las Comunidades Turisticas	f	06	5
+PROTt2-722	Procesos Y Operaciones Turisticas	f	06	2
+GEDAt2-1084	Gestion De Alojamiento	f	06	2
+AVTTt2-1084	Administracion De Agencias De Viajes Y Transporte Turistico	f	06	2
+GABEt2-843	Gestion De Alimentos Y Bebidas	f	06	2
+GOREt2-722	Gestion De Ocio Y Recreacion	f	06	2
+ACACt2	Actividades Acreditables Ii	f	06	1
+GEPTt4-61220	Gestion De Proyectos Turisticos	f	06	3
+ETCAt4-1806	Estudios Del Turismo En El Gran Caribe Y Los Paises Del Alba	f	06	5
+IDIOt4-2167	Idiomas Iv	f	06	2
+GFETt4-963	Gestion Financiera De Las Empresas Turisticas	f	06	2
+DEPTt4-963	Diseño Y Evaluacion De Proyectos Turisticos	f	06	2
+COMEt4-963	Comercio Electronico	f	06	2
+FAPTt4-963	Factibilidad De Proyectos Turisticos	f	06	2
+NETUt4-963	Negociacion Turisticas	f	06	2
+DETHt4-722	Desarrollo Del Talento Humano	f	06	2
+ACACt4	Actividades Acreditables Iv	f	06	1
+CASTt1-722	Calidad De Los Servicios Turisticos	f	06	2
+TPTUt1-722	Tecnicas De Promocion Turistica	f	06	2
+PGT36	Acreditable Ii	f	05	1
+PGT16	Acreditable I	f	05	1
+PRO750225	Manejo, Aplicación Y Superv. Sistemas De Informac. Contables	f	07	3
+ME15045	Modelos Integración Económica Entre Venezuela, América Lati	f	07	5
+901001	Matematicas	f	09	2
+901002	Lecto-escritura Universitaria	f	09	2
+901003	Uptm Como Proyecto Politico	f	09	5
+901004	Introduccion A La Metodologia, Investigacion Y Proyectos	f	09	2
+TILC60	Lenguaje, Comunicacion Y Las Tic´s	f	06	2
+TIMA60	Matematica Aplicada	f	06	2
+TIIU40	Introduccion A La Universidad Y Al Pnf Turismo	f	06	2
+TIPN40	Proyecto Nacional Y Nueva Ciudadania	f	06	2
+TIDI40	Desarrollo Integral	f	06	2
+TIIN60	Ingles	f	06	2
+TTLC60	Lenguaje, Comunicacion Y Las Tic´s	f	06	2
+TTMA60	Matematica Aplicada	f	06	2
+TTIU40	Introduccion A La Universidad Y Al Pnf Turismo	f	06	2
+TTPN40	Proyecto Nacional Y Nueva Ciudadania	f	06	5
+TTSP40	Seminario De Proyecto	f	06	2
+TTIN60	Ingles	f	06	2
+T1MC64	Metodos Cuantitativos	f	06	2
+T1NV64	Nueva Vision Territorial Y Turismo	f	06	5
+T1CT64	Calidad En Turismo	f	06	2
+T1PI64	Patrimonio, Identidad Y Turismo	f	06	2
+T1OR64	Ocio Y Recreacion	f	06	2
+T1MS64	Modalidades Y Servicios Turisticos	f	06	2
+T2CG64	Contabilidad Aplicada Al Turismo	f	06	2
+T2GR64	Gestion De Riesgos	f	06	2
+T2PP180	Practica Profesional I	f	06	2
+PIID2	Idiomas	f	03	2
+TGU3GP64	Gestion De Programas De Turismo Receptivo	f	06	2
+TGU3LA64	Legislacion Aplicada A La Guiatura Turistica	f	06	2
+T2AB45	Alimentos Y Bebidas	f	06	2
+T1ID68	Idioma I	f	06	2
+T1AC34	Acreditable I	f	06	1
+T2GV45	Gestion De Viajes Y Operaciones Turisticas	f	06	2
+T2MP45	Marketing Turistico Y Planificacion Por Productos	f	06	2
+T2PS45	Proyecto Sociointegrador Ii	f	06	3
+T2AC34	Acreditable Ii	f	06	1
+T2ID68	Idioma Ii	f	06	2
+T2TA45	Tecnologia Del Alojamiento	f	06	2
+TGU3PS45	Proyecto Sociointegrador Iii	f	06	3
+TGU4ID68	Idioma Iv	f	06	2
+TGU4PS45	Proyecto Sociointegrador Iv	f	06	3
+TGU4EL34	Electiva	f	06	2
+TGU4PN45	Plan De Negocios Para Unidades De Produccion De Servicios	f	06	2
+TGU4DG64	Diseño Y Gestion De Centros De Interpretación Y Parques Tem.	f	06	2
+TGU4GR64	Gestion Del Riesgo En Actividades De Guiatura Y Conducción	f	06	2
+TGU4PP360	Practica Profesional Ii	f	06	2
+TGA3AG64	Administracion Y Calidad En El Servicio Gastronomico	f	06	2
+TGA4PP360	Practica Profesional Ii	f	06	2
+TAL4PP360	Practica Profesional Ii	f	06	2
+TGT3IG64	Indicadores De Gestion Y Cuentas Satelites Para Destinos Tur	f	06	2
+TGT3LEO64	Lengua Originaria Y Lenguaje De Señas	f	06	2
+TGU4OT45	Operacion En Turismo De Aventura	f	06	2
+TGA4PS68	Proyecto Sociointegrador Iv	f	06	3
+TGA4ID68	Idioma Iv	f	06	2
+TGA4EL34	Electiva	f	06	2
+TGA4GN57	Gastronomia En El Nuevo Modelo Social	f	06	5
+TGA4GM57	Gestion Financiera Y Marketing De Los Servicios Gastronomico	f	06	2
+TGA4DG57	Desarrollo De La Gastronomia Internacional	f	06	2
+TAL4PS68	Proyecto Sociointegrador Iv	f	06	3
+TAL4EL45	Electiva	f	06	2
+TAL4MS68	Modelo Socioproductivo En Las Organizaciones De Alojamiento	f	06	5
+TAL4ID68	Idioma Iv	f	06	2
+TAL4CP34	Comercializacion Y Promocion De Los Servicios De Alojamiento	f	06	2
+TAL4GF68	Gestion Financiera Del Alojamiento	f	06	2
+TGT4PS57	Proyecto Sociointegrador Iv	f	06	3
+TGT4ID68	Idioma Iv	f	06	2
+TGU4OE64	Organizacion Y Gestion De Eventos	f	06	2
+TGU4DT64	Desarrollo Del Talento Humano	f	06	2
+TGA4DT64	Desarrollo Del Talento Humano	f	06	2
+TAL4DT64	Desarrollo Del Talento Humano	f	06	2
+TGT4GFE64	Gestion Financiera De Emprendimientos	f	06	2
+TGT4GRE64	Gestion De La Recreacion Y El Esparcimiento	f	06	2
+TGT4PP360	Practica Profesional Ii	f	06	2
+PG417	Acreditable Iv	f	05	1
+PG218	Acreditable Ii	f	05	1
+TI03SACN01	Introduccion A La Biologia	f	10	2
+TI03SACN02	Introduccion A La Quimica	f	10	2
+TI03SACN03	Historia De La Salud Como Campo De La Investigacion	f	10	2
+TI03SACN04	Aritmetica Y Pensamiento Estrategico	f	10	2
+TI03SACN05	Nuevo Estado Social Democratico De Derecho Y De Justicia	f	10	5
+TI03SACN06	Etica Y Valores Del Socialismo Del Siglo Xxi	f	10	5
+PH0000103	Introduccion A La Universidad Y Al Desarrollo Del Proyecto	f	11	2
+PH0000203	Proyecto Nacional Y Nueva Ciudadania	f	11	5
+PH0000302	Bases Fundamentales De La Historia Insugente	f	11	2
+PH0000403	Lenguaje Y Comunicacion Electiva	f	11	2
+PH0000503	Estadistica	f	11	2
+PH0000602	Nuevas Tecnologias En La Construccion De La Historia	f	11	2
+AG001	Manejo De Las Tic (prosec.)	f	01	2
+PG336	Acreditable Iii	f	05	1
+901104	Teoria Y Problemas Sociopoliticos Contemporaneos	f	09	5
+901105	Desarrollo De Proyectos Socio-productivo I	f	09	3
+901106	Acreditable I	f	09	1
+901101	Psicologia Del Desarrollo	f	09	2
+901102	Historia De La Psicologia Social Mundial Y Latinoamericana	f	09	2
+901103	Manejo De Las Tic	f	09	2
+901107	Aesthetica Y Homo Ludens En La Psicologia Social	f	09	2
+901108	Construccion Social De La Realidad	f	09	2
+901109	Nuevas Perspectivas En La Psicologia Educacional	f	09	2
+PH0010114	Proyecto I	f	11	3
+PH0010306	Antropologia	f	11	2
+PH0010407	Teorias Y Metodologias De La Historia	f	11	2
+PH0010506	Pueblos Originarios De Venezuela Y Nuestra America	f	11	2
+PH0010606	Geografia General	f	11	2
+PH0010702	Electiva I	f	11	2
+TGT4EL34	Electiva	f	06	2
+T103SACN01	Estructura Fisiologica Y Biologica Para La Alimentacion Hum.	f	10	2
+T103SACN02	Nutricion En El Ser Humano Y Sus Implicaciones En La Salud	f	10	2
+T103SACN03	Tecnologia De Los Alimentos	f	10	2
+T103SACN04	Biogeohistoria De La Alimentacion	f	10	2
+T103SACN05	Herramientas De Investigacion Participativa	f	10	2
+T103SACN06	Caracterizacion Y Diagnostico Colectivo Alimentario De La C.	f	10	3
+T103SACN07	Unidad Estetico Ludica	f	10	2
+T103SACN08	Practica De Alimentacion	f	10	2
+T103SACN09	Participacion Protagonica Y Poder Popular	f	10	2
+PIGC3	Acreditable Iii	f	03	1
+T1PS79	Proyecto Sociointegrador I	f	06	3
+PH0010206	Formacion Sociopolitica I	f	11	5
+PH0010803	Actividades Acreditables I	f	11	1
+ACRED03	Acreditable Iii	f	02	1
+ACRED04	Acreditable Iv	f	02	1
+ACRED02	Acreditable Ii	f	03	1
+ACR004	Acreditable Iv	f	03	1
+CC20624213	Obras Viales	f	02	2
+CC20417313	Mecanica De Fluidos	f	02	2
+CCSERCOMUT	Servicio Comunitario	f	02	5
+CCACRED002	Acreditable Ii	f	02	1
+CC30729213	Resistencia De Materiales Para Ingenieros	f	02	2
+CC30728213	Algebra Lineal	f	02	2
+CC3083321	Matematica Para Ingenieros	f	02	2
+CC30937213	Politica De Habitat Y Vivienda	f	02	5
+CC30727213	Desarrollo Endogeno En La Construccion	f	02	5
+CC30726913	Tutorial De Proyectos Iii	f	02	3
+CC30834312	Analisis Estructural	f	02	2
+CC30938213	Economia Y Gerencia De Proyectos	f	02	2
+CC30835413	Diseño Vial	f	02	2
+CC30731313	Mecanica De Los Fluidos Para Ingenieros	f	02	2
+CCACRED003	Acreditable Iii	f	02	1
+CC30939213	Concreto Armado	f	02	2
+CC30832113	Organismos Y Convenios Internacionales	f	02	5
+CC30730213	Geologia Aplicada	f	02	2
+CC30836413	Acueductos De Cloacas Y Drenajes	f	02	2
+CC41252313	Fundaciones Y Muros	f	02	2
+CC41150213	Saneamientos Y Conservacion Ambiental	f	02	2
+CC41254213	Obras Hidraulicas	f	02	2
+CC41040913	Tutorial De Proyectos Iv	f	02	3
+CC41041213	Ingenieria Y Patrimonio	f	02	5
+CC41251213	Evaluacion Ambiental	f	02	5
+CC41149313	Pavimentos	f	02	2
+CC41253213	Obras De Sistemas De Transporte	f	02	2
+CC41148313	Diseño Estructural	f	02	2
+CCACRED004	Acreditable Iv	f	02	1
+CC41043313	Acero Y Madera	f	02	2
+CC41146113	Gerencia Social	f	02	5
+CC41042213	Urbanismos Y Edificaciones	f	02	2
+CC41147413	Mantenimiento De Obras Civiles	f	02	2
+CC41044213	Ingenieria De Transito	f	02	2
+CC41045213	Hidrologia	f	02	2
+CCIU01013	Proyecto Nacional Y Nueva Ciudadania	f	02	5
+CCIU03013	Matematica Inicial	f	02	2
+CCIU02013	Taller De Introduccion A La Universidad Y Al Programa	f	02	5
+CCIU04013	Construccion Civil Y Sociedad	f	02	2
+CCTU04013	Mecanica Aplicada	f	02	2
+CCTU02013	Taller De Introduccion A La Universidad Y Al Programa	f	02	5
+CCTU03013	Matematica De Nivelacion	f	02	2
+CCTU01013	Proyecto Nacional Y Nueva Ciudadania	f	02	5
+CC10106913	Expresion Grafica Y Dibujo De Proyecto	f	02	2
+CC10311313	Mecanica	f	02	2
+CC10105913	Topografia	f	02	2
+CC10101913	Tutorial De Proyectos I	f	02	3
+CC10207213	Estructura Organizativa Del Estado	f	02	5
+CC10309113	Geografia Y Habitat	f	02	5
+CC10102213	Construccion De Documentos	f	02	5
+CC10103413	Matematica	f	02	2
+CC10310113	Analisis Estadisticos	f	02	2
+CC10208213	Fisica Aplicada	f	02	2
+CC10104213	Quimica General	f	02	2
+CCACRED001	Acreditable I	f	02	1
+CC20415213	Materiales De Construccion	f	02	2
+CC20521313	Instalaciones Sanitarias Y Gas	f	02	2
+CC20625313	Sistemas Hidrosanitarios	f	02	2
+CC20414213	Electricidad Y Mecanica	f	02	2
+CC20412913	Tutorial De Proyectos Ii	f	02	3
+CC20413213	Higiene Y Seguridad Industrial	f	02	5
+CC20518213	Impacto Ambiental En La Construccion	f	02	5
+CC20622113	Desarrollo Profesional Y Etica	f	02	5
+CC20519413	Administracion De Obras	f	02	2
+CC20520213	Tecnologia De La Construccion	f	02	2
+CC20623313	Resistencia De Materiales	f	02	2
+CC20416413	Mecanica De Suelos	f	02	2
+CCELECVT01	Electiva I	f	02	2
+CCELECVT02	Electiva Ii	f	02	2
+CCPRACT001	Practica Profesional I	f	02	2
+CCPRACT002	Practica Profesional Ii	f	02	2
+T2SC000	Servicio Comunitario	f	06	2
+TGU3ID68	Idioma Iii	f	06	2
+TGU3AC34	Acreditable Iii	f	06	1
+TGU3APC34	Atributos E Interpretacion Del Patrimonio Cultural	f	06	2
+TGU3APN34	Atributos E Interpretacion Del Patrimonio Natural	f	06	2
+TGU3PC34	Promocion Y Comercializacion De Productos Turisticos	f	06	2
+TGA3PS57	Proyecto Sociointegrador Iii	f	06	3
+TGA3ID68	Idioma Iii	f	06	2
+TGA3AC34	Acreditable Iii	f	06	2
+TGA3HP68	Historia Y Evolucion Del Patrimonio Gastronomico Nacional	f	06	5
+TGA3DG56	Desarrollo Del Acervo Gastronomico Nacional	f	06	2
+TGU3PT64	Principios Y Tecnicas De La Guiatura Turistica	f	06	2
+TGU3GO64	Gestion Y Operacion De Campamentos	f	06	2
+TAL3PS57	Proyecto Sociointegrador Iii	f	06	3
+TAL3ID68	Idioma Iii	f	06	2
+TAL3AC34	Acreditable Iii	f	06	1
+TAL3EMS68	Equipamiento, Mantenimiento Y Seguridad Del Alojamiento	f	06	2
+TAL3GC34	Gestion De La Calidad De Los Servicios De Alojamiento	f	06	2
+TAL3GA45	Gestion Del Alojamiento	f	06	2
+TAL3GE45	Gestion De Eventos Y Protocolo	f	06	2
+TAL3LA34	Legislacion De Los Servicios De Alojamiento	f	06	2
+TGT4PS45	Proyecto Sociointegrador Iii	f	06	3
+TGT3ID68	Idioma Iii	f	06	2
+TGT3AC34	Acreditable Iii	f	06	1
+TGT3PE34	Planificacion Y Gestion Estrategica De Destinos Turisticos	f	06	2
+TGT3AGE34	Administracion, Organizacion Y Gestion De Emprendimientos	f	06	2
+TGT3ACP34	Asociatividad, Comercializacion Y Promocion Turistica	f	06	2
+TGT4FPI45	Formulacion De Proyectos De Inversion Y Plan De Negocios	f	06	2
+TGT4FGM45	Formulacion Y Gestion Del Plan De Marketing Turistico	f	06	2
+TGA3HG64	Higiene, Seguridad E Ingenieria De Los Insumos Gastronomicos	f	06	2
+TGA3LG64	Legislacion De La Gastronomia	f	06	2
+TGT4TA64	Turismo Alternativo	f	06	2
+TGT4GEC64	Gestion De Eventos, Ceremonial Y Protocolo	f	06	2
+TGT3LAT64	Legislacion Aplicada Al Turismo	f	06	2
+TGT3MTI64	Manejo De Tic Y Programas Operativos Para Turismo	f	06	2
+PPF12020	Práctica Profesional I	f	04	2
+PPF12040	Práctica Profesional Ii	f	04	2
+IDI9003	Acreditable Ii Idiomas	f	04	2
+DAR9003	Acreditable I Deporte Arte Y Recreación	f	04	2
+CON25015	Contabilidad Ii	f	04	2
+PFC9023	Deberes Formales Del Contribuyente Ii (islr)	f	04	2
+AAD9043	Auditoría Administrativa	f	04	2
+MFPII48TIII2	Morfofisiopatología Ii	f	12	2
+GCHAE864TIV30	Gestión Y Cuidado Humano Por Áreas Específicas	f	12	2
+ISP144TIV4	Integracion Sociopolitica	f	12	5
+IECH264TIV8	Investigación En Enfermería Para El Cuidado Humano	f	12	2
+CHQ288TIV10	Cuidado Humano Quirúrgico	f	12	2
+CHH288TIV10	Cuidado Humano En Hemoterapia	f	12	2
+CHIN288TIV10	Cuidado Humano Intensivo Neonatal	f	12	2
+CHN288TIV10	Cuidado Humano En Nefrología	f	12	2
+CHIA288TIV10	Cuidado Humano Intensivo En El Adulto	f	12	2
+AGACRED001	Acreditable I	f	01	1
+AGACRED004	Acreditable Iv	f	01	1
+901110	Homo Ludens (deporte Y Recreación I)	f	09	2
+AGACRED003	Acreditable Iii	f	01	1
 \.
 
 
@@ -1983,6 +3152,116 @@ SHDD9043	Seminario Habilidades Directivas II	f	04	2
 --
 
 COPY carga (id, "dividirHT", "nuevoNombre", "idProfesor", "idSeccion", "idSuplente", "idUC") FROM stdin;
+99	f	\N	5447146	15	\N	ADF6042
+100	f	\N	13525905	15	\N	PCG6042
+101	f	\N	8037619	15	\N	PRO570419
+102	f	Administración de Empresas de Propiedad Social	11955850	15	\N	AFPS6033
+103	f	Administración de Empresas Turisticas	10718393	15	\N	ELEC49043
+104	f	\N	15565857	15	\N	FSC18046
+105	f	\N	9472514	15	\N	FEP9043
+107	f	\N	9906067	15	6729553	SHDD9043
+108	f	\N	16317126	16	\N	ADF6042
+109	f	\N	15175795	16	\N	PCG6042
+110	f	\N	12048353	16	\N	PRO570419
+111	f	Administración de Empresas de Propiedad Social	6729553	16	\N	AFPS6033
+112	f	Administración de Empresas Turisticas	6547603	16	\N	ELEC49043
+113	f	\N	3692342	16	\N	FSC18046
+114	f	\N	17523454	16	\N	FEP9043
+115	f	\N	10718393	16	\N	SHDD9043
+116	f	\N	3966127	24	\N	IDI9013
+117	f	\N	3966127	20	\N	IDI9033
+118	f	\N	3966127	21	\N	IDI9033
+119	f	\N	5447146	21	\N	PPL6032
+120	f	\N	5447146	22	\N	SHA9023
+121	f	\N	5447146	29	\N	EEP60T2
+122	f	\N	6547603	21	\N	PRO570319
+123	f	\N	6547603	24	\N	DFC6012
+124	f	\N	11108398	24	\N	PRO570119
+125	f	\N	11108398	25	\N	CON12014
+126	f	\N	11108398	23	\N	ADC6022
+127	f	\N	5753564	28	\N	FSC12014
+128	f	\N	5753564	18	\N	FSC18036
+129	f	\N	5753564	19	\N	FSC18036
+130	f	\N	10104966	20	\N	ADM6032
+131	f	\N	10104966	21	\N	ADM6032
+133	f	\N	10104966	22	14281324	PDF3012
+134	f	\N	10104966	27	14281324	PRO27019
+135	f	\N	9472514	20	\N	PPL6032
+136	f	\N	9472514	18	\N	PRO570319
+137	f	\N	9475173	27	\N	TIC6012
+138	f	Desarrollo Social Comunitario	8037619	27	5871766	ELC6012
+139	f	\N	8037619	29	5871766	ANM60T2
+140	f	\N	8041510	24	\N	OF6012
+141	f	Desarrollo Social Comunitario	8041510	28	8223161	ELC6012
+142	f	\N	8041510	26	8223161	PRO570119
+143	f	\N	13525905	21	\N	PRE9033
+144	f	\N	13525905	19	\N	PRO570319
+145	f	\N	10314511	22	\N	CON12024
+146	f	\N	10314511	23	\N	CON12024
+147	f	\N	10314511	20	\N	PRE9033
+148	f	Calidad y Gestión Ambiental	9028433	22	\N	ELEC29023
+149	f	Calidad y Gestión Ambiental	9028433	23	\N	ELEC29023
+150	f	\N	9473423	28	\N	EOE6012
+151	f	\N	9473423	27	\N	FSC12014
+152	f	\N	9473423	29	\N	PNC60T2
+153	f	\N	8683060	26	\N	IDI9013
+154	f	\N	8022671	25	\N	TPM6012
+155	f	\N	8022671	26	\N	TPM6012
+156	f	\N	8039160	17	\N	TIC6032
+157	f	\N	8039160	18	\N	TIC6032
+158	f	\N	8039160	19	\N	TIC6032
+159	f	\N	8958864	17	\N	DAR9033
+160	f	\N	8958864	18	\N	DAR9033
+161	f	\N	8958864	19	\N	DAR9033
+162	f	\N	8958864	20	\N	DAR9033
+163	f	\N	8958864	21	\N	DAR9033
+164	f	\N	8958864	24	\N	DAR9013
+165	f	\N	8958864	25	\N	DAR9013
+166	f	\N	8958864	26	\N	DAR9013
+167	f	\N	4489957	25	\N	IDI9013
+169	f	\N	8021736	27	\N	EOE6012
+170	f	\N	15565857	24	\N	FSC18016
+171	f	\N	15565857	25	\N	FSC18016
+172	f	\N	15565857	20	\N	FSC18036
+173	f	\N	15565857	21	\N	FSC18036
+174	f	\N	8223161	17	\N	ADM6032
+175	f	\N	9643447	25	\N	OF6012
+176	f	\N	9643447	20	\N	ADP9033
+177	f	\N	9643447	20	\N	PRO570319
+178	f	\N	12817844	23	\N	PCG3011
+179	f	\N	3692342	22	\N	FSC18026
+180	f	\N	3692342	23	\N	SHA9023
+181	f	\N	3692342	17	\N	FSC18036
+182	f	\N	15175795	25	\N	PRO570119
+183	f	\N	15175795	19	\N	ADM6032
+184	f	\N	12722753	17	\N	ADP9033
+185	f	\N	12722753	21	\N	ADP9033
+186	f	\N	12722753	29	\N	GEA60T2
+187	f	\N	9234597	25	\N	DFC6012
+188	f	\N	9234597	22	\N	PRO57019
+189	f	\N	9234597	18	\N	ADP9033
+190	f	\N	11955850	23	\N	PRO57019
+191	f	\N	11955850	28	\N	FAD15015
+192	f	\N	17523454	22	\N	ADC6022
+193	f	\N	17523454	17	\N	PRO570319
+194	f	\N	12048353	24	\N	TPM6012
+195	f	\N	12048353	26	\N	DFC6012
+196	f	\N	1010633	26	\N	OF6012
+197	f	\N	1010633	19	\N	ADP9033
+198	f	\N	1010633	28	\N	PRO27019
+199	f	\N	6729553	29	\N	SEM260T2
+200	f	\N	6729553	18	\N	ADM6032
+201	f	\N	11953052	26	\N	CON12014
+202	f	\N	11953052	29	\N	SEM160T2
+203	f	\N	9906067	26	\N	FSC18016
+204	f	\N	9906067	23	\N	FSC18026
+205	f	\N	9906067	27	\N	FAD15015
+206	f	\N	5871766	22	\N	PCG3011
+207	f	\N	16317126	27	\N	CON15015
+208	f	\N	16317126	28	\N	CON15015
+209	f	\N	16317126	24	\N	CON12014
+210	f	\N	11705856	28	\N	TIC6012
+212	f	\N	14281324	23	\N	PDF3012
 \.
 
 
@@ -1990,14 +3269,14 @@ COPY carga (id, "dividirHT", "nuevoNombre", "idProfesor", "idSeccion", "idSuplen
 -- Name: carga_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('carga_id_seq', 98, true);
+SELECT pg_catalog.setval('carga_id_seq', 217, true);
 
 
 --
 -- Name: carreraSede_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"carreraSede_id_seq"', 10, true);
+SELECT pg_catalog.setval('"carreraSede_id_seq"', 11, true);
 
 
 --
@@ -2033,7 +3312,7 @@ SELECT pg_catalog.setval('eje_id_seq', 5, true);
 -- Name: estructuraCS_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"estructuraCS_id_seq"', 6, true);
+SELECT pg_catalog.setval('"estructuraCS_id_seq"', 7, true);
 
 
 --
@@ -2048,292 +3327,6 @@ SELECT pg_catalog.setval('estructura_id_seq', 3, true);
 --
 
 COPY historial (id, usuario, descripcion, sql) FROM stdin;
-1444440963	Nombre Apellido (12345678)	Se agregó la estructura <strong>Semetral</strong>	insert into estructura values(default, &#039;Semetral&#039;, &#039;\n\t\t{\n\t\t\t&quot;periodos&quot; : [\n\t\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre I&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S1&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre II&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S2&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre III&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S3&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre IV&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S4&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre V&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S5&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre VI&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S6&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t&#039;)
-1444664391	Nombre Apellido (12345678)	Se modificó la estructura <strong>Semetral</strong>	update estructura set nombre=&#039;Semestral&#039;, estructura=&#039;\n\t\t{\n\t\t\t&quot;periodos&quot; : [\n\t\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre I&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S1&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre II&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S2&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre III&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S3&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre IV&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S4&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre V&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S5&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Semestre VI&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;S6&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;6&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t&#039; where nombre=&#039;Semetral&#039;
-1444664610	Nombre Apellido (12345678)	Se modificó al profesor <strong>Miriam Muñoz (8037619)</strong>	update persona set cedula=&#039;8037619&#039;, nombre=&#039;Miriam&#039;, &quot;segundoNombre&quot;=&#039;Del Carmen&#039;, apellido=&#039;Muñoz&#039;, &quot;segundoApellido&quot;=&#039;Ramirez&#039;, sexo=&#039;f&#039;, correo=&#039;licmiriamuno@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04147027698&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;8037619&#039;\n\nupdate profesor set cedula=&#039;8037619&#039;, categoria=&#039;Inst&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;10&#039; where cedula=&#039;8037619&#039;
-1444664650	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Administración</strong>	update carrera set id=&#039;04&#039;, nombre=&#039;PNF Administración&#039;, &quot;idArea&quot;=&#039;2&#039; where id=&#039;04&#039;
-1444664942	Nombre Apellido (12345678)	Se modificó al profesor <strong>Pablo Silgueiro (15142314)</strong>	update persona set cedula=&#039;15142314&#039;, nombre=&#039;Pablo&#039;, &quot;segundoNombre&quot;=&#039;Martin&#039;, apellido=&#039;Silgueiro&#039;, &quot;segundoApellido&quot;=&#039;Soto&#039;, sexo=&#039;f&#039;, correo=&#039;pablosilgueiro@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04267549299&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;15142314&#039;\n\nupdate profesor set cedula=&#039;15142314&#039;, categoria=&#039;Inst&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;47&#039; where cedula=&#039;15142314&#039;
-1444665021	Nombre Apellido (12345678)	Se modificó al profesor <strong>Iraide Zerpa (4319574)</strong>	update persona set cedula=&#039;4319574&#039;, nombre=&#039;Iraide&#039;, &quot;segundoNombre&quot;=&#039;Celina&#039;, apellido=&#039;Zerpa&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;iraidezerpa@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04265744008&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;4319574&#039;\n\nupdate profesor set cedula=&#039;4319574&#039;, categoria=&#039;Asist&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;27&#039; where cedula=&#039;4319574&#039;
-1444665104	Nombre Apellido (12345678)	Se modificó al profesor <strong>Amneris Guerrero (8029045)</strong>	update persona set cedula=&#039;8029045&#039;, nombre=&#039;Amneris&#039;, &quot;segundoNombre&quot;=&#039;Teotiste&#039;, apellido=&#039;Guerrero&#039;, &quot;segundoApellido&quot;=&#039;Molina&#039;, sexo=&#039;f&#039;, correo=&#039;guerrero.amneris28@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0426-5725885&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;8029045&#039;\n\nupdate profesor set cedula=&#039;8029045&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;27&#039; where cedula=&#039;8029045&#039;
-1444665879	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Matematica</strong>	update &quot;unidadCurricular&quot; set id=&#039;MAD9013&#039;, nombre=&#039;Matemática&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;MA6002&#039;
-1444665914	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Proyecto Nacional y Nueva Ciudadania</strong>	update &quot;unidadCurricular&quot; set id=&#039;PNNC6002&#039;, nombre=&#039;Proyecto Nacional y Nueva Ciudadanía&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;5&#039; where id=&#039;PNNC9003&#039;
-1444665949	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Desarrollo Integral</strong>	update &quot;unidadCurricular&quot; set id=&#039;DI6001&#039;, nombre=&#039;Desarrollo Integral&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;DIE6002&#039;
-1444666005	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Gestión de Riesgos y Protección Civil</strong>	update &quot;unidadCurricular&quot; set id=&#039;GRPC6002&#039;, nombre=&#039;Gestión de Riesgos y Protección Civil&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;GRPC3001&#039;
-1444666048	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>La Administración en el Nuevo Modelo Social</strong>	update &quot;unidadCurricular&quot; set id=&#039;AMS6002&#039;, nombre=&#039;Administración en el Nuevo Modelo Social&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PRO6002&#039;
-1444666168	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Proyecto</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRO27019&#039;, &#039;Proyecto&#039;, false, &#039;04&#039;, &#039;3&#039;)
-1444666439	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Fundamentos de la Administración</strong>	update &quot;unidadCurricular&quot; set id=&#039;FAD15015&#039;, nombre=&#039;Fundamentos de la Administración&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;FA12014&#039;
-1444666480	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Contabilidad I</strong>	update &quot;unidadCurricular&quot; set id=&#039;CON15015&#039;, nombre=&#039;Contabilidad I&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;CON12014&#039;
-1444666535	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC12014&#039;, &#039;Formación Socio Crítica I&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444666575	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Tecnicas de Expresión Oral y Escrita</strong>	update &quot;unidadCurricular&quot; set id=&#039;EOE6012&#039;, nombre=&#039;Expresión Oral y Escrita&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PTE3011&#039;
-1444666829	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>TICs</strong>	insert into &quot;unidadCurricular&quot; values(&#039;TIC6012&#039;, &#039;TICs&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444666910	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva I</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELC6012&#039;, nombre=&#039;Electiva I&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ELEC19023&#039;
-1444666995	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Estadística</strong>	update &quot;unidadCurricular&quot; set id=&#039;EST6012&#039;, nombre=&#039;Estadística&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ES3011&#039;
-1444668122	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Marco Jurídico I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;MAJ6012&#039;, &#039;Marco Jurídico I&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444668386	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Operaciones Financieras</strong>	update &quot;unidadCurricular&quot; set id=&#039;OFI9013&#039;, nombre=&#039;Operaciones Financieras&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;OF6012&#039;
-1444668484	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Teoría y Práctica del Mercadeo</strong>	update &quot;unidadCurricular&quot; set id=&#039;TPM9013&#039;, nombre=&#039;Teoría y Práctica del Mercadeo&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;TPM6012&#039;
-1444669022	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Deberes Formales del Contribuyente retenciones</strong>	update &quot;unidadCurricular&quot; set id=&#039;DFC9013&#039;, nombre=&#039;Deberes Formales del Contribuyente&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;DFC6012&#039;
-1444669085	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Proyecto II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRYII27029&#039;, &#039;Proyecto II&#039;, false, &#039;04&#039;, &#039;3&#039;)
-1444669389	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Contabilidad II</strong>	update &quot;unidadCurricular&quot; set id=&#039;CON150152&#039;, nombre=&#039;Contabilidad II&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;CON9023&#039;
-1444669481	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Formación Socio Critica II</strong>	update &quot;unidadCurricular&quot; set id=&#039;FSC12024&#039;, nombre=&#039;Formación Socio Crítica II&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;5&#039; where id=&#039;FSC18026&#039;
-1444669608	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Fundamentos de Economía</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FDE9023&#039;, &#039;Fundamentos de Economía&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444669668	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Marco Jurídico II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;MAJ6022&#039;, &#039;Marco Jurídico II&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444669773	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Gestión Ecológica Ambiental</strong>	insert into &quot;unidadCurricular&quot; values(&#039;GEA6022&#039;, &#039;Gestión Ecológica Ambiental&#039;, false, &#039;04&#039;, &#039;4&#039;)
-1444669839	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Gestión de Talento Humano</strong>	insert into &quot;unidadCurricular&quot; values(&#039;GTH9023&#039;, &#039;Gestión de Talento Humano&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444669876	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Presupuesto Público y Privado</strong>	update &quot;unidadCurricular&quot; set id=&#039;PPP9033&#039;, nombre=&#039;Presupuesto Público y Privado&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PRE9033&#039;
-1444669920	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Deberes Formales del Contribuyente</strong>	update &quot;unidadCurricular&quot; set id=&#039;DFC9023&#039;, nombre=&#039;Deberes Formales del Contribuyente&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;DFC9013&#039;
-1444669971	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Seminario Habilidades Directivas I</strong>	update &quot;unidadCurricular&quot; set id=&#039;HDI9023&#039;, nombre=&#039;Habilidades Directivas I&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;SHA9023&#039;
-1444670020	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Administración de Costos</strong>	update &quot;unidadCurricular&quot; set id=&#039;ADC9023&#039;, nombre=&#039;Administración de Costos&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ADC6022&#039;
-1444670050	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva II</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELC6002&#039;, nombre=&#039;Electiva II&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ELEC29023&#039;
-1444672023	Nombre Apellido (12345678)	Se eliminó <strong>AEPS6033</strong>	delete from &quot;unidadCurricular&quot; where &quot;id&quot;=&#039;AEPS6033&#039;
-1444670176	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva I</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELC6012&#039;, nombre=&#039;Electiva I&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;1&#039; where id=&#039;ELC6012&#039;
-1444670194	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva II</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELC6002&#039;, nombre=&#039;Electiva II&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;1&#039; where id=&#039;ELC6002&#039;
-1444670324	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Actividad Acreditable</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PAACT1&#039;, &#039;Actividad Acreditable&#039;, true, &#039;04&#039;, &#039;1&#039;)
-1444670351	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Actividad Acreditable</strong>	update &quot;unidadCurricular&quot; set id=&#039;PAACT1&#039;, nombre=&#039;Actividad Acreditable I&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;1&#039; where id=&#039;PAACT1&#039;
-1444670380	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Actividad Acreditable II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PAACT2&#039;, &#039;Actividad Acreditable II&#039;, true, &#039;04&#039;, &#039;1&#039;)
-1444670444	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Actividad Acreditable III</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PAACT3&#039;, &#039;Actividad Acreditable III&#039;, true, &#039;04&#039;, &#039;1&#039;)
-1444670465	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Actividad Acreditable IV</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PAACT4&#039;, &#039;Actividad Acreditable IV&#039;, true, &#039;04&#039;, &#039;1&#039;)
-1444670920	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Ética en el Ejercicio Profesional</strong>	insert into &quot;unidadCurricular&quot; values(&#039;EEP60T2&#039;, &#039;Ética en el Ejercicio Profesional&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444670982	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Administración en el Nuevo Modelo Social</strong>	update &quot;unidadCurricular&quot; set id=&#039;ANM60T2&#039;, nombre=&#039;Administración en el Nuevo Modelo Social&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;AMS6002&#039;
-1444671114	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Gestión Ecológica y Ambiental</strong>	insert into &quot;unidadCurricular&quot; values(&#039;GEA60T2&#039;, &#039;Gestión Ecológica y Ambiental&#039;, false, &#039;04&#039;, &#039;4&#039;)
-1444671187	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Proyecto Nacional y Nueva Ciudadanía Transición</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PNC60T2&#039;, &#039;Proyecto Nacional y Nueva Ciudadanía Transición&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444671243	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Área Contable</strong>	insert into &quot;unidadCurricular&quot; values(&#039;SEM160T2&#039;, &#039;Área Contable&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444671285	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Desarrollo Social Comunitario</strong>	insert into &quot;unidadCurricular&quot; values(&#039;SEM260T2&#039;, &#039;Desarrollo Social Comunitario&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444671309	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Proyecto III</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRO2739&#039;, &#039;Proyecto III&#039;, false, &#039;04&#039;, &#039;3&#039;)
-1444671350	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Formación Socio Critica III</strong>	update &quot;unidadCurricular&quot; set id=&#039;FSC12034&#039;, nombre=&#039;Formación Socio Crítica III&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;5&#039; where id=&#039;FSC18036&#039;
-1444671409	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Planificación</strong>	update &quot;unidadCurricular&quot; set id=&#039;PYG9033&#039;, nombre=&#039;Planificación y Gestión&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PPL6032&#039;
-1444671480	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Estadística II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;EST6032&#039;, &#039;Estadística II&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444671512	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Contabilidad Gubernamental</strong>	update &quot;unidadCurricular&quot; set id=&#039;COG6032&#039;, nombre=&#039;Contabilidad Gubernamental&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PCG3011&#039;
-1444671572	Nombre Apellido (12345678)	Se eliminó <strong>AIEF6042</strong>	delete from &quot;unidadCurricular&quot; where &quot;id&quot;=&#039;AIEF6042&#039;
-1444671591	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Análisis e Interpretación de Estados Financieros</strong>	update &quot;unidadCurricular&quot; set id=&#039;AEF9033&#039;, nombre=&#039;Análisis e Interpretación de Estados Financieros&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;AEF9032&#039;
-1444671739	Nombre Apellido (12345678)	Se eliminó <strong>ADP6032</strong>	delete from &quot;unidadCurricular&quot; where &quot;id&quot;=&#039;ADP6032&#039;
-1444671821	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Sistemas Administrativos</strong>	insert into &quot;unidadCurricular&quot; values(&#039;SAD6032&#039;, &#039;Sistemas Administrativos&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444671873	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Habilidades Directivas II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;HDI9033&#039;, &#039;Habilidades Directivas II&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444671955	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Administración de Costos II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ADC9033&#039;, &#039;Administración de Costos II&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444671974	Nombre Apellido (12345678)	Se eliminó <strong>CGA9023</strong>	delete from &quot;unidadCurricular&quot; where &quot;id&quot;=&#039;CGA9023&#039;
-1444672006	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva III</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELC6032&#039;, nombre=&#039;Electiva III&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;1&#039; where id=&#039;ELEC39043&#039;
-1444672062	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva IV</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELEC6042&#039;, nombre=&#039;Electiva IV&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;1&#039; where id=&#039;ELEC49043&#039;
-1444672104	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Proyecto IV</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRO2749&#039;, &#039;Proyecto IV&#039;, false, &#039;04&#039;, &#039;3&#039;)
-1444672159	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Formación Socio Critica IV</strong>	update &quot;unidadCurricular&quot; set id=&#039;FSC1244&#039;, nombre=&#039;Formación Socio Crítica IV&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;5&#039; where id=&#039;FSC18046&#039;
-1444672219	Nombre Apellido (12345678)	Se eliminó <strong>AF6042</strong>	delete from &quot;unidadCurricular&quot; where &quot;id&quot;=&#039;AF6042&#039;
-1444672247	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Administración Financiera</strong>	update &quot;unidadCurricular&quot; set id=&#039;ADF9043&#039;, nombre=&#039;Administración Financiera&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ADF6042&#039;
-1444672286	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Auditoria Administrativa</strong>	update &quot;unidadCurricular&quot; set id=&#039;ADD9043&#039;, nombre=&#039;Auditoría Administrativa&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;APAA3041&#039;
-1444672346	Nombre Apellido (12345678)	Se eliminó <strong>FEP3031</strong>	delete from &quot;unidadCurricular&quot; where &quot;id&quot;=&#039;FEP3031&#039;
-1444672442	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Sistemas Financieros</strong>	update &quot;unidadCurricular&quot; set id=&#039;SISF9043&#039;, nombre=&#039;Sistemas Financieros&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;SIF6042&#039;
-1444672503	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Paquetes Informaticos Aplicados a los Proc Administ</strong>	update &quot;unidadCurricular&quot; set id=&#039;PIA9043&#039;, nombre=&#039;Paquetes Informáticos Aplicados a la Administración&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PP13041&#039;
-1444672581	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Gestión Pública</strong>	insert into &quot;unidadCurricular&quot; values(&#039;GP9043&#039;, &#039;Gestión Pública&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444672659	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Investigación de Operaciones</strong>	insert into &quot;unidadCurricular&quot; values(&#039;IOP9043&#039;, &#039;Investigación de Operaciones&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444672708	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Control de Gestión Administrativa</strong>	update &quot;unidadCurricular&quot; set id=&#039;CGA9043&#039;, nombre=&#039;Control de Gestión Administrativa&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PCG6042&#039;
-1444674650	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFA-2014</strong>	insert into malla values(&#039;PNFA-2014&#039;, &#039;2015-10-12&#039;) returning id
-1444674744	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Administración en el Nuevo Modelo Social</strong>	update &quot;unidadCurricular&quot; set id=&#039;ANM60T2&#039;, nombre=&#039;Administración en el Nuevo Modelo Social Transición&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ANM60T2&#039;
-1444674759	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Administración en el Nuevo Modelo Social</strong>	insert into &quot;unidadCurricular&quot; values(&#039;AMS6002&#039;, &#039;Administración en el Nuevo Modelo Social&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444674783	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Deberes Formales del Contribuyente</strong>	update &quot;unidadCurricular&quot; set id=&#039;DFC9013&#039;, nombre=&#039;Deberes Formales del Contribuyente&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;DFC9023&#039;
-1444674833	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Deberes Formales del Contribuyente II islr</strong>	update &quot;unidadCurricular&quot; set id=&#039;DFC9023&#039;, nombre=&#039;Deberes Formales del Contribuyente II&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PDF3012&#039;
-1444674862	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Presupuesto Público y Privado</strong>	update &quot;unidadCurricular&quot; set id=&#039;PPP9023&#039;, nombre=&#039;Presupuesto Público y Privado&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;PPP9033&#039;
-1444674923	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2014</strong>	update malla set id=&#039;PNFA-2014&#039;, fecha=&#039;2015-10-12&#039; where id=&#039;PNFA-2014&#039;
-1444937925	Nombre Apellido (12345678)	Se agregó la estructura <strong>Prosecucion</strong>	insert into estructura values(default, &#039;Prosecucion&#039;, &#039;\n\t\t{\n\t\t\t&quot;periodos&quot; : [\n\t\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Trayecto de Transicion&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;TT&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t&#039;)
-1444937973	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Administración</strong>	update carrera set id=&#039;04&#039;, nombre=&#039;PNF Administración&#039;, &quot;idArea&quot;=&#039;2&#039; where id=&#039;04&#039;
-1444938216	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFA-2014-PRO</strong>	insert into malla values(&#039;PNFA-2014-PRO&#039;, &#039;2015-10-15&#039;) returning id
-1444938443	Nombre Apellido (12345678)	Se activó el nuevo periodo <strong>2015-B</strong>	insert into periodo values(default, &#039;2015-B&#039;, &#039;2015-10-12&#039;, &#039;2015-10-25&#039;, &#039;p&#039;, &#039;2&#039;)\n\ninsert into periodo values(default, &#039;2015-B&#039;, &#039;2015-10-15&#039;, &#039;2015-11-29&#039;, &#039;a&#039;, &#039;2&#039;)
-1444938444	Nombre Apellido (12345678)	Se activó el nuevo periodo <strong>2015-B</strong>	insert into periodo values(default, &#039;2015-B&#039;, &#039;2015-10-12&#039;, &#039;2015-10-25&#039;, &#039;p&#039;, &#039;3&#039;)\n\ninsert into periodo values(default, &#039;2015-B&#039;, &#039;2015-10-15&#039;, &#039;2015-11-29&#039;, &#039;a&#039;, &#039;3&#039;)
-1444938547	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T1-t1</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;2&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t1&#039;)
-1444938579	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T1-t1</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;2&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t1&#039;)
-1444938866	Nombre Apellido (12345678)	Se agregó al profesor <strong>Maria Carrera (16317126)</strong>	insert into persona values(&#039;16317126&#039;, &#039;Maria&#039;, null, &#039;Carrera&#039;, null, &#039;f&#039;, &#039;marca1911@yahoo.es&#039;, &#039;Av. qwe&#039;, &#039;04247625391&#039;, null)\n\ninsert into profesor values(&#039;16317126&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;2&#039;)
-1444938905	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Carrera Maria (16317126)</strong>	insert into carga values(default, false, null, &#039;16317126&#039;, &#039;1&#039;, null, &#039;CON15015&#039;)
-1444938906	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Carrera Maria (16317126)</strong>	insert into carga values(default, false, null, &#039;16317126&#039;, &#039;2&#039;, null, &#039;CON15015&#039;)
-1444938966	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Vasquez Rosa (8021736)</strong>	insert into carga values(default, false, null, &#039;8021736&#039;, &#039;1&#039;, null, &#039;EOE6012&#039;)
-1444939015	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Perez Idalba (9473423)</strong>	insert into carga values(default, false, null, &#039;9473423&#039;, &#039;1&#039;, null, &#039;FSC12014&#039;)
-1444939024	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Perez Idalba (9473423)</strong>	insert into carga values(default, false, null, &#039;9473423&#039;, &#039;2&#039;, null, &#039;EOE6012&#039;)
-1444939072	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Marquez Yadira (9475173)</strong>	insert into carga values(default, false, null, &#039;9475173&#039;, &#039;1&#039;, null, &#039;TIC6012&#039;)
-1444946963	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Seminario Habilidades Directivas II</strong>	update &quot;unidadCurricular&quot; set id=&#039;SHDD9043&#039;, nombre=&#039;Habilidades Directivas II&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;SHDD9043&#039;
-1444947068	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Administración Financiera</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ADF6042&#039;, &#039;Administración Financiera&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444947121	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Sistemas Financieros</strong>	insert into &quot;unidadCurricular&quot; values(&#039;SIF6042&#039;, &#039;Sistemas Financieros&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444947246	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica IV</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC18046&#039;, &#039;Formación Socio Crítica IV&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444947325	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Proyecto Nacional y Nueva Ciudadanía</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PNNC9003&#039;, &#039;Proyecto Nacional y Nueva Ciudadanía&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444947338	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Control de Gestión Administrativa</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PCG6042&#039;, &#039;Control de Gestión Administrativa&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444947384	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Paquetes Informáticos Aplicados a la Administración</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PP13041&#039;, &#039;Paquetes Informáticos Aplicados a la Administración&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444947871	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>La Administración en el Nuevo Modelo Social</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRO6002&#039;, &#039;La Administración en el Nuevo Modelo Social&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444948048	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Gestión de Riesgos y Protección Civil</strong>	insert into &quot;unidadCurricular&quot; values(&#039;GRPC3001&#039;, &#039;Gestión de Riesgos y Protección Civil&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444948188	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Matemática</strong>	insert into &quot;unidadCurricular&quot; values(&#039;MAT6002&#039;, &#039;Matemática&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444948287	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Dirección, Control y Evaluación de Sistemas Adm</strong>	update &quot;unidadCurricular&quot; set id=&#039;PRO570419&#039;, nombre=&#039;Dirección, Control y Evaluación de Sistemas Administrativos&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;3&#039; where id=&#039;PRO570419&#039;
-1444948337	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Desarrollo Integral</strong>	insert into &quot;unidadCurricular&quot; values(&#039;DIE6002&#039;, &#039;Desarrollo Integral&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444948347	Nombre Apellido (12345678)	Se eliminó <strong>PRO700424</strong>	delete from &quot;unidadCurricular&quot; where &quot;id&quot;=&#039;PRO700424&#039;
-1444948397	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Auditoria Administrativa</strong>	insert into &quot;unidadCurricular&quot; values(&#039;APAA3041&#039;, &#039;Auditoria Administrativa&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1445375889	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1444948398	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Operaciones Financieras</strong>	insert into &quot;unidadCurricular&quot; values(&#039;OF6012&#039;, &#039;Operaciones Financieras&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444948462	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva IV</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ELEC49043&#039;, &#039;Electiva IV&#039;, true, &#039;04&#039;, &#039;1&#039;)
-1444948505	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva III</strong>	insert into &quot;unidadCurricular&quot; values(&#039;AFPS6033&#039;, &#039;Electiva III&#039;, true, &#039;04&#039;, &#039;1&#039;)
-1444948513	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Estadistica</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ES3011&#039;, &#039;Estadistica&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444948585	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Analisis e Interpretación de Estados Financieros</strong>	insert into &quot;unidadCurricular&quot; values(&#039;AEF9032&#039;, &#039;Analisis e Interpretación de Estados Financieros&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444948810	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC18016&#039;, &#039;Formación Socio Crítica I&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444948915	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Planificación</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PPL6032&#039;, &#039;Planificación&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444948940	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Técnicas de Expresión Oral y Escrita</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PTE3011&#039;, &#039;Técnicas de Expresión Oral y Escrita&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949023	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica III</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC18036&#039;, &#039;Formación Socio Crítica III&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444949079	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Deberes Formales del Contribuyente</strong>	insert into &quot;unidadCurricular&quot; values(&#039;DFC6012&#039;, &#039;Deberes Formales del Contribuyente&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949127	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Planificación, Diseño, Desarrollo e Innovación de Sistemas Administrativos</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRO570319&#039;, &#039;Planificación, Diseño, Desarrollo e Innovación de Sistemas Administrativos&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949189	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Contabilidad I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;CON12014&#039;, &#039;Contabilidad I&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949197	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Presupuesto Público y Privado</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PRE9033&#039;, &#039;Presupuesto Público y Privado&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949235	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Administración de Costos</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ADC6022&#039;, &#039;Administración de Costos&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949311	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Fundamentos de la Administración</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FA12014&#039;, &#039;Fundamentos de la Administración&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949325	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Contabilidad Gubernamental</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PCG3011&#039;, &#039;Contabilidad Gubernamental&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949384	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Deberes Formales del Contribuyente</strong>	insert into &quot;unidadCurricular&quot; values(&#039;PDF3012&#039;, &#039;Deberes Formales del Contribuyente&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949481	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Teoría y Práctica del Mercadeo</strong>	insert into &quot;unidadCurricular&quot; values(&#039;TPM6012&#039;, &#039;Teoría y Práctica del Mercadeo&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949738	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Seminario Habilidades Directivas I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;SHA9023&#039;, &#039;Seminario Habilidades Directivas I&#039;, false, &#039;04&#039;, &#039;2&#039;)
-1444949813	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva I</strong>	insert into &quot;unidadCurricular&quot; values(&#039;CGA9023&#039;, &#039;Electiva I&#039;, true, &#039;04&#039;, &#039;1&#039;)
-1444949858	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Formación Socio Crítica II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;FSC18026&#039;, &#039;Formación Socio Crítica II&#039;, false, &#039;04&#039;, &#039;5&#039;)
-1444949911	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva II</strong>	insert into &quot;unidadCurricular&quot; values(&#039;ELEC29023&#039;, &#039;Electiva II&#039;, true, &#039;04&#039;, &#039;1&#039;)
-1445015823	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFA-2010</strong>	insert into malla values(&#039;PNFA-2010&#039;, &#039;2015-10-16&#039;) returning id
-1445116917	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
-1445116969	Nombre Apellido (12345678)	Se creó el respaldo <strong>2015-10-17_16-52-47.sql</strong>	No SQL
-1445123446	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
-1445123545	Nombre Apellido (12345678)	Se eliminó el respaldo <strong>2015-10-17_16-52-47.sql</strong>	No SQL
-1445123549	Nombre Apellido (12345678)	Se creó el respaldo <strong>2015-10-17_18-42-29.sql</strong>	No SQL
-1445124445	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
-1445284277	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Gonzalez Silvia (15175795)</strong>	insert into carga values(default, false, null, &#039;15175795&#039;, &#039;4&#039;, null, &#039;PRO570119&#039;)
-1445124471	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Habilidades Directivas II</strong>	update &quot;unidadCurricular&quot; set id=&#039;SHDD9043&#039;, nombre=&#039;Seminario Habilidades Directivas II&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;04&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;SHDD9043&#039;
-1445141723	Nombre Apellido (12345678)	Se eliminó el respaldo <strong>2015-10-17_18-42-29.sql</strong>	No SQL
-1445273779	Nombre Apellido (12345678)	Se eliminó la malla <strong>PNFA-2014-PRO</strong>	delete from malla where id=&#039;PNFA-2014-PRO&#039; returning id
-1445274035	Nombre Apellido (12345678)	Se eliminó <strong>2015-B</strong> de <strong>PNF Administración - Ejido (Prosecucion)</strong>	delete from periodo where id=&#039;2015-B&#039; and &quot;idECS&quot;=&#039;3&#039;
-1445274072	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Administración</strong>	update carrera set id=&#039;04&#039;, nombre=&#039;PNF Administración&#039;, &quot;idArea&quot;=&#039;2&#039; where id=&#039;04&#039;
-1445274348	Nombre Apellido (12345678)	Se modificó la estructura <strong>Prosecucion</strong>	update estructura set nombre=&#039;Prosecucion&#039;, estructura=&#039;\n\t\t{\n\t\t\t&quot;periodos&quot; : [\n\t\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Trayecto de Transicion&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;TT&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;,\n\t\t\t\t\t&quot;subperiodos&quot; : false\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Trayecto 3&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;T3&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : false,\n\t\t\t\t\t&quot;subperiodos&quot; : [\n\t\t\t\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 1&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t1&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 2&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t2&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 3&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t3&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t&quot;nombre&quot; : &quot;Trayecto 4&quot;,\n\t\t\t\t\t&quot;id&quot; : &quot;T4&quot;,\n\t\t\n\t\t\t\t\t&quot;duracion&quot; : false,\n\t\t\t\t\t&quot;subperiodos&quot; : [\n\t\t\t\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 1&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t1&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 2&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t2&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t&quot;nombre&quot; : &quot;Trimestre 3&quot;,\n\t\t\t\t\t\t\t&quot;id&quot; : &quot;t3&quot;,\n\t\t\t\t\t\t\t&quot;duracion&quot; : &quot;3&quot;\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t&#039; where nombre=&#039;Prosecucion&#039;
-1445274398	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Administración</strong>	update carrera set id=&#039;04&#039;, nombre=&#039;PNF Administración&#039;, &quot;idArea&quot;=&#039;2&#039; where id=&#039;04&#039;
-1445275147	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFA-2014-PRO</strong>	insert into malla values(&#039;PNFA-2014-PRO&#039;, &#039;2015-10-19&#039;) returning id
-1445280959	Nombre Apellido (12345678)	Se modificó el periodo <strong>2015-B</strong> de <strong>PNF Administración - Ejido (PNF Trimestral)</strong>	update periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2015-10-12&#039;, &quot;fechaFin&quot;=&#039;2015-10-25&#039; where id=&#039;2015-B&#039; and tipo=&#039;p&#039; and &quot;idECS&quot;=&#039;2&#039;\n\nupdate periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2015-05-18&#039;, &quot;fechaFin&quot;=&#039;2015-10-03&#039; where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=&#039;2&#039;
-1445281856	Nombre Apellido (12345678)	Se modificó al profesor <strong>Santo Coronel (5753564)</strong>	update persona set cedula=&#039;5753564&#039;, nombre=&#039;Santo&#039;, &quot;segundoNombre&quot;=&#039;Segundo&#039;, apellido=&#039;Coronel&#039;, &quot;segundoApellido&quot;=&#039;Romero&#039;, sexo=&#039;m&#039;, correo=&#039;ssrc513@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04164747101&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;5753564&#039;\n\nupdate profesor set cedula=&#039;5753564&#039;, categoria=&#039;Tit&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;49&#039; where cedula=&#039;5753564&#039;
-1445281897	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Coronel Santo (5753564)</strong>	insert into carga values(default, false, null, &#039;5753564&#039;, &#039;2&#039;, null, &#039;FSC12014&#039;)
-1445282028	Nombre Apellido (12345678)	Se agregó al profesor <strong>Carlos Hernandez (11955850)</strong>	insert into persona values(&#039;11955850&#039;, &#039;Carlos&#039;, null, &#039;Hernandez&#039;, null, &#039;m&#039;, &#039;carloshla2007@gmail.com&#039;, &#039;Asd&#039;, &#039;04263281790&#039;, null)\n\ninsert into profesor values(&#039;11955850&#039;, &#039;Tit&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;10&#039;)
-1445282087	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Hernandez Carlos (11955850)</strong>	insert into carga values(default, false, null, &#039;11955850&#039;, &#039;1&#039;, null, &#039;FAD15015&#039;)
-1445282279	Nombre Apellido (12345678)	Se desasignó la sección <strong>A</strong> del <strong>T1-t1</strong> del profesor <strong>Hernandez Carlos (11955850)</strong>	delete from carga where id=&#039;8&#039;
-1445282354	Nombre Apellido (12345678)	Se modificó al profesor <strong>Maria Marquez (7934845)</strong>	update persona set cedula=&#039;7934845&#039;, nombre=&#039;Maria&#039;, &quot;segundoNombre&quot;=&#039;Carolina&#039;, apellido=&#039;Marquez&#039;, &quot;segundoApellido&quot;=&#039;Uzcategui&#039;, sexo=&#039;f&#039;, correo=&#039;mcarolinamar@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04247708690&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;7934845&#039;\n\nupdate profesor set cedula=&#039;7934845&#039;, categoria=&#039;Agre&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;10&#039; where cedula=&#039;7934845&#039;
-1445282372	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Marquez Maria (7934845)</strong>. Suple <strong>Sifontes Omel (9906067)</strong>	insert into carga values(default, false, null, &#039;7934845&#039;, &#039;1&#039;, 9906067, &#039;FAD15015&#039;)
-1445282395	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Hernandez Carlos (11955850)</strong>	insert into carga values(default, false, null, &#039;11955850&#039;, &#039;2&#039;, null, &#039;FAD15015&#039;)
-1445282650	Nombre Apellido (12345678)	Se agregó al profesor <strong>Lenix Omana (1010633)</strong>	insert into persona values(&#039;1010633&#039;, &#039;Lenix&#039;, null, &#039;Omana&#039;, null, &#039;f&#039;, &#039;lenix@ula.ve&#039;, &#039;Asd&#039;, &#039;04147485841&#039;, null)\n\ninsert into profesor values(&#039;1010633&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;10&#039;)
-1445282673	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Omana Lenix (1010633)</strong>	insert into carga values(default, false, null, &#039;1010633&#039;, &#039;2&#039;, null, &#039;PRO27019&#039;)
-1445282766	Nombre Apellido (12345678)	Se agregó al profesor <strong>Jesus Casique (14281324)</strong>	insert into persona values(&#039;14281324&#039;, &#039;Jesus&#039;, null, &#039;Casique&#039;, null, &#039;m&#039;, &#039;casiquemorenojesus@gmail.com&#039;, &#039;Asd&#039;, &#039;04247127978&#039;, null)\n\ninsert into profesor values(&#039;14281324&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;50&#039;)
-1445282784	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Casique Jesus (14281324)</strong>	insert into carga values(default, false, null, &#039;14281324&#039;, &#039;1&#039;, null, &#039;PRO27019&#039;)
-1445282813	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t1</strong> al profesor <strong>Sarmiento Carlos (11705856)</strong>	insert into carga values(default, false, null, &#039;11705856&#039;, &#039;2&#039;, null, &#039;TIC6012&#039;)
-1445283005	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T1-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t3&#039;)
-1445283043	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T1-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t3&#039;)
-1445283082	Nombre Apellido (12345678)	Se agregó la sección <strong>C</strong> del <strong>T1-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;C&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t3&#039;)
-1445283345	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Carrera Maria (16317126)</strong>	insert into carga values(default, false, null, &#039;16317126&#039;, &#039;3&#039;, null, &#039;CON12014&#039;)
-1445283379	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Contreras Olga (11108398)</strong>	insert into carga values(default, false, null, &#039;11108398&#039;, &#039;4&#039;, null, &#039;CON12014&#039;)
-1445283783	Nombre Apellido (12345678)	Se agregó al profesor <strong>Gioconda Saez (11953052)</strong>	insert into persona values(&#039;11953052&#039;, &#039;Gioconda&#039;, &#039;Marlin&#039;, &#039;Saez&#039;, &#039;Torres&#039;, &#039;f&#039;, &#039;giocopaul@gmail.com&#039;, &#039;Asdasd&#039;, &#039;0416-5222543&#039;, null)\n\ninsert into profesor values(&#039;11953052&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;2&#039;)
-1445284113	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Saez Gioconda (11953052)</strong>	insert into carga values(default, false, null, &#039;11953052&#039;, &#039;5&#039;, null, &#039;CON12014&#039;)
-1445284131	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Colina Judith (6547603)</strong>	insert into carga values(default, false, null, &#039;6547603&#039;, &#039;3&#039;, null, &#039;DFC6012&#039;)
-1445284140	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Gutierrez Pedro (9234597)</strong>	insert into carga values(default, false, null, &#039;9234597&#039;, &#039;4&#039;, null, &#039;DFC6012&#039;)
-1445284147	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Ochoa Alejandro (12048353)</strong>	insert into carga values(default, false, null, &#039;12048353&#039;, &#039;5&#039;, null, &#039;DFC6012&#039;)
-1445284178	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;3&#039;, null, &#039;DAR9013&#039;)
-1445284179	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;4&#039;, null, &#039;DAR9013&#039;)
-1445284180	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;5&#039;, null, &#039;DAR9013&#039;)
-1445284216	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;3&#039;, null, &#039;FSC18016&#039;)
-1445284217	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;4&#039;, null, &#039;FSC18016&#039;)
-1445284227	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Sifontes Omel (9906067)</strong>	insert into carga values(default, false, null, &#039;9906067&#039;, &#039;5&#039;, null, &#039;FSC18016&#039;)
-1445284263	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Contreras Olga (11108398)</strong>	insert into carga values(default, false, null, &#039;11108398&#039;, &#039;3&#039;, null, &#039;PRO570119&#039;)
-1445284389	Nombre Apellido (12345678)	Se agregó al profesor <strong>Vianney Canache (8223161)</strong>	insert into persona values(&#039;8223161&#039;, &#039;Vianney&#039;, null, &#039;Canache&#039;, null, &#039;m&#039;, &#039;fitosiciliano@hotmail.com&#039;, &#039;Asd&#039;, &#039;0424-7686768&#039;, null)\n\ninsert into profesor values(&#039;8223161&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;10&#039;)
-1445284408	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Canache Vianney (8223161)</strong>	insert into carga values(default, false, null, &#039;8223161&#039;, &#039;5&#039;, null, &#039;PRO570119&#039;)
-1445284428	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Abarca Oswaldo (3966127)</strong>	insert into carga values(default, false, null, &#039;3966127&#039;, &#039;3&#039;, null, &#039;IDI9013&#039;)
-1445284434	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Sosa Zoila (4489957)</strong>	insert into carga values(default, false, null, &#039;4489957&#039;, &#039;4&#039;, null, &#039;IDI9013&#039;)
-1445284441	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Puentes Lilian (8683060)</strong>	insert into carga values(default, false, null, &#039;8683060&#039;, &#039;5&#039;, null, &#039;IDI9013&#039;)
-1445284492	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Nava Emiro (8041510)</strong>	insert into carga values(default, false, null, &#039;8041510&#039;, &#039;3&#039;, null, &#039;OF6012&#039;)
-1445284971	Nombre Apellido (12345678)	Se agregó al profesor <strong>Yasmin Carmona (9643447)</strong>	insert into persona values(&#039;9643447&#039;, &#039;Yasmin&#039;, null, &#039;Carmona&#039;, null, &#039;f&#039;, &#039;yasmincarmina310@gmail.com&#039;, &#039;Asd&#039;, &#039;0416-3700829&#039;, null)\n\ninsert into profesor values(&#039;9643447&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;10&#039;)
-1445284987	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Carmona Yasmin (9643447)</strong>	insert into carga values(default, false, null, &#039;9643447&#039;, &#039;4&#039;, null, &#039;OF6012&#039;)
-1445285002	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Omana Lenix (1010633)</strong>	insert into carga values(default, false, null, &#039;1010633&#039;, &#039;5&#039;, null, &#039;OF6012&#039;)
-1445285022	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Ochoa Alejandro (12048353)</strong>	insert into carga values(default, false, null, &#039;12048353&#039;, &#039;3&#039;, null, &#039;TPM6012&#039;)
-1445285037	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T1-t3</strong> al profesor <strong>Quintero Jose  (8022671)</strong>	insert into carga values(default, false, null, &#039;8022671&#039;, &#039;4&#039;, null, &#039;TPM6012&#039;)
-1445285048	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Quintero Jose  (8022671)</strong>	insert into carga values(default, false, null, &#039;8022671&#039;, &#039;5&#039;, null, &#039;TPM6012&#039;)
-1445285096	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T2-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T2-t3&#039;)
-1445285107	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T2-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T2-t3&#039;)
-1445285205	Nombre Apellido (12345678)	Se agregó al profesor <strong>Doris Villalba (5871766)</strong>	insert into persona values(&#039;5871766&#039;, &#039;Doris&#039;, null, &#039;Villalba&#039;, null, &#039;f&#039;, &#039;dvilla44@gmail.com&#039;, &#039;Asd&#039;, &#039;0416-6700862&#039;, null)\n\ninsert into profesor values(&#039;5871766&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;50&#039;)
-1445285220	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Villalba Doris (5871766)</strong>	insert into carga values(default, false, null, &#039;5871766&#039;, &#039;6&#039;, null, &#039;PCG3011&#039;)
-1445285233	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Curvelo Jose (12817844)</strong>	insert into carga values(default, false, null, &#039;12817844&#039;, &#039;7&#039;, null, &#039;PCG3011&#039;)
-1445285245	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Pazos Denisse (10314511)</strong>	insert into carga values(default, false, null, &#039;10314511&#039;, &#039;6&#039;, null, &#039;CON12024&#039;)
-1445285246	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Pazos Denisse (10314511)</strong>	insert into carga values(default, false, null, &#039;10314511&#039;, &#039;7&#039;, null, &#039;CON12024&#039;)
-1445285267	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Casique Jesus (14281324)</strong>	insert into carga values(default, false, null, &#039;14281324&#039;, &#039;6&#039;, null, &#039;PDF3012&#039;)
-1445285268	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Casique Jesus (14281324)</strong>	insert into carga values(default, false, null, &#039;14281324&#039;, &#039;7&#039;, null, &#039;PDF3012&#039;)
-1445285306	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Peña Maritza (9028433)</strong>	insert into carga values(default, false, &#039;Calidad y Gestión Ambiental&#039;, &#039;9028433&#039;, &#039;6&#039;, null, &#039;ELEC29023&#039;)
-1445285307	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Peña Maritza (9028433)</strong>	insert into carga values(default, false, &#039;Calidad y Gestión Ambiental&#039;, &#039;9028433&#039;, &#039;7&#039;, null, &#039;ELEC29023&#039;)
-1445285341	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Garay Migdalia  (3692342)</strong>	insert into carga values(default, false, null, &#039;3692342&#039;, &#039;6&#039;, null, &#039;FSC18026&#039;)
-1445285357	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Sifontes Omel (9906067)</strong>	insert into carga values(default, false, null, &#039;9906067&#039;, &#039;7&#039;, null, &#039;FSC18026&#039;)
-1445286302	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Cardozo Dolly (5447146)</strong>	insert into carga values(default, false, null, &#039;5447146&#039;, &#039;6&#039;, null, &#039;SHA9023&#039;)
-1445286311	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Garay Migdalia  (3692342)</strong>	insert into carga values(default, false, null, &#039;3692342&#039;, &#039;7&#039;, null, &#039;SHA9023&#039;)
-1445286329	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Gutierrez Pedro (9234597)</strong>	insert into carga values(default, false, null, &#039;9234597&#039;, &#039;6&#039;, null, &#039;PRO57019&#039;)
-1445286338	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-t3</strong> al profesor <strong>Hernandez Carlos (11955850)</strong>	insert into carga values(default, false, null, &#039;11955850&#039;, &#039;7&#039;, null, &#039;PRO57019&#039;)
-1445286965	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T3-t2</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t2&#039;)
-1445286980	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T3-t2</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t2&#039;)
-1445287002	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Carmona Yasmin (9643447)</strong>	insert into carga values(default, false, null, &#039;9643447&#039;, &#039;8&#039;, null, &#039;ADP9033&#039;)
-1445287086	Nombre Apellido (12345678)	Se agregó al profesor <strong>Emilia Graterol (12722753)</strong>	insert into persona values(&#039;12722753&#039;, &#039;Emilia&#039;, null, &#039;Graterol&#039;, null, &#039;f&#039;, &#039;emiliagraterol@yahoo.com&#039;, &#039;Asd&#039;, &#039;0424-7139955&#039;, null)\n\ninsert into profesor values(&#039;12722753&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;50&#039;)
-1445287094	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Graterol Emilia (12722753)</strong>	insert into carga values(default, false, null, &#039;12722753&#039;, &#039;9&#039;, null, &#039;ADP9033&#039;)
-1445287118	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Guillen Rodrigo (10104966)</strong>	insert into carga values(default, false, null, &#039;10104966&#039;, &#039;8&#039;, null, &#039;ADM6032&#039;)
-1445287119	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Guillen Rodrigo (10104966)</strong>	insert into carga values(default, false, null, &#039;10104966&#039;, &#039;9&#039;, null, &#039;ADM6032&#039;)
-1445287133	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;8&#039;, null, &#039;DAR9033&#039;)
-1445287134	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;9&#039;, null, &#039;DAR9033&#039;)
-1445287151	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;8&#039;, null, &#039;FSC18036&#039;)
-1445287152	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;9&#039;, null, &#039;FSC18036&#039;)
-1445287165	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Abarca Oswaldo (3966127)</strong>	insert into carga values(default, false, null, &#039;3966127&#039;, &#039;8&#039;, null, &#039;IDI9033&#039;)
-1445287166	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Abarca Oswaldo (3966127)</strong>	insert into carga values(default, false, null, &#039;3966127&#039;, &#039;9&#039;, null, &#039;IDI9033&#039;)
-1445287179	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Marquez Jose (9472514)</strong>	insert into carga values(default, false, null, &#039;9472514&#039;, &#039;8&#039;, null, &#039;PPL6032&#039;)
-1445287186	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Cardozo Dolly (5447146)</strong>	insert into carga values(default, false, null, &#039;5447146&#039;, &#039;9&#039;, null, &#039;PPL6032&#039;)
-1445287206	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Carmona Yasmin (9643447)</strong>	insert into carga values(default, false, null, &#039;9643447&#039;, &#039;8&#039;, null, &#039;PRO570319&#039;)
-1445287212	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Colina Judith (6547603)</strong>	insert into carga values(default, false, null, &#039;6547603&#039;, &#039;9&#039;, null, &#039;PRO570319&#039;)
-1445287224	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Pazos Denisse (10314511)</strong>	insert into carga values(default, false, null, &#039;10314511&#039;, &#039;8&#039;, null, &#039;PRE9033&#039;)
-1445287232	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t2</strong> al profesor <strong>Oballos Marielba (13525905)</strong>	insert into carga values(default, false, null, &#039;13525905&#039;, &#039;9&#039;, null, &#039;PRE9033&#039;)
-1445287454	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T3-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t3&#039;)
-1445287535	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T3-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t3&#039;)
-1445287554	Nombre Apellido (12345678)	Se agregó la sección <strong>C</strong> del <strong>T3-t3</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;C&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t3&#039;)
-1445287943	Nombre Apellido (12345678)	Se agregó al profesor <strong>Maria Parra (6729553)</strong>	insert into persona values(&#039;6729553&#039;, &#039;Maria&#039;, &#039;Gloria&#039;, &#039;Parra&#039;, null, &#039;f&#039;, &#039;mariagloria.parrar@gmail.com&#039;, &#039;Asd&#039;, &#039;0416-8743486&#039;, null)\n\ninsert into profesor values(&#039;6729553&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;50&#039;)
-1445287991	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Marquez Maria (7934845)</strong>. Suple <strong>Canache Vianney (8223161)</strong>	insert into carga values(default, false, null, &#039;7934845&#039;, &#039;10&#039;, 8223161, &#039;ADM6032&#039;)
-1445287992	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Marquez Maria (7934845)</strong>. Suple <strong>Parra Maria (6729553)</strong>	insert into carga values(default, false, null, &#039;7934845&#039;, &#039;11&#039;, 6729553, &#039;ADM6032&#039;)
-1445288004	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Silvia (15175795)</strong>	insert into carga values(default, false, null, &#039;15175795&#039;, &#039;12&#039;, null, &#039;ADM6032&#039;)
-1445288349	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;10&#039;, null, &#039;DAR9033&#039;)
-1445288350	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;11&#039;, null, &#039;DAR9033&#039;)
-1445288351	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Carlos (8958864)</strong>	insert into carga values(default, false, null, &#039;8958864&#039;, &#039;12&#039;, null, &#039;DAR9033&#039;)
-1445288658	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Garay Migdalia  (3692342)</strong>	insert into carga values(default, false, null, &#039;3692342&#039;, &#039;10&#039;, null, &#039;FSC18036&#039;)
-1445288670	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Coronel Santo (5753564)</strong>	insert into carga values(default, false, null, &#039;5753564&#039;, &#039;11&#039;, null, &#039;FSC18036&#039;)
-1445288671	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Coronel Santo (5753564)</strong>	insert into carga values(default, false, null, &#039;5753564&#039;, &#039;12&#039;, null, &#039;FSC18036&#039;)
-1445288690	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Monsalve Merilin (17523454)</strong>	insert into carga values(default, false, null, &#039;17523454&#039;, &#039;10&#039;, null, &#039;PRO570319&#039;)
-1445288696	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Marquez Jose (9472514)</strong>	insert into carga values(default, false, null, &#039;9472514&#039;, &#039;11&#039;, null, &#039;PRO570319&#039;)
-1445288704	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Oballos Marielba (13525905)</strong>	insert into carga values(default, false, null, &#039;13525905&#039;, &#039;12&#039;, null, &#039;PRO570319&#039;)
-1445288851	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
-1445288920	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
-1445289152	Nombre Apellido (12345678)	Se agregó al profesor <strong>Alejandro Rojas (8039160)</strong>	insert into persona values(&#039;8039160&#039;, &#039;Alejandro&#039;, null, &#039;Rojas&#039;, null, &#039;m&#039;, &#039;alejandrorojas23@yahoo.com&#039;, &#039;Asd&#039;, &#039;0426-7625391&#039;, null)\n\ninsert into profesor values(&#039;8039160&#039;, &#039;Asist&#039;, &#039;3&#039;, &#039;EXC&#039;, &#039;1&#039;)
-1445289234	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Alejandro (8039160)</strong>	insert into carga values(default, false, null, &#039;8039160&#039;, &#039;10&#039;, null, &#039;TIC6032&#039;)
-1445289235	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Alejandro (8039160)</strong>	insert into carga values(default, false, null, &#039;8039160&#039;, &#039;11&#039;, null, &#039;TIC6032&#039;)
-1445289236	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Rojas Alejandro (8039160)</strong>	insert into carga values(default, false, null, &#039;8039160&#039;, &#039;12&#039;, null, &#039;TIC6032&#039;)
-1445289469	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T4-t2</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T4-t2&#039;)
-1445289487	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T4-t2</strong> en <strong>PNF Administración</strong>	insert into seccion values(default, &#039;B&#039;, &#039;n&#039;, &#039;1.5&#039;, false, &#039;4&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;04&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T4-t2&#039;)
-1445289657	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Cardozo Dolly (5447146)</strong>	insert into carga values(default, false, null, &#039;5447146&#039;, &#039;13&#039;, null, &#039;ADF6042&#039;)
-1445289668	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Carrera Maria (16317126)</strong>	insert into carga values(default, false, null, &#039;16317126&#039;, &#039;14&#039;, null, &#039;ADF6042&#039;)
-1445289683	Nombre Apellido (12345678)	Se modificó al profesor <strong>Maria Carrero (16317126)</strong>	update persona set cedula=&#039;16317126&#039;, nombre=&#039;Maria&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Carrero&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;marca1911@yahoo.es&#039;, direccion=&#039;Av. qwe&#039;, telefono=&#039;04247625391&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;16317126&#039;\n\nupdate profesor set cedula=&#039;16317126&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;2&#039; where cedula=&#039;16317126&#039;
-1445289706	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Oballos Marielba (13525905)</strong>	insert into carga values(default, false, null, &#039;13525905&#039;, &#039;13&#039;, null, &#039;PCG6042&#039;)
-1445289719	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Gonzalez Silvia (15175795)</strong>	insert into carga values(default, false, null, &#039;15175795&#039;, &#039;14&#039;, null, &#039;PCG6042&#039;)
-1445289744	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Muñoz Miriam (8037619)</strong>	insert into carga values(default, false, null, &#039;8037619&#039;, &#039;13&#039;, null, &#039;PRO570419&#039;)
-1445289753	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Ochoa Alejandro (12048353)</strong>	insert into carga values(default, false, null, &#039;12048353&#039;, &#039;14&#039;, null, &#039;PRO570419&#039;)
-1445289803	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Hernandez Carlos (11955850)</strong>	insert into carga values(default, false, &#039;Administración de Empresas de Producción Social&#039;, &#039;11955850&#039;, &#039;13&#039;, null, &#039;AFPS6033&#039;)
-1445289828	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Parra Maria (6729553)</strong>	insert into carga values(default, false, &#039;Administración de Empresas de Producción Social&#039;, &#039;6729553&#039;, &#039;14&#039;, null, &#039;AFPS6033&#039;)
-1445289862	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Villamizar Mayuly (10718393)</strong>	insert into carga values(default, false, &#039;Administración de Empresas Turisticas&#039;, &#039;10718393&#039;, &#039;13&#039;, null, &#039;ELEC49043&#039;)
-1445289874	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Colina Judith (6547603)</strong>	insert into carga values(default, false, &#039;Administración de Empresas Turisticas&#039;, &#039;6547603&#039;, &#039;14&#039;, null, &#039;ELEC49043&#039;)
-1445289894	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Bustos Norkys (15565857)</strong>	insert into carga values(default, false, null, &#039;15565857&#039;, &#039;13&#039;, null, &#039;FSC18046&#039;)
-1445289911	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Garay Migdalia  (3692342)</strong>	insert into carga values(default, false, null, &#039;3692342&#039;, &#039;14&#039;, null, &#039;FSC18046&#039;)
-1445289923	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Marquez Jose (9472514)</strong>	insert into carga values(default, false, null, &#039;9472514&#039;, &#039;13&#039;, null, &#039;FEP9043&#039;)
-1445289942	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Monsalve Merilin (17523454)</strong>	insert into carga values(default, false, null, &#039;17523454&#039;, &#039;14&#039;, null, &#039;FEP9043&#039;)
-1445289961	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Parra Maria (6729553)</strong>	insert into carga values(default, false, null, &#039;6729553&#039;, &#039;13&#039;, null, &#039;SHDD9043&#039;)
-1445289969	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Villamizar Mayuly (10718393)</strong>	insert into carga values(default, false, null, &#039;10718393&#039;, &#039;14&#039;, null, &#039;SHDD9043&#039;)
-1445290888	Nombre Apellido (12345678)	Se creó el respaldo <strong>2015-10-19_17-11-26.sql</strong>	No SQL
-1445371538	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-16&#039; where id=&#039;PNFA-2010&#039;
-1445371679	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010</strong>	update malla set id=&#039;PNFA-2010&#039;, fecha=&#039;2015-10-01&#039; where id=&#039;PNFA-2010&#039;
-1445375830	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445376169	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445391099	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Informática</strong>	update carrera set id=&#039;03&#039;, nombre=&#039;PNF Informática&#039;, &quot;idArea&quot;=&#039;1&#039; where id=&#039;03&#039;
-1445391114	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Informática</strong>	update carrera set id=&#039;03&#039;, nombre=&#039;PNF Informática&#039;, &quot;idArea&quot;=&#039;1&#039; where id=&#039;03&#039;
-1445391131	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Informática</strong>	update carrera set id=&#039;03&#039;, nombre=&#039;PNF Informática&#039;, &quot;idArea&quot;=&#039;1&#039; where id=&#039;03&#039;
-1445391162	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445391178	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445391223	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445391268	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445391465	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445392882	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445432885	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445433015	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFI-2012</strong>	update malla set id=&#039;PNFI-2012&#039;, fecha=&#039;2011-04-27&#039; where id=&#039;PNFI-2012&#039;
-1445433071	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFA-2010-2</strong>	update malla set id=&#039;PNFA-2010-2&#039;, fecha=&#039;2015-10-01&#039; where id=&#039;PNFA-2010&#039;
 \.
 
 
@@ -2357,14 +3350,14 @@ COPY horario (id_enlace, periodo, thora, chora, seccion, materia, profesor, carr
 -- Name: mallaECS_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"mallaECS_id_seq"', 6, true);
+SELECT pg_catalog.setval('"mallaECS_id_seq"', 8, true);
 
 
 --
 -- Name: periodo_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"periodo_ID_seq"', 4, true);
+SELECT pg_catalog.setval('"periodo_ID_seq"', 10, true);
 
 
 --
@@ -2755,6 +3748,7 @@ COPY pertenece ("idCS", "idProfesor") FROM stdin;
 4	6729553
 4	8039160
 10	2288079
+11	3966127
 \.
 
 
@@ -2783,7 +3777,7 @@ SELECT pg_catalog.setval('salones_id_seq', 1, false);
 -- Name: seccion_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"seccion_ID_seq"', 14, true);
+SELECT pg_catalog.setval('"seccion_ID_seq"', 32, true);
 
 
 --
@@ -2798,30 +3792,14 @@ SELECT pg_catalog.setval('sede_id_seq', 7, true);
 --
 
 COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "idMalla") FROM stdin;
-168	2	0	f	T0	GRPC3001	PNFA-2010-2
-167	3	0	f	T0	PRO6002	PNFA-2010-2
-169	3	0	f	T0	MAT6002	PNFA-2010-2
-164	4	0	f	T0	PNNC9003	PNFA-2010-2
-180	4	0	f	T1-t1	CON12014	PNFA-2010-2
-202	3	0	f	T2-t1	FSC18026	PNFA-2010-2
-212	2	0	f	T2-t1	MLO0602	PNFA-2010-2
-206	6	0	f	T2-t1	PRO57019	PNFA-2010-2
-198	4	0	f	T2-t1	THAT9023	PNFA-2010-2
-211	2	2	t	T2-t1	PTI6022	PNFA-2010-2
-214	4	0	f	T2-t2	ADC6022	PNFA-2010-2
-194	4	0	f	T2-t2	CON12024	PNFA-2010-2
-200	4	0	f	T2-t2	ELEC29023	PNFA-2010-2
-203	3	0	f	T2-t2	FSC18026	PNFA-2010-2
-196	3	0	f	T2-t2	OYS9023	PNFA-2010-2
-207	6	0	f	T2-t2	PRO57019	PNFA-2010-2
 34	2	3	t	T2-t1	PIRC2	PNFI-2012
 4	2	3	t	T2-t2	PIBD2	PNFI-2012
 37	2	0	f	T2-t2	PIFC2	PNFI-2012
 33	5	0	f	T2-t2	PIMT2	PNFI-2012
 40	2	4	t	T2-t2	PIPP2	PNFI-2012
-199	4	0	f	T2-t2	THAT9023	PNFA-2010-2
-210	3	0	f	T2-t3	PCG3011	PNFA-2010-2
-195	4	0	f	T2-t3	CON12024	PNFA-2010-2
+290	4	0	f	T4-t1	PRO2749	PNFA-2014-PRO
+283	3	0	f	T4-t2	FSC1244	PNFA-2014-PRO
+216	4	0	f	T3-t2	PRE9033	PNFA-2010-2
 43	6	0	f	T2-t2	PIPT2	PNFI-2012
 35	2	3	t	T2-t2	PIRC2	PNFI-2012
 38	2	0	f	T2-t3	PIFC2	PNFI-2012
@@ -2833,45 +3811,49 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 54	6	0	f	T3-t1	PIPT3	PNFI-2012
 50	5	0	f	T3-t1	PISO3	PNFI-2012
 52	2	0	f	T3-t2	PIFC3	PNFI-2012
-209	2	0	f	T2-t3	PDF3012	PNFA-2010-2
-201	4	0	f	T2-t3	ELEC29023	PNFA-2010-2
-204	3	0	f	T2-t3	FSC18026	PNFA-2010-2
+232	4	0	f	T3-t3	ADM6032	PNFA-2010-2
+235	2	0	f	T3-t3	DAR9033	PNFA-2010-2
+285	3	0	f	T4-t2	FEP9043	PNFA-2014-PRO
 58	5	0	f	T3-t2	PIIS3	PNFI-2012
-197	3	0	f	T2-t3	OYS9023	PNFA-2010-2
-192	4	0	f	T2-t3	SHA9023	PNFA-2010-2
-208	6	0	f	T2-t3	PRO57019	PNFA-2010-2
-229	4	0	f	T3-t1	ADP9033	PNFA-2010-2
-233	4	0	f	T3-t1	AEF9032	PNFA-2010-2
-228	2	0	f	T3-t1	TDR3031	PNFA-2010-2
-222	3	0	f	T3-t1	FSC18036	PNFA-2010-2
-220	3	0	f	T3-t1	IDI9033	PNFA-2010-2
-226	4	0	f	T3-t1	PPL6032	PNFA-2010-2
-217	6	0	f	T3-t1	PRO570319	PNFA-2010-2
-215	4	0	f	T3-t1	PRE9033	PNFA-2010-2
-230	4	0	f	T3-t2	ADP9033	PNFA-2010-2
-231	4	0	f	T3-t2	ADM6032	PNFA-2010-2
+287	4	0	f	T4-t2	GP9043	PNFA-2014-PRO
+289	3	0	f	T4-t2	IOP9043	PNFA-2014-PRO
+261	1	2	t	T4-t2	PIA9043	PNFA-2014-PRO
+291	4	0	f	T4-t2	PRO2749	PNFA-2014-PRO
+294	4	0	f	T4-t2	SISF9043	PNFA-2014-PRO
+262	4	0	f	T4-t3	ADD9043	PNFA-2014-PRO
+295	3	0	f	T4-t3	CGA9043	PNFA-2014-PRO
+296	3	0	f	T4-t3	ELEC49043	PNFA-2014-PRO
+293	1	2	t	T4-t3	PIA9043	PNFA-2014-PRO
+292	4	0	f	T4-t3	PRO2749	PNFA-2014-PRO
 91	2	0	f	T0	DI6001	PNFA-2014
 92	4	0	f	T0	GRPC6002	PNFA-2014
 77	4	0	f	T0	MAD9013	PNFA-2014
 90	4	0	f	T0	PNNC6002	PNFA-2014
 98	4	0	f	T1-t1	CON15015	PNFA-2014
 103	3	0	f	T1-t1	ELC6012	PNFA-2014
-101	3	0	f	T1-t1	EOE6012	PNFA-2014
 104	3	0	f	T1-t1	FSC12014	PNFA-2014
 95	4	0	f	T1-t1	FAD15015	PNFA-2014
-78	4	0	f	T1-t1	PRO27019	PNFA-2014
+78	5	0	f	T1-t1	PRO27019	PNFA-2014
+101	3	0	f	T1-t1	EOE6012	PNFA-2014
 102	2	2	t	T1-t1	TIC6012	PNFA-2014
+14	5	0	f	T1-t3	PIMT1	PNFI-2012
+26	6	0	f	T1-t3	PIPT1	PNFI-2012
+36	2	0	f	T2-t1	PIFC2	PNFI-2012
+45	5	0	f	T2-t1	PIS03	PNFI-2012
+3	5	0	f	T2-t1	PIMT2	PNFI-2012
+39	2	4	t	T2-t1	PIPP2	PNFI-2012
 99	4	0	f	T1-t2	CON15015	PNFA-2014
 79	4	0	f	T1-t2	EST6012	PNFA-2014
 105	3	0	f	T1-t2	FSC12014	PNFA-2014
+42	6	0	f	T2-t1	PIPT2	PNFI-2012
 96	4	0	f	T1-t2	FAD15015	PNFA-2014
 106	4	0	f	T1-t2	MAJ6012	PNFA-2014
-93	4	0	f	T1-t2	PRO27019	PNFA-2014
+93	5	0	f	T1-t2	PRO27019	PNFA-2014
 100	4	0	f	T1-t3	CON15015	PNFA-2014
 108	4	0	f	T1-t3	DFC9013	PNFA-2014
 97	4	0	f	T1-t3	FAD15015	PNFA-2014
 80	4	0	f	T1-t3	OFI9013	PNFA-2014
-94	4	0	f	T1-t3	PRO27019	PNFA-2014
+94	5	0	f	T1-t3	PRO27019	PNFA-2014
 107	4	0	f	T1-t3	TPM9013	PNFA-2014
 111	4	0	f	T2-t1	CON150152	PNFA-2014
 113	3	0	f	T2-t1	FSC12024	PNFA-2014
@@ -2880,6 +3862,17 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 119	3	0	f	T2-t1	MAJ6022	PNFA-2014
 117	4	0	f	T2-t1	OYS9023	PNFA-2014
 81	4	0	f	T2-t1	PRYII27029	PNFA-2014
+196	3	0	f	T2-t2	OYS9023	PNFA-2010-2
+207	6	0	f	T2-t2	PRO57019	PNFA-2010-2
+199	3	0	f	T2-t2	THAT9023	PNFA-2010-2
+210	3	0	f	T2-t3	PCG3011	PNFA-2010-2
+195	4	0	f	T2-t3	CON12024	PNFA-2010-2
+209	4	0	f	T2-t3	PDF3012	PNFA-2010-2
+201	3	0	f	T2-t3	ELEC29023	PNFA-2010-2
+204	3	0	f	T2-t3	FSC18026	PNFA-2010-2
+197	3	0	f	T2-t3	OYS9023	PNFA-2010-2
+192	3	0	f	T2-t3	SHA9023	PNFA-2010-2
+157	4	0	f	T0	AMS6002	PNFA-2014
 112	4	0	f	T2-t2	CON150152	PNFA-2014
 124	3	0	f	T2-t2	DFC9023	PNFA-2014
 114	3	0	f	T2-t2	FSC12024	PNFA-2014
@@ -2889,6 +3882,21 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 122	3	0	f	T2-t2	PPP9023	PNFA-2014
 109	4	0	f	T2-t2	PRYII27029	PNFA-2014
 126	4	0	f	T2-t3	ADC9023	PNFA-2014
+170	3	0	f	T0	DIE6002	PNFA-2010-2
+168	3	0	f	T0	GRPC3001	PNFA-2010-2
+167	4	0	f	T0	PRO6002	PNFA-2010-2
+169	4	0	f	T0	MAT6002	PNFA-2010-2
+164	4	0	f	T0	PNNC9003	PNFA-2010-2
+180	4	0	f	T1-t1	CON12014	PNFA-2010-2
+202	3	0	f	T2-t1	FSC18026	PNFA-2010-2
+212	4	0	f	T2-t1	MLO0602	PNFA-2010-2
+206	6	0	f	T2-t1	PRO57019	PNFA-2010-2
+198	3	0	f	T2-t1	THAT9023	PNFA-2010-2
+211	2	2	t	T2-t1	PTI6022	PNFA-2010-2
+214	4	0	f	T2-t2	ADC6022	PNFA-2010-2
+194	4	0	f	T2-t2	CON12024	PNFA-2010-2
+200	3	0	f	T2-t2	ELEC29023	PNFA-2010-2
+203	3	0	f	T2-t2	FSC18026	PNFA-2010-2
 125	3	0	f	T2-t3	DFC9023	PNFA-2014
 127	3	0	f	T2-t3	ELC6002	PNFA-2014
 121	4	0	f	T2-t3	GTH9023	PNFA-2014
@@ -2898,25 +3906,6 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 136	4	0	f	T3-t1	AEF9033	PNFA-2014
 135	3	0	f	T3-t1	COG6032	PNFA-2014
 134	3	0	f	T3-t1	EST6032	PNFA-2014
-234	2	0	f	T3-t2	DAR9033	PNFA-2010-2
-223	3	0	f	T3-t2	FSC18036	PNFA-2010-2
-221	3	0	f	T3-t2	IDI9033	PNFA-2010-2
-227	4	0	f	T3-t2	PPL6032	PNFA-2010-2
-218	6	0	f	T3-t2	PRO570319	PNFA-2010-2
-216	4	0	f	T3-t2	PRE9033	PNFA-2010-2
-232	4	0	f	T3-t3	ADM6032	PNFA-2010-2
-235	2	0	f	T3-t3	DAR9033	PNFA-2010-2
-14	5	0	f	T1-t3	PIMT1	PNFI-2012
-26	6	0	f	T1-t3	PIPT1	PNFI-2012
-36	2	0	f	T2-t1	PIFC2	PNFI-2012
-45	5	0	f	T2-t1	PIS03	PNFI-2012
-3	5	0	f	T2-t1	PIMT2	PNFI-2012
-39	2	4	t	T2-t1	PIPP2	PNFI-2012
-224	3	0	f	T3-t3	FSC18036	PNFA-2010-2
-219	6	0	f	T3-t3	PRO570319	PNFA-2010-2
-225	2	2	t	T3-t3	TIC6032	PNFA-2010-2
-42	6	0	f	T2-t1	PIPT2	PNFI-2012
-252	4	0	f	T4-t1	ADF6042	PNFA-2010-2
 130	4	0	f	T3-t1	FSC12034	PNFA-2014
 132	4	0	f	T3-t1	PYG9033	PNFA-2014
 84	4	0	f	T3-t1	PRO2739	PNFA-2014
@@ -2948,8 +3937,6 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 156	3	0	f	T4-t3	CGA9043	PNFA-2014
 155	3	0	f	T4-t3	ELEC6042	PNFA-2014
 150	1	2	t	T4-t3	PIA9043	PNFA-2014
-143	4	0	f	T4-t3	PRO2749	PNFA-2014
-157	4	0	f	T0	AMS6002	PNFA-2014
 49	5	0	f	T3-t2	PIMA3	PNFI-2012
 6	5	0	t	T3-t2	PIMB3	PNFI-2012
 55	6	0	f	T3-t2	PIPT3	PNFI-2012
@@ -2958,7 +3945,6 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 7	2	3	f	T3-t3	PIIO3	PNFI-2012
 56	6	0	f	T3-t3	PIPT3	PNFI-2012
 69	2	3	t	T4-t1	PIAB4	PNFI-2012
-170	2	0	f	T0	DIE6002	PNFA-2010-2
 20	2	0	f	T1-t3	PIFC1	PNFI-2012
 29	2	0	f	T1-t3	PIID1	PNFI-2012
 12	5	0	f	T0	PITIP02	PNFI-2012
@@ -2966,58 +3952,90 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 11	5	0	f	T0	PIPNP03	PNFI-2012
 21	2	4	t	T1-t1	PIAP1	PNFI-2012
 15	2	3	t	T1-t1	PIAC1	PNFI-2012
-256	4	0	f	TT	ANM60T2	PNFA-2014-PRO
-257	4	0	f	T3-t1	AEF9033	PNFA-2014-PRO
-258	3	0	f	T3-t2	ADP9033	PNFA-2014-PRO
-259	4	0	f	T3-t3	ADC9033	PNFA-2014-PRO
-260	4	0	f	T4-t1	ADF9043	PNFA-2014-PRO
-261	1	2	t	T4-t2	PIA9043	PNFA-2014-PRO
-262	4	0	f	T4-t3	ADD9043	PNFA-2014-PRO
-263	4	0	f	TT	SEM160T2	PNFA-2014-PRO
-264	4	0	f	TT	SEM260T2	PNFA-2014-PRO
-265	4	0	f	TT	EEP60T2	PNFA-2014-PRO
-266	4	0	f	TT	GEA60T2	PNFA-2014-PRO
-267	4	0	f	TT	PNC60T2	PNFA-2014-PRO
-268	3	0	f	T3-t1	COG6032	PNFA-2014-PRO
-269	3	0	f	T3-t1	EST6032	PNFA-2014-PRO
-270	4	0	f	T3-t1	FSC12034	PNFA-2014-PRO
-271	4	0	f	T3-t2	FSC12034	PNFA-2014-PRO
-272	4	0	f	T3-t1	PYG9033	PNFA-2014-PRO
-273	4	0	f	T3-t2	PYG9033	PNFA-2014-PRO
-274	4	0	f	T3-t1	PRO2739	PNFA-2014-PRO
-275	4	0	f	T3-t2	PRO2739	PNFA-2014-PRO
-276	4	0	f	T3-t3	PRO2739	PNFA-2014-PRO
-277	3	0	f	T3-t3	ADP9033	PNFA-2014-PRO
-278	4	0	f	T3-t2	HDI9033	PNFA-2014-PRO
-279	3	0	f	T3-t2	SAD6032	PNFA-2014-PRO
-280	3	0	f	T3-t3	ADM6032	PNFA-2014-PRO
-281	3	0	f	T3-t3	ELC6032	PNFA-2014-PRO
-282	3	0	f	T4-t1	FSC1244	PNFA-2014-PRO
-283	3	0	f	T4-t2	FSC1244	PNFA-2014-PRO
-284	3	0	f	T4-t1	FEP9043	PNFA-2014-PRO
-285	3	0	f	T4-t2	FEP9043	PNFA-2014-PRO
-286	4	0	f	T4-t1	GP9043	PNFA-2014-PRO
-287	4	0	f	T4-t2	GP9043	PNFA-2014-PRO
-288	3	0	f	T4-t1	IOP9043	PNFA-2014-PRO
-289	3	0	f	T4-t2	IOP9043	PNFA-2014-PRO
-290	4	0	f	T4-t1	PRO2749	PNFA-2014-PRO
-291	4	0	f	T4-t2	PRO2749	PNFA-2014-PRO
-292	4	0	f	T4-t3	PRO2749	PNFA-2014-PRO
-293	1	2	t	T4-t3	PIA9043	PNFA-2014-PRO
-294	4	0	f	T4-t2	SISF9043	PNFA-2014-PRO
-295	3	0	f	T4-t3	CGA9043	PNFA-2014-PRO
-296	3	0	f	T4-t3	ELEC49043	PNFA-2014-PRO
-18	2	0	f	T1-t1	PIFC1	PNFI-2012
 174	4	0	f	T1-t1	ES3011	PNFA-2010-2
 175	3	0	f	T1-t1	FSC18016	PNFA-2010-2
-184	3	0	f	T1-t1	FA12014	PNFA-2010-2
+394	4	0	f	T1-t1	CON12014	PNFA-2010-3
+395	4	0	f	T1-t1	ES3011	PNFA-2010-3
+396	3	0	f	T1-t1	FSC18016	PNFA-2010-3
+397	4	0	f	T1-t1	FA12014	PNFA-2010-3
+398	6	0	f	T1-t1	PRO570119	PNFA-2010-3
+399	4	0	f	T1-t1	PTE3011	PNFA-2010-3
+400	2	2	t	T1-t1	PTI6012	PNFA-2010-3
+143	4	0	f	T4-t3	PRO2749	PNFA-2014
+184	4	0	f	T1-t1	FA12014	PNFA-2010-2
 189	6	0	f	T1-t1	PRO570119	PNFA-2010-2
 178	4	0	f	T1-t1	PTE3011	PNFA-2010-2
 183	2	2	t	T1-t1	PTI6012	PNFA-2010-2
 181	4	0	f	T1-t2	CON12014	PNFA-2010-2
 172	2	0	f	T1-t2	DAR9013	PNFA-2010-2
 176	3	0	f	T1-t2	FSC18016	PNFA-2010-2
-185	3	0	f	T1-t2	FA12014	PNFA-2010-2
+185	4	0	f	T1-t2	FA12014	PNFA-2010-2
+208	6	0	f	T2-t3	PRO57019	PNFA-2010-2
+229	4	0	f	T3-t1	ADP9033	PNFA-2010-2
+233	4	0	f	T3-t1	AEF9032	PNFA-2010-2
+228	4	0	f	T3-t1	TDR3031	PNFA-2010-2
+222	3	0	f	T3-t1	FSC18036	PNFA-2010-2
+220	4	0	f	T3-t1	IDI9033	PNFA-2010-2
+226	3	0	f	T3-t1	PPL6032	PNFA-2010-2
+217	6	0	f	T3-t1	PRO570319	PNFA-2010-2
+215	4	0	f	T3-t1	PRE9033	PNFA-2010-2
+18	2	0	f	T1-t1	PIFC1	PNFI-2012
+389	3	0	f	T0	DIE6002	PNFA-2010-3
+390	3	0	f	T0	GRPC3001	PNFA-2010-3
+391	4	0	f	T0	PRO6002	PNFA-2010-3
+230	4	0	f	T3-t2	ADP9033	PNFA-2010-2
+231	4	0	f	T3-t2	ADM6032	PNFA-2010-2
+234	2	0	f	T3-t2	DAR9033	PNFA-2010-2
+223	3	0	f	T3-t2	FSC18036	PNFA-2010-2
+221	4	0	f	T3-t2	IDI9033	PNFA-2010-2
+227	3	0	f	T3-t2	PPL6032	PNFA-2010-2
+218	6	0	f	T3-t2	PRO570319	PNFA-2010-2
+392	4	0	f	T0	MAT6002	PNFA-2010-3
+393	4	0	f	T0	PNNC9003	PNFA-2010-3
+27	2	0	f	T1-t1	PIID1	PNFI-2012
+2	5	0	f	T1-t1	PIMT1	PNFI-2012
+24	6	0	f	T1-t1	PIPT1	PNFI-2012
+22	2	4	t	T1-t2	PIAP1	PNFI-2012
+16	2	3	t	T1-t2	PIAC1	PNFI-2012
+19	2	0	f	T1-t2	PIFC1	PNFI-2012
+28	2	0	f	T1-t2	PIID1	PNFI-2012
+13	5	0	f	T1-t2	PIMT1	PNFI-2012
+25	6	0	f	T1-t2	PIPT1	PNFI-2012
+23	2	4	t	T1-t3	PIAP1	PNFI-2012
+17	2	3	t	T1-t3	PIAC1	PNFI-2012
+256	4	0	f	TT	ANM60T2	PNFA-2014-PRO
+263	4	0	f	TT	SEM160T2	PNFA-2014-PRO
+264	4	0	f	TT	SEM260T2	PNFA-2014-PRO
+265	4	0	f	TT	EEP60T2	PNFA-2014-PRO
+266	4	0	f	TT	GEA60T2	PNFA-2014-PRO
+267	4	0	f	TT	PNC60T2	PNFA-2014-PRO
+257	4	0	f	T3-t1	AEF9033	PNFA-2014-PRO
+268	3	0	f	T3-t1	COG6032	PNFA-2014-PRO
+269	3	0	f	T3-t1	EST6032	PNFA-2014-PRO
+270	4	0	f	T3-t1	FSC12034	PNFA-2014-PRO
+272	4	0	f	T3-t1	PYG9033	PNFA-2014-PRO
+274	4	0	f	T3-t1	PRO2739	PNFA-2014-PRO
+258	3	0	f	T3-t2	ADP9033	PNFA-2014-PRO
+271	4	0	f	T3-t2	FSC12034	PNFA-2014-PRO
+278	4	0	f	T3-t2	HDI9033	PNFA-2014-PRO
+273	4	0	f	T3-t2	PYG9033	PNFA-2014-PRO
+275	4	0	f	T3-t2	PRO2739	PNFA-2014-PRO
+279	3	0	f	T3-t2	SAD6032	PNFA-2014-PRO
+259	4	0	f	T3-t3	ADC9033	PNFA-2014-PRO
+277	3	0	f	T3-t3	ADP9033	PNFA-2014-PRO
+280	3	0	f	T3-t3	ADM6032	PNFA-2014-PRO
+281	3	0	f	T3-t3	ELC6032	PNFA-2014-PRO
+276	4	0	f	T3-t3	PRO2739	PNFA-2014-PRO
+260	4	0	f	T4-t1	ADF9043	PNFA-2014-PRO
+282	3	0	f	T4-t1	FSC1244	PNFA-2014-PRO
+284	3	0	f	T4-t1	FEP9043	PNFA-2014-PRO
+286	4	0	f	T4-t1	GP9043	PNFA-2014-PRO
+288	3	0	f	T4-t1	IOP9043	PNFA-2014-PRO
+205	3	0	f	T2-t1	CGA9023	PNFA-2010-2
+224	3	0	f	T3-t3	FSC18036	PNFA-2010-2
+219	6	0	f	T3-t3	PRO570319	PNFA-2010-2
+225	2	2	t	T3-t3	TIC6032	PNFA-2010-2
+252	4	0	f	T4-t1	ADF6042	PNFA-2010-2
 243	6	0	f	T4-t1	PRO570419	PNFA-2010-2
 236	4	0	f	T4-t1	AFPS6033	PNFA-2010-2
 248	3	0	f	T4-t1	FSC18046	PNFA-2010-2
@@ -3028,26 +4046,6 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 244	6	0	f	T4-t2	PRO570419	PNFA-2010-2
 237	4	0	f	T4-t2	AFPS6033	PNFA-2010-2
 240	4	0	f	T4-t2	ELEC49043	PNFA-2010-2
-249	3	0	f	T4-t2	FSC18046	PNFA-2010-2
-27	2	0	f	T1-t1	PIID1	PNFI-2012
-2	5	0	f	T1-t1	PIMT1	PNFI-2012
-24	6	0	f	T1-t1	PIPT1	PNFI-2012
-22	2	4	t	T1-t2	PIAP1	PNFI-2012
-16	2	3	t	T1-t2	PIAC1	PNFI-2012
-19	2	0	f	T1-t2	PIFC1	PNFI-2012
-28	2	0	f	T1-t2	PIID1	PNFI-2012
-13	5	0	f	T1-t2	PIMT1	PNFI-2012
-25	6	0	f	T1-t2	PIPT1	PNFI-2012
-239	4	0	f	T4-t2	FEP9043	PNFA-2010-2
-254	2	0	f	T4-t2	SHDD9043	PNFA-2010-2
-23	2	4	t	T1-t3	PIAP1	PNFI-2012
-17	2	3	t	T1-t3	PIAC1	PNFI-2012
-242	4	0	f	T4-t3	APAA3041	PNFA-2010-2
-245	6	0	f	T4-t3	PRO570419	PNFA-2010-2
-241	4	0	f	T4-t3	ELEC49043	PNFA-2010-2
-250	3	0	f	T4-t3	FSC18046	PNFA-2010-2
-255	2	0	f	T4-t3	SHDD9043	PNFA-2010-2
-251	3	0	f	T4-t3	SIF6042	PNFA-2010-2
 297	5	0	f	T2-t3	PIEL2	PNFI-2012
 8	2	0	f	T4-t1	PIFC4	PNFI-2012
 68	5	0	f	T4-t1	PIGP4	PNFI-2012
@@ -3060,23 +4058,109 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 76	2	3	t	T4-t2	PISI4	PNFI-2012
 10	2	3	t	T4-t3	PIAI4	PNFI-2012
 64	2	0	f	T4-t3	PIFC4	PNFI-2012
+249	3	0	f	T4-t2	FSC18046	PNFA-2010-2
+239	4	0	f	T4-t2	FEP9043	PNFA-2010-2
+254	3	0	f	T4-t2	SHDD9043	PNFA-2010-2
+242	4	0	f	T4-t3	APAA3041	PNFA-2010-2
+245	6	0	f	T4-t3	PRO570419	PNFA-2010-2
+241	4	0	f	T4-t3	ELEC49043	PNFA-2010-2
+250	3	0	f	T4-t3	FSC18046	PNFA-2010-2
+255	3	0	f	T4-t3	SHDD9043	PNFA-2010-2
+251	4	0	f	T4-t3	SIF6042	PNFA-2010-2
+405	6	0	f	T1-t2	PRO570119	PNFA-2010-3
+406	3	0	f	T1-t2	IDI9013	PNFA-2010-3
 72	2	0	f	T4-t3	PIID4	PNFI-2012
 67	6	0	f	T4-t3	PIPT4	PNFI-2012
 190	6	0	f	T1-t2	PRO570119	PNFA-2010-2
-186	4	0	f	T1-t2	IDI9013	PNFA-2010-2
+186	3	0	f	T1-t2	IDI9013	PNFA-2010-2
 165	4	0	f	T1-t2	OF6012	PNFA-2010-2
 179	4	0	f	T1-t2	PTE3011	PNFA-2010-2
 182	4	0	f	T1-t3	CON12014	PNFA-2010-2
-166	3	0	f	T1-t3	DFC6012	PNFA-2010-2
+166	4	0	f	T1-t3	DFC6012	PNFA-2010-2
 173	2	0	f	T1-t3	DAR9013	PNFA-2010-2
 177	3	0	f	T1-t3	FSC18016	PNFA-2010-2
 191	6	0	f	T1-t3	PRO570119	PNFA-2010-2
-187	4	0	f	T1-t3	IDI9013	PNFA-2010-2
+187	3	0	f	T1-t3	IDI9013	PNFA-2010-2
 171	4	0	f	T1-t3	OF6012	PNFA-2010-2
 188	2	0	f	T1-t3	TPM6012	PNFA-2010-2
 213	4	0	f	T2-t1	ADC6022	PNFA-2010-2
 193	4	0	f	T2-t1	CON12024	PNFA-2010-2
-205	4	0	f	T2-t1	CGA9023	PNFA-2010-2
+407	4	0	f	T1-t2	OF6012	PNFA-2010-3
+408	4	0	f	T1-t2	PTE3011	PNFA-2010-3
+409	4	0	f	T1-t3	CON12014	PNFA-2010-3
+410	4	0	f	T1-t3	DFC6012	PNFA-2010-3
+411	2	0	f	T1-t3	DAR9013	PNFA-2010-3
+412	3	0	f	T1-t3	FSC18016	PNFA-2010-3
+413	6	0	f	T1-t3	PRO570119	PNFA-2010-3
+414	3	0	f	T1-t3	IDI9013	PNFA-2010-3
+415	4	0	f	T1-t3	OF6012	PNFA-2010-3
+416	4	0	f	T1-t3	TPM6012	PNFA-2010-3
+417	4	0	f	T2-t1	CON12024	PNFA-2010-3
+418	4	0	f	T2-t1	CGA9023	PNFA-2010-3
+419	3	0	f	T2-t1	FSC18026	PNFA-2010-3
+420	4	0	f	T2-t1	MLO0602	PNFA-2010-3
+421	6	0	f	T2-t1	PRO57019	PNFA-2010-3
+422	3	0	f	T2-t1	THAT9023	PNFA-2010-3
+401	4	0	f	T1-t2	CON12014	PNFA-2010-3
+402	2	0	f	T1-t2	DAR9013	PNFA-2010-3
+403	3	0	f	T1-t2	FSC18016	PNFA-2010-3
+404	4	0	f	T1-t2	FA12014	PNFA-2010-3
+423	2	2	t	T2-t1	PTI6022	PNFA-2010-3
+477	4	0	f	T2-t2	ADC6022	PNFA-2010-3
+424	4	0	f	T2-t2	CON12024	PNFA-2010-3
+425	4	0	f	T2-t2	ELEC29023	PNFA-2010-3
+426	3	0	f	T2-t2	FSC18026	PNFA-2010-3
+428	6	0	f	T2-t2	PRO57019	PNFA-2010-3
+429	3	0	f	T2-t2	THAT9023	PNFA-2010-3
+478	4	0	f	T2-t3	ADC6022	PNFA-2010-3
+430	3	0	f	T2-t3	PCG3011	PNFA-2010-3
+431	4	0	f	T2-t3	CON12024	PNFA-2010-3
+432	3	0	f	T2-t3	PDF3012	PNFA-2010-3
+433	4	0	f	T2-t3	ELEC29023	PNFA-2010-3
+434	3	0	f	T2-t3	FSC18026	PNFA-2010-3
+436	4	0	f	T2-t3	SHA9023	PNFA-2010-3
+437	6	0	f	T2-t3	PRO57019	PNFA-2010-3
+438	4	0	f	T3-t1	AEF9032	PNFA-2010-3
+439	4	0	f	T3-t1	TDR3031	PNFA-2010-3
+440	3	0	f	T3-t1	FSC18036	PNFA-2010-3
+441	4	0	f	T3-t1	IDI9033	PNFA-2010-3
+442	4	0	f	T3-t1	PPL6032	PNFA-2010-3
+443	6	0	f	T3-t1	PRO570319	PNFA-2010-3
+444	4	0	f	T3-t1	PRE9033	PNFA-2010-3
+479	4	0	f	T3-t2	ADP9033	PNFA-2010-3
+445	4	0	f	T3-t2	ADM6032	PNFA-2010-3
+446	2	0	f	T3-t2	DAR9033	PNFA-2010-3
+447	3	0	f	T3-t2	FSC18036	PNFA-2010-3
+448	4	0	f	T3-t2	IDI9033	PNFA-2010-3
+449	4	0	f	T3-t2	PPL6032	PNFA-2010-3
+450	6	0	f	T3-t2	PRO570319	PNFA-2010-3
+451	4	0	f	T3-t2	PRE9033	PNFA-2010-3
+480	4	0	f	T3-t3	ADP9033	PNFA-2010-3
+452	4	0	f	T3-t3	ADM6032	PNFA-2010-3
+453	2	0	f	T3-t3	DAR9033	PNFA-2010-3
+454	3	0	f	T3-t3	FSC18036	PNFA-2010-3
+455	6	0	f	T3-t3	PRO570319	PNFA-2010-3
+456	2	2	t	T3-t3	TIC6032	PNFA-2010-3
+457	4	0	f	T4-t1	ADF6042	PNFA-2010-3
+458	6	0	f	T4-t1	PRO570419	PNFA-2010-3
+459	4	0	f	T4-t1	AFPS6033	PNFA-2010-3
+460	3	0	f	T4-t1	FSC18046	PNFA-2010-3
+461	4	0	f	T4-t1	FEP9043	PNFA-2010-3
+462	2	2	t	T4-t1	PP13041	PNFA-2010-3
+463	4	0	f	T4-t2	ADF6042	PNFA-2010-3
+464	4	0	f	T4-t2	PCG6042	PNFA-2010-3
+465	6	0	f	T4-t2	PRO570419	PNFA-2010-3
+466	4	0	f	T4-t2	AFPS6033	PNFA-2010-3
+467	4	0	f	T4-t2	ELEC49043	PNFA-2010-3
+468	3	0	f	T4-t2	FSC18046	PNFA-2010-3
+469	4	0	f	T4-t2	FEP9043	PNFA-2010-3
+470	4	0	f	T4-t2	SHDD9043	PNFA-2010-3
+471	4	0	f	T4-t3	APAA3041	PNFA-2010-3
+472	6	0	f	T4-t3	PRO570419	PNFA-2010-3
+473	4	0	f	T4-t3	ELEC49043	PNFA-2010-3
+474	3	0	f	T4-t3	FSC18046	PNFA-2010-3
+475	4	0	f	T4-t3	SHDD9043	PNFA-2010-3
+476	4	0	f	T4-t3	SIF6042	PNFA-2010-3
 \.
 
 
@@ -3084,7 +4168,7 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 -- Name: ucMalla_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"ucMalla_id_seq"', 297, true);
+SELECT pg_catalog.setval('"ucMalla_id_seq"', 480, true);
 
 
 --
@@ -3092,7 +4176,7 @@ SELECT pg_catalog.setval('"ucMalla_id_seq"', 297, true);
 --
 
 COPY usuario (cedula, contrasena, frase, ingreso, nivel) FROM stdin;
-12345678	81dc9bdb52d04dc20036dbd8313ed055	81dc9bdb52d04dc20036dbd8313ed055	2015-10-20	1
+12345678	81dc9bdb52d04dc20036dbd8313ed055	81dc9bdb52d04dc20036dbd8313ed055	2015-10-27	1
 \.
 
 
