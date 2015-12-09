@@ -237,47 +237,56 @@ alter table seccion add foreign key("idMECS") references "mallaECS"(id) on updat
 alter table seccion add foreign key("idPeriodo") references periodo("ID") on update cascade on delete restrict;
 
 
+/*_______________________________________________________________________________*/
+/*                                     HORARIOS*/
+/*-------------------------------------------------------------------------------*/
 
---	Horarios:
-
-CREATE TABLE edificio (
+CREATE TABLE building (
     id serial primary key,
-    edificio character varying,
-    id_sede int not null
+    name text,
+    headquarters int not null
+);
+--
+-- Name: horario_prueba; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE schedule (
+    id serial primary key,
+    status text,
+    rows text,
+    columns text
 );
 
+--
+-- Name: classroom_type; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
 
+CREATE TABLE classroom_type (
+    id serial primary key,
+    name text
+);
 --
 -- Name: salones; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE salones (
-    id integer NOT NULL,
-    salon character varying,
+    id serial primary key,
+    salon text,
     cod_edi int not null,
-    tipo text
+    tipo int
 );
 
-
---
--- Name: salones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE salones_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+ALTER TABLE ONLY building ADD CONSTRAINT headquarters_foreing_key FOREIGN KEY (headquarters) REFERENCES sede(id)ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE ONLY salones ADD CONSTRAINT building_foreing_key FOREIGN KEY (cod_edi) REFERENCES building(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE ONLY salones ADD CONSTRAINT classroom_type_foreing_key FOREIGN KEY (tipo) REFERENCES classroom_type(id) ON UPDATE CASCADE ON DELETE RESTRICT;
 
 
---
--- Name: salones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE salones_id_seq OWNED BY salones.id;
 
 
+
+
+
+/*
 --
 -- Name: horario; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
@@ -316,22 +325,6 @@ CREATE SEQUENCE salones_edificio_id_seq
 
 ALTER SEQUENCE salones_edificio_id_seq OWNED BY salones.cod_edi;
 
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY salones ALTER COLUMN id SET DEFAULT nextval('salones_id_seq'::regclass);
-
-
---
--- Name: salones_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY salones
-    ADD CONSTRAINT salones_pkey PRIMARY KEY (id);
-
-
 --
 -- Name: id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
@@ -353,55 +346,4 @@ ALTER TABLE ONLY horario
 
 ALTER TABLE ONLY salones
     ADD CONSTRAINT salones_edificio_id_fkey FOREIGN KEY (cod_edi) REFERENCES edificio(id);
-
-
-
-
-/*_______________________________________________________________________________*/
-/*                                     HORARIOS*/
-/*-------------------------------------------------------------------------------*/
---
--- Name: classroom_type_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE classroom_type_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE classroom_type_id_seq OWNER TO postgres;
-
---
--- Name: classroom_type; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE classroom_type (
-    id integer DEFAULT nextval('classroom_type_id_seq'::regclass) NOT NULL,
-    name character varying(20)
-);
-
-
-ALTER TABLE classroom_type OWNER TO postgres;
-
-
-
---
--- Name: horario_prueba; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE horario_prueba (
-    id integer NOT NULL,
-    status character varying,
-    fila integer,
-    columna integer
-);
-
-
-ALTER TABLE horario_prueba OWNER TO postgres;
-
---
--- Name: malla; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
+*/
