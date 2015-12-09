@@ -353,3 +353,55 @@ ALTER TABLE ONLY horario
 
 ALTER TABLE ONLY salones
     ADD CONSTRAINT salones_edificio_id_fkey FOREIGN KEY (cod_edi) REFERENCES edificio(id);
+
+
+
+
+/*_______________________________________________________________________________*/
+/*                                     HORARIOS*/
+/*-------------------------------------------------------------------------------*/
+--
+-- Name: classroom_type_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE classroom_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE classroom_type_id_seq OWNER TO postgres;
+
+--
+-- Name: classroom_type; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE classroom_type (
+    id integer DEFAULT nextval('classroom_type_id_seq'::regclass) NOT NULL,
+    name character varying(20)
+);
+
+
+ALTER TABLE classroom_type OWNER TO postgres;
+
+
+
+--
+-- Name: horario_prueba; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE horario_prueba (
+    id integer NOT NULL,
+    status character varying,
+    fila integer,
+    columna integer
+);
+
+
+ALTER TABLE horario_prueba OWNER TO postgres;
+
+--
+-- Name: malla; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
