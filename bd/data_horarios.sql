@@ -1,8 +1,6 @@
 --
 -- Data for Name: edificio; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-
-
 INSERT INTO building VALUES (1, 'A', 1);
 INSERT INTO building VALUES (2, 'B', 1);
 INSERT INTO building VALUES (3, 'C', 1);
@@ -14,188 +12,301 @@ INSERT INTO building VALUES (8, 'C', 3);
 INSERT INTO building VALUES (9, 'D', 3);
 INSERT INTO building VALUES (10, 'E', 3);
 
+SELECT setval('"building_id_seq"', 10, true);
+
 
 --
--- Name: edificio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: classroom_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-
-SELECT pg_catalog.setval('edificio_id_seq', 2, true);
-
---
--- Data for Name: classroom_type; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
 INSERT INTO classroom_type VALUES (1, 'Aula');
 INSERT INTO classroom_type VALUES (2, 'Laboratorio');
 INSERT INTO classroom_type VALUES (3, 'Hospital');
 
+SELECT setval('"classroom_type_id_seq"', 3, true);
+
+
+
 --
 -- Data for Name: salones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
+INSERT INTO classrooms VALUES (1, '1', 2, '1');
+INSERT INTO classrooms VALUES (2, '2', 2, '1');
+INSERT INTO classrooms VALUES (3, '3', 2, '1');
 
-INSERT INTO salones VALUES (4, '1', 2, '1');
-INSERT INTO salones VALUES (5, '2', 2, '1');
-INSERT INTO salones VALUES (6, '3', 2, '1');
+SELECT setval('"classrooms_id_seq"', 3, true);
 
-
---
--- Name: salones_edificio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('salones_edificio_id_seq', 1, false);
-
-
---
--- Name: salones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('salones_id_seq', 6, true);
-
-
---
--- PostgreSQL database dump complete
---
 
 --
 -- Data for Name: schedule; Type: TABLE DATA; Schema: public; Owner: postgres
 --
+INSERT INTO schedule VALUES (1, '1', 1 ,1, 1);
+INSERT INTO schedule VALUES (2, '2', 1 ,1, 2);
+INSERT INTO schedule VALUES (3, '3', 1 ,1, 3);
+INSERT INTO schedule VALUES (4, '4', 1 ,1, 4);
+INSERT INTO schedule VALUES (5, '5', 1 ,1, 5);
+INSERT INTO schedule VALUES (6, '6', 1 ,1, 6);
+INSERT INTO schedule VALUES (7, '7', 1 ,1, 7);
+INSERT INTO schedule VALUES (8, '8', 1 ,2, 1);
+INSERT INTO schedule VALUES (9, '9', 1 ,2, 2);
+INSERT INTO schedule VALUES (10, '10', 1 ,2, 3);
+INSERT INTO schedule VALUES (11, '11', 1 ,2, 4);
+INSERT INTO schedule VALUES (12, '12', 1 ,2, 5);
+INSERT INTO schedule VALUES (13, '13', 1 ,2, 6);
+INSERT INTO schedule VALUES (14, '14', 1 ,2, 7);
+INSERT INTO schedule VALUES (15, '15', 1 ,3, 1);
+INSERT INTO schedule VALUES (16, '16', 1 ,3, 2);
+INSERT INTO schedule VALUES (17, '17', 1 ,3, 3);
+INSERT INTO schedule VALUES (18, '18', 1 ,3, 4);
+INSERT INTO schedule VALUES (19, '19', 1 ,3, 5);
+INSERT INTO schedule VALUES (20, '20', 1 ,3, 6);
+INSERT INTO schedule VALUES (21, '21', 1 ,3, 7);
+INSERT INTO schedule VALUES (22, '22', 1 ,4, 1);
+INSERT INTO schedule VALUES (23, '23', 1 ,4, 2);
+INSERT INTO schedule VALUES (24, '24', 1 ,4, 3);
+INSERT INTO schedule VALUES (25, '25', 1 ,4, 4);
+INSERT INTO schedule VALUES (26, '26', 1 ,4, 5);
+INSERT INTO schedule VALUES (27, '27', 1 ,4, 6);
+INSERT INTO schedule VALUES (28, '28', 1 ,4, 7);
+INSERT INTO schedule VALUES (29, '29', 1 ,5, 1);
+INSERT INTO schedule VALUES (30, '30', 1 ,5, 2);
+INSERT INTO schedule VALUES (31, '31', 1 ,5, 3);
+INSERT INTO schedule VALUES (32, '32', 1 ,5, 4);
+INSERT INTO schedule VALUES (33, '33', 1 ,5, 5);
+INSERT INTO schedule VALUES (34, '34', 1 ,5, 6);
+INSERT INTO schedule VALUES (35, '35', 1 ,5, 7);
+INSERT INTO schedule VALUES (36, '36', 1 ,6, 1);
+INSERT INTO schedule VALUES (37, '37', 1 ,6, 2);
+INSERT INTO schedule VALUES (38, '38', 1 ,6, 3);
+INSERT INTO schedule VALUES (39, '39', 1 ,6, 4);
+INSERT INTO schedule VALUES (40, '40', 1 ,6, 5);
+INSERT INTO schedule VALUES (41, '41', 1 ,6, 6);
+INSERT INTO schedule VALUES (42, '42', 1 ,6, 7);
+INSERT INTO schedule VALUES (43, '43', 1 ,7, 1);
+INSERT INTO schedule VALUES (44, '44', 1 ,7, 2);
+INSERT INTO schedule VALUES (45, '45', 1 ,7, 3);
+INSERT INTO schedule VALUES (46, '46', 1 ,7, 4);
+INSERT INTO schedule VALUES (47, '47', 1 ,7, 5);
+INSERT INTO schedule VALUES (48, '48', 1 ,7, 6);
+INSERT INTO schedule VALUES (49, '49', 1 ,7, 7);
+INSERT INTO schedule VALUES (50, '50', 1 ,8, 1);
+INSERT INTO schedule VALUES (51, '51', 1 ,8, 2);
+INSERT INTO schedule VALUES (52, '52', 1 ,8, 3);
+INSERT INTO schedule VALUES (53, '53', 1 ,8, 4);
+INSERT INTO schedule VALUES (54, '54', 1 ,8, 5);
+INSERT INTO schedule VALUES (55, '55', 1 ,8, 6);
+INSERT INTO schedule VALUES (56, '56', 1 ,8, 7);
+INSERT INTO schedule VALUES (57, '57', 1 ,9, 1);
+INSERT INTO schedule VALUES (58, '58', 1 ,9, 2);
+INSERT INTO schedule VALUES (59, '59', 1 ,9, 3);
+INSERT INTO schedule VALUES (60, '60', 1 ,9, 4);
+INSERT INTO schedule VALUES (61, '61', 1 ,9, 5);
+INSERT INTO schedule VALUES (62, '62', 1 ,9, 6);
+INSERT INTO schedule VALUES (63, '63', 1 ,9, 7);
+INSERT INTO schedule VALUES (64, '64', 1 ,10, 1);
+INSERT INTO schedule VALUES (65, '65', 1 ,10, 2);
+INSERT INTO schedule VALUES (66, '66', 1 ,10, 3);
+INSERT INTO schedule VALUES (67, '67', 1 ,10, 4);
+INSERT INTO schedule VALUES (68, '68', 1 ,10, 5);
+INSERT INTO schedule VALUES (69, '69', 1 ,10, 6);
+INSERT INTO schedule VALUES (70, '70', 1 ,10, 7);
+INSERT INTO schedule VALUES (71, '71', 1 ,11, 1);
+INSERT INTO schedule VALUES (72, '72', 1 ,11, 2);
+INSERT INTO schedule VALUES (73, '73', 1 ,11, 3);
+INSERT INTO schedule VALUES (74, '74', 1 ,11, 4);
+INSERT INTO schedule VALUES (75, '75', 1 ,11, 5);
+INSERT INTO schedule VALUES (76, '76', 1 ,11, 6);
+INSERT INTO schedule VALUES (77, '77', 1 ,11, 7);
+INSERT INTO schedule VALUES (78, '78', 1 ,12, 1);
+INSERT INTO schedule VALUES (79, '79', 1 ,12, 2);
+INSERT INTO schedule VALUES (80, '80', 1 ,12, 3);
+INSERT INTO schedule VALUES (81, '81', 1 ,12, 4);
+INSERT INTO schedule VALUES (82, '82', 1 ,12, 5);
+INSERT INTO schedule VALUES (83, '83', 1 ,12, 6);
+INSERT INTO schedule VALUES (84, '84', 1 ,12, 7);
+INSERT INTO schedule VALUES (85, '85', 1 ,13, 1);
+INSERT INTO schedule VALUES (86, '86', 1 ,13, 2);
+INSERT INTO schedule VALUES (87, '87', 1 ,13, 3);
+INSERT INTO schedule VALUES (88, '88', 1 ,13, 4);
+INSERT INTO schedule VALUES (89, '89', 1 ,13, 5);
+INSERT INTO schedule VALUES (90, '90', 1 ,13, 6);
+INSERT INTO schedule VALUES (91, '91', 1 ,13, 7);
+INSERT INTO schedule VALUES (92, '92', 1 ,14, 1);
+INSERT INTO schedule VALUES (93, '93', 1 ,14, 2);
+INSERT INTO schedule VALUES (94, '94', 1 ,14, 3);
+INSERT INTO schedule VALUES (95, '95', 1 ,14, 4);
+INSERT INTO schedule VALUES (96, '96', 1 ,14, 5);
+INSERT INTO schedule VALUES (97, '97', 1 ,14, 6);
+INSERT INTO schedule VALUES (98, '98', 1 ,14, 7);
+INSERT INTO schedule VALUES (99, '99', 1 ,15, 1);
+INSERT INTO schedule VALUES (100, '100', 1 ,15, 2);
+INSERT INTO schedule VALUES (101, '101', 1 ,15, 3);
+INSERT INTO schedule VALUES (102, '102', 1 ,15, 4);
+INSERT INTO schedule VALUES (103, '103', 1 ,15, 5);
+INSERT INTO schedule VALUES (104, '104', 1 ,15, 6);
+INSERT INTO schedule VALUES (105, '105', 1 ,15, 7);
+INSERT INTO schedule VALUES (106, '106', 1 ,16, 1);
+INSERT INTO schedule VALUES (107, '107', 1 ,16, 2);
+INSERT INTO schedule VALUES (108, '108', 1 ,16, 3);
+INSERT INTO schedule VALUES (109, '109', 1 ,16, 4);
+INSERT INTO schedule VALUES (110, '110', 1 ,16, 5);
+INSERT INTO schedule VALUES (111, '111', 1 ,16, 6);
+INSERT INTO schedule VALUES (112, '112', 1 ,16, 7);
+INSERT INTO schedule VALUES (113, '113', 1 ,17, 1);
+INSERT INTO schedule VALUES (114, '114', 1 ,17, 2);
+INSERT INTO schedule VALUES (115, '115', 1 ,17, 3);
+INSERT INTO schedule VALUES (116, '116', 1 ,17, 4);
+INSERT INTO schedule VALUES (117, '117', 1 ,17, 5);
+INSERT INTO schedule VALUES (118, '118', 1 ,17, 6);
+INSERT INTO schedule VALUES (119, '119', 1 ,17, 7);
+INSERT INTO schedule VALUES (120, '120', 1 ,18, 1);
+INSERT INTO schedule VALUES (121, '121', 1 ,18, 2);
+INSERT INTO schedule VALUES (122, '122', 1 ,18, 3);
+INSERT INTO schedule VALUES (123, '123', 1 ,18, 4);
+INSERT INTO schedule VALUES (124, '124', 1 ,18, 5);
+INSERT INTO schedule VALUES (125, '125', 1 ,18, 6);
+INSERT INTO schedule VALUES (126, '126', 1 ,18, 7);
+INSERT INTO schedule VALUES (127, '127', 1 ,19, 1);
+INSERT INTO schedule VALUES (128, '128', 1 ,19, 2);
+INSERT INTO schedule VALUES (129, '129', 1 ,19, 3);
+INSERT INTO schedule VALUES (130, '130', 1 ,19, 4);
+INSERT INTO schedule VALUES (131, '131', 1 ,19, 5);
+INSERT INTO schedule VALUES (132, '132', 1 ,19, 6);
+INSERT INTO schedule VALUES (133, '133', 1 ,19, 7);
 
-INSERT INTO schedule VALUES (1, '1', 1, 1);
-INSERT INTO schedule VALUES (2, '2', 1, 2);
-INSERT INTO schedule VALUES (3, '3', 1, 3);
-INSERT INTO schedule VALUES (4, '4', 1, 4);
-INSERT INTO schedule VALUES (5, '5', 1, 5);
-INSERT INTO schedule VALUES (6, '6', 1, 6);
-INSERT INTO schedule VALUES (7, '7', 1, 7);
-INSERT INTO schedule VALUES (8, '8', 2, 1);
-INSERT INTO schedule VALUES (9, '9', 2, 2);
-INSERT INTO schedule VALUES (10, '10', 2, 3);
-INSERT INTO schedule VALUES (11, '11', 2, 4);
-INSERT INTO schedule VALUES (12, '12', 2, 5);
-INSERT INTO schedule VALUES (13, '13', 2, 6);
-INSERT INTO schedule VALUES (14, '14', 2, 7);
-INSERT INTO schedule VALUES (15, '15', 3, 1);
-INSERT INTO schedule VALUES (16, '16', 3, 2);
-INSERT INTO schedule VALUES (17, '17', 3, 3);
-INSERT INTO schedule VALUES (18, '18', 3, 4);
-INSERT INTO schedule VALUES (19, '19', 3, 5);
-INSERT INTO schedule VALUES (20, '20', 3, 6);
-INSERT INTO schedule VALUES (21, '21', 3, 7);
-INSERT INTO schedule VALUES (22, '22', 4, 1);
-INSERT INTO schedule VALUES (23, '23', 4, 2);
-INSERT INTO schedule VALUES (24, '24', 4, 3);
-INSERT INTO schedule VALUES (25, '25', 4, 4);
-INSERT INTO schedule VALUES (26, '26', 4, 5);
-INSERT INTO schedule VALUES (27, '27', 4, 6);
-INSERT INTO schedule VALUES (28, '28', 4, 7);
-INSERT INTO schedule VALUES (29, '29', 5, 1);
-INSERT INTO schedule VALUES (30, '30', 5, 2);
-INSERT INTO schedule VALUES (31, '31', 5, 3);
-INSERT INTO schedule VALUES (32, '32', 5, 4);
-INSERT INTO schedule VALUES (33, '33', 5, 5);
-INSERT INTO schedule VALUES (34, '34', 5, 6);
-INSERT INTO schedule VALUES (35, '35', 5, 7);
-INSERT INTO schedule VALUES (36, '36', 6, 1);
-INSERT INTO schedule VALUES (37, '37', 6, 2);
-INSERT INTO schedule VALUES (38, '38', 6, 3);
-INSERT INTO schedule VALUES (39, '39', 6, 4);
-INSERT INTO schedule VALUES (40, '40', 6, 5);
-INSERT INTO schedule VALUES (41, '41', 6, 6);
-INSERT INTO schedule VALUES (42, '42', 6, 7);
-INSERT INTO schedule VALUES (43, '43', 7, 1);
-INSERT INTO schedule VALUES (44, '44', 7, 2);
-INSERT INTO schedule VALUES (45, '45', 7, 3);
-INSERT INTO schedule VALUES (46, '46', 7, 4);
-INSERT INTO schedule VALUES (47, '47', 7, 5);
-INSERT INTO schedule VALUES (48, '48', 7, 6);
-INSERT INTO schedule VALUES (49, '49', 7, 7);
-INSERT INTO schedule VALUES (50, '50', 8, 1);
-INSERT INTO schedule VALUES (51, '51', 8, 2);
-INSERT INTO schedule VALUES (52, '52', 8, 3);
-INSERT INTO schedule VALUES (53, '53', 8, 4);
-INSERT INTO schedule VALUES (54, '54', 8, 5);
-INSERT INTO schedule VALUES (55, '55', 8, 6);
-INSERT INTO schedule VALUES (56, '56', 8, 7);
-INSERT INTO schedule VALUES (57, '57', 9, 1);
-INSERT INTO schedule VALUES (58, '58', 9, 2);
-INSERT INTO schedule VALUES (59, '59', 9, 3);
-INSERT INTO schedule VALUES (60, '60', 9, 4);
-INSERT INTO schedule VALUES (61, '61', 9, 5);
-INSERT INTO schedule VALUES (62, '62', 9, 6);
-INSERT INTO schedule VALUES (63, '63', 9, 7);
-INSERT INTO schedule VALUES (64, '64', 10, 1);
-INSERT INTO schedule VALUES (65, '65', 10, 2);
-INSERT INTO schedule VALUES (66, '66', 10, 3);
-INSERT INTO schedule VALUES (67, '67', 10, 4);
-INSERT INTO schedule VALUES (68, '68', 10, 5);
-INSERT INTO schedule VALUES (69, '69', 10, 6);
-INSERT INTO schedule VALUES (70, '70', 10, 7);
-INSERT INTO schedule VALUES (71, '71', 11, 1);
-INSERT INTO schedule VALUES (72, '72', 11, 2);
-INSERT INTO schedule VALUES (73, '73', 11, 3);
-INSERT INTO schedule VALUES (74, '74', 11, 4);
-INSERT INTO schedule VALUES (75, '75', 11, 5);
-INSERT INTO schedule VALUES (76, '76', 11, 6);
-INSERT INTO schedule VALUES (77, '77', 11, 7);
-INSERT INTO schedule VALUES (78, '78', 12, 1);
-INSERT INTO schedule VALUES (79, '79', 12, 2);
-INSERT INTO schedule VALUES (80, '80', 12, 3);
-INSERT INTO schedule VALUES (81, '81', 12, 4);
-INSERT INTO schedule VALUES (82, '82', 12, 5);
-INSERT INTO schedule VALUES (83, '83', 12, 6);
-INSERT INTO schedule VALUES (84, '84', 12, 7);
-INSERT INTO schedule VALUES (85, '85', 13, 1);
-INSERT INTO schedule VALUES (86, '86', 13, 2);
-INSERT INTO schedule VALUES (87, '87', 13, 3);
-INSERT INTO schedule VALUES (88, '88', 13, 4);
-INSERT INTO schedule VALUES (89, '89', 13, 5);
-INSERT INTO schedule VALUES (90, '90', 13, 6);
-INSERT INTO schedule VALUES (91, '91', 13, 7);
-INSERT INTO schedule VALUES (92, '92', 14, 1);
-INSERT INTO schedule VALUES (93, '93', 14, 2);
-INSERT INTO schedule VALUES (94, '94', 14, 3);
-INSERT INTO schedule VALUES (95, '95', 14, 4);
-INSERT INTO schedule VALUES (96, '96', 14, 5);
-INSERT INTO schedule VALUES (97, '97', 14, 6);
-INSERT INTO schedule VALUES (98, '98', 14, 7);
-INSERT INTO schedule VALUES (99, '99', 15, 1);
-INSERT INTO schedule VALUES (100, '100', 15, 2);
-INSERT INTO schedule VALUES (101, '101', 15, 3);
-INSERT INTO schedule VALUES (102, '102', 15, 4);
-INSERT INTO schedule VALUES (103, '103', 15, 5);
-INSERT INTO schedule VALUES (104, '104', 15, 6);
-INSERT INTO schedule VALUES (105, '105', 15, 7);
-INSERT INTO schedule VALUES (106, '106', 16, 1);
-INSERT INTO schedule VALUES (107, '107', 16, 2);
-INSERT INTO schedule VALUES (108, '108', 16, 3);
-INSERT INTO schedule VALUES (109, '109', 16, 4);
-INSERT INTO schedule VALUES (110, '110', 16, 5);
-INSERT INTO schedule VALUES (111, '111', 16, 6);
-INSERT INTO schedule VALUES (112, '112', 16, 7);
-INSERT INTO schedule VALUES (113, '113', 17, 1);
-INSERT INTO schedule VALUES (114, '114', 17, 2);
-INSERT INTO schedule VALUES (115, '115', 17, 3);
-INSERT INTO schedule VALUES (116, '116', 17, 4);
-INSERT INTO schedule VALUES (117, '117', 17, 5);
-INSERT INTO schedule VALUES (118, '118', 17, 6);
-INSERT INTO schedule VALUES (119, '119', 17, 7);
-INSERT INTO schedule VALUES (120, '120', 18, 1);
-INSERT INTO schedule VALUES (121, '121', 18, 2);
-INSERT INTO schedule VALUES (122, '122', 18, 3);
-INSERT INTO schedule VALUES (123, '123', 18, 4);
-INSERT INTO schedule VALUES (124, '124', 18, 5);
-INSERT INTO schedule VALUES (125, '125', 18, 6);
-INSERT INTO schedule VALUES (126, '126', 18, 7);
-INSERT INTO schedule VALUES (127, '127', 19, 1);
-INSERT INTO schedule VALUES (128, '128', 19, 2);
-INSERT INTO schedule VALUES (129, '129', 19, 3);
-INSERT INTO schedule VALUES (130, '130', 19, 4);
-INSERT INTO schedule VALUES (131, '131', 19, 5);
-INSERT INTO schedule VALUES (132, '132', 19, 6);
-INSERT INTO schedule VALUES (133, '133', 19, 7);
-INSERT INTO schedule VALUES (1, '1', 1, 1);
+INSERT INTO schedule VALUES ('134','134', 2 ,'1','1');
+INSERT INTO schedule VALUES ('135','135', 2 ,'1','2');
+INSERT INTO schedule VALUES ('136','136', 2 ,'1','3');
+INSERT INTO schedule VALUES ('137','137', 2 ,'1','4');
+INSERT INTO schedule VALUES ('138','138', 2 ,'1','5');
+INSERT INTO schedule VALUES ('139','139', 2 ,'1','6');
+INSERT INTO schedule VALUES ('140','140', 2 ,'1','7');
+INSERT INTO schedule VALUES ('141','141', 2 ,'2','1');
+INSERT INTO schedule VALUES ('142','142', 2 ,'2','2');
+INSERT INTO schedule VALUES ('143','143', 2 ,'2','3');
+INSERT INTO schedule VALUES ('144','144', 2 ,'2','4');
+INSERT INTO schedule VALUES ('145','145', 2 ,'2','5');
+INSERT INTO schedule VALUES ('146','146', 2 ,'2','6');
+INSERT INTO schedule VALUES ('147','147', 2 ,'2','7');
+INSERT INTO schedule VALUES ('148','148', 2 ,'3','1');
+INSERT INTO schedule VALUES ('149','149', 2 ,'3','2');
+INSERT INTO schedule VALUES ('150','150', 2 ,'3','3');
+INSERT INTO schedule VALUES ('151','151', 2 ,'3','4');
+INSERT INTO schedule VALUES ('152','152', 2 ,'3','5');
+INSERT INTO schedule VALUES ('153','153', 2 ,'3','6');
+INSERT INTO schedule VALUES ('154','154', 2 ,'3','7');
+INSERT INTO schedule VALUES ('155','155', 2 ,'4','1');
+INSERT INTO schedule VALUES ('156','156', 2 ,'4','2');
+INSERT INTO schedule VALUES ('157','157', 2 ,'4','3');
+INSERT INTO schedule VALUES ('158','158', 2 ,'4','4');
+INSERT INTO schedule VALUES ('159','159', 2 ,'4','5');
+INSERT INTO schedule VALUES ('160','160', 2 ,'4','6');
+INSERT INTO schedule VALUES ('161','161', 2 ,'4','7');
+INSERT INTO schedule VALUES ('162','162', 2 ,'5','1');
+INSERT INTO schedule VALUES ('163','163', 2 ,'5','2');
+INSERT INTO schedule VALUES ('164','164', 2 ,'5','3');
+INSERT INTO schedule VALUES ('165','165', 2 ,'5','4');
+INSERT INTO schedule VALUES ('166','166', 2 ,'5','5');
+INSERT INTO schedule VALUES ('167','167', 2 ,'5','6');
+INSERT INTO schedule VALUES ('168','168', 2 ,'5','7');
+INSERT INTO schedule VALUES ('169','169', 2 ,'6','1');
+INSERT INTO schedule VALUES ('170','170', 2 ,'6','2');
+INSERT INTO schedule VALUES ('171','171', 2 ,'6','3');
+INSERT INTO schedule VALUES ('172','172', 2 ,'6','4');
+INSERT INTO schedule VALUES ('173','173', 2 ,'6','5');
+INSERT INTO schedule VALUES ('174','174', 2 ,'6','6');
+INSERT INTO schedule VALUES ('175','175', 2 ,'6','7');
+INSERT INTO schedule VALUES ('176','176', 2 ,'7','1');
+INSERT INTO schedule VALUES ('177','177', 2 ,'7','2');
+INSERT INTO schedule VALUES ('178','178', 2 ,'7','3');
+INSERT INTO schedule VALUES ('179','179', 2 ,'7','4');
+INSERT INTO schedule VALUES ('180','180', 2 ,'7','5');
+INSERT INTO schedule VALUES ('181','181', 2 ,'7','6');
+INSERT INTO schedule VALUES ('182','182', 2 ,'7','7');
+INSERT INTO schedule VALUES ('183','183', 2 ,'8','1');
+INSERT INTO schedule VALUES ('184','184', 2 ,'8','2');
+INSERT INTO schedule VALUES ('185','185', 2 ,'8','3');
+INSERT INTO schedule VALUES ('186','186', 2 ,'8','4');
+INSERT INTO schedule VALUES ('187','187', 2 ,'8','5');
+INSERT INTO schedule VALUES ('188','188', 2 ,'8','6');
+INSERT INTO schedule VALUES ('189','189', 2 ,'8','7');
+INSERT INTO schedule VALUES ('190','190', 2 ,'9','1');
+INSERT INTO schedule VALUES ('191','191', 2 ,'9','2');
+INSERT INTO schedule VALUES ('192','192', 2 ,'9','3');
+INSERT INTO schedule VALUES ('193','193', 2 ,'9','4');
+INSERT INTO schedule VALUES ('194','194', 2 ,'9','5');
+INSERT INTO schedule VALUES ('195','195', 2 ,'9','6');
+INSERT INTO schedule VALUES ('196','196', 2 ,'9','7');
+INSERT INTO schedule VALUES ('197','197', 2 ,'10','1');
+INSERT INTO schedule VALUES ('198','198', 2 ,'10','2');
+INSERT INTO schedule VALUES ('199','199', 2 ,'10','3');
+INSERT INTO schedule VALUES ('200','200', 2 ,'10','4');
+INSERT INTO schedule VALUES ('201','201', 2 ,'10','5');
+INSERT INTO schedule VALUES ('202','202', 2 ,'10','6');
+INSERT INTO schedule VALUES ('203','203', 2 ,'10','7');
+INSERT INTO schedule VALUES ('204','204', 2 ,'11','1');
+INSERT INTO schedule VALUES ('205','205', 2 ,'11','2');
+INSERT INTO schedule VALUES ('206','206', 2 ,'11','3');
+INSERT INTO schedule VALUES ('207','207', 2 ,'11','4');
+INSERT INTO schedule VALUES ('208','208', 2 ,'11','5');
+INSERT INTO schedule VALUES ('209','209', 2 ,'11','6');
+INSERT INTO schedule VALUES ('210','210', 2 ,'11','7');
+INSERT INTO schedule VALUES ('211','211', 2 ,'12','1');
+INSERT INTO schedule VALUES ('212','212', 2 ,'12','2');
+INSERT INTO schedule VALUES ('213','213', 2 ,'12','3');
+INSERT INTO schedule VALUES ('214','214', 2 ,'12','4');
+INSERT INTO schedule VALUES ('215','215', 2 ,'12','5');
+INSERT INTO schedule VALUES ('216','216', 2 ,'12','6');
+INSERT INTO schedule VALUES ('217','217', 2 ,'12','7');
+INSERT INTO schedule VALUES ('218','218', 2 ,'13','1');
+INSERT INTO schedule VALUES ('219','219', 2 ,'13','2');
+INSERT INTO schedule VALUES ('220','220', 2 ,'13','3');
+INSERT INTO schedule VALUES ('221','221', 2 ,'13','4');
+INSERT INTO schedule VALUES ('222','222', 2 ,'13','5');
+INSERT INTO schedule VALUES ('223','223', 2 ,'13','6');
+INSERT INTO schedule VALUES ('224','224', 2 ,'13','7');
+INSERT INTO schedule VALUES ('225','225', 2 ,'14','1');
+INSERT INTO schedule VALUES ('226','226', 2 ,'14','2');
+INSERT INTO schedule VALUES ('227','227', 2 ,'14','3');
+INSERT INTO schedule VALUES ('228','228', 2 ,'14','4');
+INSERT INTO schedule VALUES ('229','229', 2 ,'14','5');
+INSERT INTO schedule VALUES ('230','230', 2 ,'14','6');
+INSERT INTO schedule VALUES ('231','231', 2 ,'14','7');
+INSERT INTO schedule VALUES ('232','232', 2 ,'15','1');
+INSERT INTO schedule VALUES ('233','233', 2 ,'15','2');
+INSERT INTO schedule VALUES ('234','234', 2 ,'15','3');
+INSERT INTO schedule VALUES ('235','235', 2 ,'15','4');
+INSERT INTO schedule VALUES ('236','236', 2 ,'15','5');
+INSERT INTO schedule VALUES ('237','237', 2 ,'15','6');
+INSERT INTO schedule VALUES ('238','238', 2 ,'15','7');
+INSERT INTO schedule VALUES ('239','239', 2 ,'16','1');
+INSERT INTO schedule VALUES ('240','240', 2 ,'16','2');
+INSERT INTO schedule VALUES ('241','241', 2 ,'16','3');
+INSERT INTO schedule VALUES ('242','242', 2 ,'16','4');
+INSERT INTO schedule VALUES ('243','243', 2 ,'16','5');
+INSERT INTO schedule VALUES ('244','244', 2 ,'16','6');
+INSERT INTO schedule VALUES ('245','245', 2 ,'16','7');
+INSERT INTO schedule VALUES ('246','246', 2 ,'17','1');
+INSERT INTO schedule VALUES ('247','247', 2 ,'17','2');
+INSERT INTO schedule VALUES ('248','248', 2 ,'17','3');
+INSERT INTO schedule VALUES ('249','249', 2 ,'17','4');
+INSERT INTO schedule VALUES ('250','250', 2 ,'17','5');
+INSERT INTO schedule VALUES ('251','251', 2 ,'17','6');
+INSERT INTO schedule VALUES ('252','252', 2 ,'17','7');
+INSERT INTO schedule VALUES ('253','253', 2 ,'18','1');
+INSERT INTO schedule VALUES ('254','254', 2 ,'18','2');
+INSERT INTO schedule VALUES ('255','255', 2 ,'18','3');
+INSERT INTO schedule VALUES ('256','256', 2 ,'18','4');
+INSERT INTO schedule VALUES ('257','257', 2 ,'18','5');
+INSERT INTO schedule VALUES ('258','258', 2 ,'18','6');
+INSERT INTO schedule VALUES ('259','259', 2 ,'18','7');
+INSERT INTO schedule VALUES ('260','260', 2 ,'19','1');
+INSERT INTO schedule VALUES ('261','261', 2 ,'19','2');
+INSERT INTO schedule VALUES ('262','262', 2 ,'19','3');
+INSERT INTO schedule VALUES ('263','263', 2 ,'19','4');
+INSERT INTO schedule VALUES ('264','264', 2 ,'19','5');
+INSERT INTO schedule VALUES ('265','265', 2 ,'19','6');
+INSERT INTO schedule VALUES ('266','266', 2 ,'19','7');
 
 
---
--- PostgreSQL database dump complete
---
+
+SELECT setval('"schedule_id_seq"', 266, true);

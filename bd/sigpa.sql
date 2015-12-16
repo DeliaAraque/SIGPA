@@ -240,110 +240,60 @@ alter table seccion add foreign key("idPeriodo") references periodo("ID") on upd
 /*_______________________________________________________________________________*/
 /*                                     HORARIOS*/
 /*-------------------------------------------------------------------------------*/
+--
+-- Name: building; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
 
 CREATE TABLE building (
     id serial primary key,
     name text,
     headquarters int not null
 );
---
--- Name: horario_prueba; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
 
-CREATE TABLE schedule (
-    id serial primary key,
-    status text,
-    rows text,
-    columns text
-);
 
 --
 -- Name: classroom_type; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
-
 CREATE TABLE classroom_type (
     id serial primary key,
     name text
 );
---
--- Name: salones; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
 
-CREATE TABLE salones (
+
+--
+-- Name: classrooms; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+CREATE TABLE classrooms (
     id serial primary key,
-    salon text,
-    cod_edi int not null,
-    tipo int
+    name text,
+    building int not null,
+    classroom_type int
 );
 
+
+--
+-- Name: coordinates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+CREATE TABLE coordinates(
+    id serial primary key,
+    rows text,
+    columns text
+);
+
+
+--
+-- Name: schedule; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+CREATE TABLE schedule (
+    id serial primary key,
+    status text,
+    classrooms int,
+    rows text,
+    columns text
+);
 ALTER TABLE ONLY building ADD CONSTRAINT headquarters_foreing_key FOREIGN KEY (headquarters) REFERENCES sede(id)ON UPDATE CASCADE ON DELETE RESTRICT;
-ALTER TABLE ONLY salones ADD CONSTRAINT building_foreing_key FOREIGN KEY (cod_edi) REFERENCES building(id) ON UPDATE CASCADE ON DELETE RESTRICT;
-ALTER TABLE ONLY salones ADD CONSTRAINT classroom_type_foreing_key FOREIGN KEY (tipo) REFERENCES classroom_type(id) ON UPDATE CASCADE ON DELETE RESTRICT;
 
+ALTER TABLE ONLY classrooms ADD CONSTRAINT building_foreing_key FOREIGN KEY (building) REFERENCES building(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE ONLY classrooms ADD CONSTRAINT classroom_type_foreing_key FOREIGN KEY (classroom_type) REFERENCES classroom_type(id) ON UPDATE CASCADE ON DELETE RESTRICT;
 
-
-
-
-
-
-/*
---
--- Name: horario; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE horario (
-    id_enlace character varying NOT NULL,
-    periodo int not null,
-    thora character varying,
-    chora character varying,
-    seccion int not null,
-    materia character varying,
-    profesor int not null,
-    carrera int not null,
-    salon integer,
-    hora integer,
-    id_bloque integer,
-    id integer DEFAULT nextval('salones_id_seq'::regclass)
-);
-
-
---
--- Name: salones_edificio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE salones_edificio_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: salones_edificio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE salones_edificio_id_seq OWNED BY salones.cod_edi;
-
---
--- Name: id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX id ON horario USING btree (id);
-
-
---
--- Name: horario_salon_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY horario
-    ADD CONSTRAINT horario_salon_id_fkey FOREIGN KEY (salon) REFERENCES salones(id);
-
-
---
--- Name: salones_edificio_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY salones
-    ADD CONSTRAINT salones_edificio_id_fkey FOREIGN KEY (cod_edi) REFERENCES edificio(id);
-*/
+ALTER TABLE ONLY schedule ADD CONSTRAINT classrooms_foreing_key FOREIGN KEY (classrooms) REFERENCES classrooms(id)ON UPDATE CASCADE ON DELETE RESTRICT;
