@@ -30,7 +30,7 @@
 
 	$cedula = $_POST["cedula"];
 
-	$sql = "select count($cedula) as n from usuario where cedula='$cedula'";
+	$sql = "select count(cedula) as n from usuario where cedula='$cedula'";
 	$exe = pg_query($sigpa, $sql);
 	$n = pg_fetch_object($exe);
 
