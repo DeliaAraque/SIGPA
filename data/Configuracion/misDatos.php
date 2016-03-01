@@ -114,8 +114,8 @@
 
 					<div class="form-group">
 						Correo:
-						<input type="text" name="correo" placeholder="Correo electŕonico" value="<?= $usuario->correo; ?>" class="form-control" pattern="^[a-z0-9\-_\.]+@[a-z0-9\-_\.]+\.[a-z0-9\-_\.]+$" required="required" title="Ingrese su correo electrónico" />
-						<p class="help-block">Ej: inicialnombreapellido@uptm.edu.ve</p>
+						<input type="text" name="correo" placeholder="Correo electŕonico" value="<?= $usuario->correo; ?>" class="form-control" pattern="^[a-z0-9\-_\.]+@[a-z0-9\-_\.]+\.[a-z0-9\-_\.]+(,[a-z0-9\-_\.]+@[a-z0-9\-_\.]+\.[a-z0-9\-_\.]+)*$" required="required" title="Ingrese su correo electrónico" />
+						<p class="help-block">Puede ingresar varios correos separados por comas. Ej: inicialnombreapellido@uptm.edu.ve,inicialnombreapellido@gmail.com</p>
 					</div>
 
 					<div class="form-group">

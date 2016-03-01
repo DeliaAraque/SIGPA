@@ -79,7 +79,7 @@
 
 	$sexo = $_POST["sexo"];
 
-	$re = "^[a-z0-9\-_\.]+@[a-z0-9\-_\.]+\.[a-z0-9\-_\.]+$";
+	$re = "^[a-z0-9\-_\.]+@[a-z0-9\-_\.]+\.[a-z0-9\-_\.]+(,[a-z0-9\-_\.]+@[a-z0-9\-_\.]+\.[a-z0-9\-_\.]+)*$";
 
 	if(! ereg("$re", $_POST["correo"])) {
 		echo "El correo electrónico indicado no cumple con el patrón necesario";
