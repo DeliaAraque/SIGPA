@@ -1,4 +1,8 @@
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<?php
+	require "conexion.php";
+?>
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
 	<!-- Menú superior -->
 
@@ -29,6 +33,10 @@
 
 			<!-- Registro de actividades -->
 
+<?php
+	if($_SESSION["nivel"] < 3) {
+?>
+
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Registro de actividades" onClick="this.querySelector('#notification').style.display='none'">
 				<i class="fa fa-th-list fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -42,8 +50,6 @@
 				<li><a class="text-center" href="javascript: embem('data/Registro/index.php', '#page-wrapper')"><strong>Ver el registro completo</strong></a></li>
 
 <?php
-	require "conexion.php";
-
 	$sql = "select * from historial order by id desc limit 5";
 	$exe = pg_query($sigpa, $sql);
 
@@ -78,9 +84,17 @@
 
 		</li>
 
+<?php
+	}
+?>
+
 			<!-- Fin registro de actividades -->
 
 			<!-- Periodos de planificación -->
+
+<?php
+	if($_SESSION["nivel"] < 4) {
+?>
 
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Periodos de planificación">
@@ -88,20 +102,34 @@
 			</a>
 
 			<ul class="dropdown-menu" style="width: 25em;">
+				
+
+<?php
+	if($_SESSION["nivel"] < 3) {
+?>
+
 				<li><a class="text-center" href="javascript: embem('moduloPlanificacion/Periodo/index.php', '#page-wrapper')"><strong>Ver periodos de planificación</strong></a></li>
+
+<?php
+	}
+?>
 
 				<!-- Periodos -->
 
 <?php
 	$sql = "
-		select p.id as id, p.\"fechaInicio\" as \"fechaInicio\", p.\"fechaFin\" as \"fechaFin\", c.nombre as carrera, s.nombre as sede, e.nombre as estructura, p.\"fechaFin\"-p.\"fechaInicio\"+1 as \"diasTotal\", p.\"fechaFin\"-current_date+1 as \"diasRestantes\" 
+		select p.id as id, p.\"fechaInicio\" as \"fechaInicio\", p.\"fechaFin\" as \"fechaFin\", c.id as \"idCarrera\", c.nombre as carrera, s.id as \"idSede\", s.nombre as sede, e.nombre as estructura, p.\"fechaFin\"-p.\"fechaInicio\"+1 as \"diasTotal\", p.\"fechaFin\"-current_date+1 as \"diasRestantes\" 
 		from periodo as p 
 			join \"estructuraCS\" as ecs on ecs.id=p.\"idECS\" 
 			join estructura as e on e.id=ecs.\"idEstructura\" 
 			join \"carreraSede\" as cs on cs.id=ecs.\"idCS\" 
 			join carrera as c on c.id=cs.\"idCarrera\" 
 			join sede as s on s.id=cs.\"idSede\" 
-		where p.tipo='p' and p.\"fechaInicio\"<=current_date and p.\"fechaFin\">=current_date 
+		where p.tipo='p' and p.\"fechaInicio\"<=current_date and p.\"fechaFin\">=current_date
+	"
+	. (($_SESSION["nivel"] == 3) ? " and c.id ='$_SESSION[carreraCoord]' and s.id ='$_SESSION[sedeCoord]' " : "") .
+
+	"
 		order by p.\"fechaInicio\" desc, p.\"fechaFin\" desc, p.id, c.nombre, s.nombre, e.nombre
 	";
 	$exe = pg_query($sigpa, $sql);
@@ -138,6 +166,10 @@
 			</ul>
 		</li>
 
+<?php
+	}
+?>
+
 			<!-- Fin periodos de planificación -->
 
 			<!-- Usuario -->
@@ -153,8 +185,23 @@
 					<span style="display: inline-block; margin-left: 0.3em;"><?= $_SESSION["cedula"]; ?><br><?= $_SESSION["nombre"]; ?><br/><?= $_SESSION["apellido"]; ?></span>
 				</a></li>
 
+<?php
+	if($_SESSION["nivel"] < 3) {
+?>
+
 				<li><a href="javascript: embem('data/Configuracion/index.html', '#page-wrapper')"><i class="fa fa-gear fa-fw"></i> Configuración</a></li>
 
+<?php
+	}
+
+	else if($_SESSION["nivel"] == 3) {
+?>
+
+				<li><a href="javascript: embem('data/Configuracion/misDatos.php', '#page-wrapper')"><i class="fa fa-gear fa-fw"></i> Mis datos</a></li>
+
+<?php
+	}
+?>
 				<li class="divider"></li>
 
 				<li><a href="script/cerrar.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar sesión</a></li>
@@ -177,7 +224,7 @@
 			<ul class="nav" id="side-menu">
 
 		<!-- Búsqueda -->
-
+		<!--
 				<li class="sidebar-search">
 					<form name="buscar" action="script/buscar.php" role="search">
 						<div class="input-group custom-search-form">
@@ -191,7 +238,7 @@
 						</div>
 					</form>
 				</li>
-
+		-->
 		<!-- Fin búsqueda -->
 
 		<!-- Elementos del menú -->
@@ -199,6 +246,7 @@
 <?php
 	switch($_SESSION["nivel"]) {
 		case "1":
+		case "2":
 ?>
 
 				<li><a href="javascript: embem('moduloPlanificacion/Sede/index.php', '#page-wrapper')"><i class="fa fa-map-marker fa-fw"></i> Sedes</a></li>
@@ -240,25 +288,35 @@
 					</ul>
 				</li>
 
-				<!--
+				<li><a href="javascript: embem('data/Usuario/index.php', '#page-wrapper')"><i class="fa fa-users fa-fw"></i> Usuarios</a></li>
+
+<?php
+		break;
+
+		case "3":
+?>
 
 				<li>
-					<a href="#"><i class="fa fa-check-square-o fa-fw"></i> Cargas Académicas<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-users fa-fw"></i> Profesores<span class="fa arrow"></span></a>
 
 					<ul class="nav nav-second-level">
-						<li>
-							<a href="javascript: embem('moduloCarga/Carga/registro_carga.html', '#page-wrapper')"><i class="fa fa-pencil-square-o fa-fw"></i> Registrar Cargas</a>
-						</li>
-						<li>
-							<a href="javascript: embem('moduloCarga/Carga/consulta_carga.php', '#page-wrapper')"><i class="fa fa-search fa-fw"></i> Consultar Cargas</a>
-						</li>
+						<li><a href="javascript: embem('moduloPlanificacion/Profesion/index.php', '#page-wrapper')"><i class="fa fa-graduation-cap fa-fw"></i> Profesiones</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Profesor/index.php', '#page-wrapper')"><i class="fa fa-users fa-fw"></i> Profesores</a></li>
 					</ul>
 				</li>
 
-				<li><a href="javascript: embem('moduloCarga/Actualizacion/index.php', '#page-wrapper')"><i class="fa fa-upload fa-fw"></i> Actualización de Datos</a></li>
-				<li><a href="javascript: embem('moduloCarga/Reportes/index.php', '#page-wrapper')"><i class="fa fa-file-text fa-fw"></i> Reportes Multiples</a></li>
-				
-				-->
+				<li><a href="javascript: embem('moduloPlanificacion/UC/index.php', '#page-wrapper')"><i class="fa fa-check-square-o fa-fw"></i> Unidades Curriculares</a></li>
+				<li><a href="javascript: embem('moduloPlanificacion/Malla/index.php', '#page-wrapper')"><i class="fa fa-th fa-fw"></i> Mallas</a></li>
+
+				<li>
+					<a href="#"><i class="fa fa-calendar-check-o fa-fw"></i> Planificación<span class="fa arrow"></span></a>
+
+					<ul class="nav nav-second-level">
+						<li><a href="javascript: embem('moduloPlanificacion/Seccion/index.php', '#page-wrapper')"><i class="fa fa-font fa-fw"></i> Secciones</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Carga/index.php', '#page-wrapper')"><i class="fa fa-hourglass fa-fw"></i> Carga académica</a></li>
+						<li><a href="javascript: embem('moduloPlanificacion/Carga/planillas.php', '#page-wrapper')"><i class="fa fa-file-pdf-o fa-fw"></i> Planillas</a></li>
+					</ul>
+				</li>
 
 <?php
 		break;

@@ -14,7 +14,8 @@ create table area (
 create table carrera (
 	id text primary key,
 	nombre text not null unique,
-	"idArea" int not null
+	"idArea" int not null,
+	"idCoordinadorInst" int
 );
 
 create table "carreraSede" (
@@ -169,6 +170,20 @@ create table carga (
 	unique("idProfesor", "idSeccion", "idUC")
 );
 
+create table firma (
+	orden int primary key,
+	cargo text not null unique,
+	"idProfesor" int
+);
+
+create table observacion (
+	contenido text not null,
+	"idCS" int not null,
+	"idPeriodo" text not null,
+	"idProfesor" int not null,
+	primary key("idCS", "idPeriodo", "idProfesor")
+);
+
 create type tipo as enum('p', 'a');
 -- p -> Planificación
 -- a -> Académico
@@ -232,9 +247,10 @@ alter table profesor add foreign key(profesion) references profesion(id) on upda
 alter table carga add foreign key("idProfesor") references profesor(cedula) on update cascade on delete restrict;
 alter table carga add foreign key("idSeccion") references seccion("ID") on update cascade on delete cascade;
 alter table carga add foreign key("idUC") references "unidadCurricular"(id) on update cascade on delete restrict;
+alter table firma add foreign key("idProfesor") references profesor(cedula) on update cascade on delete restrict;
 alter table periodo add foreign key("idECS") references "estructuraCS"(id) on update cascade on delete restrict;
 alter table seccion add foreign key("idMECS") references "mallaECS"(id) on update cascade on delete restrict;
-alter table seccion add foreign key("idPeriodo") references periodo("ID") on update cascade on delete restrict;
+alter table seccion add foreign key("idPeriodo") references periodo("ID") on update cascade on delete cascade;
 
 
 /*_______________________________________________________________________________*/

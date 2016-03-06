@@ -12,6 +12,18 @@
 	";
 	$exe = pg_query($sigpa, $sql);
 	$usuario = pg_fetch_object($exe);
+
+	if($_SESSION["nivel"] > 2) {
+?>
+
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Datos personales</h1>
+	</div>
+</div>
+
+<?php
+	}
 ?>
 
 <form name="usuario" method="POST" action="data/Configuracion/guardarUsuario.php" data-exe="$('input[type=password]').val('')" role="form">

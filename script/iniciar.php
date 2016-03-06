@@ -64,6 +64,15 @@
 		$_SESSION["cedula"] = $cedula;
 		$_SESSION["nivel"] = $usuario->nivel;
 
+		if($usuario->nivel == 3) {
+			$sql = "select * from \"carreraSede\" where \"idCoordinador\" = '$cedula'";
+			$exe = pg_query($sigpa, $sql);
+			$coordinacion = pg_fetch_object($exe);
+
+			$_SESSION["carreraCoord"] = $coordinacion->idCarrera;
+			$_SESSION["sedeCoord"] = $coordinacion->idSede;
+		}
+
 		$sql = "select nombre, apellido from persona where cedula='$cedula'";
 		$exe = pg_query($sigpa, $sql);
 		$persona = pg_fetch_object($exe);

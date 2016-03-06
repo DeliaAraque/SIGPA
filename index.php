@@ -84,6 +84,19 @@
 	$(document).ready(loading(false));
 	formularios();
 	setInterval(notifications, 1000);
+
+<?php
+	switch($_SESSION["nivel"]) {
+		case "4":
+?>
+
+	embem("data/Configuracion/misDatos.php", "#page-wrapper");
+
+<?php
+		break;
+	}
+?>
+
 </script>
 
 <!-- Fin bibliotecas plantilla -->
