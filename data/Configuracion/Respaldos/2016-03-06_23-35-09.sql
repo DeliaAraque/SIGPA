@@ -31,6 +31,36 @@ SELECT pg_catalog.setval('area_id_seq', 4, true);
 
 
 --
+-- Data for Name: carrera; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY carrera (id, nombre, "idArea", "idCoordinadorInst") FROM stdin;
+05	PNF Geociencias	1	\N
+06	PNF Turismo	2	\N
+07	PNF Contaduria	2	\N
+10	PNF Psicología Social	2	\N
+11	PNF Historia	2	\N
+02	PNF Construcción Civil	1	\N
+04	PNF Administración	2	\N
+12	PNF Enfermería Integral Comunitaria	4	\N
+42	Construccion Civil	1	\N
+44	Turismo	3	\N
+45	Informatica	1	\N
+46	Hoteleria	3	\N
+47	Contaduria	3	\N
+48	Manejo de Emergencias	2	\N
+43	Mineria	1	\N
+41	Agrotecnia	3	\N
+50	Enfermeria	2	\N
+01	PNF Agroalimentación	3	\N
+03	PNF Informática	1	\N
+49	Radiología e Imagenología	3	\N
+09	PNF Seguridad Alimentaria Y Cultura Nutricional	3	\N
+08	PNF Fonoaudiología	2	\N
+\.
+
+
+--
 -- Data for Name: sede; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -46,51 +76,6 @@ COPY sede (id, nombre, fecha, telefono, direccion) FROM stdin;
 
 
 --
--- Data for Name: building; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY building (id, name, headquarters) FROM stdin;
-\.
-
-
---
--- Name: building_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('building_id_seq', 1, false);
-
-
---
--- Data for Name: carrera; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY carrera (id, nombre, "idArea") FROM stdin;
-05	PNF Geociencias	1
-06	PNF Turismo	2
-07	PNF Contaduria	2
-08	PNF Fonoaudiología	2
-10	PNF Psicología Social	2
-11	PNF Historia	2
-02	PNF Construcción Civil	1
-04	PNF Administración	2
-12	PNF Enfermería Integral Comunitaria	4
-42	Construccion Civil	1
-44	Turismo	3
-45	Informatica	1
-46	Hoteleria	3
-47	Contaduria	3
-48	Manejo de Emergencias	2
-43	Mineria	1
-41	Agrotecnia	3
-50	Enfermeria	2
-01	PNF Agroalimentación	3
-03	PNF Informática	1
-49	Radiología e Imagenología	3
-09	PNF Seguridad Alimentaria Y Cultura Nutricional	3
-\.
-
-
---
 -- Data for Name: carreraSede; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -99,7 +84,6 @@ COPY "carreraSede" (id, "idCarrera", "idCoordinador", "idSede") FROM stdin;
 5	05	2149217	3
 6	06	3910823	3
 7	07	3939687	3
-8	08	3661985	3
 4	04	8037619	3
 11	12	3966127	3
 1	01	15142314	3
@@ -107,6 +91,7 @@ COPY "carreraSede" (id, "idCarrera", "idCoordinador", "idSede") FROM stdin;
 3	03	10256095	3
 13	49	14916156	3
 14	09	3309773	3
+8	08	8021736	3
 \.
 
 
@@ -195,6 +180,7 @@ COPY "estructuraCS" (id, "idCS", "idEstructura") FROM stdin;
 10	3	3
 12	13	2
 14	14	4
+15	8	1
 \.
 
 
@@ -214,6 +200,7 @@ PNFI-2012	2011-04-27
 PNFI-2012-PRO	2011-04-27
 R-2010	2016-03-01
 PNFSACN-2014	2016-03-02
+PNFF-2013	2016-03-02
 \.
 
 
@@ -233,6 +220,7 @@ COPY "mallaECS" (id, estado, "idECS", "idMalla") FROM stdin;
 4	f	2	PNFA-2010-2
 13	t	12	R-2010
 14	t	14	PNFSACN-2014
+15	t	15	PNFF-2013
 \.
 
 
@@ -253,6 +241,10 @@ COPY periodo ("ID", id, "fechaInicio", "fechaFin", tipo, "idECS") FROM stdin;
 16	2015-B	2015-05-18	2016-03-02	a	1
 17	2015-B	2016-03-02	2016-03-02	p	10
 18	2015-B	2015-05-18	2016-03-02	a	10
+19	2016-A	2016-03-02	2016-03-02	p	14
+20	2016-A	2016-02-15	2016-06-23	a	14
+21	2015-B	2016-03-02	2016-03-02	p	15
+22	2015-B	2015-05-18	2016-04-15	a	15
 \.
 
 
@@ -341,7 +333,6 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 8012641	Ana	Teresa	Quintero	De Ruggero	f	anatqdr@gmail.com	Sin asignar	0424-7671634	\N
 8020758	Maria	Grazia	Mocci	Deriu	f	cuadrifolium@yahoo.com	Sin asignar	04149721770	02742667245
 8021306	Luis	Apolinar	Altuve	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
-8021736	Rosa	Maria	Vasquez	Falcon	f	rosa_mariavf@hotmail.com	Sin asignar	0416-2747257	\N
 8021842	Jose	Ramon	Diaz	\N	f	joserdiazp@yahoo.es	Sin asignar	0274-4176258	\N
 8022671	Jose 	Humberto	Quintero	Davila	f	Sin asignar	Sin asignar	04147444352	02742631167
 8024531	Emiro	\N	Rivas	Rivas	f	Sin asignar	Sin asignar	Sin asignar	\N
@@ -396,6 +387,7 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 11957795	Alix	Yubisay	Sayago	Albarran	f	aysa_ve@yahoo.com	Sin asignar	04147237453	\N
 5239250	Gilbert	Arturo	Santeliz	Zerpa	m	gilbertsanteliz@gmail.com	Sin asignar	04265707388	02742215787
 8656400	Pedro	\N	Manzano	\N	m	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
+8021736	Rosa	Maria	Vasquez	Falcon	f	rosa_mariavf@hotmail.com	Sin asignar	0416-2747257	\N
 9473374	Fredy	Enrique	Rivas	Valero	f	ingorivas@hotmail.com	Sin asignar	0416-5025988	\N
 9473423	Idalba	Del Socorro	Perez	Mora	f	idalser@yahoo.com	Sin asignar	0416-5719995	\N
 9473852	Carlos	Manuel	Sanchez	Garcia	f	Sin asignar	Sin asignar	Sin asignar	\N
@@ -618,7 +610,6 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 5198965	Luis	\N	Moreno	\N	m	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 9390689	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 16716898	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
-10751767	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 13762920	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 15693970	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 17664344	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
@@ -684,7 +675,9 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 8022340	Jairo	\N	Perez	\N	m	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 4589713	Henry	\N	Porras	\N	m	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 8023975	Jorge	\N	Rondon	\N	m	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
+13309223	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 3991395	Heriberto	\N	Calderón	\N	m	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
+10751767	Tani	\N	Diaz	\N	f	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 9602126	María	\N	Geijo	\N	f	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 7482782	Adan	\N	Colina	\N	m	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 18308852	Luisana	\N	Marquez	\N	f	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
@@ -761,7 +754,6 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 9320887	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 9398159	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 11960981	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
-13309223	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 13648065	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 13803902	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
 14067007	Nombre	\N	Apellido	\N	f	Sin asignar	Sin asignar	Sin asignar	\N
@@ -822,6 +814,7 @@ COPY persona (cedula, nombre, "segundoNombre", apellido, "segundoApellido", sexo
 11036485	Noraida	\N	Gómez	Ojeda	f	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 20199965	Hefzi Ba	\N	Gutierrez	\N	f	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 12348836	Maryuri	\N	Manrrique	\N	f	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
+5198826	Jose	\N	Monsalve	\N	f	inicialnombreapellido@uptm.edu.ve	Sin asignar	0000-0000000	\N
 \.
 
 
@@ -951,7 +944,6 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 7648734	Agre	3	EXC	0
 7934845	Agre	3	TC	10
 8021306	Asist	3	TC	0
-8021736	Inst	3	MT	0
 8041510	Agre	3	TC	0
 8046408	Inst	3	TC	0
 8048794	Asist	3	TC	0
@@ -1049,6 +1041,7 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 8028204	Inst	1	TC	1
 5239250	Asist	3	TC	1
 8656400	Inst	1	TC	23
+8021736	Inst	3	MT	25
 5952723	Inst	1	TC	38
 9643447	Inst	1	TC	10
 2287821	Agre	3	TC	0
@@ -1243,7 +1236,6 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 17340511	Inst	1	TC	0
 9390689	Inst	1	TCv	0
 16716898	Inst	1	TC	0
-10751767	Inst	1	TCv	0
 13762920	Inst	1	MT	0
 15693970	Inst	1	TCv	0
 17664344	Inst	1	TCv	0
@@ -1356,6 +1348,7 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 13499843	Aux	1	MT	45
 10716040	Aux	1	MT	45
 15295462	Aux	1	MT	45
+10751767	Inst	1	MT	23
 11319506	Inst	1	TC	0
 11460232	Inst	1	TCv	0
 11912990	Inst	1	TCv	0
@@ -1454,6 +1447,7 @@ COPY profesor (cedula, categoria, condicion, dedicacion, profesion) FROM stdin;
 11036485	Inst	1	MT	32
 20199965	Inst	1	MT	29
 12348836	Inst	1	TCv	29
+5198826	Inst	1	TCv	43
 \.
 
 
@@ -1514,6 +1508,9 @@ COPY seccion ("ID", id, turno, multiplicador, grupos, "idMECS", "idPeriodo", "pe
 71	A	n	1.5	f	12	18	T4-t3
 72	A	d	1	f	12	18	TT
 73	B	d	1	f	12	18	TT
+74	A	d	1	f	14	20	T1-s1
+75	A	d	1	f	14	20	T2-s1
+76	A	d	1	f	15	22	T2-t1
 \.
 
 
@@ -1562,7 +1559,6 @@ AUD9043	Auditoria II	f	07	2
 COE9043	Contabilidad Especializada	f	07	2
 DIAGINAU-457	Diagnostico e Intervención Auditiva III	f	08	2
 DIAGINVO-447	Diagnostico e Intervención de la Voz II	f	08	2
-ELECTIVA-222	Electiva II	f	08	2
 ESMD15025	Economía, Sustentabilidad y Modelos de Desarrollo	f	04	5
 IDIOT2-2167	Idiomas II	f	06	2
 NEUROLIN-245	Neurolinguistica	f	08	2
@@ -1571,7 +1567,6 @@ OYS9023	Organización y Sistemas	f	04	2
 PATOCOHU-256	Patología de la Comunicación Humana	f	08	2
 DSRST3-1445	Des. Sustentable y Sost. de los Recursos y Serv. Tur.	f	06	5
 DTCST3-61220	Desarrollo del Turismo Comunitario y Social	f	06	3
-ELECTIVA-322	Electiva III	f	08	2
 FEVP001	Formulación y Evaluación de Proyectos	f	07	2
 GDTUT3-2167	Gestión de Destinos Turísticos	f	06	2
 GEC9033	Gerencia de Costos	f	07	2
@@ -1581,7 +1576,6 @@ IDIOT3-28810	Idiomas III	f	06	2
 ING9033	Ingles II	f	04	2
 MOTRORAL-334	Motricidad Oral	f	08	2
 EDUCAMBI-434	Educación Ambiental	f	08	2
-ELECTIVA-422	Electiva IV	f	08	2
 ETCAT4-1806	Estudios del Turismo en el Gran Caribe y los Paises del Alba	f	06	5
 FEP9043	Formulación y Evaluación de Proyectos	f	04	2
 GEPTT4-61220	Gestión de Proyectos Turisticos	f	06	3
@@ -1628,7 +1622,10 @@ PORTINST-434	Portugues Instrumental	f	08	2
 PRACPROF-41216	Practicas Profesionales III	f	08	2
 PRO660422	Desarrollo de Nuevas Tendencias en la Gestión Contable Finan	f	07	3
 PROYSOCI-479	Proyecto Sociointegrador IV	f	08	3
+PG234	Minería II	f	05	2
 SALUOCFO-456	Salud Ocupacional en Fonoaudiología	f	08	2
+ELECTIVA-322	Electiva III	t	08	2
+ELECTIVA-422	Electiva IV	t	08	2
 AGBSD142	Biodiversidad y Sociodiversidad	f	01	2
 AGPFI1126	Proyecto Formativo I	f	01	3
 AGPFI1166	Proyecto Formativo I	f	01	3
@@ -1639,7 +1636,6 @@ AGSALC142	Sociohistoria de la Agricultura Latinoamer. y del Caribe	f	01	5
 APN15015	Administración Pública Nacional	f	04	5
 BASEACCO-156	Bases Acusticas de la Comunicacion	f	08	2
 BASEPRFO-156	Bases de la Practica Fonoaudiologica	f	08	2
-ELECTIVA-122	Electiva I	f	08	2
 ESTRFUCO-156	Estructura y Función de la Comunicacion	f	08	2
 FONEFONO-134	Fonetica y Fonología	f	08	2
 FPNTT1-61220	Fomento del Patrimonio Nacional y Turistico	f	06	3
@@ -1733,10 +1729,10 @@ AGREA262	Reproducción de Especies Animales	f	01	2
 AGSC00	Servicio Comunitario	f	01	5
 AGSEA242	Suelo, Ecología y Agricultura	f	01	2
 AGSEA262	Suelo, Ecología y Agricultura	f	01	2
-PG234	Minería II	f	05	2
 AGTCSI242	Topografía Catastro y Sistemas de Información Geográfica	f	01	2
 AGTOG262	Topografía	f	01	2
 AVTTT2-1084	Administración de Agencias de Viajes y Transporte Turistico	f	06	2
+ELECTIVA-122	Electiva I	t	08	2
 PCCP11309	Proyecto Nacional y Nueva Ciudadania	f	02	5
 PCCP12209	Taller de Inducción a la Universidad y al Programa	f	02	5
 PCCP13509	Matematica de Nivelacion	f	02	2
@@ -3280,6 +3276,7 @@ PIEL4	Electiva IV	t	03	2
 90028	Sistematización de la Experiencia	f	09	2
 90029	Unidad Estético, Lúdico, Cultural, Deportiva	f	09	2
 900210	Electiva	t	09	2
+ELECTIVA-222	Electiva II	t	08	2
 \.
 
 
@@ -3590,6 +3587,28 @@ COPY carga (id, "dividirHT", "nuevoNombre", "idProfesor", "idSeccion", "idSuplen
 424	f	\N	8028204	63	\N	PIIO3
 425	f	\N	8028204	62	\N	PIIS3
 426	f	\N	8028204	72	\N	30001
+427	f	\N	9474618	74	\N	90017
+428	f	\N	9474618	74	\N	90018
+429	f	\N	9474618	75	\N	90026
+430	f	\N	17129049	74	\N	90011
+431	f	\N	17129049	74	\N	90014
+432	f	\N	17129049	74	\N	90013
+433	f	\N	10172170	74	\N	90012
+434	f	\N	11036485	74	\N	90016
+435	f	\N	11036485	75	\N	90027
+436	f	\N	20199965	75	\N	90024
+437	f	\N	20199965	75	\N	90022
+438	f	\N	12348836	75	\N	90021
+439	f	\N	12348836	75	\N	90025
+440	f	\N	8021736	76	\N	PRACPROF-2120
+441	f	\N	3661985	76	\N	RECUPSFO-245
+442	f	\N	3661985	76	\N	DIAGINAU-245
+443	f	\N	4356042	76	\N	PROYSOCI-234
+444	f	\N	5198826	76	\N	NEUROLIN-245
+445	f	\N	5198826	76	\N	PATOCOHU-256
+446	f	Lenguaje de Señas Venezolanas II	19421996	76	\N	ELECTIVA-222
+447	f	\N	10751767	76	\N	DIAGINLE-256
+448	f	\N	10751767	76	\N	DIAGINHA-256
 \.
 
 
@@ -3597,7 +3616,7 @@ COPY carga (id, "dividirHT", "nuevoNombre", "idProfesor", "idSeccion", "idSuplen
 -- Name: carga_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('carga_id_seq', 426, true);
+SELECT pg_catalog.setval('carga_id_seq', 448, true);
 
 
 --
@@ -3608,36 +3627,6 @@ SELECT pg_catalog.setval('"carreraSede_id_seq"', 14, true);
 
 
 --
--- Data for Name: classroom_type; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY classroom_type (id, name) FROM stdin;
-\.
-
-
---
--- Name: classroom_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('classroom_type_id_seq', 1, false);
-
-
---
--- Data for Name: classrooms; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY classrooms (id, name, building, classroom_type) FROM stdin;
-\.
-
-
---
--- Name: classrooms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('classrooms_id_seq', 1, false);
-
-
---
 -- Name: condicion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -3645,18 +3634,18 @@ SELECT pg_catalog.setval('condicion_id_seq', 4, true);
 
 
 --
--- Data for Name: coordinates; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: edificio; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY coordinates (id, rows, columns) FROM stdin;
+COPY edificio (id, edificio, id_sede) FROM stdin;
 \.
 
 
 --
--- Name: coordinates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: edificio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('coordinates_id_seq', 1, false);
+SELECT pg_catalog.setval('edificio_id_seq', 1, false);
 
 
 --
@@ -3670,7 +3659,7 @@ SELECT pg_catalog.setval('eje_id_seq', 5, true);
 -- Name: estructuraCS_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"estructuraCS_id_seq"', 14, true);
+SELECT pg_catalog.setval('"estructuraCS_id_seq"', 15, true);
 
 
 --
@@ -3678,6 +3667,14 @@ SELECT pg_catalog.setval('"estructuraCS_id_seq"', 14, true);
 --
 
 SELECT pg_catalog.setval('estructura_id_seq', 4, true);
+
+
+--
+-- Data for Name: firma; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY firma (orden, cargo, "idProfesor") FROM stdin;
+\.
 
 
 --
@@ -3722,6 +3719,7 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1455659119	Nombre Apellido (12345678)	Se agregó al profesor <strong>Adriana Garcia (12779833)</strong>	insert into persona values(&#039;12779833&#039;, &#039;Adriana&#039;, null, &#039;Garcia&#039;, null, &#039;f&#039;, &#039;inicialnombreapellido@uptm.edu.ve&#039;, &#039;Sin Asignar&#039;, &#039;0000-0000000&#039;, null)\n\ninsert into profesor values(&#039;12779833&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;37&#039;)
 1455659181	Nombre Apellido (12345678)	Se modificó al profesor <strong>Carmen Graterol (5201033)</strong>	update persona set cedula=&#039;5201033&#039;, nombre=&#039;Carmen&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Graterol&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;5201033&#039;\n\nupdate profesor set cedula=&#039;5201033&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;21&#039; where cedula=&#039;5201033&#039;
 1455814935	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Oberto Orlando (9501330)</strong>	insert into carga values(default, false, null, &#039;9501330&#039;, &#039;35&#039;, null, &#039;AGPEP442&#039;)
+1455748856	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFAg</strong>	update malla set id=&#039;PNFAg&#039;, fecha=&#039;2016-02-17&#039; where id=&#039;PNFAg&#039;
 1455814936	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Oberto Orlando (9501330)</strong>	insert into carga values(default, false, null, &#039;9501330&#039;, &#039;36&#039;, null, &#039;AGPEP442&#039;)
 1455659242	Nombre Apellido (12345678)	Se modificó al profesor <strong>Liria Gutierrez (8019784)</strong>	update persona set cedula=&#039;8019784&#039;, nombre=&#039;Liria&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Gutierrez&#039;, &quot;segundoApellido&quot;=&#039;De Rojas&#039;, sexo=&#039;f&#039;, correo=&#039;lirios_gutierrez@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;8019784&#039;\n\nupdate profesor set cedula=&#039;8019784&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;23&#039; where cedula=&#039;8019784&#039;
 1455659374	Nombre Apellido (12345678)	Se modificó al profesor <strong>Emi Linero (14917541)</strong>	update persona set cedula=&#039;14917541&#039;, nombre=&#039;Emi&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Linero&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;14917541&#039;\n\nupdate profesor set cedula=&#039;14917541&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;23&#039; where cedula=&#039;14917541&#039;
@@ -3733,6 +3731,8 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1455659725	Nombre Apellido (12345678)	Se modificó al profesor <strong>José Rodriguez (8013569)</strong>	update persona set cedula=&#039;8013569&#039;, nombre=&#039;José&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Rodriguez&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;m&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;8013569&#039;\n\nupdate profesor set cedula=&#039;8013569&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;21&#039; where cedula=&#039;8013569&#039;
 1455659796	Nombre Apellido (12345678)	Se modificó al profesor <strong>Jorge Rondon (8023975)</strong>	update persona set cedula=&#039;8023975&#039;, nombre=&#039;Jorge&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Rondon&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;m&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;8023975&#039;\n\nupdate profesor set cedula=&#039;8023975&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;27&#039; where cedula=&#039;8023975&#039;
 1455659832	Nombre Apellido (12345678)	Se modificó al profesor <strong>Sarai Sojo (16964770)</strong>	update persona set cedula=&#039;16964770&#039;, nombre=&#039;Sarai&#039;, &quot;segundoNombre&quot;=&#039;Margarita&#039;, apellido=&#039;Sojo&#039;, &quot;segundoApellido&quot;=&#039;Portillo&#039;, sexo=&#039;f&#039;, correo=&#039;sarfer60@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04147425566&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;16964770&#039;\n\nupdate profesor set cedula=&#039;16964770&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;23&#039; where cedula=&#039;16964770&#039;
+1455814793	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Gonzalez Pedro (8034300)</strong>	insert into carga values(default, false, null, &#039;8034300&#039;, &#039;35&#039;, null, &#039;AGECE442&#039;)
+1455814794	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Gonzalez Pedro (8034300)</strong>	insert into carga values(default, false, null, &#039;8034300&#039;, &#039;36&#039;, null, &#039;AGECE442&#039;)
 1455659860	Nombre Apellido (12345678)	Se modificó al profesor <strong>Martha Triana (11462979)</strong>	update persona set cedula=&#039;11462979&#039;, nombre=&#039;Martha&#039;, &quot;segundoNombre&quot;=&#039;Ivonne&#039;, apellido=&#039;Triana&#039;, &quot;segundoApellido&quot;=&#039;Vargas&#039;, sexo=&#039;f&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04247145086&#039;, &quot;telefonoFijo&quot;=&#039;02742715952&#039; where cedula=&#039;11462979&#039;\n\nupdate profesor set cedula=&#039;11462979&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;40&#039; where cedula=&#039;11462979&#039;
 1456498048	Nombre Apellido (12345678)	Se creó la planilla <strong>2015-B PNF Agroalimentación Ejido PNFAg-2.pdf</strong>	No SQL
 1455659892	Nombre Apellido (12345678)	Se modificó al profesor <strong>Johan Zerpa (14917365)</strong>	update persona set cedula=&#039;14917365&#039;, nombre=&#039;Johan&#039;, &quot;segundoNombre&quot;=&#039;Alejandro&#039;, apellido=&#039;Zerpa&#039;, &quot;segundoApellido&quot;=&#039;Torres&#039;, sexo=&#039;m&#039;, correo=&#039;jazt23@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0426-7730348&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;14917365&#039;\n\nupdate profesor set cedula=&#039;14917365&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;23&#039; where cedula=&#039;14917365&#039;
@@ -3755,9 +3755,6 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1455748799	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFAg-2</strong>	update malla set id=&#039;PNFAg-2&#039;, fecha=&#039;2016-02-17&#039; where id=&#039;PNFAg-2&#039;
 1455748814	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Angulo Ana (14131053)</strong>	insert into carga values(default, false, null, &#039;14131053&#039;, &#039;35&#039;, null, &#039;AGSCSNI442&#039;)
 1455748836	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFAg</strong>	update malla set id=&#039;PNFAg&#039;, fecha=&#039;2016-02-17&#039; where id=&#039;PNFAg&#039;
-1455748856	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFAg</strong>	update malla set id=&#039;PNFAg&#039;, fecha=&#039;2016-02-17&#039; where id=&#039;PNFAg&#039;
-1455814793	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t2</strong> al profesor <strong>Gonzalez Pedro (8034300)</strong>	insert into carga values(default, false, null, &#039;8034300&#039;, &#039;35&#039;, null, &#039;AGECE442&#039;)
-1455814794	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T4-t2</strong> al profesor <strong>Gonzalez Pedro (8034300)</strong>	insert into carga values(default, false, null, &#039;8034300&#039;, &#039;36&#039;, null, &#039;AGECE442&#039;)
 1455815058	Nombre Apellido (12345678)	Se desasignó la sección <strong>B</strong> del <strong>T3-t3</strong> del profesor <strong>Hollo Simón (9081546)</strong>	delete from carga where id=&#039;223&#039;
 1455815096	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Hollo Simón (9081546)</strong>. Suple <strong>Bracho Thais (7824945)</strong>	insert into carga values(default, false, null, &#039;9081546&#039;, &#039;34&#039;, 7824945, &#039;AGPFIII3166&#039;)
 1455815169	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Pernia Ramses (8039463)</strong>	insert into carga values(default, false, null, &#039;8039463&#039;, &#039;33&#039;, null, &#039;AGPSLC342&#039;)
@@ -3877,6 +3874,7 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456493564	Nombre Apellido (12345678)	Se creó el respaldo <strong>2016-02-26_09-02-43.sql</strong>	No SQL
 1456493607	Nombre Apellido (12345678)	Se modificó el periodo <strong>2015-B</strong> de <strong>PNF Agroalimentación - Ejido (PNF Trimestral)</strong>	update periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2016-02-17&#039;, &quot;fechaFin&quot;=&#039;2016-02-26&#039; where id=&#039;2015-B&#039; and tipo=&#039;p&#039; and &quot;idECS&quot;=&#039;8&#039;\n\nupdate periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2015-05-18&#039;, &quot;fechaFin&quot;=&#039;2016-02-26&#039; where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=&#039;8&#039;
 1456493618	Nombre Apellido (12345678)	Se modificó el periodo <strong>2015-B</strong> de <strong>PNF Agroalimentación - Ejido (Prosecucion)</strong>	update periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2016-02-17&#039;, &quot;fechaFin&quot;=&#039;2016-02-26&#039; where id=&#039;2015-B&#039; and tipo=&#039;p&#039; and &quot;idECS&quot;=&#039;9&#039;\n\nupdate periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2015-05-18&#039;, &quot;fechaFin&quot;=&#039;2016-02-26&#039; where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=&#039;9&#039;
+1456495760	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Pedro (8034300)</strong>	insert into carga values(default, false, null, &#039;8034300&#039;, &#039;53&#039;, null, &#039;AGECE442&#039;)
 1456493631	Nombre Apellido (12345678)	Se modificó el periodo <strong>2015-B</strong> de <strong>PNF Agroalimentación - Ejido (PNF Trimestral)</strong>	update periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2016-02-17&#039;, &quot;fechaFin&quot;=&#039;2016-02-26&#039; where id=&#039;2015-B&#039; and tipo=&#039;p&#039; and &quot;idECS&quot;=&#039;8&#039;\n\nupdate periodo set id=&#039;2015-B&#039;, &quot;fechaInicio&quot;=&#039;2015-05-18&#039;, &quot;fechaFin&quot;=&#039;2016-02-27&#039; where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=&#039;8&#039;
 1456496023	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Montilla Jesús (8041985)</strong>. Suple <strong>Graterol Carmen (5201033)</strong>	insert into carga values(default, false, null, &#039;8041985&#039;, &#039;52&#039;, 5201033, &#039;AGPFIII3126&#039;)
 1456498160	Nombre Apellido (12345678)	Se creó la planilla <strong>2015-B PNF Agroalimentación Ejido PNFAg-2.pdf</strong>	No SQL
@@ -3895,7 +3893,6 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456495639	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Del Cura Federico (13098948)</strong>. Suple <strong>Paredes Rigoberto (8005159)</strong>	insert into carga values(default, false, null, &#039;13098948&#039;, &#039;44&#039;, 8005159, &#039;AGAGC242&#039;)
 1456495677	Nombre Apellido (12345678)	Se desasignó la sección <strong>A</strong> del <strong>T1-t1</strong> del profesor <strong>Del Cura Federico (13098948)</strong>	delete from carga where id=&#039;247&#039;
 1456495699	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t1</strong> al profesor <strong>Del Cura Federico (13098948)</strong>. Suple <strong>Peña Aida (8013671)</strong>	insert into carga values(default, false, null, &#039;13098948&#039;, &#039;39&#039;, 8013671, &#039;AGBSD162&#039;)
-1456495760	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Pedro (8034300)</strong>	insert into carga values(default, false, null, &#039;8034300&#039;, &#039;53&#039;, null, &#039;AGECE442&#039;)
 1456495882	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Lopez Ivan (7080727)</strong>. Suple <strong>Rivas Lisbeth (13524820)</strong>	insert into carga values(default, false, null, &#039;7080727&#039;, &#039;53&#039;, 13524820, &#039;AGOTA362&#039;)
 1456495952	Nombre Apellido (12345678)	Se asignó la sección <strong>R</strong> del <strong>T0</strong> al profesor <strong>Milla Jose (10720364)</strong>	insert into carga values(default, false, null, &#039;10720364&#039;, &#039;49&#039;, null, &#039;PIMT005&#039;)
 1456498035	Nombre Apellido (12345678)	Se creó la planilla <strong>2015-B PNF Administración Ejido PNFA-2010-3.pdf</strong>	No SQL
@@ -3943,6 +3940,7 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456504382	Nombre Apellido (12345678)	Se modificó al profesor <strong>Diony Alviarez (8047120)</strong>	update persona set cedula=&#039;8047120&#039;, nombre=&#039;Diony&#039;, &quot;segundoNombre&quot;=&#039;Ginette&#039;, apellido=&#039;Alviarez&#039;, &quot;segundoApellido&quot;=&#039;Paredes&#039;, sexo=&#039;f&#039;, correo=&#039;gdiony@yahoo.es&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04269770025&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;8047120&#039;\n\nupdate profesor set cedula=&#039;8047120&#039;, categoria=&#039;Asoc&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;1&#039; where cedula=&#039;8047120&#039;
 1456504536	Nombre Apellido (12345678)	Se modificó al profesor <strong>Nelson Corredor (4484976)</strong>	update persona set cedula=&#039;4484976&#039;, nombre=&#039;Nelson&#039;, &quot;segundoNombre&quot;=&#039;Antonio&#039;, apellido=&#039;Corredor&#039;, &quot;segundoApellido&quot;=&#039;Trejo&#039;, sexo=&#039;m&#039;, correo=&#039;ncorredortrejo@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0424-2442582&#039;, &quot;telefonoFijo&quot;=&#039;0274-0000000&#039; where cedula=&#039;4484976&#039;\n\nupdate profesor set cedula=&#039;4484976&#039;, categoria=&#039;Asist&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;22&#039; where cedula=&#039;4484976&#039;
 1456504588	Nombre Apellido (12345678)	Se modificó al profesor <strong>Jesus Delgado (7168412)</strong>	update persona set cedula=&#039;7168412&#039;, nombre=&#039;Jesus&#039;, &quot;segundoNombre&quot;=&#039;Antonio&#039;, apellido=&#039;Delgado&#039;, &quot;segundoApellido&quot;=&#039;Mendoza&#039;, sexo=&#039;m&#039;, correo=&#039;jesusdelg1@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04160727928&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;7168412&#039;\n\nupdate profesor set cedula=&#039;7168412&#039;, categoria=&#039;Asist&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;20&#039; where cedula=&#039;7168412&#039;
+1456922557	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Rodolfo (9499979)</strong>	insert into carga values(default, false, null, &#039;9499979&#039;, &#039;63&#039;, null, &#039;PIPT3&#039;)
 1456504618	Nombre Apellido (12345678)	Se modificó al profesor <strong>Anna Dugarte (13966054)</strong>	update persona set cedula=&#039;13966054&#039;, nombre=&#039;Anna&#039;, &quot;segundoNombre&quot;=&#039;Yusmarie&#039;, apellido=&#039;Dugarte&#039;, &quot;segundoApellido&quot;=&#039;Sanchez&#039;, sexo=&#039;f&#039;, correo=&#039;dugartea@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04247026306&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;13966054&#039;\n\nupdate profesor set cedula=&#039;13966054&#039;, categoria=&#039;Agre&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;1&#039; where cedula=&#039;13966054&#039;
 1456506527	Nombre Apellido (12345678)	Se agregó al profesor <strong>Wilbelis Arias (17254684)</strong>	insert into persona values(&#039;17254684&#039;, &#039;Wilbelis&#039;, null, &#039;Arias&#039;, null, &#039;f&#039;, &#039;inicialnombreapellido@uptm.edu.ve&#039;, &#039;Sin Asignar&#039;, &#039;0000-0000000&#039;, null)\n\ninsert into profesor values(&#039;17254684&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;15&#039;)
 1456504657	Nombre Apellido (12345678)	Se modificó al profesor <strong>Johanna Gomez (14917178)</strong>	update persona set cedula=&#039;14917178&#039;, nombre=&#039;Johanna&#039;, &quot;segundoNombre&quot;=&#039;Yecenia&#039;, apellido=&#039;Gomez&#039;, &quot;segundoApellido&quot;=&#039;Alvarez&#039;, sexo=&#039;f&#039;, correo=&#039;johannna.ga@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04149565557&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;14917178&#039;\n\nupdate profesor set cedula=&#039;14917178&#039;, categoria=&#039;Inst&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;15&#039; where cedula=&#039;14917178&#039;
@@ -3954,6 +3952,7 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456505043	Nombre Apellido (12345678)	Se modificó al profesor <strong>Jesus Romero (10898072)</strong>	update persona set cedula=&#039;10898072&#039;, nombre=&#039;Jesus&#039;, &quot;segundoNombre&quot;=&#039;Alber&#039;, apellido=&#039;Romero&#039;, &quot;segundoApellido&quot;=&#039;Cubillos&#039;, sexo=&#039;m&#039;, correo=&#039;alber_romero@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=&#039;02747893689&#039; where cedula=&#039;10898072&#039;\n\nupdate profesor set cedula=&#039;10898072&#039;, categoria=&#039;Asist&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;1&#039; where cedula=&#039;10898072&#039;
 1456505114	Nombre Apellido (12345678)	Se modificó al profesor <strong>Adolfo Romero (6953950)</strong>	update persona set cedula=&#039;6953950&#039;, nombre=&#039;Adolfo&#039;, &quot;segundoNombre&quot;=&#039;Jose&#039;, apellido=&#039;Romero&#039;, &quot;segundoApellido&quot;=&#039;Gonzalez&#039;, sexo=&#039;m&#039;, correo=&#039;adrome67@yahoo.es&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04268808212&#039;, &quot;telefonoFijo&quot;=&#039;02744147257&#039; where cedula=&#039;6953950&#039;\n\nupdate profesor set cedula=&#039;6953950&#039;, categoria=&#039;Asoc&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;15&#039; where cedula=&#039;6953950&#039;
 1456505163	Nombre Apellido (12345678)	Se modificó al profesor <strong>Edgar Rosales (11960173)</strong>	update persona set cedula=&#039;11960173&#039;, nombre=&#039;Edgar&#039;, &quot;segundoNombre&quot;=&#039;Alexander&#039;, apellido=&#039;Rosales&#039;, &quot;segundoApellido&quot;=&#039;Rubio&#039;, sexo=&#039;m&#039;, correo=&#039;edwsalex@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04265728277&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;11960173&#039;\n\nupdate profesor set cedula=&#039;11960173&#039;, categoria=&#039;Agre&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;1&#039; where cedula=&#039;11960173&#039;
+1456922558	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Rodolfo (9499979)</strong>	insert into carga values(default, false, null, &#039;9499979&#039;, &#039;64&#039;, null, &#039;PIPT3&#039;)
 1456505239	Nombre Apellido (12345678)	Se modificó al profesor <strong>Monica Rosciano (11303172)</strong>	update persona set cedula=&#039;11303172&#039;, nombre=&#039;Monica&#039;, &quot;segundoNombre&quot;=&#039;Aurora&#039;, apellido=&#039;Rosciano&#039;, &quot;segundoApellido&quot;=&#039;Tolosa&#039;, sexo=&#039;f&#039;, correo=&#039;monicarosciano23@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;11303172&#039;\n\nupdate profesor set cedula=&#039;11303172&#039;, categoria=&#039;Asist&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;1&#039; where cedula=&#039;11303172&#039;
 1456505909	Nombre Apellido (12345678)	Se modificó al profesor <strong>Darwin Pernia (13524109)</strong>	update persona set cedula=&#039;13524109&#039;, nombre=&#039;Darwin&#039;, &quot;segundoNombre&quot;=&#039;Javier&#039;, apellido=&#039;Pernia&#039;, &quot;segundoApellido&quot;=&#039;Rodriguez&#039;, sexo=&#039;m&#039;, correo=&#039;darwinpernia@gmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04147175016&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;13524109&#039;\n\nupdate profesor set cedula=&#039;13524109&#039;, categoria=&#039;Inst&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;1&#039; where cedula=&#039;13524109&#039;
 1456505943	Nombre Apellido (12345678)	Se modificó al profesor <strong>Cristina Sandoval (9389944)</strong>	update persona set cedula=&#039;9389944&#039;, nombre=&#039;Cristina&#039;, &quot;segundoNombre&quot;=&#039;Antonia&#039;, apellido=&#039;Sandoval&#039;, &quot;segundoApellido&quot;=&#039;Briceño&#039;, sexo=&#039;f&#039;, correo=&#039;cristinasandovalb@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04265739493&#039;, &quot;telefonoFijo&quot;=&#039;02742452759&#039; where cedula=&#039;9389944&#039;\n\nupdate profesor set cedula=&#039;9389944&#039;, categoria=&#039;Asoc&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;20&#039; where cedula=&#039;9389944&#039;
@@ -3989,6 +3988,7 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456775471	Nombre Apellido (12345678)	Se agregó la sección <strong>Array</strong> del <strong>T3-t3</strong> en <strong>PNF Informática</strong>	insert into seccion values(default, &#039;C&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;1&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;03&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T3-t3&#039;)
 1456775554	Nombre Apellido (12345678)	Se agregó la sección <strong>Array</strong> del <strong>T4-t2</strong> en <strong>PNF Informática</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;1&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;03&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T4-t2&#039;)
 1456775918	Nombre Apellido (12345678)	Se agregó la sección <strong>Array</strong> del <strong>T1-t1</strong> en <strong>PNF Informática</strong>	insert into seccion values(default, &#039;C&#039;, &#039;d&#039;, &#039;1&#039;, true, &#039;1&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;03&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-t1&#039;)
+1456922559	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Rodolfo (9499979)</strong>	insert into carga values(default, false, null, &#039;9499979&#039;, &#039;65&#039;, null, &#039;PIPT3&#039;)
 1456775971	Nombre Apellido (12345678)	Se agregó la sección <strong>Array</strong> del <strong>T0</strong> en <strong>PNF Informática</strong>	insert into seccion values(default, &#039;R&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;1&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;03&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T0&#039;)
 1456776323	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Informática</strong>	update carrera set id=&#039;03&#039;, nombre=&#039;PNF Informática&#039;, &quot;idArea&quot;=&#039;1&#039; where id=&#039;03&#039;
 1456776668	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFI-2012-PRO</strong>	insert into malla values(&#039;PNFI-2012-PRO&#039;, &#039;2011-04-27&#039;) returning id
@@ -4034,9 +4034,6 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456922533	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-t3</strong> al profesor <strong>Gonzalez Duberlis (10256095)</strong>	insert into carga values(default, false, null, &#039;10256095&#039;, &#039;55&#039;, null, &#039;PIPT1&#039;)
 1456922534	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T1-t3</strong> al profesor <strong>Gonzalez Duberlis (10256095)</strong>	insert into carga values(default, false, null, &#039;10256095&#039;, &#039;57&#039;, null, &#039;PIPT1&#039;)
 1456922535	Nombre Apellido (12345678)	Se asignó la sección <strong>D</strong> del <strong>T1-t3</strong> al profesor <strong>Gonzalez Duberlis (10256095)</strong>	insert into carga values(default, false, null, &#039;10256095&#039;, &#039;58&#039;, null, &#039;PIPT1&#039;)
-1456922557	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Rodolfo (9499979)</strong>	insert into carga values(default, false, null, &#039;9499979&#039;, &#039;63&#039;, null, &#039;PIPT3&#039;)
-1456922558	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Rodolfo (9499979)</strong>	insert into carga values(default, false, null, &#039;9499979&#039;, &#039;64&#039;, null, &#039;PIPT3&#039;)
-1456922559	Nombre Apellido (12345678)	Se asignó la sección <strong>C</strong> del <strong>T3-t3</strong> al profesor <strong>Gonzalez Rodolfo (9499979)</strong>	insert into carga values(default, false, null, &#039;9499979&#039;, &#039;65&#039;, null, &#039;PIPT3&#039;)
 1456922630	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T4-t3</strong> al profesor <strong>Leal Solange (12722185)</strong>. Suple <strong>Briceño Susana (13477378)</strong>	insert into carga values(default, false, null, &#039;12722185&#039;, &#039;71&#039;, 13477378, &#039;PIAI4&#039;)
 1456922673	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T3-t2</strong> al profesor <strong>Muñoz Ana (4491973)</strong>. Suple <strong>Reinoza Eibert (17027780)</strong>	insert into carga values(default, false, null, &#039;4491973&#039;, &#039;61&#039;, 17027780, &#039;PIMB3&#039;)
 1456922722	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t3</strong> al profesor <strong>Muñoz Ana (4491973)</strong>. Suple <strong>Reinoza Eibert (17027780)</strong>	insert into carga values(default, false, &#039;Tecnología Aplicada a la Base de Datos&#039;, &#039;4491973&#039;, &#039;59&#039;, 17027780, &#039;PIEL2&#039;)
@@ -4136,6 +4133,7 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456942799	Nombre Apellido (12345678)	Se agregó la carrera <strong>Radiología e Imagenología</strong>	insert into carrera values(&#039;49&#039;, &#039;Radiología e Imagenología&#039;, &#039;3&#039;)
 1456942909	Nombre Apellido (12345678)	Se modificó al profesor <strong>Oswaldo Abarca (3966127)</strong>	update persona set cedula=&#039;3966127&#039;, nombre=&#039;Oswaldo&#039;, &quot;segundoNombre&quot;=&#039;Adelis&#039;, apellido=&#039;Abarca&#039;, &quot;segundoApellido&quot;=&#039;Montilla&#039;, sexo=&#039;m&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;3966127&#039;\n\nupdate profesor set cedula=&#039;3966127&#039;, categoria=&#039;Asist&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;25&#039; where cedula=&#039;3966127&#039;
 1456943030	Nombre Apellido (12345678)	Se modificó al profesor <strong>Reinaldo Laya (10617743)</strong>	update persona set cedula=&#039;10617743&#039;, nombre=&#039;Reinaldo&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Laya&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;m&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;10617743&#039;\n\nupdate profesor set cedula=&#039;10617743&#039;, categoria=&#039;Asist&#039;, condicion=&#039;3&#039;, dedicacion=&#039;EXC&#039;, profesion=&#039;35&#039; where cedula=&#039;10617743&#039;
+1456946267	Nombre Apellido (12345678)	Se agregó al profesor <strong>Jose Castro (19279167)</strong>	insert into persona values(&#039;19279167&#039;, &#039;Jose&#039;, &#039;Luis&#039;, &#039;Castro&#039;, null, &#039;m&#039;, &#039;inicialnombreapellido@uptm.edu.ve&#039;, &#039;Sin Asignar&#039;, &#039;0000-0000000&#039;, null)\n\ninsert into profesor values(&#039;19279167&#039;, &#039;Aux&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;45&#039;)
 1456943155	Nombre Apellido (12345678)	Se modificó al profesor <strong>Migdalia Martinez (10092487)</strong>	update persona set cedula=&#039;10092487&#039;, nombre=&#039;Migdalia&#039;, &quot;segundoNombre&quot;=&#039;Bethsabe&#039;, apellido=&#039;Martinez&#039;, &quot;segundoApellido&quot;=&#039;Carrero&#039;, sexo=&#039;f&#039;, correo=&#039;migbethsamar03@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0414-7381102&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;10092487&#039;\n\nupdate profesor set cedula=&#039;10092487&#039;, categoria=&#039;Inst&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;23&#039; where cedula=&#039;10092487&#039;
 1456943248	Nombre Apellido (12345678)	Se modificó al profesor <strong>Yadira Marquez (9475173)</strong>	update persona set cedula=&#039;9475173&#039;, nombre=&#039;Yadira&#039;, &quot;segundoNombre&quot;=&#039;Yelitza&#039;, apellido=&#039;Marquez&#039;, &quot;segundoApellido&quot;=&#039;Santiago&#039;, sexo=&#039;f&#039;, correo=&#039;yayms@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;04140760466&#039;, &quot;telefonoFijo&quot;=&#039;02742660082&#039; where cedula=&#039;9475173&#039;\n\nupdate profesor set cedula=&#039;9475173&#039;, categoria=&#039;Inst&#039;, condicion=&#039;3&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;1&#039; where cedula=&#039;9475173&#039;
 1456961304	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Bio Geo Historia de la Alimentación</strong>	insert into &quot;unidadCurricular&quot; values(&#039;90013&#039;, &#039;Bio Geo Historia de la Alimentación&#039;, false, &#039;09&#039;, &#039;2&#039;)
@@ -4148,6 +4146,8 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456943892	Nombre Apellido (12345678)	Se modificó al profesor <strong>Adan Colina (7482782)</strong>	update persona set cedula=&#039;7482782&#039;, nombre=&#039;Adan&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Colina&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;m&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;7482782&#039;\n\nupdate profesor set cedula=&#039;7482782&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;30&#039; where cedula=&#039;7482782&#039;
 1456943932	Nombre Apellido (12345678)	Se modificó la profesión <strong>Mádicina</strong>	update profesion set nombre=&#039;Médico Cirujano&#039; where nombre=&#039;Mádicina&#039;
 1456943956	Nombre Apellido (12345678)	Se modificó al profesor <strong>Adan Colina (7482782)</strong>	update persona set cedula=&#039;7482782&#039;, nombre=&#039;Adan&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Colina&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;m&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;7482782&#039;\n\nupdate profesor set cedula=&#039;7482782&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;43&#039; where cedula=&#039;7482782&#039;
+1456946289	Nombre Apellido (12345678)	Se modificó la profesión <strong>TSU en Radiología</strong>	update profesion set nombre=&#039;TSU en Radiología e Imagenología&#039; where nombre=&#039;TSU en Radiología&#039;
+1456946631	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Anatomia</strong>	update &quot;unidadCurricular&quot; set id=&#039;91105&#039;, nombre=&#039;Anatomía Radiológica&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;49&#039;, &quot;idEje&quot;=&#039;1&#039; where id=&#039;91105&#039;
 1456944012	Nombre Apellido (12345678)	Se modificó al profesor <strong>Jorge Flores (8044768)</strong>	update persona set cedula=&#039;8044768&#039;, nombre=&#039;Jorge&#039;, &quot;segundoNombre&quot;=&#039;Luis&#039;, apellido=&#039;Flores&#039;, &quot;segundoApellido&quot;=&#039;Calderon&#039;, sexo=&#039;m&#039;, correo=&#039;jorgelflores5@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;8044768&#039;\n\nupdate profesor set cedula=&#039;8044768&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;26&#039; where cedula=&#039;8044768&#039;
 1456944080	Nombre Apellido (12345678)	Se modificó al profesor <strong>María Geijo (9602126)</strong>	update persona set cedula=&#039;9602126&#039;, nombre=&#039;María&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Geijo&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;9602126&#039;\n\nupdate profesor set cedula=&#039;9602126&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;43&#039; where cedula=&#039;9602126&#039;
 1456944145	Nombre Apellido (12345678)	Se modificó al profesor <strong>Luisana Marquez (18308852)</strong>	update persona set cedula=&#039;18308852&#039;, nombre=&#039;Luisana&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Marquez&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;18308852&#039;\n\nupdate profesor set cedula=&#039;18308852&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;33&#039; where cedula=&#039;18308852&#039;
@@ -4172,9 +4172,6 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456946003	Nombre Apellido (12345678)	Se agregó al profesor <strong>Yuzmary Plaza (18620054)</strong>	insert into persona values(&#039;18620054&#039;, &#039;Yuzmary&#039;, null, &#039;Plaza&#039;, &#039;Briceño&#039;, &#039;f&#039;, &#039;inicialnombreapellido@uptm.edu&#039;, &#039;Sin Asignar&#039;, &#039;0000-0000000&#039;, null)\n\ninsert into profesor values(&#039;18620054&#039;, &#039;Aux&#039;, &#039;1&#039;, &#039;MT&#039;, &#039;45&#039;)
 1456946119	Nombre Apellido (12345678)	Se modificó al profesor <strong>Gilmer Rondón (15295462)</strong>	update persona set cedula=&#039;15295462&#039;, nombre=&#039;Gilmer&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Rondón&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;m&#039;, correo=&#039;inicialnombreapellido@uptm.edu&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;15295462&#039;\n\nupdate profesor set cedula=&#039;15295462&#039;, categoria=&#039;Aux&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;45&#039; where cedula=&#039;15295462&#039;
 1456946134	Nombre Apellido (12345678)	Se modificó al profesor <strong>Rosmary Salinas (18618150)</strong>	update persona set cedula=&#039;18618150&#039;, nombre=&#039;Rosmary&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Salinas&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;18618150&#039;\n\nupdate profesor set cedula=&#039;18618150&#039;, categoria=&#039;Aux&#039;, condicion=&#039;1&#039;, dedicacion=&#039;TC&#039;, profesion=&#039;45&#039; where cedula=&#039;18618150&#039;
-1456946267	Nombre Apellido (12345678)	Se agregó al profesor <strong>Jose Castro (19279167)</strong>	insert into persona values(&#039;19279167&#039;, &#039;Jose&#039;, &#039;Luis&#039;, &#039;Castro&#039;, null, &#039;m&#039;, &#039;inicialnombreapellido@uptm.edu.ve&#039;, &#039;Sin Asignar&#039;, &#039;0000-0000000&#039;, null)\n\ninsert into profesor values(&#039;19279167&#039;, &#039;Aux&#039;, &#039;1&#039;, &#039;TC&#039;, &#039;45&#039;)
-1456946289	Nombre Apellido (12345678)	Se modificó la profesión <strong>TSU en Radiología</strong>	update profesion set nombre=&#039;TSU en Radiología e Imagenología&#039; where nombre=&#039;TSU en Radiología&#039;
-1456946631	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Anatomia</strong>	update &quot;unidadCurricular&quot; set id=&#039;91105&#039;, nombre=&#039;Anatomía Radiológica&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;49&#039;, &quot;idEje&quot;=&#039;1&#039; where id=&#039;91105&#039;
 1456946699	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Fisiologia</strong>	update &quot;unidadCurricular&quot; set id=&#039;91201&#039;, nombre=&#039;Fisiologia&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;49&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;91201&#039;
 1456946724	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Anatomía Radiológica</strong>	update &quot;unidadCurricular&quot; set id=&#039;91105&#039;, nombre=&#039;Anatomía Radiológica&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;49&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;91105&#039;
 1456946766	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Uso Farmacos En La Radiologia</strong>	update &quot;unidadCurricular&quot; set id=&#039;91301&#039;, nombre=&#039;Uso Farmacos en la Radiología&#039;, renombrable=false, &quot;idCarrera&quot;=&#039;49&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;91301&#039;
@@ -4258,6 +4255,57 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 1456963596	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Unidad Estético, Lúdico, Cultural, Deportiva</strong>	insert into &quot;unidadCurricular&quot; values(&#039;90029&#039;, &#039;Unidad Estético, Lúdico, Cultural, Deportiva&#039;, false, &#039;09&#039;, &#039;2&#039;)
 1456963667	Nombre Apellido (12345678)	Se agregó la unidad curricular <strong>Electiva</strong>	insert into &quot;unidadCurricular&quot; values(&#039;900210&#039;, &#039;Electiva&#039;, true, &#039;09&#039;, &#039;2&#039;)
 1456964120	Nombre Apellido (12345678)	Se modificó la malla <strong>PNFSACN-2014</strong>	update malla set id=&#039;PNFSACN-2014&#039;, fecha=&#039;2016-03-02&#039; where id=&#039;PNFSACN-2014&#039;
+1456964417	Nombre Apellido (12345678)	Se creó el respaldo <strong>2016-03-02_19-50-16.sql</strong>	No SQL
+1456964877	Nombre Apellido (12345678)	Se activó el nuevo periodo <strong>A-2016</strong>	insert into periodo values(default, &#039;A-2016&#039;, &#039;2016-03-02&#039;, &#039;2016-03-02&#039;, &#039;p&#039;, &#039;14&#039;)\n\ninsert into periodo values(default, &#039;A-2016&#039;, &#039;2016-03-02&#039;, &#039;2016-03-02&#039;, &#039;a&#039;, &#039;14&#039;)
+1456965139	Nombre Apellido (12345678)	Se modificó el periodo <strong>2016-A</strong> de <strong>PNF Seguridad Alimentaria Y Cultura Nutricional - Ejido (PNF Semestral)</strong>	update periodo set id=&#039;2016-A&#039;, &quot;fechaInicio&quot;=&#039;2016-03-02&#039;, &quot;fechaFin&quot;=&#039;2016-03-02&#039; where id=&#039;A-2016&#039; and tipo=&#039;p&#039; and &quot;idECS&quot;=&#039;14&#039;\n\nupdate periodo set id=&#039;2016-A&#039;, &quot;fechaInicio&quot;=&#039;2016-03-02&#039;, &quot;fechaFin&quot;=&#039;2016-03-02&#039; where id=&#039;A-2016&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=&#039;14&#039;
+1456965293	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T1-s1</strong> en <strong>PNF Seguridad Alimentaria Y Cultura Nutricional</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;14&#039;, (select &quot;ID&quot; from periodo where id=&#039;2016-A&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;4&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;09&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T1-s1&#039;)
+1456965314	Nombre Apellido (12345678)	Se agregó la sección <strong>B</strong> del <strong>T2-s1</strong> en <strong>PNF Seguridad Alimentaria Y Cultura Nutricional</strong>	insert into seccion values(default, &#039;B&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;14&#039;, (select &quot;ID&quot; from periodo where id=&#039;2016-A&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;4&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;09&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T2-s1&#039;)
+1456965788	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-s1</strong> al profesor <strong>Gavidea Yelibeth (9474618)</strong>	insert into carga values(default, false, null, &#039;9474618&#039;, &#039;74&#039;, null, &#039;90017&#039;)
+1456965807	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-s1</strong> al profesor <strong>Gavidea Yelibeth (9474618)</strong>	insert into carga values(default, false, null, &#039;9474618&#039;, &#039;74&#039;, null, &#039;90018&#039;)
+1456965830	Nombre Apellido (12345678)	Se asignó la sección <strong>B</strong> del <strong>T2-s1</strong> al profesor <strong>Gavidea Yelibeth (9474618)</strong>	insert into carga values(default, false, null, &#039;9474618&#039;, &#039;75&#039;, null, &#039;90026&#039;)
+1456965850	Nombre Apellido (12345678)	Se modificó la sección <strong>A</strong> del <strong>T2-s1</strong> en <strong>PNF Seguridad Alimentaria Y Cultura Nutricional</strong>	update seccion set id=&#039;A&#039;, turno=&#039;d&#039;, multiplicador=&#039;1&#039;, grupos=false, &quot;idPeriodo&quot;=(select &quot;ID&quot; from periodo where id=&#039;2016-A&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;4&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;09&#039; and &quot;idSede&quot;=&#039;3&#039;))), &quot;periodoEstructura&quot;=&#039;T2-s1&#039; where &quot;ID&quot;=&#039;75&#039;
+1456965881	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-s1</strong> al profesor <strong>Rey Edward (17129049)</strong>	insert into carga values(default, false, null, &#039;17129049&#039;, &#039;74&#039;, null, &#039;90011&#039;)
+1456965899	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-s1</strong> al profesor <strong>Rey Edward (17129049)</strong>	insert into carga values(default, false, null, &#039;17129049&#039;, &#039;74&#039;, null, &#039;90014&#039;)
+1456965920	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-s1</strong> al profesor <strong>Rey Edward (17129049)</strong>	insert into carga values(default, false, null, &#039;17129049&#039;, &#039;74&#039;, null, &#039;90013&#039;)
+1456965979	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-s1</strong> al profesor <strong>Molina Gerardo (10172170)</strong>	insert into carga values(default, false, null, &#039;10172170&#039;, &#039;74&#039;, null, &#039;90012&#039;)
+1456965996	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T1-s1</strong> al profesor <strong>Gómez Noraida (11036485)</strong>	insert into carga values(default, false, null, &#039;11036485&#039;, &#039;74&#039;, null, &#039;90016&#039;)
+1456966011	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-s1</strong> al profesor <strong>Gómez Noraida (11036485)</strong>	insert into carga values(default, false, null, &#039;11036485&#039;, &#039;75&#039;, null, &#039;90027&#039;)
+1456966027	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-s1</strong> al profesor <strong>Gutierrez Hefzi Ba (20199965)</strong>	insert into carga values(default, false, null, &#039;20199965&#039;, &#039;75&#039;, null, &#039;90024&#039;)
+1456966059	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-s1</strong> al profesor <strong>Gutierrez Hefzi Ba (20199965)</strong>	insert into carga values(default, false, null, &#039;20199965&#039;, &#039;75&#039;, null, &#039;90022&#039;)
+1456966071	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-s1</strong> al profesor <strong>Manrrique Maryuri (12348836)</strong>	insert into carga values(default, false, null, &#039;12348836&#039;, &#039;75&#039;, null, &#039;90021&#039;)
+1456966084	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-s1</strong> al profesor <strong>Manrrique Maryuri (12348836)</strong>	insert into carga values(default, false, null, &#039;12348836&#039;, &#039;75&#039;, null, &#039;90025&#039;)
+1456971845	Nombre Apellido (12345678)	Se modificó el periodo <strong>2016-A</strong> de <strong>PNF Seguridad Alimentaria Y Cultura Nutricional - Ejido (PNF Semestral)</strong>	update periodo set id=&#039;2016-A&#039;, &quot;fechaInicio&quot;=&#039;2016-03-02&#039;, &quot;fechaFin&quot;=&#039;2016-03-02&#039; where id=&#039;2016-A&#039; and tipo=&#039;p&#039; and &quot;idECS&quot;=&#039;14&#039;\n\nupdate periodo set id=&#039;2016-A&#039;, &quot;fechaInicio&quot;=&#039;2016-02-15&#039;, &quot;fechaFin&quot;=&#039;2016-06-23&#039; where id=&#039;2016-A&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=&#039;14&#039;
+1456973021	Nombre Apellido (12345678)	Se modificó la carrera <strong>PNF Fonoaudiología</strong>	update carrera set id=&#039;08&#039;, nombre=&#039;PNF Fonoaudiología&#039;, &quot;idArea&quot;=&#039;2&#039; where id=&#039;08&#039;
+1456973652	Nombre Apellido (12345678)	Se agregó la malla <strong>PNFF-2013</strong>	insert into malla values(&#039;PNFF-2013&#039;, &#039;2016-03-02&#039;) returning id
+1456973720	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva II</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELECTIVA-222&#039;, nombre=&#039;Electiva II&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;08&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ELECTIVA-222&#039;
+1456973726	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva I</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELECTIVA-122&#039;, nombre=&#039;Electiva I&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;08&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ELECTIVA-122&#039;
+1456973733	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva III</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELECTIVA-322&#039;, nombre=&#039;Electiva III&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;08&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ELECTIVA-322&#039;
+1456973739	Nombre Apellido (12345678)	Se modificó la unidad curricular <strong>Electiva IV</strong>	update &quot;unidadCurricular&quot; set id=&#039;ELECTIVA-422&#039;, nombre=&#039;Electiva IV&#039;, renombrable=true, &quot;idCarrera&quot;=&#039;08&#039;, &quot;idEje&quot;=&#039;2&#039; where id=&#039;ELECTIVA-422&#039;
+1456973918	Nombre Apellido (12345678)	Se activó el nuevo periodo <strong>2015-B</strong>	insert into periodo values(default, &#039;2015-B&#039;, &#039;2016-03-02&#039;, &#039;2016-03-02&#039;, &#039;p&#039;, &#039;15&#039;)\n\ninsert into periodo values(default, &#039;2015-B&#039;, &#039;2015-05-18&#039;, &#039;2016-04-15&#039;, &#039;a&#039;, &#039;15&#039;)
+1456973943	Nombre Apellido (12345678)	Se agregó la sección <strong>A</strong> del <strong>T2-t1</strong> en <strong>PNF Fonoaudiología</strong>	insert into seccion values(default, &#039;A&#039;, &#039;d&#039;, &#039;1&#039;, false, &#039;15&#039;, (select &quot;ID&quot; from periodo where id=&#039;2015-B&#039; and tipo=&#039;a&#039; and &quot;idECS&quot;=(select id from &quot;estructuraCS&quot; where &quot;idEstructura&quot;=&#039;1&#039; and &quot;idCS&quot;=(select id from &quot;carreraSede&quot; where &quot;idCarrera&quot;=&#039;08&#039; and &quot;idSede&quot;=&#039;3&#039;))), &#039;T2-t1&#039;)
+1456974023	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Vasquez Rosa (8021736)</strong>	insert into carga values(default, false, null, &#039;8021736&#039;, &#039;76&#039;, null, &#039;PRACPROF-2120&#039;)
+1456974065	Nombre Apellido (12345678)	Se modificó al profesor <strong>Rosa Vasquez (8021736)</strong>	update persona set cedula=&#039;8021736&#039;, nombre=&#039;Rosa&#039;, &quot;segundoNombre&quot;=&#039;Maria&#039;, apellido=&#039;Vasquez&#039;, &quot;segundoApellido&quot;=&#039;Falcon&#039;, sexo=&#039;f&#039;, correo=&#039;rosa_mariavf@hotmail.com&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0416-2747257&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;8021736&#039;\n\nupdate profesor set cedula=&#039;8021736&#039;, categoria=&#039;Inst&#039;, condicion=&#039;3&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;25&#039; where cedula=&#039;8021736&#039;
+1456974390	Nombre Apellido (12345678)	Se agregó al profesor <strong>Jose Monsalve (5198826)</strong>	insert into persona values(&#039;5198826&#039;, &#039;Jose&#039;, null, &#039;Monsalve&#039;, null, &#039;f&#039;, &#039;inicialnombreapellido@uptm.edu.ve&#039;, &#039;Sin asignar&#039;, &#039;0000-0000000&#039;, null)\n\ninsert into profesor values(&#039;5198826&#039;, &#039;Inst&#039;, &#039;1&#039;, &#039;TCv&#039;, &#039;43&#039;)
+1456974480	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Reggeti Odette (3661985)</strong>	insert into carga values(default, false, null, &#039;3661985&#039;, &#039;76&#039;, null, &#039;RECUPSFO-245&#039;)
+1456974565	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Reggeti Odette (3661985)</strong>	insert into carga values(default, false, null, &#039;3661985&#039;, &#039;76&#039;, null, &#039;DIAGINAU-245&#039;)
+1456974616	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Anzola Myriam (4356042)</strong>	insert into carga values(default, false, null, &#039;4356042&#039;, &#039;76&#039;, null, &#039;PROYSOCI-234&#039;)
+1456974645	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Monsalve Jose (5198826)</strong>	insert into carga values(default, false, null, &#039;5198826&#039;, &#039;76&#039;, null, &#039;NEUROLIN-245&#039;)
+1456974721	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Monsalve Jose (5198826)</strong>	insert into carga values(default, false, null, &#039;5198826&#039;, &#039;76&#039;, null, &#039;PATOCOHU-256&#039;)
+1456974885	Nombre Apellido (12345678)	Se modificó al profesor <strong>Tani Diaz (10751767)</strong>	update persona set cedula=&#039;10751767&#039;, nombre=&#039;Tani&#039;, &quot;segundoNombre&quot;=null, apellido=&#039;Diaz&#039;, &quot;segundoApellido&quot;=null, sexo=&#039;f&#039;, correo=&#039;inicialnombreapellido@uptm.edu.ve&#039;, direccion=&#039;Sin asignar&#039;, telefono=&#039;0000-0000000&#039;, &quot;telefonoFijo&quot;=null where cedula=&#039;10751767&#039;\n\nupdate profesor set cedula=&#039;10751767&#039;, categoria=&#039;Inst&#039;, condicion=&#039;1&#039;, dedicacion=&#039;MT&#039;, profesion=&#039;23&#039; where cedula=&#039;10751767&#039;
+1456975029	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Sosa Becky (19421996)</strong>	insert into carga values(default, false, &#039;Lenguaje de Señas Venezolanas II&#039;, &#039;19421996&#039;, &#039;76&#039;, null, &#039;ELECTIVA-222&#039;)
+1456975116	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Diaz Tani (10751767)</strong>	insert into carga values(default, false, null, &#039;10751767&#039;, &#039;76&#039;, null, &#039;DIAGINLE-256&#039;)
+1456975157	Nombre Apellido (12345678)	Se asignó la sección <strong>A</strong> del <strong>T2-t1</strong> al profesor <strong>Diaz Tani (10751767)</strong>	insert into carga values(default, false, null, &#039;10751767&#039;, &#039;76&#039;, null, &#039;DIAGINHA-256&#039;)
+1457323382	Nombre Apellido (12345678)	Se eliminó el respaldo <strong>2016-01-27_06-42-59.sql</strong>	No SQL
+1457323385	Nombre Apellido (12345678)	Se eliminó el respaldo <strong>2016-02-18_15-10-38.sql</strong>	No SQL
+1457323387	Nombre Apellido (12345678)	Se eliminó el respaldo <strong>2016-02-18_18-23-44.sql</strong>	No SQL
+\.
+
+
+--
+-- Data for Name: horario; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY horario (id_enlace, periodo, thora, chora, seccion, materia, profesor, carrera, salon, hora, id_bloque, id) FROM stdin;
 \.
 
 
@@ -4265,14 +4313,22 @@ COPY historial (id, usuario, descripcion, sql) FROM stdin;
 -- Name: mallaECS_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"mallaECS_id_seq"', 14, true);
+SELECT pg_catalog.setval('"mallaECS_id_seq"', 15, true);
+
+
+--
+-- Data for Name: observacion; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY observacion (contenido, "idCS", "idPeriodo", "idProfesor") FROM stdin;
+\.
 
 
 --
 -- Name: periodo_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"periodo_ID_seq"', 18, true);
+SELECT pg_catalog.setval('"periodo_ID_seq"', 22, true);
 
 
 --
@@ -4727,6 +4783,8 @@ COPY pertenece ("idCS", "idProfesor") FROM stdin;
 14	11036485
 14	20199965
 14	12348836
+8	5198826
+8	10751767
 \.
 
 
@@ -4738,25 +4796,25 @@ SELECT pg_catalog.setval('profesion_id_seq', 54, true);
 
 
 --
--- Data for Name: schedule; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: salones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY schedule (id, status, classrooms, rows, columns) FROM stdin;
+COPY salones (id, salon, cod_edi, tipo) FROM stdin;
 \.
 
 
 --
--- Name: schedule_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: salones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('schedule_id_seq', 1, false);
+SELECT pg_catalog.setval('salones_id_seq', 1, false);
 
 
 --
 -- Name: seccion_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"seccion_ID_seq"', 73, true);
+SELECT pg_catalog.setval('"seccion_ID_seq"', 76, true);
 
 
 --
@@ -4908,6 +4966,20 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 155	3	0	f	T4-t3	ELEC6042	PNFA-2014
 150	1	2	t	T4-t3	PIA9043	PNFA-2014
 717	5	0	f	T4-t3	PIEL4	PNFI-2012
+824	4	0	f	T2-t1	NEUROLIN-245	PNFF-2013
+825	4	0	f	T2-t2	NEUROLIN-245	PNFF-2013
+826	4	0	f	T2-t3	NEUROLIN-245	PNFF-2013
+827	4	0	f	T2-t1	RECUPSFO-245	PNFF-2013
+828	4	0	f	T2-t2	RECUPSFO-245	PNFF-2013
+829	4	0	f	T2-t3	RECUPSFO-245	PNFF-2013
+830	5	0	f	T2-t1	PATOCOHU-256	PNFF-2013
+831	5	0	f	T2-t2	PATOCOHU-256	PNFF-2013
+832	5	0	f	T2-t3	PATOCOHU-256	PNFF-2013
+833	5	0	f	T2-t1	DIAGINLE-256	PNFF-2013
+834	5	0	f	T2-t2	DIAGINLE-256	PNFF-2013
+835	5	0	f	T2-t3	DIAGINLE-256	PNFF-2013
+836	5	0	f	T2-t1	DIAGINHA-256	PNFF-2013
+837	5	0	f	T2-t2	DIAGINHA-256	PNFF-2013
 174	4	0	f	T1-t1	ES3011	PNFA-2010-2
 175	3	0	f	T1-t1	FSC18016	PNFA-2010-2
 394	4	0	f	T1-t1	CON12014	PNFA-2010-3
@@ -4935,6 +5007,7 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 226	3	0	f	T3-t1	PPL6032	PNFA-2010-2
 217	6	0	f	T3-t1	PRO570319	PNFA-2010-2
 215	4	0	f	T3-t1	PRE9033	PNFA-2010-2
+838	5	0	f	T2-t3	DIAGINHA-256	PNFF-2013
 389	3	0	f	T0	DIE6002	PNFA-2010-3
 390	3	0	f	T0	GRPC3001	PNFA-2010-3
 391	4	0	f	T0	PRO6002	PNFA-2010-3
@@ -4947,6 +5020,14 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 218	6	0	f	T3-t2	PRO570319	PNFA-2010-2
 392	4	0	f	T0	MAT6002	PNFA-2010-3
 393	4	0	f	T0	PNNC9003	PNFA-2010-3
+839	4	0	f	T2-t1	DIAGINAU-245	PNFF-2013
+840	4	0	f	T2-t2	DIAGINAU-245	PNFF-2013
+841	4	0	f	T2-t3	DIAGINAU-245	PNFF-2013
+842	3	0	f	T2-t1	PROYSOCI-234	PNFF-2013
+843	3	0	f	T2-t2	PROYSOCI-234	PNFF-2013
+844	3	0	f	T2-t3	PROYSOCI-234	PNFF-2013
+845	6	6	f	T2-t1	PRACPROF-2120	PNFF-2013
+846	2	0	f	T2-t1	ELECTIVA-222	PNFF-2013
 256	4	0	f	TT	ANM60T2	PNFA-2014-PRO
 263	4	0	f	TT	SEM160T2	PNFA-2014-PRO
 264	4	0	f	TT	SEM260T2	PNFA-2014-PRO
@@ -5113,6 +5194,10 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 485	4	4	f	T1-t3	AGPFI1166	PNFAg
 494	3	0	f	T1-t3	AGSALC142	PNFAg
 732	5	0	f	T3-t1	PISO3	PNFI-2012-PRO
+847	2	0	f	T2-t2	ELECTIVA-222	PNFF-2013
+848	2	0	f	T2-t3	ELECTIVA-222	PNFF-2013
+849	6	6	f	T2-t2	PRACPROF-2120	PNFF-2013
+850	6	6	f	T2-t3	PRACPROF-2120	PNFF-2013
 505	1	2	f	T2-t1	AGATMA242	PNFAg
 508	1	2	f	T2-t1	AGBFSPV242	PNFAg
 514	1	2	t	T2-t1	AGMIC242	PNFAg
@@ -5486,7 +5571,7 @@ COPY "ucMalla" (id, "horasTeoricas", "horasPracticas", tipo, periodo, "idUC", "i
 -- Name: ucMalla_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('"ucMalla_id_seq"', 823, true);
+SELECT pg_catalog.setval('"ucMalla_id_seq"', 850, true);
 
 
 --
@@ -5494,7 +5579,568 @@ SELECT pg_catalog.setval('"ucMalla_id_seq"', 823, true);
 --
 
 COPY usuario (cedula, contrasena, frase, ingreso, nivel) FROM stdin;
-12345678	81dc9bdb52d04dc20036dbd8313ed055	81dc9bdb52d04dc20036dbd8313ed055	2016-03-02	1
+12345678	81dc9bdb52d04dc20036dbd8313ed055	81dc9bdb52d04dc20036dbd8313ed055	2016-03-06	1
+19096583	0be514ce00322d7f7c6dedd2d36eb1bb	0be514ce00322d7f7c6dedd2d36eb1bb	\N	4
+8039294	bd5f33ef30e961de5eb2e5897735c79c	bd5f33ef30e961de5eb2e5897735c79c	\N	4
+10102454	c5cc3e2259dc2d182a7a957530f41e93	c5cc3e2259dc2d182a7a957530f41e93	\N	4
+11463296	8355bc86bb9041b347279552ffd88604	8355bc86bb9041b347279552ffd88604	\N	4
+3485766	9a2b7ff2cc79cbeaa90ac929921d8f0b	9a2b7ff2cc79cbeaa90ac929921d8f0b	\N	4
+3830917	575862a9949e926a9b66183ed1a40b50	575862a9949e926a9b66183ed1a40b50	\N	4
+3910823	cc215e38708c4b7aa128ca63e0e7c560	cc215e38708c4b7aa128ca63e0e7c560	\N	3
+3990590	22212a2babbc4a323a7d7995ee5e586c	22212a2babbc4a323a7d7995ee5e586c	\N	4
+4194292	7494b1d435bce489f269333deb0364c8	7494b1d435bce489f269333deb0364c8	\N	4
+4327492	84d92e62a60679c0f74c32f6fdaf22df	84d92e62a60679c0f74c32f6fdaf22df	\N	4
+4397227	151ef25c58bb4d1f8d824b5ef2a0b28c	151ef25c58bb4d1f8d824b5ef2a0b28c	\N	4
+4488065	b7d6326a02e823f78739131d1b18a5ef	b7d6326a02e823f78739131d1b18a5ef	\N	4
+4490481	c1e523c324d5dbdb04a0c3b5c8c8f2fd	c1e523c324d5dbdb04a0c3b5c8c8f2fd	\N	4
+4492233	cac3ad41b28201f8ae78595bbeb441a5	cac3ad41b28201f8ae78595bbeb441a5	\N	4
+4583431	5d858bb5aeca14f663be7beba2ed5c82	5d858bb5aeca14f663be7beba2ed5c82	\N	4
+4633259	070f94f5b685cb6424503e65297fcecb	070f94f5b685cb6424503e65297fcecb	\N	4
+4953940	d28452c0677c1c83ee2a1c7acb5b5005	d28452c0677c1c83ee2a1c7acb5b5005	\N	4
+5206267	f0814a71c773dbd226609762ef44dc87	f0814a71c773dbd226609762ef44dc87	\N	4
+5559793	6c31adf92bf71b6c13b26b22a773d443	6c31adf92bf71b6c13b26b22a773d443	\N	4
+4054457	2251adfb09280133936c019bc9a19b10	2251adfb09280133936c019bc9a19b10	\N	4
+6558454	c48f20583ac05bd67505a323c9b905d5	c48f20583ac05bd67505a323c9b905d5	\N	4
+7775026	42df52be560380c14fb07851f7981bd7	42df52be560380c14fb07851f7981bd7	\N	4
+8000617	3bed83641ecf837ed4f983db6f5d6ba4	3bed83641ecf837ed4f983db6f5d6ba4	\N	4
+8004161	7b0448421f47dff06e3189e5eab5fb14	7b0448421f47dff06e3189e5eab5fb14	\N	4
+8006388	0cc88b41f3cfc5f0d175bdd1b99d5d11	0cc88b41f3cfc5f0d175bdd1b99d5d11	\N	4
+8024531	f86303cdc94c1562131e4793bff28899	f86303cdc94c1562131e4793bff28899	\N	4
+8025750	b328e1d95f78f612c1d72ce8443cb434	b328e1d95f78f612c1d72ce8443cb434	\N	4
+8035484	097081696a566d9c7bbf66b162001b8c	097081696a566d9c7bbf66b162001b8c	\N	4
+8002183	231d5eb9b103e2912dbf66142b4fff27	231d5eb9b103e2912dbf66142b4fff27	\N	4
+8042559	c2afb984bb8efca6ff668eb7480b87c6	c2afb984bb8efca6ff668eb7480b87c6	\N	4
+8045258	d06f9c2a00f031cc0dce4037568f3f00	d06f9c2a00f031cc0dce4037568f3f00	\N	4
+8087415	0b012322a8e8c2f1b159972aca7e024a	0b012322a8e8c2f1b159972aca7e024a	\N	4
+10797122	bfe95be2129cc8d2d0319d5af948537d	bfe95be2129cc8d2d0319d5af948537d	\N	4
+11467397	e434a25f85d97f364968c0372dec02fd	e434a25f85d97f364968c0372dec02fd	\N	4
+11468201	3b3dc2f543224dbc7d1f70e050021354	3b3dc2f543224dbc7d1f70e050021354	\N	4
+11912316	c55323665d2057be779fad97a47b603a	c55323665d2057be779fad97a47b603a	\N	4
+12353031	b6dadd5f0ace9690d411a699f8aa967d	b6dadd5f0ace9690d411a699f8aa967d	\N	4
+12779975	b3f5962ff884271911b48581c7aeba47	b3f5962ff884271911b48581c7aeba47	\N	4
+13099384	79f26ee136757e29ec3fd99815097ea5	79f26ee136757e29ec3fd99815097ea5	\N	4
+13966605	409142237bca42c8f26ae7cf83912f89	409142237bca42c8f26ae7cf83912f89	\N	4
+14400087	89389b1b6508d370cbe7e0aaa11d5ad4	89389b1b6508d370cbe7e0aaa11d5ad4	\N	4
+15223533	5bc48736216bd15793a0e313a4a520fd	5bc48736216bd15793a0e313a4a520fd	\N	4
+15381185	800bb1ce941e90ff1dd781dcbfaad650	800bb1ce941e90ff1dd781dcbfaad650	\N	4
+15754311	d135ddcbb342701f7feed27260199844	d135ddcbb342701f7feed27260199844	\N	4
+16377291	4588a87b35d12a48b0d3c14e09706046	4588a87b35d12a48b0d3c14e09706046	\N	4
+17238348	473b26499a1b38a9dc538b570e2c5ccb	473b26499a1b38a9dc538b570e2c5ccb	\N	4
+8002737	41d326bb37c0da6b13f0e660bbee73d8	41d326bb37c0da6b13f0e660bbee73d8	\N	4
+3048184	3bbfc1cc8b47188f4cacb69087f96c90	3bbfc1cc8b47188f4cacb69087f96c90	\N	4
+3992405	23f2e923e529eff1373a6fc682fc0289	23f2e923e529eff1373a6fc682fc0289	\N	4
+4488420	794b05853f27bf5a4918476db058d387	794b05853f27bf5a4918476db058d387	\N	4
+5206372	7819b053557b28cb8ffbcaae6bad3d5e	7819b053557b28cb8ffbcaae6bad3d5e	\N	4
+5355610	585c01f58724a812a623cea8d881594d	585c01f58724a812a623cea8d881594d	\N	4
+5447146	f3e6cf69718e9af3546e6e4250fa1cbb	f3e6cf69718e9af3546e6e4250fa1cbb	\N	4
+5507269	fc89a89f03b567bb9446f8a1bfc52db3	fc89a89f03b567bb9446f8a1bfc52db3	\N	4
+5794416	024ac2fbf96735e9fbcfd3ba9c1890be	024ac2fbf96735e9fbcfd3ba9c1890be	\N	4
+7648734	0bf924432ae5f9a81a43056f1600600c	0bf924432ae5f9a81a43056f1600600c	\N	4
+7934845	86a5676989a14a2c9c30a58bd6c4241a	86a5676989a14a2c9c30a58bd6c4241a	\N	4
+8021306	0423f9cbf4cb76bab158cce661cb2c49	0423f9cbf4cb76bab158cce661cb2c49	\N	4
+8041510	4a419c52faf02ca5280b484217405985	4a419c52faf02ca5280b484217405985	\N	4
+8046408	74fa651fac75a181ee33a4a649020995	74fa651fac75a181ee33a4a649020995	\N	4
+8048794	65589a2693503a9edee54fbc479e9867	65589a2693503a9edee54fbc479e9867	\N	4
+8336414	e2faf3e8559e2ab784d3d3903b33cf4f	e2faf3e8559e2ab784d3d3903b33cf4f	\N	4
+8683060	4d1bf54a9247b664812c2acbbae80199	4d1bf54a9247b664812c2acbbae80199	\N	4
+8958864	adfb862332ca5f2519543b6930c83934	adfb862332ca5f2519543b6930c83934	\N	4
+9472514	2a7d39046e2b66d25adfef8eaaff8463	2a7d39046e2b66d25adfef8eaaff8463	\N	4
+10102259	df2b30466a6f98d43116bcd5975e832b	df2b30466a6f98d43116bcd5975e832b	\N	4
+10104966	3de330f2a91534516041d3d7b7f61196	3de330f2a91534516041d3d7b7f61196	\N	4
+10314511	ec4e1cc2ef06323963b1f38ae348b41e	ec4e1cc2ef06323963b1f38ae348b41e	\N	4
+10714070	7519cb086380123d8d3cdbe76374a952	7519cb086380123d8d3cdbe76374a952	\N	4
+10715404	b52dc8c828e77a47e674ab47d4eceb6f	b52dc8c828e77a47e674ab47d4eceb6f	\N	4
+10718224	c04f978b6bf49e5bc700ca35a7799df7	c04f978b6bf49e5bc700ca35a7799df7	\N	4
+10718393	6e2da033096b2ec6639963c0bcc0d93b	6e2da033096b2ec6639963c0bcc0d93b	\N	4
+11067484	24dc02e0e086cac103b48ed830ef9496	24dc02e0e086cac103b48ed830ef9496	\N	4
+3767311	6529bafe93979c2d1d009319f85877ec	6529bafe93979c2d1d009319f85877ec	\N	3
+4472778	ef3b2b9a7dc1a9d2c6648f1f8cbfc1e5	ef3b2b9a7dc1a9d2c6648f1f8cbfc1e5	\N	4
+4491607	fd752f6c286d0434a0baf7965c0585df	fd752f6c286d0434a0baf7965c0585df	\N	4
+5124273	03b3d265b309890c7347c1c34ee301e6	03b3d265b309890c7347c1c34ee301e6	\N	4
+8002316	3fee0ab2d3fce702c976606851f224cb	3fee0ab2d3fce702c976606851f224cb	\N	4
+8012641	9614236cda66482aea852d293e0f68f9	9614236cda66482aea852d293e0f68f9	\N	4
+8020758	b729797bd392581545bfab7e5fcef703	b729797bd392581545bfab7e5fcef703	\N	4
+8022671	34371818a3e6f4c7bc7186aa913cb7ba	34371818a3e6f4c7bc7186aa913cb7ba	\N	4
+8026155	4386bab6300f03d2d3a029ba17448ada	4386bab6300f03d2d3a029ba17448ada	\N	4
+8027408	7c98c08d935636d1acc51eb91ffa57fe	7c98c08d935636d1acc51eb91ffa57fe	\N	4
+8029696	ad5e140872b52ab95e4c82bac3d7643d	ad5e140872b52ab95e4c82bac3d7643d	\N	4
+8034029	65dbc46be0e1b2a4d1020849416d432c	65dbc46be0e1b2a4d1020849416d432c	\N	4
+8034371	c7e9806f3997bc6a7f8193b8ba1bd2d3	c7e9806f3997bc6a7f8193b8ba1bd2d3	\N	4
+8038332	451eac1447f5c0b7c5722b3bfb2091ff	451eac1447f5c0b7c5722b3bfb2091ff	\N	4
+8080676	9140eaf514cf9fa9af7a15ed2f93010d	9140eaf514cf9fa9af7a15ed2f93010d	\N	4
+8084432	9866590ce50a3ea6dd322f8bdeb4d437	9866590ce50a3ea6dd322f8bdeb4d437	\N	4
+9198636	66b936cada44318ff4e8565c6dd3515e	66b936cada44318ff4e8565c6dd3515e	\N	4
+9473151	209cf50328e6d79093a0e6ef6038346b	209cf50328e6d79093a0e6ef6038346b	\N	4
+9473423	4cc9bbe5ef60089c427b51ef5f2971ee	4cc9bbe5ef60089c427b51ef5f2971ee	\N	4
+9474147	dea496fd72d0f629bc18ba319d866c31	dea496fd72d0f629bc18ba319d866c31	\N	4
+10087275	dd9d5bca2aa8bdc8c8d207098a660bdd	dd9d5bca2aa8bdc8c8d207098a660bdd	\N	4
+10108950	5102253afdd7d7402665270dd1237645	5102253afdd7d7402665270dd1237645	\N	4
+13098763	db524b1afe2e9e91f2d0bad04e245993	db524b1afe2e9e91f2d0bad04e245993	\N	4
+3727339	fa1365282f3e427e13e7b3b0c0a3d053	fa1365282f3e427e13e7b3b0c0a3d053	\N	4
+8045307	9c7b055893962cdd147cda201a164d4e	9c7b055893962cdd147cda201a164d4e	\N	4
+10713529	c76874cebeef7c2a3fbe4b9565ddecb1	c76874cebeef7c2a3fbe4b9565ddecb1	\N	4
+3692342	4508a8ee86c8a0f4a420028001c318f6	4508a8ee86c8a0f4a420028001c318f6	\N	4
+5021210	c6ac797adb3eb2e1b60e037bd84bca37	c6ac797adb3eb2e1b60e037bd84bca37	\N	4
+9906067	38dccbcbd6f386caaaf82d24df3e935c	38dccbcbd6f386caaaf82d24df3e935c	\N	4
+10100205	fc119e857573f06035b6c4005446c6cf	fc119e857573f06035b6c4005446c6cf	\N	4
+8006639	8f013843adbd0db92877a0f1803fe696	8f013843adbd0db92877a0f1803fe696	\N	4
+8039498	fdf236cbadd8fa80631903ed866335f5	fdf236cbadd8fa80631903ed866335f5	\N	4
+8079222	83bf094c6e7dd9f4933406296f52f930	83bf094c6e7dd9f4933406296f52f930	\N	4
+9234597	57584f8cfd26b846502a9bb518593049	57584f8cfd26b846502a9bb518593049	\N	4
+6940439	2485cd717dbb3c88180ddb0a51e67e04	2485cd717dbb3c88180ddb0a51e67e04	\N	4
+2149217	e40443240cfe1f9ad82c45685797d331	e40443240cfe1f9ad82c45685797d331	\N	3
+3791326	e6775578d370af95b4c0fa8b154602d7	e6775578d370af95b4c0fa8b154602d7	\N	4
+8029045	a441feb3e7ecdce6669ffc488c78a49c	a441feb3e7ecdce6669ffc488c78a49c	\N	4
+8041620	12b58b36d93a01f612c13cb9c6f06cea	12b58b36d93a01f612c13cb9c6f06cea	\N	4
+9473374	aaf9359bf0233c843b0aee001e10c2b0	aaf9359bf0233c843b0aee001e10c2b0	\N	4
+3574698	23c714e9445dace7695b1b31a285ab4c	23c714e9445dace7695b1b31a285ab4c	\N	4
+8040787	059cb8c73710c3a7eec1db166fb3ffa3	059cb8c73710c3a7eec1db166fb3ffa3	\N	4
+4356042	c141b51789a240c36f6a52267ab9636e	c141b51789a240c36f6a52267ab9636e	\N	4
+4492356	64fd9ee9352033e4000819f1b8e0d67f	64fd9ee9352033e4000819f1b8e0d67f	\N	4
+9473852	12e7cf9a6fae9f00a6f1d73dcfa5bd7c	12e7cf9a6fae9f00a6f1d73dcfa5bd7c	\N	4
+10109087	c2f2518e34446aadd880359092921d55	c2f2518e34446aadd880359092921d55	\N	4
+17456574	816bebc08ec49f1c54efcb910ed3ed99	816bebc08ec49f1c54efcb910ed3ed99	\N	4
+17499585	fb6887d0ea1966197901103a039cbab9	fb6887d0ea1966197901103a039cbab9	\N	4
+16199115	d2dcb26e075480e5dc4a63cc123cca36	d2dcb26e075480e5dc4a63cc123cca36	\N	4
+18581024	ad67f304834453528bc7b06ea6459520	ad67f304834453528bc7b06ea6459520	\N	4
+9240195	2ee3850a19794fc8d4b08844e6f5d192	2ee3850a19794fc8d4b08844e6f5d192	\N	4
+14281324	5f7ce8cf730f6fc42a089d7a6aae488c	5f7ce8cf730f6fc42a089d7a6aae488c	\N	4
+16317126	08d9b55cf418cb295320af776dacd77c	08d9b55cf418cb295320af776dacd77c	\N	4
+1010633	601ffea3c515aaaf4643bcdcc67995c4	601ffea3c515aaaf4643bcdcc67995c4	\N	4
+6729553	5914f39bdb0b4762dfd7daee564f6aa5	5914f39bdb0b4762dfd7daee564f6aa5	\N	4
+5753564	b6eee7d83defde4e0860a5dff1fddd84	b6eee7d83defde4e0860a5dff1fddd84	\N	4
+9501330	a49a8f92a097d4b3d7fa7b6ecbdbcc18	a49a8f92a097d4b3d7fa7b6ecbdbcc18	\N	4
+5561396	1844118865eeb5549d6d938d29efaf50	1844118865eeb5549d6d938d29efaf50	\N	4
+8005159	b30603eb67535b8ceae151a76a003923	b30603eb67535b8ceae151a76a003923	\N	4
+7326064	1fff7cc12ee539d5bf5dd43c362dafa6	1fff7cc12ee539d5bf5dd43c362dafa6	\N	4
+8046659	522108d8ca097e21f0aa6f777fb69ccf	522108d8ca097e21f0aa6f777fb69ccf	\N	4
+9478674	e7feb0a003244326e663b2cc81685cca	e7feb0a003244326e663b2cc81685cca	\N	4
+10718091	d6a21593c642f171718ca64f53bd95aa	d6a21593c642f171718ca64f53bd95aa	\N	4
+9473567	cff64b6f506ef54d86494594f1070930	cff64b6f506ef54d86494594f1070930	\N	4
+8038611	47673f8c60fa4f9a20788c958c713c2e	47673f8c60fa4f9a20788c958c713c2e	\N	4
+4484976	ba35008385c2ce7c63525c8c517c102c	ba35008385c2ce7c63525c8c517c102c	\N	4
+7168412	ec04d8227256d077b0a002de0c3258f6	ec04d8227256d077b0a002de0c3258f6	\N	4
+9499979	ac3da063f25e3630406352efc8485122	ac3da063f25e3630406352efc8485122	\N	4
+4491973	b0298f8ed048311053f60cbf3e42b313	b0298f8ed048311053f60cbf3e42b313	\N	4
+8027793	1ce8e3dce7c48f2ed383bd47c9de4bb4	1ce8e3dce7c48f2ed383bd47c9de4bb4	\N	4
+4489957	af5677e5a5c7630932dd2a957dc49ac2	af5677e5a5c7630932dd2a957dc49ac2	\N	4
+11956576	3543d68e00499c26fb4d1530ed1ed117	3543d68e00499c26fb4d1530ed1ed117	\N	4
+8044768	68dc88f7a3d83cc43f40aded9351caf8	68dc88f7a3d83cc43f40aded9351caf8	\N	4
+13014569	5f5c7efb3f15ea81d0dd7b5e67250fcf	5f5c7efb3f15ea81d0dd7b5e67250fcf	\N	4
+8029075	00b95497dd2fc4a6a94b1048f4eea419	00b95497dd2fc4a6a94b1048f4eea419	\N	4
+9201868	56476a97de127d0bf612f1fc4187d516	56476a97de127d0bf612f1fc4187d516	\N	4
+17027780	c1d2456e5316015053f443d742904064	c1d2456e5316015053f443d742904064	\N	4
+17663839	926ae04aa049774705456f8e8742cd45	926ae04aa049774705456f8e8742cd45	\N	4
+11957795	8b30c1f82b0c25690bec0e972b023c37	8b30c1f82b0c25690bec0e972b023c37	\N	4
+8028204	c1bc8f50f5f986c0f63c5b72435c462d	c1bc8f50f5f986c0f63c5b72435c462d	\N	4
+5239250	6cc0522141ba6803d6da34cab24b95b3	6cc0522141ba6803d6da34cab24b95b3	\N	4
+8656400	58900fce5db0a3971e8fb84a42abc4bc	58900fce5db0a3971e8fb84a42abc4bc	\N	4
+8021736	e8dda1a8784fe39fbe52dac7a220ebfd	e8dda1a8784fe39fbe52dac7a220ebfd	\N	3
+5952723	60ff020f6c28637d3cdb9900930da7e9	60ff020f6c28637d3cdb9900930da7e9	\N	4
+9643447	dd35f4d48507ae1175ca235afc6cbc84	dd35f4d48507ae1175ca235afc6cbc84	\N	4
+2287821	fcbd24061336460c0712f79f120a8890	fcbd24061336460c0712f79f120a8890	\N	4
+3309773	8d6653f9c98633cd1e300c6370ad1785	8d6653f9c98633cd1e300c6370ad1785	\N	3
+3939687	4a577c56bc90da96e81a7b1b301a6182	4a577c56bc90da96e81a7b1b301a6182	\N	3
+4319574	b462227470eae52c79616030367c8de6	b462227470eae52c79616030367c8de6	\N	4
+4768469	785f8d9c4b0d89cf4104a4ea37d66c70	785f8d9c4b0d89cf4104a4ea37d66c70	\N	4
+4769890	1d9b36aefcc923c7ff878a5c2ad49476	1d9b36aefcc923c7ff878a5c2ad49476	\N	4
+5206999	d90d81af6ca6b49be686cb81621c2f6a	d90d81af6ca6b49be686cb81621c2f6a	\N	4
+5349758	ed720606c9c39f22c650543c5fda2777	ed720606c9c39f22c650543c5fda2777	\N	4
+6547603	b724a5e17662e2c34b7dffa692212c37	b724a5e17662e2c34b7dffa692212c37	\N	4
+7525829	ee0840f5f690047e45e9d6fb962feceb	ee0840f5f690047e45e9d6fb962feceb	\N	4
+7832738	0c5a0f8b123dae6a4e2ca449fb03ad4c	0c5a0f8b123dae6a4e2ca449fb03ad4c	\N	4
+8031593	b7e3c8ad2f8be15ee07d62028bdb0d80	b7e3c8ad2f8be15ee07d62028bdb0d80	\N	4
+8037619	9514d3210bafbc7cc468308b71999a33	9514d3210bafbc7cc468308b71999a33	\N	3
+8039160	75bcb1c5348e1aae48ce5f961a88bee8	75bcb1c5348e1aae48ce5f961a88bee8	\N	4
+9028433	63598e2f4ad37051680ccc3c16b771ee	63598e2f4ad37051680ccc3c16b771ee	\N	4
+10712408	d5f3c5a8c591f8cd2a659cd8e971c427	d5f3c5a8c591f8cd2a659cd8e971c427	\N	4
+11108398	8db4616d6f0090e9b448927582b64cd4	8db4616d6f0090e9b448927582b64cd4	\N	4
+11460000	337b954d70cd26911a7427bc4c93e1db	337b954d70cd26911a7427bc4c93e1db	\N	4
+11465653	82537e24dac03e564d1fb02a32db908b	82537e24dac03e564d1fb02a32db908b	\N	4
+11783461	e8149e9aa4e13d00d7e670d9374b0a2e	e8149e9aa4e13d00d7e670d9374b0a2e	\N	4
+11959505	ee782959114d5f3cce9f71fea0712d88	ee782959114d5f3cce9f71fea0712d88	\N	4
+12776731	d660032ac6a6278f2855e55e9b97c552	d660032ac6a6278f2855e55e9b97c552	\N	4
+13013152	61f89954798de9961740851c4af657d4	61f89954798de9961740851c4af657d4	\N	4
+13525905	a7eab9628fb3a7149cc7f3817dc8f6f6	a7eab9628fb3a7149cc7f3817dc8f6f6	\N	4
+14700296	5dd6ea35e7682ea6828c3a484d8da081	5dd6ea35e7682ea6828c3a484d8da081	\N	4
+15920086	b5b332e16ced085d59a1be87216d0c9d	b5b332e16ced085d59a1be87216d0c9d	\N	4
+4353143	103fb06869a4f8a2d7aa1adc5beff7b1	103fb06869a4f8a2d7aa1adc5beff7b1	\N	4
+5863317	e1dea75af7e05e7c8d98a271ea6a4f43	e1dea75af7e05e7c8d98a271ea6a4f43	\N	4
+8026122	04f4c79e9f8a7deea1d3a3320e734b4b	04f4c79e9f8a7deea1d3a3320e734b4b	\N	4
+8031064	fb828f9b511d93961b990c0044b8a05b	fb828f9b511d93961b990c0044b8a05b	\N	4
+8331149	41498c4380f4dc35f845012934eeb014	41498c4380f4dc35f845012934eeb014	\N	4
+11467713	dbe8b442576bb166849283db39da9f12	dbe8b442576bb166849283db39da9f12	\N	4
+12352023	0a6f277c33a2426b76e718b69662cacf	0a6f277c33a2426b76e718b69662cacf	\N	4
+12779069	d28d99dac9191ccdb64bb0452d1053cd	d28d99dac9191ccdb64bb0452d1053cd	\N	4
+14839454	0f1bcf5a8d49ea492abb5b1bb290df5e	0f1bcf5a8d49ea492abb5b1bb290df5e	\N	4
+14916156	4ac412620dc091f7fc75076d4ff44e68	4ac412620dc091f7fc75076d4ff44e68	\N	3
+16020374	b40dd5b7e0fd6d5f839111877170cffe	b40dd5b7e0fd6d5f839111877170cffe	\N	4
+14268612	34f432fea1cec97c3a28dc6aaac96834	34f432fea1cec97c3a28dc6aaac96834	\N	4
+5871766	a02e56d0c08c334df723b9c02bed8418	a02e56d0c08c334df723b9c02bed8418	\N	4
+8223161	1fbe21d086b188c9028dc235fd78e48f	1fbe21d086b188c9028dc235fd78e48f	\N	4
+11955850	c662882846ca1deef054705bcdc2cebd	c662882846ca1deef054705bcdc2cebd	\N	4
+12048353	17c76b2592944e9ca02a459bb462a665	17c76b2592944e9ca02a459bb462a665	\N	4
+12722753	eaf43d89a47ed1b2d4076cb33a5d40ff	eaf43d89a47ed1b2d4076cb33a5d40ff	\N	4
+14267080	a26e231eabf642a145d1d95e1d3a31c7	a26e231eabf642a145d1d95e1d3a31c7	\N	4
+15175795	5ebe4becd5174db3eacdfb2ec686b5d3	5ebe4becd5174db3eacdfb2ec686b5d3	\N	4
+15565857	03dadb5ea8876357e42b56b008af6a37	03dadb5ea8876357e42b56b008af6a37	\N	4
+15920291	53ab85fcaee910bebbeb01678ea3336f	53ab85fcaee910bebbeb01678ea3336f	\N	4
+17523454	d26b15d257224ee6da61f438f9cfa662	d26b15d257224ee6da61f438f9cfa662	\N	4
+9476031	5ff6789f23835e9db36efac39975d1f1	5ff6789f23835e9db36efac39975d1f1	\N	4
+12346208	f79d03633d87aa0e63b88c07ce9ade8c	f79d03633d87aa0e63b88c07ce9ade8c	\N	4
+12817844	51127f4f3db577792ba820a67fa9002e	51127f4f3db577792ba820a67fa9002e	\N	4
+14267842	df6f6a9bb7473e4eb99418894ca60063	df6f6a9bb7473e4eb99418894ca60063	\N	4
+15516332	e3626538d6340788aaf94f8b758c9e64	e3626538d6340788aaf94f8b758c9e64	\N	4
+15754922	28ab18cfd60bc2c181505382f110db27	28ab18cfd60bc2c181505382f110db27	\N	4
+17130729	402a12ad9e7d229821e4c8264fb29348	402a12ad9e7d229821e4c8264fb29348	\N	4
+3661985	e87a7bb3dd3d4719de614b9effb3c0ff	e87a7bb3dd3d4719de614b9effb3c0ff	\N	4
+19421996	17dc2490b890ad83f97efe398767e75b	17dc2490b890ad83f97efe398767e75b	\N	4
+8080375	13a461bfb2232a04e04578daed12df1f	13a461bfb2232a04e04578daed12df1f	\N	4
+11319364	3ce635aaa3056e483978170dc1580aa2	3ce635aaa3056e483978170dc1580aa2	\N	4
+11460813	9c9a46bbbecacef97226e2d3822df6f9	9c9a46bbbecacef97226e2d3822df6f9	\N	4
+11952770	56d7115d6e1335ef03398d730f2461c4	56d7115d6e1335ef03398d730f2461c4	\N	4
+12458260	46ed9b71104c4404905ee88a317a24ba	46ed9b71104c4404905ee88a317a24ba	\N	4
+13014707	96df51cfef8c5f6d411bb8fbe54fb783	96df51cfef8c5f6d411bb8fbe54fb783	\N	4
+13098188	4d6579a94bf8369405de4e874b1733c8	4d6579a94bf8369405de4e874b1733c8	\N	4
+13098422	1b0dd6198d609d3c434525692b15f47b	1b0dd6198d609d3c434525692b15f47b	\N	4
+13803490	50733d93ef47f93e674f8ede447d4408	50733d93ef47f93e674f8ede447d4408	\N	4
+14400356	eda8ce0fab79298db56c77f6233033a6	eda8ce0fab79298db56c77f6233033a6	\N	4
+14589222	66c800006eef883da36c38235cac4a17	66c800006eef883da36c38235cac4a17	\N	4
+15622903	a0bf08a68c6d8bc1f9a537d827dd3e49	a0bf08a68c6d8bc1f9a537d827dd3e49	\N	4
+17456954	bcf5e26d08469c2a8aae21992bf94d7a	bcf5e26d08469c2a8aae21992bf94d7a	\N	4
+17664938	7f224a7ecfb67da33e2a6f3296e33a44	7f224a7ecfb67da33e2a6f3296e33a44	\N	4
+18796815	4006a3a8a5ebea83ef59a6e6edf6a7d5	4006a3a8a5ebea83ef59a6e6edf6a7d5	\N	4
+18796996	a3a4dbe220c2cfb948c333f528a8c6ba	a3a4dbe220c2cfb948c333f528a8c6ba	\N	4
+15756979	e698a02195229bba8a03e21c49580f11	e698a02195229bba8a03e21c49580f11	\N	4
+81423693	d1910cf691c17c6491a62ba1990ebe86	d1910cf691c17c6491a62ba1990ebe86	\N	4
+15921593	41861a415e633a3220cbfb3d8d1d1f2c	41861a415e633a3220cbfb3d8d1d1f2c	\N	4
+4768948	85dd6cf1a2929efe3e6a6bdd145012e3	85dd6cf1a2929efe3e6a6bdd145012e3	\N	4
+11953052	0a6e4312b8427d4fb98364f4053bf2f2	0a6e4312b8427d4fb98364f4053bf2f2	\N	4
+9470586	36176ac6fd2066fc35a5eea6f79ed268	36176ac6fd2066fc35a5eea6f79ed268	\N	4
+10426911	03ff650bb5e5a6be24ff574df2b718f4	03ff650bb5e5a6be24ff574df2b718f4	\N	4
+10795287	521366fe9f4bd2737e98871e550841a9	521366fe9f4bd2737e98871e550841a9	\N	4
+12276745	e9d91e73d01951435bbc06a9f6de9bef	e9d91e73d01951435bbc06a9f6de9bef	\N	4
+13126220	9a858c7fca782fccf95b61b1239b5ba2	9a858c7fca782fccf95b61b1239b5ba2	\N	4
+13803898	b59dbe7ee8a43f084f646b63c6e17a83	b59dbe7ee8a43f084f646b63c6e17a83	\N	4
+3586551	c1005fdc027b5da56caac1d2896a7825	c1005fdc027b5da56caac1d2896a7825	\N	4
+5199025	ee9bfaaaec46914b5fab2917ad944e06	ee9bfaaaec46914b5fab2917ad944e06	\N	4
+12457642	948e9f47f7b1bd01e9391241e0109321	948e9f47f7b1bd01e9391241e0109321	\N	4
+2288079	1d28da29ceee7f0ba6e2d80868ce6aff	1d28da29ceee7f0ba6e2d80868ce6aff	\N	3
+4385037	16991d8f5b629840e8b6f9a1ec935478	16991d8f5b629840e8b6f9a1ec935478	\N	4
+4468978	f79a3784a004d9b8d34499b60829fd4a	f79a3784a004d9b8d34499b60829fd4a	\N	4
+5222887	73d7688888cc90cf44c4bbf72a4dac6e	73d7688888cc90cf44c4bbf72a4dac6e	\N	4
+7682243	42ec7163701eb0ab1099ae6fba2594aa	42ec7163701eb0ab1099ae6fba2594aa	\N	4
+7901173	94014f6fcac092450676c5aa4475e3b7	94014f6fcac092450676c5aa4475e3b7	\N	4
+8006635	5543023ece012afb4753c9be955d21ef	5543023ece012afb4753c9be955d21ef	\N	4
+8025941	f669050076a1cdf8641349d49bec66da	f669050076a1cdf8641349d49bec66da	\N	4
+8084037	cb2ea27be506a4127c68504bfc4936c1	cb2ea27be506a4127c68504bfc4936c1	\N	4
+8709198	5e0703cbefcd41d399e15bd2292789d4	5e0703cbefcd41d399e15bd2292789d4	\N	4
+8711187	4a8ba2fe650ed464ee78df37c2926263	4a8ba2fe650ed464ee78df37c2926263	\N	4
+8991754	345af6e6ceef0324970f7fe098378c2b	345af6e6ceef0324970f7fe098378c2b	\N	4
+9027962	5b2fc4940065f302a331ed756d2c25bd	5b2fc4940065f302a331ed756d2c25bd	\N	4
+9048373	68f0bd436b040e26d59511f25e791d94	68f0bd436b040e26d59511f25e791d94	\N	4
+9145227	fc283af3b0be7de549e051adc21a1eab	fc283af3b0be7de549e051adc21a1eab	\N	4
+9346062	45d2d166d2e650c9ad6a5c19d930c88e	45d2d166d2e650c9ad6a5c19d930c88e	\N	4
+10236687	c4da836cb87ca3d08000e8632d0d36a1	c4da836cb87ca3d08000e8632d0d36a1	\N	4
+10896200	87a2d698af19e35ad1ae3291086b3665	87a2d698af19e35ad1ae3291086b3665	\N	4
+10901133	f8041f7cb00fbbb1367f2f5f8e4fb04a	f8041f7cb00fbbb1367f2f5f8e4fb04a	\N	4
+11165547	76b3a1bef38dce30144bfe600411ff65	76b3a1bef38dce30144bfe600411ff65	\N	4
+12048936	9160725c8b872b18ab1afa94c51e1a05	9160725c8b872b18ab1afa94c51e1a05	\N	4
+3062497	0619f8e37320b5f6c94fc5948b972231	0619f8e37320b5f6c94fc5948b972231	\N	4
+13098948	b93f6de868f8267f5e8cdf25a2ec14c4	b93f6de868f8267f5e8cdf25a2ec14c4	\N	4
+8034300	67171b70da180e4cb2dab18f7afaff94	67171b70da180e4cb2dab18f7afaff94	\N	4
+16964770	05bd82d8caf0f6bc10cc93bb8f941234	05bd82d8caf0f6bc10cc93bb8f941234	\N	4
+13649962	385681b729ff4af2af8108159655f5a1	385681b729ff4af2af8108159655f5a1	\N	4
+8013671	e37b1603e9b1bc8a45e7323abe9ed43f	e37b1603e9b1bc8a45e7323abe9ed43f	\N	4
+15142314	a3ad0f3c9fd9fbb27c31b88f945fbe3c	a3ad0f3c9fd9fbb27c31b88f945fbe3c	\N	3
+10102108	8d5118ef94034ffc4fa8244d61e99f7f	8d5118ef94034ffc4fa8244d61e99f7f	\N	4
+15516303	3e8ed7f02c116c278aaefd5533466833	3e8ed7f02c116c278aaefd5533466833	\N	4
+16285988	eb65018e5443538b164b0f1f622a6aba	eb65018e5443538b164b0f1f622a6aba	\N	4
+84570604	88d36db1b8899d68b7dfb3a4fce88b63	88d36db1b8899d68b7dfb3a4fce88b63	\N	4
+7824945	0bb1fe6fdac07a2c38c4f0a0d33c85f9	0bb1fe6fdac07a2c38c4f0a0d33c85f9	\N	4
+8019784	32ed4b00b50def2a5922e09178e7e8d5	32ed4b00b50def2a5922e09178e7e8d5	\N	4
+13524820	6f5eb76e5eb048e87680aee838f1101c	6f5eb76e5eb048e87680aee838f1101c	\N	4
+5655983	463930417ebcaa6c0b983feaa99e55f3	463930417ebcaa6c0b983feaa99e55f3	\N	4
+11462979	fe3ebff3aad1d656c934dce578c0eb29	fe3ebff3aad1d656c934dce578c0eb29	\N	4
+14917365	1ceb1630a4332d3182c9e453eb4f3d84	1ceb1630a4332d3182c9e453eb4f3d84	\N	4
+8047120	1735297e39c74352e58ac9abd7a7746d	1735297e39c74352e58ac9abd7a7746d	\N	4
+13966054	5ff0e58eb3493654de33ccaf03ff504d	5ff0e58eb3493654de33ccaf03ff504d	\N	4
+14917178	18caad1706ad757328fdc58972ef0f28	18caad1706ad757328fdc58972ef0f28	\N	4
+10256095	f01d65777326ef40577be2c505b0f750	f01d65777326ef40577be2c505b0f750	\N	3
+12722185	c104b8833346e625a29fe4bb151b1d76	c104b8833346e625a29fe4bb151b1d76	\N	4
+10898072	dc2c1e0a55dbb65be46925c7dbec061b	dc2c1e0a55dbb65be46925c7dbec061b	\N	4
+11960173	0ac87cfe5ee012c953e00bf7325f6133	0ac87cfe5ee012c953e00bf7325f6133	\N	4
+11303172	5a6cc1541cf286e5d056e5061bb6986c	5a6cc1541cf286e5d056e5061bb6986c	\N	4
+13524109	3153b17cb4e60f3e8f757cc4ac1ce13a	3153b17cb4e60f3e8f757cc4ac1ce13a	\N	4
+9389944	08da159ba37de77175b59e4127cd551a	08da159ba37de77175b59e4127cd551a	\N	4
+8044725	2b9fb625c40f04f69377af0bad62792c	2b9fb625c40f04f69377af0bad62792c	\N	4
+7509507	ebef8f1f2ea4b7f4a8ed6516492e5361	ebef8f1f2ea4b7f4a8ed6516492e5361	\N	4
+13967486	00d7a812d3342712407817a294105a8d	00d7a812d3342712407817a294105a8d	\N	4
+15296169	720c550120b6b081bed6a8c83c03eca7	720c550120b6b081bed6a8c83c03eca7	\N	4
+13723698	fca9cdd1c97e0f76dd12ebadce118f6f	fca9cdd1c97e0f76dd12ebadce118f6f	\N	4
+11954144	c530df8f7245e7191bad4575f7109a42	c530df8f7245e7191bad4575f7109a42	\N	4
+14401340	4ba0c31493e2468b330400c3dd8e2544	4ba0c31493e2468b330400c3dd8e2544	\N	4
+11466224	172d53f65ff63d14b8f204e52179b53e	172d53f65ff63d14b8f204e52179b53e	\N	4
+13477378	dbc566430fe97ad1f5ad932f1645c0cd	dbc566430fe97ad1f5ad932f1645c0cd	\N	4
+3966127	f9352b67c1a630757342859bffad0838	f9352b67c1a630757342859bffad0838	\N	3
+10617743	25dca020ae3a4ebd633b867c59cfc204	25dca020ae3a4ebd633b867c59cfc204	\N	4
+10092487	e5b58a96b41d80716d693400da48c645	e5b58a96b41d80716d693400da48c645	\N	4
+9475173	ef094ee309c5a742b991a26e230bd16c	ef094ee309c5a742b991a26e230bd16c	\N	4
+10687170	97ca9139916673b806768820fb6336f7	97ca9139916673b806768820fb6336f7	\N	4
+5198965	e52bae589d2290c19ac94e08a50342b4	e52bae589d2290c19ac94e08a50342b4	\N	4
+12800893	746024e153745dbbb4b9f77ffdacef59	746024e153745dbbb4b9f77ffdacef59	\N	4
+13013943	00a1d9cfee1fd8588dc31d3e19471922	00a1d9cfee1fd8588dc31d3e19471922	\N	4
+13229040	edc382362710253356ff7943d227e58b	edc382362710253356ff7943d227e58b	\N	4
+13230783	8fed3ad16c2cb13ce31551b82b1ec72e	8fed3ad16c2cb13ce31551b82b1ec72e	\N	4
+13965382	f887795b4954a441f0bee965a6391d9a	f887795b4954a441f0bee965a6391d9a	\N	4
+13965387	b89b30d53162138ab89f87fefc1eb192	b89b30d53162138ab89f87fefc1eb192	\N	4
+13965541	9ece2b2337ed825b367a51eec2b06204	9ece2b2337ed825b367a51eec2b06204	\N	4
+14447272	350f10b79713709408d57fd4372f9449	350f10b79713709408d57fd4372f9449	\N	4
+15235049	635d6535718f71d34d5bf5889debc62e	635d6535718f71d34d5bf5889debc62e	\N	4
+15235336	c8c0316b57d8001931ceb81d3f53dbc5	c8c0316b57d8001931ceb81d3f53dbc5	\N	4
+16604063	c0f45cbb4dad5699dcf959b4043a773c	c0f45cbb4dad5699dcf959b4043a773c	\N	4
+16605994	d04eeb0858c49a95fddc0378ba1e4430	d04eeb0858c49a95fddc0378ba1e4430	\N	4
+7783689	aba85ecf37860af83f5deb6babc240a0	aba85ecf37860af83f5deb6babc240a0	\N	4
+8717503	2d4ce7ee498f3f0a89b97e4129583dea	2d4ce7ee498f3f0a89b97e4129583dea	\N	4
+9397892	75de777b8b7b0a3ab47e3a9622ce83dd	75de777b8b7b0a3ab47e3a9622ce83dd	\N	4
+11216746	812695cef96d42d3c072717d5cb3bc98	812695cef96d42d3c072717d5cb3bc98	\N	4
+13804657	c6da6bdfcca89a2df66f4ef7230e90e2	c6da6bdfcca89a2df66f4ef7230e90e2	\N	4
+3990156	d2e6a8623681cfb8a9e4d767edacf3d3	d2e6a8623681cfb8a9e4d767edacf3d3	\N	4
+5435898	5b7ef2c773967418230643f1fa76c900	5b7ef2c773967418230643f1fa76c900	\N	4
+5446019	abf2d2b6359c6628a7a243ed54e05a80	abf2d2b6359c6628a7a243ed54e05a80	\N	4
+5654904	bcf6509a0434aa195bdc3a5fc5e6e219	bcf6509a0434aa195bdc3a5fc5e6e219	\N	4
+6908190	71170e3afd870230eae58040b4e2f85f	71170e3afd870230eae58040b4e2f85f	\N	4
+7545873	0daf55a6570d7c96805243a6fe497b4d	0daf55a6570d7c96805243a6fe497b4d	\N	4
+7549702	bd12ce00a65443ddeaed083f7c8479a2	bd12ce00a65443ddeaed083f7c8479a2	\N	4
+7772181	b6a5d4c12146d1d1a6b3c60bea1a9f1a	b6a5d4c12146d1d1a6b3c60bea1a9f1a	\N	4
+8000405	e81560052d281e16ecca04ea03e8e9a3	e81560052d281e16ecca04ea03e8e9a3	\N	4
+8029795	ba7e9172708d757401a340967adf8207	ba7e9172708d757401a340967adf8207	\N	4
+8042180	675b07170e6a9ab3fec80169d788da3c	675b07170e6a9ab3fec80169d788da3c	\N	4
+8081463	dafdbab0915c28fc0e5ec8c6036b02b4	dafdbab0915c28fc0e5ec8c6036b02b4	\N	4
+9474475	3aa18b6bebfe42727f6be80af106bc8f	3aa18b6bebfe42727f6be80af106bc8f	\N	4
+11461500	62cae2f24c05cfaa6164dc2d1995e72c	62cae2f24c05cfaa6164dc2d1995e72c	\N	4
+15295791	c2a4e158357ba804179da5939e261df2	c2a4e158357ba804179da5939e261df2	\N	4
+8007748	85b2fade846c06230d98cfccd3752523	85b2fade846c06230d98cfccd3752523	\N	4
+8773038	7b387c0bbfb2c88d3faab512a11a48f7	7b387c0bbfb2c88d3faab512a11a48f7	\N	4
+10106333	edc3fa35dacc5e72ca1a0ab937b83618	edc3fa35dacc5e72ca1a0ab937b83618	\N	4
+11959486	3ec44d45791acb9be9c3c5fd32985095	3ec44d45791acb9be9c3c5fd32985095	\N	4
+11959905	38d0e113063caee44b715da76272c661	38d0e113063caee44b715da76272c661	\N	4
+12349450	f22c4c9fa8990ff5b330fe7f77d0d4d2	f22c4c9fa8990ff5b330fe7f77d0d4d2	\N	4
+17340511	f3119dbe0e2380e994ce2ebdbc6c146b	f3119dbe0e2380e994ce2ebdbc6c146b	\N	4
+9390689	a3a61106d5a2eae74e53d6e0c486f814	a3a61106d5a2eae74e53d6e0c486f814	\N	4
+16716898	678f68b4724a2b5ea2486415544f5b4e	678f68b4724a2b5ea2486415544f5b4e	\N	4
+13762920	504d52625ca941052700cd71a4839ca9	504d52625ca941052700cd71a4839ca9	\N	4
+15693970	19fab11d4bc4be4b15eacc509ad7d02b	19fab11d4bc4be4b15eacc509ad7d02b	\N	4
+17664344	3c980fd2290aba8dd8743b22c5505f4b	3c980fd2290aba8dd8743b22c5505f4b	\N	4
+5502501	0a1ecd7b7533f31fdd36c1e133e66c55	0a1ecd7b7533f31fdd36c1e133e66c55	\N	4
+9472709	c5adc1125a02a1e6fc09a020e796cc62	c5adc1125a02a1e6fc09a020e796cc62	\N	4
+18620438	863a17cfad2a8c8cadddfe4616d3f048	863a17cfad2a8c8cadddfe4616d3f048	\N	4
+20912440	d447d8811f82ea641c5ce20047ad22a5	d447d8811f82ea641c5ce20047ad22a5	\N	4
+8049037	9a4f9cfd28a7126ab5c2571c61be7421	9a4f9cfd28a7126ab5c2571c61be7421	\N	4
+12776115	bff2d9e5d14b218ce7d4585cfcffa204	bff2d9e5d14b218ce7d4585cfcffa204	\N	4
+15584303	3675a465b3d44b06886d94f470e7e902	3675a465b3d44b06886d94f470e7e902	\N	4
+17662445	2d4294b4f8d241139f49714d6e3314ce	2d4294b4f8d241139f49714d6e3314ce	\N	4
+11959873	0138427fef18d3881147e71e2f92557d	0138427fef18d3881147e71e2f92557d	\N	4
+12778312	53078b38578f39c563e2929e10e53a83	53078b38578f39c563e2929e10e53a83	\N	4
+15584878	04a5f06e699dee99570237af14b5e93a	04a5f06e699dee99570237af14b5e93a	\N	4
+18310574	b1ed3220e03d98f602eaf4a6847bb6b9	b1ed3220e03d98f602eaf4a6847bb6b9	\N	4
+21364550	751526ac816b7395cf68bb080a85fd68	751526ac816b7395cf68bb080a85fd68	\N	4
+84395445	02fb8250a50af93fe61d59bf2e30160e	02fb8250a50af93fe61d59bf2e30160e	\N	4
+10108118	0024b19921633fe8a92b7bfdb32e02ce	0024b19921633fe8a92b7bfdb32e02ce	\N	4
+10896132	34da1f13b75e1928e8a4e33e6db0cbd1	34da1f13b75e1928e8a4e33e6db0cbd1	\N	4
+12777719	59535cd36ba9e0a73574af91aec87170	59535cd36ba9e0a73574af91aec87170	\N	4
+14771192	e78f56a14b4d736acc40df006a69d66b	e78f56a14b4d736acc40df006a69d66b	\N	4
+15175341	bb822b373fb4b2a4b681a3a1bc0b91c7	bb822b373fb4b2a4b681a3a1bc0b91c7	\N	4
+18798060	f49b83b70f9706ca0a75cb5265000c2a	f49b83b70f9706ca0a75cb5265000c2a	\N	4
+19487152	68f7b03816ac03e76078f55d042eff3f	68f7b03816ac03e76078f55d042eff3f	\N	4
+19487788	f60e799f7fc818d90912a291c660d7cd	f60e799f7fc818d90912a291c660d7cd	\N	4
+13688279	fe8f6a7d2123dfa9fd82e051d3ac8eba	fe8f6a7d2123dfa9fd82e051d3ac8eba	\N	4
+17129511	7ae17aa67c125e8b9396d33c0fc3f0b4	7ae17aa67c125e8b9396d33c0fc3f0b4	\N	4
+6167653	f75d3e355f067217cdd5f214e1192251	f75d3e355f067217cdd5f214e1192251	\N	4
+8076223	c62fa0932fa550caebd0c505b5dbbe72	c62fa0932fa550caebd0c505b5dbbe72	\N	4
+8519916	e2d8ff556339a6751c5b87a69da3b7c1	e2d8ff556339a6751c5b87a69da3b7c1	\N	4
+8705826	a9bc24a0a29cf104eefb7bda18e6d9ef	a9bc24a0a29cf104eefb7bda18e6d9ef	\N	4
+9361725	4541a3ddb69ad0dd4737df7114e5566e	4541a3ddb69ad0dd4737df7114e5566e	\N	4
+10856682	be62b95001d0b7ec11590ea4dfaa9b3f	be62b95001d0b7ec11590ea4dfaa9b3f	\N	4
+10905552	bf2d42e338fd747b9607d89b530eebab	bf2d42e338fd747b9607d89b530eebab	\N	4
+11462892	803e289a3c99e2226661978a0d1ddafd	803e289a3c99e2226661978a0d1ddafd	\N	4
+11954097	79a3a08778075f3337700bc31bea24af	79a3a08778075f3337700bc31bea24af	\N	4
+12220551	bbf35765bdf54aa1eca941aab9007b8d	bbf35765bdf54aa1eca941aab9007b8d	\N	4
+12487701	754cbdf9e0e7b9ccaa644c2f590043db	754cbdf9e0e7b9ccaa644c2f590043db	\N	4
+13013755	e5fff782a10b03fa555d194c68b50eeb	e5fff782a10b03fa555d194c68b50eeb	\N	4
+14131507	0b499b8128c7a34ce85a1d343aa2ee94	0b499b8128c7a34ce85a1d343aa2ee94	\N	4
+14255791	50273b2f9033e1bb982736088b8f0458	50273b2f9033e1bb982736088b8f0458	\N	4
+14447036	550c16b48ac3332202176fb18feab030	550c16b48ac3332202176fb18feab030	\N	4
+14447384	0497235137071af173fbab30122f7ab4	0497235137071af173fbab30122f7ab4	\N	4
+15074652	23cee666bd50bf9ce11f9b1faf6c3a30	23cee666bd50bf9ce11f9b1faf6c3a30	\N	4
+5740339	5d3ef73cb18c7683f6132591794458d8	5d3ef73cb18c7683f6132591794458d8	\N	4
+9279327	1022aab4f8d9f1c1abb77316cef7333d	1022aab4f8d9f1c1abb77316cef7333d	\N	4
+9476268	e4e466aca81c87b5b2244cacd0e29cea	e4e466aca81c87b5b2244cacd0e29cea	\N	4
+5201622	0f7acaad5493d4218da8da70977ca485	0f7acaad5493d4218da8da70977ca485	\N	4
+8032732	091ae634e1f6c33c67538fdfe48586f5	091ae634e1f6c33c67538fdfe48586f5	\N	4
+9473824	42eeda9382ada33cfbd9b4db25a79088	42eeda9382ada33cfbd9b4db25a79088	\N	4
+8021842	f3d3c9b0b328a76d29cf222a6438a55d	f3d3c9b0b328a76d29cf222a6438a55d	\N	4
+8720054	b2e9d57831279c7726d07cea3415933d	b2e9d57831279c7726d07cea3415933d	\N	4
+15234079	0bdeaaeaf3bc0ef29e042ec790b62f77	0bdeaaeaf3bc0ef29e042ec790b62f77	\N	4
+15234490	6ccd64ff5eba154b95b68953bffb753d	6ccd64ff5eba154b95b68953bffb753d	\N	4
+15695079	db4ced677ca22789301534f56b8ff8eb	db4ced677ca22789301534f56b8ff8eb	\N	4
+16019616	2561d3f78ef774bf4c585d1bab9175bf	2561d3f78ef774bf4c585d1bab9175bf	\N	4
+16019964	96c4a5a5abdb75416e931e2aad960071	96c4a5a5abdb75416e931e2aad960071	\N	4
+16020533	8633b0fc3ece565191b24fc9057d9def	8633b0fc3ece565191b24fc9057d9def	\N	4
+16020822	cfd6d7a4201f608bdec5b005e2dfd221	cfd6d7a4201f608bdec5b005e2dfd221	\N	4
+16316134	80c1fe6d5315e48c19311fa444026af9	80c1fe6d5315e48c19311fa444026af9	\N	4
+16657714	21c4c939bc8d9273a020c41b62997583	21c4c939bc8d9273a020c41b62997583	\N	4
+17769893	9445a89f3a393ab19b9ee689cff10c02	9445a89f3a393ab19b9ee689cff10c02	\N	4
+18579167	e095e680de56f19e2789a84fded47512	e095e680de56f19e2789a84fded47512	\N	4
+18579209	54d924ed0e1602f77e74295c0d451cb1	54d924ed0e1602f77e74295c0d451cb1	\N	4
+22656117	edb4a796eb4662fae8f452c8cfca5aa5	edb4a796eb4662fae8f452c8cfca5aa5	\N	4
+3941437	5ab2a91d7991a0e276ae3c9a0ebce191	5ab2a91d7991a0e276ae3c9a0ebce191	\N	4
+4353531	efc594e68fa093035b1bff171e23cda6	efc594e68fa093035b1bff171e23cda6	\N	4
+8045536	917548060eecf2ba57787f38e42300ce	917548060eecf2ba57787f38e42300ce	\N	4
+8075648	246ceac5126aa181378d8e9466367017	246ceac5126aa181378d8e9466367017	\N	4
+8707022	6d7035bb6bf7422ed7d3c141dacd37c7	6d7035bb6bf7422ed7d3c141dacd37c7	\N	4
+11465010	068a643214b6b2733a5bbbe305c51961	068a643214b6b2733a5bbbe305c51961	\N	4
+12487991	106d131960a438f8af50ff059f7b36a2	106d131960a438f8af50ff059f7b36a2	\N	4
+13790769	1d7b94649745d1d5bacc314948bc65f3	1d7b94649745d1d5bacc314948bc65f3	\N	4
+15695370	bf36f2d9df769398e24442523004352b	bf36f2d9df769398e24442523004352b	\N	4
+15695737	14e85340d633216c43f59b3d0646d57e	14e85340d633216c43f59b3d0646d57e	\N	4
+16907428	c034e6aa80fd096220f5f3719049f8a3	c034e6aa80fd096220f5f3719049f8a3	\N	4
+17321417	3e22e3027758b5f8cc06749e5ee74c15	3e22e3027758b5f8cc06749e5ee74c15	\N	4
+18264711	c60f8187160b5bd427e6635d950ee3fb	c60f8187160b5bd427e6635d950ee3fb	\N	4
+3297745	00356b1cfb28a07c7112c470ad525449	00356b1cfb28a07c7112c470ad525449	\N	4
+4700593	ee468883e2706b5efc4b7a08d49f4c96	ee468883e2706b5efc4b7a08d49f4c96	\N	4
+7973553	b6473353c5a05549e3e5ff7e8960e373	b6473353c5a05549e3e5ff7e8960e373	\N	4
+9203225	a626515c0c90295fb6d1f44bea4a3fe6	a626515c0c90295fb6d1f44bea4a3fe6	\N	4
+9390966	314116080c0c47810631f51c3e25b048	314116080c0c47810631f51c3e25b048	\N	4
+9392858	61b4aa784e5104c03602607c33df523a	61b4aa784e5104c03602607c33df523a	\N	4
+9496511	70ad9a80c94b20e20cdac349ff93c0bd	70ad9a80c94b20e20cdac349ff93c0bd	\N	4
+10241655	9dcbf932214e9f31ca68ae9344478fcc	9dcbf932214e9f31ca68ae9344478fcc	\N	4
+11236773	a9f454eca88a96fa750a08089b4c98a1	a9f454eca88a96fa750a08089b4c98a1	\N	4
+10720364	41cdbc5d83d17c3acbca613523d40680	41cdbc5d83d17c3acbca613523d40680	\N	4
+19440209	bbe627fca6996d3a087c6cd38d9a8c95	bbe627fca6996d3a087c6cd38d9a8c95	\N	4
+3908624	837342a045376e19fcd373cfd88e3aed	837342a045376e19fcd373cfd88e3aed	\N	4
+5201033	4ee25470d6a2a4f8e0ab5e13414af829	4ee25470d6a2a4f8e0ab5e13414af829	\N	4
+14917541	4291aa80a7a30caf852eb1fcf1dd9e90	4291aa80a7a30caf852eb1fcf1dd9e90	\N	4
+18962414	ab31af8aeb4a4a00825245b24f4ebad5	ab31af8aeb4a4a00825245b24f4ebad5	\N	4
+8022340	c6534ade707682c57b869d33bc1afc58	c6534ade707682c57b869d33bc1afc58	\N	4
+4589713	3b19c55875f3fe6cba6e121f4d265d4b	3b19c55875f3fe6cba6e121f4d265d4b	\N	4
+8013569	ecb594d875041950eae84edbe8d6fbfd	ecb594d875041950eae84edbe8d6fbfd	\N	4
+8023975	6e66608c8b5942c2932381c06deb5e31	6e66608c8b5942c2932381c06deb5e31	\N	4
+3991395	138ea42c67068e38ff552a6a92d8931b	138ea42c67068e38ff552a6a92d8931b	\N	4
+6966311	3c2c6626519e6a8e1438e63387097de1	3c2c6626519e6a8e1438e63387097de1	\N	4
+9602126	2081f8302e08bdcd131d74ee9edac63d	2081f8302e08bdcd131d74ee9edac63d	\N	4
+7482782	65db748c0ae46b2423b37b4968458045	65db748c0ae46b2423b37b4968458045	\N	4
+18308852	ef6c9170630577ac4de337f447242f4f	ef6c9170630577ac4de337f447242f4f	\N	4
+2069838	27c05ddeecbab6d9d800c1770ec0ac7c	27c05ddeecbab6d9d800c1770ec0ac7c	\N	4
+7785696	5904ca624728bad9e6da0acad169957c	5904ca624728bad9e6da0acad169957c	\N	4
+10108462	d7692557c59a8f460beb14b5211b6899	d7692557c59a8f460beb14b5211b6899	\N	4
+8034298	6efdcea180fdefeda32b68217f8e9bec	6efdcea180fdefeda32b68217f8e9bec	\N	4
+84492794	1ee09d6d90dac4cb439a71a1ca6ede2d	1ee09d6d90dac4cb439a71a1ca6ede2d	\N	4
+8033769	9ac9b89d78d1150f68859173a4aa5fda	9ac9b89d78d1150f68859173a4aa5fda	\N	4
+14589482	2576f0211649910a9164a2dc4bb23117	2576f0211649910a9164a2dc4bb23117	\N	4
+13499843	6ece4b36786db597bc3e564d938dd2a1	6ece4b36786db597bc3e564d938dd2a1	\N	4
+10716040	cc56da664e9d415e8e406eb29221699b	cc56da664e9d415e8e406eb29221699b	\N	4
+15295462	9c6cc3c6c7258cc2732dd97bc7d4476d	9c6cc3c6c7258cc2732dd97bc7d4476d	\N	4
+10751767	0cf4009ada62fc78d7830b776f95ef55	0cf4009ada62fc78d7830b776f95ef55	\N	4
+11319506	4968c16fdb320ccbfbaa0cdbec0d50f8	4968c16fdb320ccbfbaa0cdbec0d50f8	\N	4
+11460232	14691d9e8b6cf5beb8487ee6b0e9d54e	14691d9e8b6cf5beb8487ee6b0e9d54e	\N	4
+11912990	c8bc33deb4e3f497035be51d78ee21d8	c8bc33deb4e3f497035be51d78ee21d8	\N	4
+11914501	ef2bbfa274ebf99fcc8c1638543241b8	ef2bbfa274ebf99fcc8c1638543241b8	\N	4
+11955728	e93cf177cf00092ba1df58ff7512ca0f	e93cf177cf00092ba1df58ff7512ca0f	\N	4
+12354608	7604175034ea0fb5cafddfb5e7a1f4bd	7604175034ea0fb5cafddfb5e7a1f4bd	\N	4
+12655010	e0549e59f60d1d7b13c3c73b5efee5af	e0549e59f60d1d7b13c3c73b5efee5af	\N	4
+13208733	1d04f0e48f026a863a53b8a345713f43	1d04f0e48f026a863a53b8a345713f43	\N	4
+13803295	76cfa6461896fd0803a763eb703c89ae	76cfa6461896fd0803a763eb703c89ae	\N	4
+14022931	1517c7000ddfb360d5c28ae063b12533	1517c7000ddfb360d5c28ae063b12533	\N	4
+14249554	31bb1fb9af6df36e819fdc585a7f3377	31bb1fb9af6df36e819fdc585a7f3377	\N	4
+14957722	797012244b6d1a850e78e004b1dd3d17	797012244b6d1a850e78e004b1dd3d17	\N	4
+15174952	1a2bf8fe1014a21514438fa011d49b17	1a2bf8fe1014a21514438fa011d49b17	\N	4
+15357168	afc22555321b145d7ea5b69a70ef54ce	afc22555321b145d7ea5b69a70ef54ce	\N	4
+15432243	8da2677a614985023f19438197c46e0b	8da2677a614985023f19438197c46e0b	\N	4
+15947784	c4baf60baab17c46fb500042a747b35c	c4baf60baab17c46fb500042a747b35c	\N	4
+16351978	0a0744d74f56bc4674b810f47dd1aeb7	0a0744d74f56bc4674b810f47dd1aeb7	\N	4
+16716300	e34b53045761bf9355be2a6352bb7635	e34b53045761bf9355be2a6352bb7635	\N	4
+16743379	6add79656bde4df049c2ad8c6f6e9ceb	6add79656bde4df049c2ad8c6f6e9ceb	\N	4
+17436794	b4bebc877cec4f541756a4281d232130	b4bebc877cec4f541756a4281d232130	\N	4
+17437536	c36c4fd796c36e2d556de3a4d369988e	c36c4fd796c36e2d556de3a4d369988e	\N	4
+17794526	3ac954beb5d43c17d25bcc5e9cba8d41	3ac954beb5d43c17d25bcc5e9cba8d41	\N	4
+18055149	d3293505d9354617bf5b69ba6152afc8	d3293505d9354617bf5b69ba6152afc8	\N	4
+18208897	db19ca74bde4620a699e9688802979b6	db19ca74bde4620a699e9688802979b6	\N	4
+18614251	e48f290a6222b9f4385c370924403104	e48f290a6222b9f4385c370924403104	\N	4
+18615818	4765c7b0cc350659014f14ed68523687	4765c7b0cc350659014f14ed68523687	\N	4
+19236516	103f5595735d44acba318b6186f57da1	103f5595735d44acba318b6186f57da1	\N	4
+8038358	544a459d0774acbaa0fd394c78fcc006	544a459d0774acbaa0fd394c78fcc006	\N	4
+11361473	ae51a51be3c372fdecfa7dda408f7792	ae51a51be3c372fdecfa7dda408f7792	\N	4
+12321519	718ebe6bb41bc89f10549cc66d87ae54	718ebe6bb41bc89f10549cc66d87ae54	\N	4
+13098687	56a1d50bfb5ff717ce75be31d469291a	56a1d50bfb5ff717ce75be31d469291a	\N	4
+15621504	335aa788510b0072f0863c7e675d2c42	335aa788510b0072f0863c7e675d2c42	\N	4
+15920357	159391629faa95d8ab0996235288a4b7	159391629faa95d8ab0996235288a4b7	\N	4
+17129591	2a74c8c2aca266bc3bbda43e479163c3	2a74c8c2aca266bc3bbda43e479163c3	\N	4
+17239002	a14ea96a30f7e218e36194e29863c0a5	a14ea96a30f7e218e36194e29863c0a5	\N	4
+17662802	1e53976e6ddc2507675107d43d7896e7	1e53976e6ddc2507675107d43d7896e7	\N	4
+2086595	aab99469589f63a9ab6d086a7528ead5	aab99469589f63a9ab6d086a7528ead5	\N	4
+8023615	221583491c25093ce715bd52ed3232cc	221583491c25093ce715bd52ed3232cc	\N	4
+8035343	d4709f5ee78aca12da4e4bca01acaaf9	d4709f5ee78aca12da4e4bca01acaaf9	\N	4
+8040696	f5581de8bbc525c6bb24f9da632ad00d	f5581de8bbc525c6bb24f9da632ad00d	\N	4
+8043996	9f73ec8a02856a3aa811daeedceeb443	9f73ec8a02856a3aa811daeedceeb443	\N	4
+9320887	a9673f40a914b0e5b6194c9e3104c9f9	a9673f40a914b0e5b6194c9e3104c9f9	\N	4
+9398159	8856ccfedf0f80e21922eee7640d6483	8856ccfedf0f80e21922eee7640d6483	\N	4
+11960981	415670c3ea48083ec8af4fe108d913fc	415670c3ea48083ec8af4fe108d913fc	\N	4
+13309223	76c65d6cf9b9bc76d923ba6538d8f384	76c65d6cf9b9bc76d923ba6538d8f384	\N	4
+13648065	c42ac7d7a2ffb03435f13acb7433c713	c42ac7d7a2ffb03435f13acb7433c713	\N	4
+13803902	7900597187bd4ff22d5c1f698488c7a0	7900597187bd4ff22d5c1f698488c7a0	\N	4
+14067007	669a62819ed705f7d1f20fac69f691bf	669a62819ed705f7d1f20fac69f691bf	\N	4
+14171327	5d0b09263e71ea59aa5afc8aab074a30	5d0b09263e71ea59aa5afc8aab074a30	\N	4
+14267897	8ff4e7e17c20df7f455260a9a76c5180	8ff4e7e17c20df7f455260a9a76c5180	\N	4
+14320450	af632f527d347824e4b3682e044eb5e0	af632f527d347824e4b3682e044eb5e0	\N	4
+15174936	02927bb1cda41153ba8face3bb9e006d	02927bb1cda41153ba8face3bb9e006d	\N	4
+15295994	d9ef59837e567bc66381df0daa901303	d9ef59837e567bc66381df0daa901303	\N	4
+15296686	74b1a3573670a0c36a64e40a79d1ba12	74b1a3573670a0c36a64e40a79d1ba12	\N	4
+15621939	6b4eb31f521cce1b7245f4b945eb112c	6b4eb31f521cce1b7245f4b945eb112c	\N	4
+15755730	8032df710aeba5a98057a9ba41f02810	8032df710aeba5a98057a9ba41f02810	\N	4
+15784489	49ea85c3f2b1fdc2e40b64917221ee51	49ea85c3f2b1fdc2e40b64917221ee51	\N	4
+16039221	3621fe1446c27c8314d8cf7de232bafa	3621fe1446c27c8314d8cf7de232bafa	\N	4
+16199520	1ba9cb9ad2d9f439620108a6921c1f7a	1ba9cb9ad2d9f439620108a6921c1f7a	\N	4
+16445626	10785e4ce38aecc7111f121632d50908	10785e4ce38aecc7111f121632d50908	\N	4
+16655032	0abd825d7e94deb3ba417d07b76a59cd	0abd825d7e94deb3ba417d07b76a59cd	\N	4
+17130332	c247ea5599265b4b329625d4b9aeed4d	c247ea5599265b4b329625d4b9aeed4d	\N	4
+17130671	d45ab075fb5884740ba4ff83b4c83aa6	d45ab075fb5884740ba4ff83b4c83aa6	\N	4
+17323027	2617c7e1c3d9eb31907a4007f24a4a13	2617c7e1c3d9eb31907a4007f24a4a13	\N	4
+3223045	2217eecadc34bfb5dc7db1da7ce29408	2217eecadc34bfb5dc7db1da7ce29408	\N	4
+8039615	d366cbc49984c88fe202951ad6bfac68	d366cbc49984c88fe202951ad6bfac68	\N	4
+10717019	546397232dfc504cc387c86d74788f38	546397232dfc504cc387c86d74788f38	\N	4
+12778229	569f64ac0be0b15d3ee95f3aa02b23ea	569f64ac0be0b15d3ee95f3aa02b23ea	\N	4
+14107223	952942e0f99fbac85ff6446eda32417d	952942e0f99fbac85ff6446eda32417d	\N	4
+13524598	3fee666a1a3f346c81ad8dbdf115dfc3	3fee666a1a3f346c81ad8dbdf115dfc3	\N	4
+5466076	c3daaef7c0f76e79cbf178df9e6b2b00	c3daaef7c0f76e79cbf178df9e6b2b00	\N	4
+7080727	82e37376111000d9bbfc2ecde2fae6d3	82e37376111000d9bbfc2ecde2fae6d3	\N	4
+8041985	9f8cd5426238b62a9b09b241cb005e44	9f8cd5426238b62a9b09b241cb005e44	\N	4
+8039463	4b21b5c4815577db073406fa36c6fa0f	4b21b5c4815577db073406fa36c6fa0f	\N	4
+19592116	2856d68750ed49aef0d407b547b8bdeb	2856d68750ed49aef0d407b547b8bdeb	\N	4
+12779833	1e4925ab5a441e00e57904834a14e13e	1e4925ab5a441e00e57904834a14e13e	\N	4
+9081546	ec744a4144de27c61d42f3ac30b6b4e8	ec744a4144de27c61d42f3ac30b6b4e8	\N	4
+14131053	588505cf579251db86f27dc3ee710a13	588505cf579251db86f27dc3ee710a13	\N	4
+6953950	a08200d824595e54997221a9ec0db9b2	a08200d824595e54997221a9ec0db9b2	\N	4
+13648603	8efb164cd5b818b99862a31eb0fb63f7	8efb164cd5b818b99862a31eb0fb63f7	\N	4
+17254684	129c65bf7cabf383adf639072c6ac9bb	129c65bf7cabf383adf639072c6ac9bb	\N	4
+20039181	6b1f1ae672fa6e5430ad510c2a4702ee	6b1f1ae672fa6e5430ad510c2a4702ee	\N	4
+13966349	f012e39b85f4b6d1f80741c4e5803e27	f012e39b85f4b6d1f80741c4e5803e27	\N	4
+5200034	c9cadc744663d31e5e98418bd07cf355	c9cadc744663d31e5e98418bd07cf355	\N	4
+9906615	354a9f14d14e98288482a38f6dc4b4c6	354a9f14d14e98288482a38f6dc4b4c6	\N	4
+11953708	7e218f97d7ff5d4317b9c05d3de84e7c	7e218f97d7ff5d4317b9c05d3de84e7c	\N	4
+8045120	e3eca8e3f06bf3e65c56b10b553b613a	e3eca8e3f06bf3e65c56b10b553b613a	\N	4
+9874227	8b76b4a00651cbe8556fcb06b19d589f	8b76b4a00651cbe8556fcb06b19d589f	\N	4
+11705856	be29c5dd67c03a2d2cbbfe0bb31ffb67	be29c5dd67c03a2d2cbbfe0bb31ffb67	\N	4
+18620054	7d87c51f16fa11d4c23a77dd79c7b22b	7d87c51f16fa11d4c23a77dd79c7b22b	\N	4
+18618150	4b4ce1f63ea891603ccc3758edda8912	4b4ce1f63ea891603ccc3758edda8912	\N	4
+19279167	f1b67874cf9c6613b8d4fc10e232412e	f1b67874cf9c6613b8d4fc10e232412e	\N	4
+9474618	26dbb2348b7dc1a2fe9e3698418f12a7	26dbb2348b7dc1a2fe9e3698418f12a7	\N	4
+17129049	a9b9e4cae8e76bbdf0b64eef60bec2a6	a9b9e4cae8e76bbdf0b64eef60bec2a6	\N	4
+10172170	7b58c972cee4aafc3a62c705ca2957c1	7b58c972cee4aafc3a62c705ca2957c1	\N	4
+11036485	17aac5ccc9e8144a9ce303f42fc65198	17aac5ccc9e8144a9ce303f42fc65198	\N	4
+20199965	cd351ae5ddf2b85aa5f569db2669e360	cd351ae5ddf2b85aa5f569db2669e360	\N	4
+12348836	45aa7659e0d36c12b19c25a7719c3a4b	45aa7659e0d36c12b19c25a7719c3a4b	\N	4
+5198826	0e9372c1bb77ca090f3174d195bacb08	0e9372c1bb77ca090f3174d195bacb08	\N	4
 \.
 
 

@@ -256,60 +256,92 @@ alter table seccion add foreign key("idPeriodo") references periodo("ID") on upd
 /*_______________________________________________________________________________*/
 /*                                     HORARIOS*/
 /*-------------------------------------------------------------------------------*/
---
--- Name: building; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+
+-- Name: salones; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-CREATE TABLE building (
-    id serial primary key,
-    name text,
-    headquarters int not null
+CREATE TABLE salones (
+    id integer NOT NULL,
+    salon character varying,
+    cod_edi integer NOT NULL,
+    tipo text
 );
 
 
+ALTER TABLE salones OWNER TO postgres;
+
 --
--- Name: classroom_type; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: salones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
-CREATE TABLE classroom_type (
-    id serial primary key,
-    name text
+
+CREATE SEQUENCE salones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE salones_id_seq OWNER TO postgres;
+
+--
+-- Name: salones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE salones_id_seq OWNED BY salones.id;
+
+
+--
+-- Name: horario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE horario (
+    id_enlace character varying NOT NULL,
+    periodo integer NOT NULL,
+    thora character varying,
+    chora character varying,
+    seccion integer NOT NULL,
+    materia character varying,
+    profesor integer NOT NULL,
+    carrera integer NOT NULL,
+    salon integer,
+    hora integer,
+    id_bloque integer,
+    id integer DEFAULT nextval('salones_id_seq'::regclass)
 );
 
 
+ALTER TABLE horario OWNER TO postgres;
+
 --
--- Name: classrooms; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: edificio; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
-CREATE TABLE classrooms (
-    id serial primary key,
-    name text,
-    building int not null,
-    classroom_type int
+
+CREATE TABLE edificio (
+    id integer NOT NULL,
+    edificio character varying,
+    id_sede integer NOT NULL
 );
 
 
---
--- Name: coordinates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-CREATE TABLE coordinates(
-    id serial primary key,
-    rows text,
-    columns text
-);
-
+ALTER TABLE edificio OWNER TO postgres;
 
 --
--- Name: schedule; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: edificio_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
-CREATE TABLE schedule (
-    id serial primary key,
-    status text,
-    classrooms int,
-    rows text,
-    columns text
-);
-ALTER TABLE ONLY building ADD CONSTRAINT headquarters_foreing_key FOREIGN KEY (headquarters) REFERENCES sede(id)ON UPDATE CASCADE ON DELETE RESTRICT;
 
-ALTER TABLE ONLY classrooms ADD CONSTRAINT building_foreing_key FOREIGN KEY (building) REFERENCES building(id) ON UPDATE CASCADE ON DELETE RESTRICT;
-ALTER TABLE ONLY classrooms ADD CONSTRAINT classroom_type_foreing_key FOREIGN KEY (classroom_type) REFERENCES classroom_type(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+CREATE SEQUENCE edificio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
-ALTER TABLE ONLY schedule ADD CONSTRAINT classrooms_foreing_key FOREIGN KEY (classrooms) REFERENCES classrooms(id)ON UPDATE CASCADE ON DELETE RESTRICT;
+
+ALTER TABLE edificio_id_seq OWNER TO postgres;
+
+--
+-- Name: edificio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE edificio_id_seq OWNED BY edificio.id;
