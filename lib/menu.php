@@ -284,7 +284,7 @@
 						<li><a href="javascript: embem('moduloPlanificacion/Seccion/index.php', '#page-wrapper')"><i class="fa fa-font fa-fw"></i> Secciones</a></li>
 						<li><a href="javascript: embem('moduloPlanificacion/Carga/index.php', '#page-wrapper')"><i class="fa fa-hourglass fa-fw"></i> Carga académica</a></li>
 						<li><a href="javascript: embem('moduloPlanificacion/Carga/planillas.php', '#page-wrapper')"><i class="fa fa-file-pdf-o fa-fw"></i> Planillas</a></li>
-						<li><a href="javascript: moreInfo('moduloHorarios/iindex.html')"><i class="fa fa-th fa-fw"></i> Gestion de Horarios</a></li>
+						<li><a href="javascript: moreInfo('moduloHorarios/principal.php')"><i class="fa fa-th fa-fw"></i> Gestion de Horarios</a></li>
 					</ul>
 				</li>
 
