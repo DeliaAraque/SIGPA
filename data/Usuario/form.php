@@ -46,7 +46,7 @@
 
 			<div class="form-group">
 				<input type="text" name="correo" placeholder="Correo electŕonico" class="form-control" pattern="^[a-z0-9\-_\.]+@[a-z0-9\-_\.]+\.[a-z0-9\-_\.]+(,[a-z0-9\-_\.]+@[a-z0-9\-_\.]+\.[a-z0-9\-_\.]+)*$" required="required" title="Ingrese su correo electrónico" />
-				<p class="help-block">Puede ingresar varios correos separados por comas. Ej: inicialnombreapellido@uptm.edu.ve,inicialnombreapellido@gmail.com</p>
+				<p class="help-block">Puede ingresar varios correos separados por comas y sin espacios. Ej: inicialnombreapellido@uptm.edu.ve,inicialnombreapellido@gmail.com</p>
 			</div>
 
 			<div class="form-group">
@@ -55,13 +55,13 @@
 			</div>
 
 			<div class="form-group">
-				<input type="text" name="telefono" placeholder="Teléfono móvil" class="form-control" pattern="[0-9]{3,4}\-?[0-9]{7}" required="required" />
-				<p class="help-block">Ej: 0000-0000000</p>
+				<input type="text" name="telefono" placeholder="Teléfono móvil" class="form-control" pattern="[0-9]{3,4}\-?[0-9]{7}(,([0-9]{3,4}\-?[0-9]{7}))*" required="required" />
+				<p class="help-block">Puede ingresar varios teléfonos separados por comas y sin espacios. Ej: 0000-0000000</p>
 			</div>
 
 			<div class="form-group">
-				<input type="text" name="telefonoFijo" placeholder="Teléfono Fijo" class="form-control" pattern="[0-9]{3,4}\-?[0-9]{7}" />
-				<p class="help-block">Opcional. Ej: 0000-0000000</p>
+				<input type="text" name="telefonoFijo" placeholder="Teléfono Fijo" class="form-control" pattern="[0-9]{3,4}\-?[0-9]{7}(,([0-9]{3,4}\-?[0-9]{7}))*" />
+				<p class="help-block">Opcional. Puede ingresar varios teléfonos separados por comas y sin espacios. Ej: 0000-0000000</p>
 			</div>
 
 <?php

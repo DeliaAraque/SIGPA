@@ -87,7 +87,7 @@
 	
 	$direccion = htmlspecialchars($_POST["direccion"], ENT_QUOTES);
 
-	$re = "^[0-9]{3,4}\-?[0-9]{7}$";
+	$re = "^[0-9]{3,4}\-?[0-9]{7}(,([0-9]{3,4}\-?[0-9]{7}))*$";
 
 	if(! ereg("$re", $_POST["telefono"])) {
 		echo "El número de teléfono móvil no cumple con el patrón necesario";
@@ -97,7 +97,7 @@
 	$telefono = $_POST["telefono"];
 
 	if($_POST["telefonoFijo"]) {
-		$re = "^[0-9]{3,4}\-?[0-9]{7}$";
+		$re = "^[0-9]{3,4}\-?[0-9]{7}(,([0-9]{3,4}\-?[0-9]{7}))*$";
 
 		if(! ereg("$re", $_POST["telefonoFijo"])) {
 			echo "El número de teléfono fijo no cumple con el patrón necesario";
